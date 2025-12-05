@@ -5,436 +5,592 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>أسئلة محاضرة 2</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-
 <style>
-/* نفس الديزاين 100% */
-
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-    font-family:'Cairo',sans-serif;
-    background:#f5f6fa;
-    font-size:16px;
-    line-height:1.6;
-}
-header{
-    background:linear-gradient(135deg,#4c6ef5,#3b5bdb);
-    color:white;
-    padding:18px 15px;
-    text-align:center;
-    font-size:22px;
-    font-weight:700;
-    position:sticky;
-    top:0;
-    z-index:100;
-}
-.container{
-    padding:15px;
-    max-width:100%;
-}
-.card{
-    background:white;
-    padding:20px 15px;
-    margin-bottom:20px;
-    border-radius:12px;
-    box-shadow:0px 3px 12px rgba(0,0,0,0.08);
-}
-h2{
-    color:#4c6ef5;
-    margin-bottom:20px;
-    font-size:20px;
-    padding-bottom:10px;
-    border-bottom:2px solid #f0f3ff;
-    text-align:center;
-}
-ol{padding-inline-start:20px;list-style-position:inside}
-li{margin-bottom:18px;padding:10px 0;border-bottom:1px dashed #eee}
-li:last-child{border-bottom:none}
-
-.theory-question{
-    cursor:pointer;
-    padding:10px 8px;
-    border-radius:8px;
-    font-weight:600;
-    background:#f8f9fa;
-    transition:0.3s;
-}
-.theory-question:hover{
-    background:#eef2ff;
-    color:#4c6ef5;
-}
-.theory-answer{
-    display:none;
-    margin-top:10px;
-    padding:12px 15px;
-    background:#e7f6e7;
-    border-radius:8px;
-    border-right:4px solid #28a745;
-    color:#155724;
-    font-weight:600;
-}
-
-/* QCM */
-.qcm-option{
-    margin:8px 0;
-    padding:14px 15px;
-    border-radius:8px;
-    border:1px solid #ddd;
-    background:#f9f9f9;
-    cursor:pointer;
-    padding-right:45px;
-    position:relative;
-}
-.qcm-option::before{
-    content:attr(data-letter);
-    position:absolute;
-    right:15px;
-    top:50%;
-    transform:translateY(-50%);
-    width:25px;
-    height:25px;
-    background:#4c6ef5;
-    color:white;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-.qcm-option.correct{
-    background:#d4edda;
-    border-color:#28a745;
-    color:#155724;
-}
-.qcm-option.correct::before{background:#28a745}
-.qcm-option.wrong{
-    background:#f8d7da;
-    border-color:#dc3545;
-    color:#721c24;
-}
-.qcm-option.wrong::before{background:#dc3545}
-
-.answer{
-    display:none;
-    margin-top:10px;
-    padding:12px 15px;
-    background:#fff3cd;
-    border-radius:8px;
-    color:#856404;
-    font-weight:600;
-    border-right:4px solid #ffc107;
-    text-align:center;
-}
-
-.scroll-top{
-    position:fixed;
-    bottom:20px;left:20px;
-    background:#4c6ef5;
-    color:white;
-    width:50px;height:50px;
-    border-radius:50%;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    font-size:22px;
-    border:none;
-}
+    /* إعدادات متجاوبة للهاتف - بنفس ديزاين المحاضرة السابقة */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Cairo', sans-serif;
+        background: #f5f6fa;
+        font-size: 16px;
+        line-height: 1.5;
+        padding-bottom: 20px;
+        color: #333;
+    }
+    
+    header {
+        background: linear-gradient(135deg, #4c6ef5, #3b5bdb);
+        color: white;
+        padding: 18px 15px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 700;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .container {
+        padding: 15px;
+        max-width: 100%;
+    }
+    
+    .card {
+        background: white;
+        padding: 20px 15px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 3px 12px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-2px);
+    }
+    
+    h2 {
+        color: #4c6ef5;
+        margin-bottom: 20px;
+        font-size: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #f0f3ff;
+        text-align: center;
+    }
+    
+    /* تحسين عرض القوائم */
+    ol {
+        padding-inline-start: 20px;
+        list-style-position: inside;
+    }
+    
+    li {
+        margin-bottom: 18px;
+        padding: 10px 0;
+        border-bottom: 1px dashed #eee;
+    }
+    
+    li:last-child {
+        border-bottom: none;
+    }
+    
+    /* تحسين الأسئلة النظرية للهاتف */
+    .theory-answer {
+        display: none;
+        margin-top: 12px;
+        padding: 12px 15px;
+        background: #e7f6e7;
+        border-radius: 8px;
+        color: #155724;
+        font-weight: 600;
+        border-right: 4px solid #28a745;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    
+    .theory-question {
+        cursor: pointer;
+        transition: all 0.3s;
+        padding: 10px 8px;
+        border-radius: 8px;
+        font-weight: 600;
+        color: #333;
+        font-size: 16px;
+        background: #f8f9fa;
+        display: block;
+        margin-bottom: 8px;
+    }
+    
+    .theory-question:hover, .theory-question:active {
+        background: #eef2ff;
+        color: #4c6ef5;
+        padding-right: 15px;
+    }
+    
+    /* تحسين أسئلة الـ QCM للهاتف */
+    .qcm-option {
+        margin: 8px 0;
+        padding: 14px 15px;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+        cursor: pointer;
+        transition: all 0.3s;
+        background: #f9f9f9;
+        font-size: 15px;
+        position: relative;
+        padding-right: 45px; /* مساحة للأحرف */
+    }
+    
+    .qcm-option::before {
+        content: attr(data-letter);
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 25px;
+        height: 25px;
+        background: #4c6ef5;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+    
+    .qcm-option:hover {
+        background: #eef2ff;
+        transform: translateX(-5px);
+    }
+    
+    .qcm-option:active {
+        transform: scale(0.98);
+    }
+    
+    .qcm-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+    }
+    
+    .qcm-option.correct::before {
+        background: #28a745;
+    }
+    
+    .qcm-option.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+        font-weight: 600;
+    }
+    
+    .qcm-option.wrong::before {
+        background: #dc3545;
+    }
+    
+    .answer {
+        display: none;
+        margin-top: 12px;
+        padding: 12px 15px;
+        background: #fff3cd;
+        border-radius: 8px;
+        color: #856404;
+        font-weight: 600;
+        border-right: 4px solid #ffc107;
+        font-size: 15px;
+        text-align: center;
+    }
+    
+    /* زر للعودة للأعلى */
+    .scroll-top {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background: #4c6ef5;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(76, 110, 245, 0.3);
+        z-index: 99;
+        transition: all 0.3s;
+        border: none;
+        display: none;
+    }
+    
+    .scroll-top:hover {
+        background: #3b5bdb;
+        transform: translateY(-3px);
+    }
+    
+    /* مؤشر تفاعلي */
+    .tap-hint {
+        position: fixed;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        animation: pulse 2s infinite;
+        display: none;
+    }
+    
+    @keyframes pulse {
+        0% { opacity: 0.7; }
+        50% { opacity: 1; }
+        100% { opacity: 0.7; }
+    }
+    
+    /* تحسينات للشاشات الصغيرة جدًا */
+    @media (max-width: 480px) {
+        header {
+            font-size: 20px;
+            padding: 16px 10px;
+        }
+        
+        .container {
+            padding: 10px;
+        }
+        
+        .card {
+            padding: 15px 12px;
+            margin-bottom: 15px;
+        }
+        
+        h2 {
+            font-size: 18px;
+        }
+        
+        .theory-question, .qcm-option {
+            font-size: 15px;
+            padding: 12px 10px;
+        }
+        
+        .qcm-option {
+            padding-right: 40px;
+        }
+        
+        .qcm-option::before {
+            right: 10px;
+            width: 22px;
+            height: 22px;
+            font-size: 14px;
+        }
+        
+        ol {
+            padding-inline-start: 15px;
+        }
+        
+        li {
+            margin-bottom: 15px;
+        }
+    }
+    
+    /* تحسينات للشاشات الكبيرة */
+    @media (min-width: 768px) {
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            padding: 25px 30px;
+        }
+    }
+    
+    /* دعم الوضع الداكن */
+    @media (prefers-color-scheme: dark) {
+        body {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+        
+        .card {
+            background: #2d2d2d;
+            box-shadow: 0px 3px 12px rgba(0,0,0,0.3);
+        }
+        
+        .theory-question {
+            background: #3d3d3d;
+            color: #e0e0e0;
+        }
+        
+        .qcm-option {
+            background: #3d3d3d;
+            border-color: #555;
+            color: #e0e0e0;
+        }
+        
+        .theory-answer {
+            background: #2d4d2d;
+            color: #a8e6a8;
+        }
+        
+        .answer {
+            background: #4d4d2d;
+            color: #ffd700;
+        }
+    }
 </style>
 </head>
-
 <body>
-
 <header>أسئلة محاضرة 2</header>
-
 <div class="container">
 
-<!-- الأسئلة النظرية -->
-<div class="card">
-<h2>الأسئلة النظرية (20 سؤالًا)</h2>
-<ol>
+    <!-- الأسئلة النظرية -->
+    <div class="card">
+        <h2>الأسئلة النظرية (20 سؤالًا)</h2>
+        <ol>
+            <li><div class="theory-question">ما المقصود بأركان عقد العمل؟</div><div class="theory-answer">الإجابة: العناصر الأساسية التي تضمن صحة العقد قانونيًا.</div></li>
+            <li><div class="theory-question">ما هو دور الشروط الشكلية في عقد العمل؟</div><div class="theory-answer">الإجابة: تحدد الهوية، تاريخ العقد، المنصب، ومكان العمل.</div></li>
+            <li><div class="theory-question">ما معنى عنصر الرضا في عقد العمل؟</div><div class="theory-answer">الإجابة: موافقة الطرفين دون ضغط أو ترهيب.</div></li>
+            <li><div class="theory-question">ماذا يعني عنصر المحل في عقد العمل؟</div><div class="theory-answer">الإجابة: قدرة العامل وصاحب العمل على تنفيذ الالتزامات.</div></li>
+            <li><div class="theory-question">ما المقصود بسبب العقد (Cause)؟</div><div class="theory-answer">الإجابة: وجود هدف مشروع وواضح للعقد.</div></li>
+            <li><div class="theory-question">ما شروط الأهلية القانونية في عقد العمل؟</div><div class="theory-answer">الإجابة: أن يكون العقد لغرض قانوني وليس مخالفًا للقوانين.</div></li>
+            <li><div class="theory-question">كم تدوم الفترة التجريبية حسب القانون؟</div><div class="theory-answer">الإجابة: من 6 إلى 12 شهرًا حسب طبيعة المنصب.</div></li>
+            <li><div class="theory-question">هل يستفيد العامل من حقوقه أثناء التجربة؟</div><div class="theory-answer">الإجابة: نعم، يتمتع بجميع الحقوق مثل باقي العمال.</div></li>
+            <li><div class="theory-question">متى يعتبر العامل مثبتًا؟</div><div class="theory-answer">الإجابة: بعد انتهاء فترة التجربة بنجاح.</div></li>
+            <li><div class="theory-question">ما أثر الفترة التجريبية على الأقدمية؟</div><div class="theory-answer">الإجابة: تُحتسب ضمن سنوات الأقدمية.</div></li>
+            <li><div class="theory-question">ما معنى أداء العمل كأثر للعقد؟</div><div class="theory-answer">الإجابة: التزام العامل بمهامه وساعاته المتفق عليها.</div></li>
+            <li><div class="theory-question">ما واجب العامل تجاه السرية المهنية؟</div><div class="theory-answer">الإجابة: عدم كشف المعلومات التي يحصل عليها أثناء العمل.</div></li>
+            <li><div class="theory-question">ما المقصود بالالتزام بالسلوك المهني؟</div><div class="theory-answer">الإجابة: التصرف بأدب واحترام داخل بيئة العمل.</div></li>
+            <li><div class="theory-question">ما معنى الإشعار المسبق؟</div><div class="theory-answer">الإجابة: إبلاغ صاحب العمل قبل ترك الوظيفة.</div></li>
+            <li><div class="theory-question">ماذا يعني الالتزام بشروط العقد؟</div><div class="theory-answer">الإجابة: تنفيذ البنود المالية والتنظيمية كاملة.</div></li>
+            <li><div class="theory-question">ما واجب العامل تجاه الجهات الرقابية؟</div><div class="theory-answer">الإجابة: التعاون وتقديم المعلومات المطلوبة.</div></li>
+            <li><div class="theory-question">ما معنى التبعية في عقد العمل؟</div><div class="theory-answer">الإجابة: خضوع العامل للأوامر والإشراف من صاحب العمل.</div></li>
+            <li><div class="theory-question">ما دور معايير السلامة والأمان؟</div><div class="theory-answer">الإجابة: حماية صحة العامل أثناء العمل.</div></li>
+            <li><div class="theory-question">ماذا يحدث عند غياب عقد مكتوب؟</div><div class="theory-answer">الإجابة: تُعتبر العلاقة غير محددة المدة تلقائيًا.</div></li>
+            <li><div class="theory-question">ما الذي يثبت العلاقة عند غياب العقد؟</div><div class="theory-answer">الإجابة: الأداء الفعلي للعمل والأجر.</div></li>
+        </ol>
+    </div>
 
-<li><div class="theory-question">ما المقصود بأركان عقد العمل؟</div>
-<div class="theory-answer">العناصر الأساسية التي تضمن صحة العقد قانونيًا.</div></li>
-
-<li><div class="theory-question">ما هو دور الشروط الشكلية في عقد العمل؟</div>
-<div class="theory-answer">تحدد الهوية، تاريخ العقد، المنصب، ومكان العمل.</div></li>
-
-<li><div class="theory-question">ما معنى عنصر الرضا في عقد العمل؟</div>
-<div class="theory-answer">موافقة الطرفين دون ضغط أو ترهيب.</div></li>
-
-<li><div class="theory-question">ماذا يعني عنصر المحل في عقد العمل؟</div>
-<div class="theory-answer">قدرة العامل وصاحب العمل على تنفيذ الالتزامات.</div></li>
-
-<li><div class="theory-question">ما المقصود بسبب العقد (Cause)؟</div>
-<div class="theory-answer">وجود هدف مشروع وواضح للعقد.</div></li>
-
-<li><div class="theory-question">ما شروط الأهلية القانونية في عقد العمل؟</div>
-<div class="theory-answer">أن يكون العقد لغرض قانوني وليس مخالفًا للقوانين.</div></li>
-
-<li><div class="theory-question">كم تدوم الفترة التجريبية حسب القانون؟</div>
-<div class="theory-answer">من 6 إلى 12 شهرًا حسب طبيعة المنصب.</div></li>
-
-<li><div class="theory-question">هل يستفيد العامل من حقوقه أثناء التجربة؟</div>
-<div class="theory-answer">نعم، يتمتع بجميع الحقوق مثل باقي العمال.</div></li>
-
-<li><div class="theory-question">متى يعتبر العامل مثبتًا؟</div>
-<div class="theory-answer">بعد انتهاء فترة التجربة بنجاح.</div></li>
-
-<li><div class="theory-question">ما أثر الفترة التجريبية على الأقدمية؟</div>
-<div class="theory-answer">تُحتسب ضمن سنوات الأقدمية.</div></li>
-
-<li><div class="theory-question">ما معنى أداء العمل كأثر للعقد؟</div>
-<div class="theory-answer">التزام العامل بمهامه وساعاته المتفق عليها.</div></li>
-
-<li><div class="theory-question">ما واجب العامل تجاه السرية المهنية؟</div>
-<div class="theory-answer">عدم كشف المعلومات التي يحصل عليها أثناء العمل.</div></li>
-
-<li><div class="theory-question">ما المقصود بالالتزام بالسلوك المهني؟</div>
-<div class="theory-answer">التصرف بأدب واحترام داخل بيئة العمل.</div></li>
-
-<li><div class="theory-question">ما معنى الإشعار المسبق؟</div>
-<div class="theory-answer">إبلاغ صاحب العمل قبل ترك الوظيفة.</div></li>
-
-<li><div class="theory-question">ماذا يعني الالتزام بشروط العقد؟</div>
-<div class="theory-answer">تنفيذ البنود المالية والتنظيمية كاملة.</div></li>
-
-<li><div class="theory-question">ما واجب العامل تجاه الجهات الرقابية؟</div>
-<div class="theory-answer">التعاون وتقديم المعلومات المطلوبة.</div></li>
-
-<li><div class="theory-question">ما معنى التبعية في عقد العمل؟</div>
-<div class="theory-answer">خضوع العامل للأوامر والإشراف من صاحب العمل.</div></li>
-
-<li><div class="theory-question">ما دور معايير السلامة والأمان؟</div>
-<div class="theory-answer">حماية صحة العامل أثناء العمل.</div></li>
-
-<li><div class="theory-question">ماذا يحدث عند غياب عقد مكتوب؟</div>
-<div class="theory-answer">تُعتبر العلاقة غير محددة المدة تلقائيًا.</div></li>
-
-<li><div class="theory-question">ما الذي يثبت العلاقة عند غياب العقد؟</div>
-<div class="theory-answer">الأداء الفعلي للعمل والأجر.</div></li>
-
-</ol>
-</div>
-
-<!-- QCM -->
-<div class="card">
-<h2>أسئلة QCM (20 سؤالًا)</h2>
-<ol>
-
-<li>
-<div>ما هو عنصر الرضا؟</div>
-<div class="qcm-option" data-letter="أ" data-correct="false">تنفيذ العمل فقط</div>
-<div class="qcm-option" data-letter="ب" data-correct="true">موافقة العامل وصاحب العمل بحرية</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">أجر العامل</div>
-<div class="qcm-option" data-letter="د" data-correct="false">مدة العمل</div>
-<div class="answer">الإجابة الصحيحة: ب</div>
-</li>
-
-<li>
-<div>عنصر المحل يعني:</div>
-<div class="qcm-option" data-letter="أ" data-correct="true">قدرة الطرفين على تنفيذ الالتزامات</div>
-<div class="qcm-option" data-letter="ب" data-correct="false">مدة العقد</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">الأجر الشهري</div>
-<div class="qcm-option" data-letter="د" data-correct="false">مكان العمل</div>
-<div class="answer">الإجابة الصحيحة: أ</div>
-</li>
-
-<li>
-<div>السبب في العقد هو:</div>
-<div class="qcm-option" data-letter="أ" data-correct="false">الأجر فقط</div>
-<div class="qcm-option" data-letter="ب" data-correct="true">الغاية المشروعة من العقد</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">مدة التجربة</div>
-<div class="qcm-option" data-letter="د" data-correct="false">العطل</div>
-<div class="answer">الإجابة الصحيحة: ب</div>
-</li>
-
-<li>
-<div>مدة التجربة للأعمال العادية:</div>
-<div class="qcm-option" data-letter="أ" data-correct="true">6 أشهر</div>
-<div class="qcm-option" data-letter="ب" data-correct="false">3 أشهر</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">12 شهرًا</div>
-<div class="qcm-option" data-letter="د" data-correct="false">24 شهرًا</div>
-<div class="answer">الإجابة الصحيحة: أ</div>
-</li>
-
-<li>
-<div>مدة التجربة للمناصب ذات التأهيل العالي:</div>
-<div class="qcm-option" data-letter="أ" data-correct="false">3 أشهر</div>
-<div class="qcm-option" data-letter="ب" data-correct="false">6 أشهر</div>
-<div class="qcm-option" data-letter="ج" data-correct="true">12 شهرًا</div>
-<div class="qcm-option" data-letter="د" data-correct="false">18 شهرًا</div>
-<div class="answer">الإجابة الصحيحة: ج</div>
-</li>
-
-<li>
-<div>هل تُحسب فترة التجربة ضمن الأقدمية؟</div>
-<div class="qcm-option" data-letter="أ" data-correct="true">نعم</div>
-<div class="qcm-option" data-letter="ب" data-correct="false">لا</div>
-<div class="answer">الإجابة الصحيحة: أ</div>
-</li>
-
-<li>
-<div>أداء العمل يعني:</div>
-<div class="qcm-option" data-letter="أ" data-correct="false">الحضور فقط</div>
-<div class="qcm-option" data-letter="ب" data-correct="true">تنفيذ المهام والساعات المحددة</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">الراحة الأسبوعية</div>
-<div class="qcm-option" data-letter="د" data-correct="false">التكوين المستمر</div>
-<div class="answer">الإجابة الصحيحة: ب</div>
-</li>
-
-<li>
-<div>السرية المهنية تعني:</div>
-<div class="qcm-option" data-letter="أ" data-correct="true">عدم كشف المعلومات الخاصة بالعمل</div>
-<div class="qcm-option" data-letter="ب" data-correct="false">منع الحضور المتأخر</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">زيادة ساعات العمل</div>
-<div class="qcm-option" data-letter="د" data-correct="false">تأجيل المهام</div>
-<div class="answer">الإجابة الصحيحة: أ</div>
-</li>
-
-<li>
-<div>الإشعار المسبق هو:</div>
-<div class="qcm-option" data-letter="أ" data-correct="false">يوم عطلة</div>
-<div class="qcm-option" data-letter="ب" data-correct="true">إعلام صاحب العمل قبل ترك العمل</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">زيادة الأجر</div>
-<div class="qcm-option" data-letter="د" data-correct="false">خصم من الراتب</div>
-<div class="answer">الإجابة الصحيحة: ب</div>
-</li>
-
-<li>
-<div>من واجبات العامل:</div>
-<div class="qcm-option" data-letter="أ" data-correct="false">رفض أوامر صاحب العمل</div>
-<div class="qcm-option" data-letter="ب" data-correct="true">الامتثال للتوجيهات والنظام الداخلي</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">مغادرة العمل بلا مبرر</div>
-<div class="qcm-option" data-letter="د" data-correct="false">تغيير ساعات العمل وحده</div>
-<div class="answer">الإجابة الصحيحة: ب</div>
-</li>
-
-<li>
-<div>العقد غير المكتوب يعتبر:</div>
-<div class="qcm-option" data-letter="أ" data-correct="true">عقدًا غير محدد المدة</div>
-<div class="qcm-option" data-letter="ب" data-correct="false">عقدًا محدد المدة</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">غير قانوني</div>
-<div class="qcm-option" data-letter="د" data-correct="false">موقوف التنفيذ</div>
-<div class="answer">الإجابة الصحيحة: أ</div>
-</li>
-
-<li>
-<div>المهام في العقد يجب أن تكون:</div>
-<div class="qcm-option" data-letter="أ" data-correct="false">غامضة</div>
-<div class="qcm-option" data-letter="ب" data-correct="true">محددة وواضحة</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">غير مكتوبة</div>
-<div class="qcm-option" data-letter="د" data-correct="false">اختيارية</div>
-<div class="answer">الإجابة الصحيحة: ب</div>
-</li>
-
-<li>
-<div>التبعية تعني:</div>
-<div class="qcm-option" data-letter="أ" data-correct="true">خضوع العامل للرقابة والتوجيه</div>
-<div class="qcm-option" data-letter="ب" data-correct="false">حرية العامل المطلقة</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">عدم وجود مدير</div>
-<div class="qcm-option" data-letter="د" data-correct="false">استقلالية كاملة</div>
-<div class="answer">الإجابة الصحيحة: أ</div>
-</li>
-
-<li>
-<div>الشروط الشكلية تتضمن:</div>
-<div class="qcm-option" data-letter="أ" data-correct="false">العطل</div>
-<div class="qcm-option" data-letter="ب" data-correct="true">هوية الأطراف وتاريخ العقد</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">ساعات إضافية</div>
-<div class="qcm-option" data-letter="د" data-correct="false">المكافآت</div>
-<div class="answer">الإجابة الصحيحة: ب</div>
-</li>
-
-<li>
-<div>العنصر التكميلي:</div>
-<div class="qcm-option" data-letter="أ" data-correct="false">شرط أساسي للعقد</div>
-<div class="qcm-option" data-letter="ب" data-correct="true">شرط غير أساسي لا يبطل العقد</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">شرط يخص التقاعد</div>
-<div class="qcm-option" data-letter="د" data-correct="false">شرط لتحديد العقوبات</div>
-<div class="answer">الإجابة الصحيحة: ب</div>
-</li>
-
-<li>
-<div>الالتزام بالنظام الداخلي يعني:</div>
-<div class="qcm-option" data-letter="أ" data-correct="false">رفض الأوامر</div>
-<div class="qcm-option" data-letter="ب" data-correct="true">اتباع القوانين الداخلية للمؤسسة</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">العصيان</div>
-<div class="qcm-option" data-letter="د" data-correct="false">الطرد</div>
-<div class="answer">الإجابة الصحيحة: ب</div>
-</li>
-
-<li>
-<div>التعاون مع الجهات الرقابية يعتبر:</div>
-<div class="qcm-option" data-letter="أ" data-correct="true">واجبًا قانونيًا</div>
-<div class="qcm-option" data-letter="ب" data-correct="false">اختياريًا</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">مخالفًا للقانون</div>
-<div class="qcm-option" data-letter="د" data-correct="false">غير مطلوب</div>
-<div class="answer">الإجابة الصحيحة: أ</div>
-</li>
-
-<li>
-<div>العمل أثناء الفترة التجريبية:</div>
-<div class="qcm-option" data-letter="أ" data-correct="true">يخضع لنفس القواعد مثل باقي العمال</div>
-<div class="qcm-option" data-letter="ب" data-correct="false">بدون حقوق</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">بدون تأمين</div>
-<div class="qcm-option" data-letter="د" data-correct="false">بدون أجر</div>
-<div class="answer">الإجابة الصحيحة: أ</div>
-</li>
-
-<li>
-<div>يجب أن تكون المهام:</div>
-<div class="qcm-option" data-letter="أ" data-correct="true">مشروعة</div>
-<div class="qcm-option" data-letter="ب" data-correct="false">غير قانونية</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">سرية فقط</div>
-<div class="qcm-option" data-letter="د" data-correct="false">عبثية</div>
-<div class="answer">الإجابة الصحيحة: أ</div>
-</li>
-
-<li>
-<div>غياب العقد المكتوب يؤدي إلى:</div>
-<div class="qcm-option" data-letter="أ" data-correct="true">اعتبار العقد غير محدد المدة</div>
-<div class="qcm-option" data-letter="ب" data-correct="false">إلغاء العلاقة</div>
-<div class="qcm-option" data-letter="ج" data-correct="false">فسخ تلقائي</div>
-<div class="qcm-option" data-letter="د" data-correct="false">طرد العامل</div>
-<div class="answer">الإجابة الصحيحة: أ</div>
-</li>
-
-</ol>
-</div>
+    <!-- أسئلة QCM -->
+    <div class="card">
+        <h2>أسئلة QCM (20 سؤالًا)</h2>
+        <ol>
+            <li>
+                <div class="qcm-question">ما هو عنصر الرضا؟</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">تنفيذ العمل فقط</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">موافقة العامل وصاحب العمل بحرية</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">أجر العامل</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">مدة العمل</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب - موافقة العامل وصاحب العمل بحرية</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">عنصر المحل يعني:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">قدرة الطرفين على تنفيذ الالتزامات</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">مدة العقد</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">الأجر الشهري</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">مكان العمل</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - قدرة الطرفين على تنفيذ الالتزامات</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">السبب في العقد هو:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">الأجر فقط</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">الغاية المشروعة من العقد</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">مدة التجربة</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">العطل</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب - الغاية المشروعة من العقد</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">مدة التجربة للأعمال العادية:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">6 أشهر</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">3 أشهر</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">12 شهرًا</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">24 شهرًا</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - 6 أشهر</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">مدة التجربة للمناصب ذات التأهيل العالي:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">3 أشهر</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">6 أشهر</div>
+                <div class="qcm-option" data-letter="ج" data-correct="true">12 شهرًا</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">18 شهرًا</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ج - 12 شهرًا</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">هل تُحسب فترة التجربة ضمن الأقدمية؟</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">نعم</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">لا</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - نعم</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">أداء العمل يعني:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">الحضور فقط</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">تنفيذ المهام والساعات المحددة</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">الراحة الأسبوعية</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">التكوين المستمر</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب - تنفيذ المهام والساعات المحددة</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">السرية المهنية تعني:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">عدم كشف المعلومات الخاصة بالعمل</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">منع الحضور المتأخر</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">زيادة ساعات العمل</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">تأجيل المهام</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - عدم كشف المعلومات الخاصة بالعمل</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">الإشعار المسبق هو:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">يوم عطلة</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">إعلام صاحب العمل قبل ترك العمل</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">زيادة الأجر</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">خصم من الراتب</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب - إعلام صاحب العمل قبل ترك العمل</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">من واجبات العامل:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">رفض أوامر صاحب العمل</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">الامتثال للتوجيهات والنظام الداخلي</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">مغادرة العمل بلا مبرر</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">تغيير ساعات العمل وحده</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب - الامتثال للتوجيهات والنظام الداخلي</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">العقد غير المكتوب يعتبر:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">عقدًا غير محدد المدة</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">عقدًا محدد المدة</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">غير قانوني</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">موقوف التنفيذ</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - عقدًا غير محدد المدة</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">المهام في العقد يجب أن تكون:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">غامضة</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">محددة وواضحة</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">غير مكتوبة</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">اختيارية</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب - محددة وواضحة</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">التبعية تعني:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">خضوع العامل للرقابة والتوجيه</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">حرية العامل المطلقة</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">عدم وجود مدير</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">استقلالية كاملة</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - خضوع العامل للرقابة والتوجيه</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">الشروط الشكلية تتضمن:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">العطل</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">هوية الأطراف وتاريخ العقد</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">ساعات إضافية</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">المكافآت</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب - هوية الأطراف وتاريخ العقد</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">العنصر التكميلي:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">شرط أساسي للعقد</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">شرط غير أساسي لا يبطل العقد</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">شرط يخص التقاعد</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">شرط لتحديد العقوبات</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب - شرط غير أساسي لا يبطل العقد</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">الالتزام بالنظام الداخلي يعني:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">رفض الأوامر</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">اتباع القوانين الداخلية للمؤسسة</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">العصيان</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">الطرد</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب - اتباع القوانين الداخلية للمؤسسة</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">التعاون مع الجهات الرقابية يعتبر:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">واجبًا قانونيًا</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">اختياريًا</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">مخالفًا للقانون</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">غير مطلوب</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - واجبًا قانونيًا</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">العمل أثناء الفترة التجريبية:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">يخضع لنفس القواعد مثل باقي العمال</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">بدون حقوق</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">بدون تأمين</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">بدون أجر</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - يخضع لنفس القواعد مثل باقي العمال</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">يجب أن تكون المهام:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">مشروعة</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">غير قانونية</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">سرية فقط</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">عبثية</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - مشروعة</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">غياب العقد المكتوب يؤدي إلى:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">اعتبار العقد غير محدد المدة</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">إلغاء العلاقة</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">فسخ تلقائي</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">طرد العامل</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - اعتبار العقد غير محدد المدة</strong></div>
+            </li>
+        </ol>
+    </div>
 
 </div>
 
-<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<!-- زر العودة للأعلى -->
+<button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+<!-- مؤشر التفعيل -->
+<div class="tap-hint">انقر على السؤال لرؤية الإجابة</div>
 
 <script>
-/* نظري */
-document.querySelectorAll('.theory-question').forEach(q=>{
-    q.onclick=()=>{
-        let ans=q.nextElementSibling;
-        ans.style.display=ans.style.display==='block'?'none':'block';
-    };
-});
-
-/* QCM */
-document.querySelectorAll('.qcm-option').forEach(option=>{
-    option.onclick=()=>{
-        if(option.classList.contains("correct")||option.classList.contains("wrong")) return;
-        let correct = option.dataset.correct==="true";
-        let parent = option.parentElement;
-        if(correct){ option.classList.add("correct"); }
-        else { option.classList.add("wrong"); }
-        parent.querySelector('.answer').style.display='block';
-        parent.querySelectorAll('.qcm-option').forEach(o=>{
-            if(o.dataset.correct==="true") o.classList.add("correct");
+    // تفعيل ظهور الإجابة للأسئلة النظرية
+    const theoryQuestions = document.querySelectorAll('.theory-question');
+    theoryQuestions.forEach(q => {
+        q.addEventListener('click', () => {
+            const answer = q.nextElementSibling;
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
         });
-    };
-});
+    });
 
-/* زر لأعلى */
-const btn=document.querySelector('.scroll-top');
-window.onscroll=()=>{
-    btn.style.display=window.scrollY>300?'flex':'none';
-};
+    // تفعيل تلوين الإجابة لأسئلة QCM
+    const qcmOptions = document.querySelectorAll('.qcm-option');
+    qcmOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            if(option.classList.contains('correct') || option.classList.contains('wrong')) return;
+            
+            const isCorrect = option.dataset.correct === 'true';
+            option.classList.add(isCorrect ? 'correct' : 'wrong');
+            
+            const parent = option.parentElement;
+            const answerDiv = parent.querySelector('.answer');
+            answerDiv.style.display = 'block';
+            
+            // تلوين جميع الخيارات الأخرى إذا كانت صحيحة
+            parent.querySelectorAll('.qcm-option').forEach(opt => {
+                if(opt !== option && opt.dataset.correct === 'true') {
+                    opt.classList.add('correct');
+                }
+            });
+            
+            // إظهار مؤشر التفعيل مرة واحدة فقط
+            const tapHint = document.querySelector('.tap-hint');
+            if(tapHint.style.display !== 'none') {
+                tapHint.style.display = 'none';
+            }
+        });
+    });
+
+    // إظهار زر العودة للأعلى عند التمرير
+    const scrollTopBtn = document.querySelector('.scroll-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollTopBtn.style.display = 'flex';
+        } else {
+            scrollTopBtn.style.display = 'none';
+        }
+    });
+
+    // إظهار مؤشر التفعيل عند التمرير لأول مرة
+    window.addEventListener('scroll', () => {
+        const tapHint = document.querySelector('.tap-hint');
+        if (window.scrollY > 200 && tapHint.style.display !== 'none') {
+            tapHint.style.display = 'block';
+            setTimeout(() => {
+                tapHint.style.display = 'none';
+            }, 3000);
+        }
+    });
+
+    // تحسين التجربة على اللمس
+    document.addEventListener('touchstart', () => {}, {passive: true});
 </script>
-
 </body>
 </html>

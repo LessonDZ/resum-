@@ -2,289 +2,578 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>أسئلة محاضرة 3</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>أسئلة محاضرة 3 - انتهاء عقد العمل</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --primary:#1976d2;
-  --secondary:#26a69a;
-  --bg:#f5f9ff;
-  --text:#0b2447;
-  --card:#ffffff;
-  --accent:#6a1b9a;
-}
-
-body{
-  margin:0;
-  font-family:"Cairo",sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-
-header{
-  background:linear-gradient(90deg,var(--primary),var(--secondary));
-  color:#fff;
-  text-align:center;
-  padding:20px;
-  border-bottom:5px solid var(--accent);
-}
-header h1{ margin:0; font-size:26px; }
-
-.container{
-  max-width:1000px;
-  margin:20px auto;
-  padding:20px;
-}
-
-.section{
-  background:var(--card);
-  padding:20px;
-  border-radius:12px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.07);
-  margin-bottom:20px;
-}
-
-.question{
-  padding:15px;
-  background:#eef7ff;
-  border-radius:10px;
-  margin-bottom:15px;
-  border-right:6px solid var(--primary);
-}
-
-.qcm-option{
-  background:#fff;
-  padding:10px;
-  margin:8px 0;
-  border-radius:8px;
-  border:1px solid #ddd;
-  cursor:pointer;
-  transition:.2s;
-}
-.qcm-option:hover{
-  background:#e9f3ff;
-}
-
-.correct{ background:#c8f7c5 !important; border-color:#2e7d32 !important; }
-.wrong{ background:#ffd4d4 !important; border-color:#b71c1c !important; }
+    /* إعدادات متجاوبة للهاتف */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Cairo', sans-serif;
+        background: #f5f6fa;
+        font-size: 16px;
+        line-height: 1.5;
+        padding-bottom: 20px;
+        color: #333;
+    }
+    
+    header {
+        background: linear-gradient(135deg, #1976d2, #26a69a);
+        color: white;
+        padding: 18px 15px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 700;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border-bottom: 4px solid #6a1b9a;
+    }
+    
+    .container {
+        padding: 15px;
+        max-width: 100%;
+    }
+    
+    .card {
+        background: white;
+        padding: 20px 15px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 3px 12px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-2px);
+    }
+    
+    h2 {
+        color: #1976d2;
+        margin-bottom: 20px;
+        font-size: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #f0f3ff;
+        text-align: center;
+    }
+    
+    /* تحسين عرض القوائم */
+    ol {
+        padding-inline-start: 20px;
+        list-style-position: inside;
+    }
+    
+    li {
+        margin-bottom: 18px;
+        padding: 10px 0;
+        border-bottom: 1px dashed #eee;
+    }
+    
+    li:last-child {
+        border-bottom: none;
+    }
+    
+    /* تحسين الأسئلة النظرية للهاتف */
+    .theory-answer {
+        display: none;
+        margin-top: 12px;
+        padding: 12px 15px;
+        background: #e7f6e7;
+        border-radius: 8px;
+        color: #155724;
+        font-weight: 600;
+        border-right: 4px solid #28a745;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    
+    .theory-question {
+        cursor: pointer;
+        transition: all 0.3s;
+        padding: 10px 8px;
+        border-radius: 8px;
+        font-weight: 600;
+        color: #333;
+        font-size: 16px;
+        background: #f8f9fa;
+        display: block;
+        margin-bottom: 8px;
+    }
+    
+    .theory-question:hover, .theory-question:active {
+        background: #eef2ff;
+        color: #1976d2;
+        padding-right: 15px;
+    }
+    
+    /* تحسين أسئلة الـ QCM للهاتف */
+    .qcm-option {
+        margin: 8px 0;
+        padding: 14px 15px;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+        cursor: pointer;
+        transition: all 0.3s;
+        background: #f9f9f9;
+        font-size: 15px;
+        position: relative;
+        padding-right: 45px; /* مساحة للأحرف */
+    }
+    
+    .qcm-option::before {
+        content: attr(data-letter);
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 25px;
+        height: 25px;
+        background: #1976d2;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+    
+    .qcm-option:hover {
+        background: #eef2ff;
+        transform: translateX(-5px);
+    }
+    
+    .qcm-option:active {
+        transform: scale(0.98);
+    }
+    
+    .qcm-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+    }
+    
+    .qcm-option.correct::before {
+        background: #28a745;
+    }
+    
+    .qcm-option.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+        font-weight: 600;
+    }
+    
+    .qcm-option.wrong::before {
+        background: #dc3545;
+    }
+    
+    .answer {
+        display: none;
+        margin-top: 12px;
+        padding: 12px 15px;
+        background: #fff3cd;
+        border-radius: 8px;
+        color: #856404;
+        font-weight: 600;
+        border-right: 4px solid #ffc107;
+        font-size: 15px;
+        text-align: center;
+    }
+    
+    /* زر للعودة للأعلى */
+    .scroll-top {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background: #1976d2;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+        z-index: 99;
+        transition: all 0.3s;
+        border: none;
+        display: none;
+    }
+    
+    .scroll-top:hover {
+        background: #1565c0;
+        transform: translateY(-3px);
+    }
+    
+    /* مؤشر تفاعلي */
+    .tap-hint {
+        position: fixed;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        animation: pulse 2s infinite;
+        display: none;
+    }
+    
+    @keyframes pulse {
+        0% { opacity: 0.7; }
+        50% { opacity: 1; }
+        100% { opacity: 0.7; }
+    }
+    
+    /* تحسينات للشاشات الصغيرة جدًا */
+    @media (max-width: 480px) {
+        header {
+            font-size: 20px;
+            padding: 16px 10px;
+        }
+        
+        .container {
+            padding: 10px;
+        }
+        
+        .card {
+            padding: 15px 12px;
+            margin-bottom: 15px;
+        }
+        
+        h2 {
+            font-size: 18px;
+        }
+        
+        .theory-question, .qcm-option {
+            font-size: 15px;
+            padding: 12px 10px;
+        }
+        
+        .qcm-option {
+            padding-right: 40px;
+        }
+        
+        .qcm-option::before {
+            right: 10px;
+            width: 22px;
+            height: 22px;
+            font-size: 14px;
+        }
+        
+        ol {
+            padding-inline-start: 15px;
+        }
+        
+        li {
+            margin-bottom: 15px;
+        }
+    }
+    
+    /* تحسينات للشاشات الكبيرة */
+    @media (min-width: 768px) {
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            padding: 25px 30px;
+        }
+    }
+    
+    /* دعم الوضع الداكن */
+    @media (prefers-color-scheme: dark) {
+        body {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+        
+        .card {
+            background: #2d2d2d;
+            box-shadow: 0px 3px 12px rgba(0,0,0,0.3);
+        }
+        
+        .theory-question {
+            background: #3d3d3d;
+            color: #e0e0e0;
+        }
+        
+        .qcm-option {
+            background: #3d3d3d;
+            border-color: #555;
+            color: #e0e0e0;
+        }
+        
+        .theory-answer {
+            background: #2d4d2d;
+            color: #a8e6a8;
+        }
+        
+        .answer {
+            background: #4d4d2d;
+            color: #ffd700;
+        }
+    }
 </style>
-
 </head>
 <body>
-
-<header>
-  <h1>أسئلة محاضرة 3</h1>
-</header>
-
+<header>أسئلة محاضرة 3 - انتهاء عقد العمل</header>
 <div class="container">
 
-<!---------------------- الأسئلة النظرية -------------------------->
-<div class="section">
-  <h2>📝 أولاً: الأسئلة النظرية (20 سؤال)</h2>
+    <!-- الأسئلة النظرية -->
+    <div class="card">
+        <h2>الأسئلة النظرية (20 سؤالًا)</h2>
+        <ol>
+            <li><div class="theory-question">1. ما المقصود بانتهاء مدة عقد العمل وفق قانون العمل الجزائري؟</div><div class="theory-answer">الإجابة: انتهاء مدة العقد يعني انقضاء الفترة الزمنية المحددة في العقد بغض النظر عن تحقيق هدفه.</div></li>
+            <li><div class="theory-question">2. ما الذي تنص عليه المادة 12 من القانون 11-90 بشأن مدة العقد؟</div><div class="theory-answer">الإجابة: تؤكد المادة 12 على مبدأ انتهاء مدة العقد كاستثناء مهم في قانون العمل الجزائري.</div></li>
+            <li><div class="theory-question">3. لماذا يعتبر انتهاء مدة العقد استثناءً مهماً في قانون العمل؟</div><div class="theory-answer">الإجابة: لأنه يسمح بإنهاء العقد تلقائياً بانتهاء المدة المحددة دون تدخل من الطرفين.</div></li>
+            <li><div class="theory-question">4. هل يشترط القانون مدة دنيا أو قصوى للعقد محدد المدة؟</div><div class="theory-answer">الإجابة: لا، القانون لا يحدد حداً أدنى أو أقصى لمدة العقد محدد المدة.</div></li>
+            <li><div class="theory-question">5. متى ينتهي العقد المحدد المدة؟</div><div class="theory-answer">الإجابة: ينتهي العقد المحدد المدة تلقائياً بانتهاء المدة المحددة في العقد.</div></li>
+            <li><div class="theory-question">6. ما هو سن التقاعد بالنسبة للرجال حسب القانون 12-83؟</div><div class="theory-answer">الإجابة: سن التقاعد للرجال هو 60 سنة وفقاً للقانون 12-83.</div></li>
+            <li><div class="theory-question">7. ما هو سن التقاعد بالنسبة للنساء حسب القانون 12-83؟</div><div class="theory-answer">الإجابة: سن التقاعد للنساء هو 55 سنة وفقاً للقانون 12-83.</div></li>
+            <li><div class="theory-question">8. ما الحد الأدنى لسنوات الخدمة المطلوبة للإحالة على التقاعد؟</div><div class="theory-answer">الإجابة: الحد الأدنى لسنوات الخدمة المطلوبة هو 15 سنة.</div></li>
+            <li><div class="theory-question">9. ما هو الأساس القانوني الذي ينظم التقاعد في الجزائر؟</div><div class="theory-answer">الإجابة: الأساس القانوني هو القانون 12-83 المرتبط بالتقاعد.</div></li>
+            <li><div class="theory-question">10. ما معنى توقف النشاط القانوني للمؤسسة؟</div><div class="theory-answer">الإجابة: يعني إنهاء النشاط القانوني للمؤسسة كسبب لانقضاء العلاقة العملية.</div></li>
+            <li><div class="theory-question">11. ما المادة القانونية المنظمة لانتهاء النشاط القانوني للمؤسسة؟</div><div class="theory-answer">الإجابة: المادة 66 الفقرة 07 من قانون 11-90.</div></li>
+            <li><div class="theory-question">12. هل يحدد القانون أسباباً دقيقة لانتهاء النشاط القانوني للمؤسسة؟</div><div class="theory-answer">الإجابة: لا، القانون لم يحدد بدقة الأسباب المحددة لهذا الإنهاء.</div></li>
+            <li><div class="theory-question">13. ما معنى حل المؤسسة قانونياً؟</div><div class="theory-answer">الإجابة: يعني إنهاء وجود المؤسسة القانوني إما بقرار أو إجراءات قانونية.</div></li>
+            <li><div class="theory-question">14. ما علاقة الإفلاس بانتهاء علاقة العمل؟</div><div class="theory-answer">الإجابة: الإفلاس يؤدي إلى إجراءات قانونية كالتسوية القضائية التي قد تنتهي بإنهاء نشاط المؤسسة وبالتالي إنهاء علاقات العمل.</div></li>
+            <li><div class="theory-question">15. ما المقصود بالتسوية القضائية؟</div><div class="theory-answer">الإجابة: هي إجراء قانوني مرتبط بالوضعية المالية للمؤسسة يمكن أن يؤدي إلى إنهاء النشاط.</div></li>
+            <li><div class="theory-question">16. كيف يؤدي قرار التجميد إلى إنهاء العلاقة العملية؟</div><div class="theory-answer">الإجابة: قرار التجميد يمكن أن يؤدي إلى إنهاء النشاط القانوني للمؤسسة وبالتالي إنهاء عقود العاملين بها.</div></li>
+            <li><div class="theory-question">17. كيف يؤثر إنهاء الاتفاق القانوني على العمال داخل المؤسسة؟</div><div class="theory-answer">الإجابة: يؤدي إلى انقضاء علاقات العمل مع جميع العمال في المؤسسة.</div></li>
+            <li><div class="theory-question">18. ما دور الشركاء في شركة التضامن SNC في إمكانية إنهاء النشاط؟</div><div class="theory-answer">الإجابة: يمكن للشركاء في شركة التضامن SNC اتخاذ قرار بإنهاء نشاط الشركة.</div></li>
+            <li><div class="theory-question">19. ما العلاقة بين انتهاء العقد وتحقيق الهدف منه؟</div><div class="theory-answer">الإجابة: في العقود محددة المدة، ينتهي العقد بانتهاء المدة بغض النظر عن تحقيق الهدف.</div></li>
+            <li><div class="theory-question">20. كيف ينعكس توقف النشاط القانوني على عقود العمال؟</div><div class="theory-answer">الإجابة: يؤدي توقف النشاط القانوني إلى انقضاء جميع عقود العمال في المؤسسة.</div></li>
+        </ol>
+    </div>
 
-  <div class="question">1. ما المقصود بانتهاء مدة عقد العمل وفق قانون العمل الجزائري؟</div>
-  <div class="question">2. ما الذي تنص عليه المادة 12 من القانون 11-90 بشأن مدة العقد؟</div>
-  <div class="question">3. لماذا يعتبر انتهاء مدة العقد استثناءً مهماً في قانون العمل؟</div>
-  <div class="question">4. هل يشترط القانون مدة دنيا أو قصوى للعقد محدد المدة؟</div>
-  <div class="question">5. متى ينتهي العقد المحدد المدة؟</div>
-  <div class="question">6. ما هو سن التقاعد بالنسبة للرجال حسب القانون 12-83؟</div>
-  <div class="question">7. ما هو سن التقاعد بالنسبة للنساء حسب القانون 12-83؟</div>
-  <div class="question">8. ما الحد الأدنى لسنوات الخدمة المطلوبة للإحالة على التقاعد؟</div>
-  <div class="question">9. ما هو الأساس القانوني الذي ينظم التقاعد في الجزائر؟</div>
-  <div class="question">10. ما معنى توقف النشاط القانوني للمؤسسة؟</div>
-  <div class="question">11. ما المادة القانونية المنظمة لانتهاء النشاط القانوني للمؤسسة؟</div>
-  <div class="question">12. هل يحدد القانون أسباباً دقيقة لانتهاء النشاط القانوني للمؤسسة؟</div>
-  <div class="question">13. ما معنى حل المؤسسة قانونياً؟</div>
-  <div class="question">14. ما علاقة الإفلاس بانتهاء علاقة العمل؟</div>
-  <div class="question">15. ما المقصود بالتسوية القضائية؟</div>
-  <div class="question">16. كيف يؤدي قرار التجميد إلى إنهاء العلاقة العملية؟</div>
-  <div class="question">17. كيف يؤثر إنهاء الاتفاق القانوني على العمال داخل المؤسسة؟</div>
-  <div class="question">18. ما دور الشركاء في شركة التضامن SNC في إمكانية إنهاء النشاط؟</div>
-  <div class="question">19. ما العلاقة بين انتهاء العقد وتحقيق الهدف منه؟</div>
-  <div class="question">20. كيف ينعكس توقف النشاط القانوني على عقود العمال؟</div>
-
-</div>
-
-<!---------------------- أسئلة QCM -------------------------->
-<div class="section">
-  <h2>📝 ثانياً: أسئلة QCM (20 سؤال)</h2>
-
-  <!-- QCM 1 -->
-  <div class="question">
-    1. انتهاء مدة العقد يعني:
-    <div class="qcm-option" onclick="check(this,false)">انتهاء العقد عند تحقيق هدفه</div>
-    <div class="qcm-option" onclick="check(this,true)">انقضاء الفترة الزمنية المحددة في العقد</div>
-    <div class="qcm-option" onclick="check(this,false)">فسخ العقد باتفاق الطرفين فقط</div>
-  </div>
-
-  <!-- QCM 2 -->
-  <div class="question">
-    2. تستند قاعدة انتهاء مدة العقد إلى:
-    <div class="qcm-option" onclick="check(this,true)">المادة 12 من القانون 11-90</div>
-    <div class="qcm-option" onclick="check(this,false)">المادة 5 من قانون الأسرة</div>
-    <div class="qcm-option" onclick="check(this,false)">القانون التجاري</div>
-  </div>
-
-  <!-- QCM 3 -->
-  <div class="question">
-    3. في العقود محددة المدة، ينتهي العقد:
-    <div class="qcm-option" onclick="check(this,true)">تلقائياً بانتهاء المدة</div>
-    <div class="qcm-option" onclick="check(this,false)">عند رغبة العامل فقط</div>
-    <div class="qcm-option" onclick="check(this,false)">بعد ثلاث سنوات فقط</div>
-  </div>
-
-  <!-- QCM 4 -->
-  <div class="question">
-    4. سن التقاعد للرجال هو:
-    <div class="qcm-option" onclick="check(this,true)">60 سنة</div>
-    <div class="qcm-option" onclick="check(this,false)">65 سنة</div>
-    <div class="qcm-option" onclick="check(this,false)">55 سنة</div>
-  </div>
-
-  <!-- QCM 5 -->
-  <div class="question">
-    5. سن التقاعد للنساء هو:
-    <div class="qcm-option" onclick="check(this,false)">60 سنة</div>
-    <div class="qcm-option" onclick="check(this,true)">55 سنة</div>
-    <div class="qcm-option" onclick="check(this,false)">50 سنة</div>
-  </div>
-
-  <!-- QCM 6 -->
-  <div class="question">
-    6. عدد سنوات الخدمة الدنيا للإحالة على التقاعد:
-    <div class="qcm-option" onclick="check(this,false)">10 سنوات</div>
-    <div class="qcm-option" onclick="check(this,true)">15 سنة</div>
-    <div class="qcm-option" onclick="check(this,false)">20 سنة</div>
-  </div>
-
-  <!-- QCM 7 -->
-  <div class="question">
-    7. توقف النشاط القانوني للمؤسسة يعتبر سبباً:
-    <div class="qcm-option" onclick="check(this,true)">لانقضاء العلاقة العملية</div>
-    <div class="qcm-option" onclick="check(this,false)">لزيادة الأجور</div>
-    <div class="qcm-option" onclick="check(this,false)">للترقية المهنية</div>
-  </div>
-
-  <!-- QCM 8 -->
-  <div class="question">
-    8. ينظم توقف النشاط القانوني للمؤسسة:
-    <div class="qcm-option" onclick="check(this,true)">المادة 66 فقرة 7 من قانون 11-90</div>
-    <div class="qcm-option" onclick="check(this,false)">قانون الأسرة</div>
-    <div class="qcm-option" onclick="check(this,false)">قانون الإجراءات المدنية</div>
-  </div>
-
-  <!-- QCM 9 -->
-  <div class="question">
-    9. من أسباب توقف النشاط القانوني:
-    <div class="qcm-option" onclick="check(this,true)">حل المؤسسة قانونياً</div>
-    <div class="qcm-option" onclick="check(this,false)">رفض العامل للعمل</div>
-    <div class="qcm-option" onclick="check(this,false)">مخالفة إدارية بسيطة</div>
-  </div>
-
-  <!-- QCM 10 -->
-  <div class="question">
-    10. الإفلاس يؤدي إلى:
-    <div class="qcm-option" onclick="check(this,true)">انقضاء علاقة العمل</div>
-    <div class="qcm-option" onclick="check(this,false)">زيادة الإنتاج</div>
-    <div class="qcm-option" onclick="check(this,false)">ترقية العمال</div>
-  </div>
-
-  <!-- QCM 11 -->
-  <div class="question">
-    11. التسوية القضائية هي إجراء مرتبط بـ:
-    <div class="qcm-option" onclick="check(this,true)">الوضعية المالية للمؤسسة</div>
-    <div class="qcm-option" onclick="check(this,false)">التوظيف</div>
-    <div class="qcm-option" onclick="check(this,false)">الرواتب</div>
-  </div>
-
-  <!-- QCM 12 -->
-  <div class="question">
-    12. قرار التجميد يمكن أن يؤدي إلى:
-    <div class="qcm-option" onclick="check(this,true)">إنهاء النشاط القانوني</div>
-    <div class="qcm-option" onclick="check(this,false)">زيادة ساعات العمل</div>
-    <div class="qcm-option" onclick="check(this,false)">رفع الأجور</div>
-  </div>
-
-  <!-- QCM 13 -->
-  <div class="question">
-    13. أحد أسباب توقف النشاط في شركات SNC:
-    <div class="qcm-option" onclick="check(this,true)">قرار الشركاء</div>
-    <div class="qcm-option" onclick="check(this,false)">ترقية موظف</div>
-    <div class="qcm-option" onclick="check(this,false)">انتهاء مشروع صغير</div>
-  </div>
-
-  <!-- QCM 14 -->
-  <div class="question">
-    14. انتهاء عقد العمل في العقود المحددة مرتبط بـ:
-    <div class="qcm-option" onclick="check(this,true)">انتهاء المدة</div>
-    <div class="qcm-option" onclick="check(this,false)">طلب العامل فقط</div>
-    <div class="qcm-option" onclick="check(this,false)">موافقة مجلس الإدارة</div>
-  </div>
-
-  <!-- QCM 15 -->
-  <div class="question">
-    15. القانون لا يحدد:
-    <div class="qcm-option" onclick="check(this,false)">آثار إنهاء العقد</div>
-    <div class="qcm-option" onclick="check(this,false)">شروط التقاعد</div>
-    <div class="qcm-option" onclick="check(this,true)">الأسباب الدقيقة لتوقف النشاط القانوني</div>
-  </div>
-
-  <!-- QCM 16 -->
-  <div class="question">
-    16. العامل يحال إلى التقاعد عند:
-    <div class="qcm-option" onclick="check(this,true)">بلوغ السن القانوني</div>
-    <div class="qcm-option" onclick="check(this,false)">رغبة المدير</div>
-    <div class="qcm-option" onclick="check(this,false)">غياب لمدة يوم واحد</div>
-  </div>
-
-  <!-- QCM 17 -->
-  <div class="question">
-    17. انتهاء المدة في العقد:
-    <div class="qcm-option" onclick="check(this,true)">لا يعتمد على تحقيق الهدف</div>
-    <div class="qcm-option" onclick="check(this,false)">يعتمد على الإنتاج فقط</div>
-    <div class="qcm-option" onclick="check(this,false)">مشروط بالتقييم السنوي</div>
-  </div>
-
-  <!-- QCM 18 -->
-  <div class="question">
-    18. حل المؤسسة يعني:
-    <div class="qcm-option" onclick="check(this,true)">إنهاء وجودها القانوني</div>
-    <div class="qcm-option" onclick="check(this,false)">انتقال ملكيتها فقط</div>
-    <div class="qcm-option" onclick="check(this,false)">تغيير المدير</div>
-  </div>
-
-  <!-- QCM 19 -->
-  <div class="question">
-    19. التوقف النهائي للنشاط يؤدي إلى:
-    <div class="qcm-option" onclick="check(this,true)">إنهاء علاقة العمل</div>
-    <div class="qcm-option" onclick="check(this,false)">تحسين ظروف العمل</div>
-    <div class="qcm-option" onclick="check(this,false)">خفض ساعات العمل</div>
-  </div>
-
-  <!-- QCM 20 -->
-  <div class="question">
-    20. العقود محددة المدة:
-    <div class="qcm-option" onclick="check(this,false)">مرتبطة بالترقية</div>
-    <div class="qcm-option" onclick="check(this,true)">تنتهي بانتهاء مدتها</div>
-    <div class="qcm-option" onclick="check(this,false)">تتجدد تلقائياً دائماً</div>
-  </div>
+    <!-- أسئلة QCM -->
+    <div class="card">
+        <h2>أسئلة QCM (20 سؤالًا)</h2>
+        <ol>
+            <li>
+                <div class="qcm-question">1. انتهاء مدة العقد يعني:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">انتهاء العقد عند تحقيق هدفه</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">انقضاء الفترة الزمنية المحددة في العقد</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">فسخ العقد باتفاق الطرفين فقط</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب - انقضاء الفترة الزمنية المحددة في العقد</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">2. تستند قاعدة انتهاء مدة العقد إلى:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">المادة 12 من القانون 11-90</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">المادة 5 من قانون الأسرة</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">القانون التجاري</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - المادة 12 من القانون 11-90</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">3. في العقود محددة المدة، ينتهي العقد:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">تلقائياً بانتهاء المدة</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">عند رغبة العامل فقط</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">بعد ثلاث سنوات فقط</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - تلقائياً بانتهاء المدة</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">4. سن التقاعد للرجال هو:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">60 سنة</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">65 سنة</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">55 سنة</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - 60 سنة</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">5. سن التقاعد للنساء هو:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">60 سنة</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">55 سنة</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">50 سنة</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب - 55 سنة</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">6. عدد سنوات الخدمة الدنيا للإحالة على التقاعد:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">10 سنوات</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">15 سنة</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">20 سنة</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب - 15 سنة</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">7. توقف النشاط القانوني للمؤسسة يعتبر سبباً:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">لانقضاء العلاقة العملية</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">لزيادة الأجور</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">للترقية المهنية</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - لانقضاء العلاقة العملية</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">8. ينظم توقف النشاط القانوني للمؤسسة:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">المادة 66 فقرة 7 من قانون 11-90</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">قانون الأسرة</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">قانون الإجراءات المدنية</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - المادة 66 فقرة 7 من قانون 11-90</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">9. من أسباب توقف النشاط القانوني:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">حل المؤسسة قانونياً</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">رفض العامل للعمل</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">مخالفة إدارية بسيطة</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - حل المؤسسة قانونياً</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">10. الإفلاس يؤدي إلى:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">انقضاء علاقة العمل</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">زيادة الإنتاج</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">ترقية العمال</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - انقضاء علاقة العمل</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">11. التسوية القضائية هي إجراء مرتبط بـ:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">الوضعية المالية للمؤسسة</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">التوظيف</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">الرواتب</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - الوضعية المالية للمؤسسة</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">12. قرار التجميد يمكن أن يؤدي إلى:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">إنهاء النشاط القانوني</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">زيادة ساعات العمل</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">رفع الأجور</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - إنهاء النشاط القانوني</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">13. أحد أسباب توقف النشاط في شركات SNC:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">قرار الشركاء</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">ترقية موظف</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">انتهاء مشروع صغير</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - قرار الشركاء</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">14. انتهاء عقد العمل في العقود المحددة مرتبط بـ:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">انتهاء المدة</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">طلب العامل فقط</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">موافقة مجلس الإدارة</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - انتهاء المدة</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">15. القانون لا يحدد:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">آثار إنهاء العقد</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">شروط التقاعد</div>
+                <div class="qcm-option" data-letter="ج" data-correct="true">الأسباب الدقيقة لتوقف النشاط القانوني</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ج - الأسباب الدقيقة لتوقف النشاط القانوني</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">16. العامل يحال إلى التقاعد عند:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">بلوغ السن القانوني</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">رغبة المدير</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">غياب لمدة يوم واحد</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - بلوغ السن القانوني</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">17. انتهاء المدة في العقد:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">لا يعتمد على تحقيق الهدف</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">يعتمد على الإنتاج فقط</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">مشروط بالتقييم السنوي</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - لا يعتمد على تحقيق الهدف</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">18. حل المؤسسة يعني:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">إنهاء وجودها القانوني</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">انتقال ملكيتها فقط</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">تغيير المدير</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - إنهاء وجودها القانوني</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">19. التوقف النهائي للنشاط يؤدي إلى:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">إنهاء علاقة العمل</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">تحسين ظروف العمل</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">خفض ساعات العمل</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ - إنهاء علاقة العمل</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">20. العقود محددة المدة:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">مرتبطة بالترقية</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">تنتهي بانتهاء مدتها</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">تتجدد تلقائياً دائماً</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب - تنتهي بانتهاء مدتها</strong></div>
+            </li>
+        </ol>
+    </div>
 
 </div>
 
-</div>
+<!-- زر العودة للأعلى -->
+<button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+<!-- مؤشر التفعيل -->
+<div class="tap-hint">انقر على السؤال لرؤية الإجابة</div>
 
 <script>
-function check(el, correct){
-  if(correct){
-    el.classList.add("correct");
-  } else {
-    el.classList.add("wrong");
-  }
-}
-</script>
+    // تفعيل ظهور الإجابة للأسئلة النظرية
+    const theoryQuestions = document.querySelectorAll('.theory-question');
+    theoryQuestions.forEach(q => {
+        q.addEventListener('click', () => {
+            const answer = q.nextElementSibling;
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        });
+    });
 
+    // تفعيل تلوين الإجابة لأسئلة QCM
+    const qcmOptions = document.querySelectorAll('.qcm-option');
+    qcmOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            if(option.classList.contains('correct') || option.classList.contains('wrong')) return;
+            
+            const isCorrect = option.dataset.correct === 'true';
+            option.classList.add(isCorrect ? 'correct' : 'wrong');
+            
+            const parent = option.parentElement;
+            const answerDiv = parent.querySelector('.answer');
+            answerDiv.style.display = 'block';
+            
+            // تلوين جميع الخيارات الأخرى إذا كانت صحيحة
+            parent.querySelectorAll('.qcm-option').forEach(opt => {
+                if(opt !== option && opt.dataset.correct === 'true') {
+                    opt.classList.add('correct');
+                }
+            });
+            
+            // إظهار مؤشر التفعيل مرة واحدة فقط
+            const tapHint = document.querySelector('.tap-hint');
+            if(tapHint.style.display !== 'none') {
+                tapHint.style.display = 'none';
+            }
+        });
+    });
+
+    // إظهار زر العودة للأعلى عند التمرير
+    const scrollTopBtn = document.querySelector('.scroll-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollTopBtn.style.display = 'flex';
+        } else {
+            scrollTopBtn.style.display = 'none';
+        }
+    });
+
+    // إظهار مؤشر التفعيل عند التمرير لأول مرة
+    window.addEventListener('scroll', () => {
+        const tapHint = document.querySelector('.tap-hint');
+        if (window.scrollY > 200 && tapHint.style.display !== 'none') {
+            tapHint.style.display = 'block';
+            setTimeout(() => {
+                tapHint.style.display = 'none';
+            }, 3000);
+        }
+    });
+
+    // تحسين التجربة على اللمس
+    document.addEventListener('touchstart', () => {}, {passive: true});
+</script>
 </body>
 </html>
