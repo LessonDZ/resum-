@@ -170,20 +170,20 @@ function openActions(e, subject, lesson){
 
   let html = `
     <div class="actions">
-      <button class="summary-btn" onclick="goSummary(${subject},${lesson})">ملخص الدرس</button>
-      <button class="questions-btn" onclick="goQuestions(${subject},${lesson})">الأسئلة</button>
+      <button class="summary-btn" onclick="goSummary(${lesson})">ملخص الدرس</button>
+      <button class="questions-btn" onclick="goQuestions(${lesson})">الأسئلة</button>
     </div>
   `;
 
   e.target.insertAdjacentHTML("afterend", html);
 }
 
-function goSummary(subject, lesson){
-  window.location.href = "summary.html?subject=" + subject + "&lesson=" + lesson;
+function goSummary(lesson){
+  window.location.href = `summary${lesson}.html`;
 }
 
-function goQuestions(subject, lesson){
-  window.location.href = "questions.html?subject=" + subject + "&lesson=" + lesson;
+function goQuestions(lesson){
+  window.location.href = `questions${lesson}.html`;
 }
 </script>
 

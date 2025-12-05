@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أسئلة محاضرة 3</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#1976d2;
+  --secondary:#26a69a;
+  --bg:#f5f9ff;
+  --text:#0b2447;
+  --card:#ffffff;
+  --accent:#6a1b9a;
+}
+
+body{
+  margin:0;
+  font-family:"Cairo",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+header{
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  color:#fff;
+  text-align:center;
+  padding:20px;
+  border-bottom:5px solid var(--accent);
+}
+header h1{ margin:0; font-size:26px; }
+
+.container{
+  max-width:1000px;
+  margin:20px auto;
+  padding:20px;
+}
+
+.section{
+  background:var(--card);
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.07);
+  margin-bottom:20px;
+}
+
+.question{
+  padding:15px;
+  background:#eef7ff;
+  border-radius:10px;
+  margin-bottom:15px;
+  border-right:6px solid var(--primary);
+}
+
+.qcm-option{
+  background:#fff;
+  padding:10px;
+  margin:8px 0;
+  border-radius:8px;
+  border:1px solid #ddd;
+  cursor:pointer;
+  transition:.2s;
+}
+.qcm-option:hover{
+  background:#e9f3ff;
+}
+
+.correct{ background:#c8f7c5 !important; border-color:#2e7d32 !important; }
+.wrong{ background:#ffd4d4 !important; border-color:#b71c1c !important; }
+</style>
+
+</head>
+<body>
+
+<header>
+  <h1>أسئلة محاضرة 3</h1>
+</header>
+
+<div class="container">
+
+<!---------------------- الأسئلة النظرية -------------------------->
+<div class="section">
+  <h2>📝 أولاً: الأسئلة النظرية (20 سؤال)</h2>
+
+  <div class="question">1. ما المقصود بانتهاء مدة عقد العمل وفق قانون العمل الجزائري؟</div>
+  <div class="question">2. ما الذي تنص عليه المادة 12 من القانون 11-90 بشأن مدة العقد؟</div>
+  <div class="question">3. لماذا يعتبر انتهاء مدة العقد استثناءً مهماً في قانون العمل؟</div>
+  <div class="question">4. هل يشترط القانون مدة دنيا أو قصوى للعقد محدد المدة؟</div>
+  <div class="question">5. متى ينتهي العقد المحدد المدة؟</div>
+  <div class="question">6. ما هو سن التقاعد بالنسبة للرجال حسب القانون 12-83؟</div>
+  <div class="question">7. ما هو سن التقاعد بالنسبة للنساء حسب القانون 12-83؟</div>
+  <div class="question">8. ما الحد الأدنى لسنوات الخدمة المطلوبة للإحالة على التقاعد؟</div>
+  <div class="question">9. ما هو الأساس القانوني الذي ينظم التقاعد في الجزائر؟</div>
+  <div class="question">10. ما معنى توقف النشاط القانوني للمؤسسة؟</div>
+  <div class="question">11. ما المادة القانونية المنظمة لانتهاء النشاط القانوني للمؤسسة؟</div>
+  <div class="question">12. هل يحدد القانون أسباباً دقيقة لانتهاء النشاط القانوني للمؤسسة؟</div>
+  <div class="question">13. ما معنى حل المؤسسة قانونياً؟</div>
+  <div class="question">14. ما علاقة الإفلاس بانتهاء علاقة العمل؟</div>
+  <div class="question">15. ما المقصود بالتسوية القضائية؟</div>
+  <div class="question">16. كيف يؤدي قرار التجميد إلى إنهاء العلاقة العملية؟</div>
+  <div class="question">17. كيف يؤثر إنهاء الاتفاق القانوني على العمال داخل المؤسسة؟</div>
+  <div class="question">18. ما دور الشركاء في شركة التضامن SNC في إمكانية إنهاء النشاط؟</div>
+  <div class="question">19. ما العلاقة بين انتهاء العقد وتحقيق الهدف منه؟</div>
+  <div class="question">20. كيف ينعكس توقف النشاط القانوني على عقود العمال؟</div>
+
+</div>
+
+<!---------------------- أسئلة QCM -------------------------->
+<div class="section">
+  <h2>📝 ثانياً: أسئلة QCM (20 سؤال)</h2>
+
+  <!-- QCM 1 -->
+  <div class="question">
+    1. انتهاء مدة العقد يعني:
+    <div class="qcm-option" onclick="check(this,false)">انتهاء العقد عند تحقيق هدفه</div>
+    <div class="qcm-option" onclick="check(this,true)">انقضاء الفترة الزمنية المحددة في العقد</div>
+    <div class="qcm-option" onclick="check(this,false)">فسخ العقد باتفاق الطرفين فقط</div>
+  </div>
+
+  <!-- QCM 2 -->
+  <div class="question">
+    2. تستند قاعدة انتهاء مدة العقد إلى:
+    <div class="qcm-option" onclick="check(this,true)">المادة 12 من القانون 11-90</div>
+    <div class="qcm-option" onclick="check(this,false)">المادة 5 من قانون الأسرة</div>
+    <div class="qcm-option" onclick="check(this,false)">القانون التجاري</div>
+  </div>
+
+  <!-- QCM 3 -->
+  <div class="question">
+    3. في العقود محددة المدة، ينتهي العقد:
+    <div class="qcm-option" onclick="check(this,true)">تلقائياً بانتهاء المدة</div>
+    <div class="qcm-option" onclick="check(this,false)">عند رغبة العامل فقط</div>
+    <div class="qcm-option" onclick="check(this,false)">بعد ثلاث سنوات فقط</div>
+  </div>
+
+  <!-- QCM 4 -->
+  <div class="question">
+    4. سن التقاعد للرجال هو:
+    <div class="qcm-option" onclick="check(this,true)">60 سنة</div>
+    <div class="qcm-option" onclick="check(this,false)">65 سنة</div>
+    <div class="qcm-option" onclick="check(this,false)">55 سنة</div>
+  </div>
+
+  <!-- QCM 5 -->
+  <div class="question">
+    5. سن التقاعد للنساء هو:
+    <div class="qcm-option" onclick="check(this,false)">60 سنة</div>
+    <div class="qcm-option" onclick="check(this,true)">55 سنة</div>
+    <div class="qcm-option" onclick="check(this,false)">50 سنة</div>
+  </div>
+
+  <!-- QCM 6 -->
+  <div class="question">
+    6. عدد سنوات الخدمة الدنيا للإحالة على التقاعد:
+    <div class="qcm-option" onclick="check(this,false)">10 سنوات</div>
+    <div class="qcm-option" onclick="check(this,true)">15 سنة</div>
+    <div class="qcm-option" onclick="check(this,false)">20 سنة</div>
+  </div>
+
+  <!-- QCM 7 -->
+  <div class="question">
+    7. توقف النشاط القانوني للمؤسسة يعتبر سبباً:
+    <div class="qcm-option" onclick="check(this,true)">لانقضاء العلاقة العملية</div>
+    <div class="qcm-option" onclick="check(this,false)">لزيادة الأجور</div>
+    <div class="qcm-option" onclick="check(this,false)">للترقية المهنية</div>
+  </div>
+
+  <!-- QCM 8 -->
+  <div class="question">
+    8. ينظم توقف النشاط القانوني للمؤسسة:
+    <div class="qcm-option" onclick="check(this,true)">المادة 66 فقرة 7 من قانون 11-90</div>
+    <div class="qcm-option" onclick="check(this,false)">قانون الأسرة</div>
+    <div class="qcm-option" onclick="check(this,false)">قانون الإجراءات المدنية</div>
+  </div>
+
+  <!-- QCM 9 -->
+  <div class="question">
+    9. من أسباب توقف النشاط القانوني:
+    <div class="qcm-option" onclick="check(this,true)">حل المؤسسة قانونياً</div>
+    <div class="qcm-option" onclick="check(this,false)">رفض العامل للعمل</div>
+    <div class="qcm-option" onclick="check(this,false)">مخالفة إدارية بسيطة</div>
+  </div>
+
+  <!-- QCM 10 -->
+  <div class="question">
+    10. الإفلاس يؤدي إلى:
+    <div class="qcm-option" onclick="check(this,true)">انقضاء علاقة العمل</div>
+    <div class="qcm-option" onclick="check(this,false)">زيادة الإنتاج</div>
+    <div class="qcm-option" onclick="check(this,false)">ترقية العمال</div>
+  </div>
+
+  <!-- QCM 11 -->
+  <div class="question">
+    11. التسوية القضائية هي إجراء مرتبط بـ:
+    <div class="qcm-option" onclick="check(this,true)">الوضعية المالية للمؤسسة</div>
+    <div class="qcm-option" onclick="check(this,false)">التوظيف</div>
+    <div class="qcm-option" onclick="check(this,false)">الرواتب</div>
+  </div>
+
+  <!-- QCM 12 -->
+  <div class="question">
+    12. قرار التجميد يمكن أن يؤدي إلى:
+    <div class="qcm-option" onclick="check(this,true)">إنهاء النشاط القانوني</div>
+    <div class="qcm-option" onclick="check(this,false)">زيادة ساعات العمل</div>
+    <div class="qcm-option" onclick="check(this,false)">رفع الأجور</div>
+  </div>
+
+  <!-- QCM 13 -->
+  <div class="question">
+    13. أحد أسباب توقف النشاط في شركات SNC:
+    <div class="qcm-option" onclick="check(this,true)">قرار الشركاء</div>
+    <div class="qcm-option" onclick="check(this,false)">ترقية موظف</div>
+    <div class="qcm-option" onclick="check(this,false)">انتهاء مشروع صغير</div>
+  </div>
+
+  <!-- QCM 14 -->
+  <div class="question">
+    14. انتهاء عقد العمل في العقود المحددة مرتبط بـ:
+    <div class="qcm-option" onclick="check(this,true)">انتهاء المدة</div>
+    <div class="qcm-option" onclick="check(this,false)">طلب العامل فقط</div>
+    <div class="qcm-option" onclick="check(this,false)">موافقة مجلس الإدارة</div>
+  </div>
+
+  <!-- QCM 15 -->
+  <div class="question">
+    15. القانون لا يحدد:
+    <div class="qcm-option" onclick="check(this,false)">آثار إنهاء العقد</div>
+    <div class="qcm-option" onclick="check(this,false)">شروط التقاعد</div>
+    <div class="qcm-option" onclick="check(this,true)">الأسباب الدقيقة لتوقف النشاط القانوني</div>
+  </div>
+
+  <!-- QCM 16 -->
+  <div class="question">
+    16. العامل يحال إلى التقاعد عند:
+    <div class="qcm-option" onclick="check(this,true)">بلوغ السن القانوني</div>
+    <div class="qcm-option" onclick="check(this,false)">رغبة المدير</div>
+    <div class="qcm-option" onclick="check(this,false)">غياب لمدة يوم واحد</div>
+  </div>
+
+  <!-- QCM 17 -->
+  <div class="question">
+    17. انتهاء المدة في العقد:
+    <div class="qcm-option" onclick="check(this,true)">لا يعتمد على تحقيق الهدف</div>
+    <div class="qcm-option" onclick="check(this,false)">يعتمد على الإنتاج فقط</div>
+    <div class="qcm-option" onclick="check(this,false)">مشروط بالتقييم السنوي</div>
+  </div>
+
+  <!-- QCM 18 -->
+  <div class="question">
+    18. حل المؤسسة يعني:
+    <div class="qcm-option" onclick="check(this,true)">إنهاء وجودها القانوني</div>
+    <div class="qcm-option" onclick="check(this,false)">انتقال ملكيتها فقط</div>
+    <div class="qcm-option" onclick="check(this,false)">تغيير المدير</div>
+  </div>
+
+  <!-- QCM 19 -->
+  <div class="question">
+    19. التوقف النهائي للنشاط يؤدي إلى:
+    <div class="qcm-option" onclick="check(this,true)">إنهاء علاقة العمل</div>
+    <div class="qcm-option" onclick="check(this,false)">تحسين ظروف العمل</div>
+    <div class="qcm-option" onclick="check(this,false)">خفض ساعات العمل</div>
+  </div>
+
+  <!-- QCM 20 -->
+  <div class="question">
+    20. العقود محددة المدة:
+    <div class="qcm-option" onclick="check(this,false)">مرتبطة بالترقية</div>
+    <div class="qcm-option" onclick="check(this,true)">تنتهي بانتهاء مدتها</div>
+    <div class="qcm-option" onclick="check(this,false)">تتجدد تلقائياً دائماً</div>
+  </div>
+
+</div>
+
+</div>
+
+<script>
+function check(el, correct){
+  if(correct){
+    el.classList.add("correct");
+  } else {
+    el.classList.add("wrong");
+  }
+}
+</script>
+
+</body>
+</html>
