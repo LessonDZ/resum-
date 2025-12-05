@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>أسئلة محاضرة 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    /* إعدادات متجاوبة للهاتف */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Cairo', sans-serif;
+        background: #f5f6fa;
+        font-size: 16px;
+        line-height: 1.5;
+        padding-bottom: 20px;
+    }
+    
+    header {
+        background: linear-gradient(135deg, #4c6ef5, #3b5bdb);
+        color: white;
+        padding: 18px 15px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 700;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .container {
+        padding: 15px;
+        max-width: 100%;
+    }
+    
+    .card {
+        background: white;
+        padding: 20px 15px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 3px 12px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-2px);
+    }
+    
+    h2 {
+        color: #4c6ef5;
+        margin-bottom: 20px;
+        font-size: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #f0f3ff;
+        text-align: center;
+    }
+    
+    /* تحسين عرض القوائم */
+    ol {
+        padding-inline-start: 20px;
+        list-style-position: inside;
+    }
+    
+    li {
+        margin-bottom: 18px;
+        padding: 10px 0;
+        border-bottom: 1px dashed #eee;
+    }
+    
+    li:last-child {
+        border-bottom: none;
+    }
+    
+    /* تحسين الأسئلة النظرية للهاتف */
+    .theory-answer {
+        display: none;
+        margin-top: 12px;
+        padding: 12px 15px;
+        background: #e7f6e7;
+        border-radius: 8px;
+        color: #155724;
+        font-weight: 600;
+        border-right: 4px solid #28a745;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    
+    .theory-question {
+        cursor: pointer;
+        transition: all 0.3s;
+        padding: 10px 8px;
+        border-radius: 8px;
+        font-weight: 600;
+        color: #333;
+        font-size: 16px;
+        background: #f8f9fa;
+        display: block;
+        margin-bottom: 8px;
+    }
+    
+    .theory-question:hover, .theory-question:active {
+        background: #eef2ff;
+        color: #4c6ef5;
+        padding-right: 15px;
+    }
+    
+    /* تحسين أسئلة الـ QCM للهاتف */
+    .qcm-option {
+        margin: 8px 0;
+        padding: 14px 15px;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+        cursor: pointer;
+        transition: all 0.3s;
+        background: #f9f9f9;
+        font-size: 15px;
+        position: relative;
+        padding-right: 45px; /* مساحة للأحرف */
+    }
+    
+    .qcm-option::before {
+        content: attr(data-letter);
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 25px;
+        height: 25px;
+        background: #4c6ef5;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+    
+    .qcm-option:hover {
+        background: #eef2ff;
+        transform: translateX(-5px);
+    }
+    
+    .qcm-option:active {
+        transform: scale(0.98);
+    }
+    
+    .qcm-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+    }
+    
+    .qcm-option.correct::before {
+        background: #28a745;
+    }
+    
+    .qcm-option.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+        font-weight: 600;
+    }
+    
+    .qcm-option.wrong::before {
+        background: #dc3545;
+    }
+    
+    .answer {
+        display: none;
+        margin-top: 12px;
+        padding: 12px 15px;
+        background: #fff3cd;
+        border-radius: 8px;
+        color: #856404;
+        font-weight: 600;
+        border-right: 4px solid #ffc107;
+        font-size: 15px;
+        text-align: center;
+    }
+    
+    /* زر للعودة للأعلى */
+    .scroll-top {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background: #4c6ef5;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(76, 110, 245, 0.3);
+        z-index: 99;
+        transition: all 0.3s;
+        border: none;
+    }
+    
+    .scroll-top:hover {
+        background: #3b5bdb;
+        transform: translateY(-3px);
+    }
+    
+    /* مؤشر تفاعلي */
+    .tap-hint {
+        position: fixed;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        animation: pulse 2s infinite;
+        display: none;
+    }
+    
+    @keyframes pulse {
+        0% { opacity: 0.7; }
+        50% { opacity: 1; }
+        100% { opacity: 0.7; }
+    }
+    
+    /* تحسينات للشاشات الصغيرة جدًا */
+    @media (max-width: 480px) {
+        header {
+            font-size: 20px;
+            padding: 16px 10px;
+        }
+        
+        .container {
+            padding: 10px;
+        }
+        
+        .card {
+            padding: 15px 12px;
+            margin-bottom: 15px;
+        }
+        
+        h2 {
+            font-size: 18px;
+        }
+        
+        .theory-question, .qcm-option {
+            font-size: 15px;
+            padding: 12px 10px;
+        }
+        
+        .qcm-option {
+            padding-right: 40px;
+        }
+        
+        .qcm-option::before {
+            right: 10px;
+            width: 22px;
+            height: 22px;
+            font-size: 14px;
+        }
+        
+        ol {
+            padding-inline-start: 15px;
+        }
+        
+        li {
+            margin-bottom: 15px;
+        }
+    }
+    
+    /* تحسينات للشاشات الكبيرة */
+    @media (min-width: 768px) {
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            padding: 25px 30px;
+        }
+    }
+    
+    /* دعم الوضع الداكن */
+    @media (prefers-color-scheme: dark) {
+        body {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+        
+        .card {
+            background: #2d2d2d;
+            box-shadow: 0px 3px 12px rgba(0,0,0,0.3);
+        }
+        
+        .theory-question {
+            background: #3d3d3d;
+            color: #e0e0e0;
+        }
+        
+        .qcm-option {
+            background: #3d3d3d;
+            border-color: #555;
+            color: #e0e0e0;
+        }
+        
+        .theory-answer {
+            background: #2d4d2d;
+            color: #a8e6a8;
+        }
+        
+        .answer {
+            background: #4d4d2d;
+            color: #ffd700;
+        }
+    }
+</style>
+</head>
+<body>
+<header>أسئلة محاضرة 1</header>
+<div class="container">
+
+    <!-- الأسئلة النظرية -->
+    <div class="card">
+        <h2>الأسئلة النظرية (20 سؤالًا)</h2>
+        <ol>
+            <li><div class="theory-question">ما هو التعريف العام لقانون العمل؟</div><div class="theory-answer">الإجابة: هو الاتفاق القانوني بين شخص لأداء العمل بمقابل مالي لحساب شخص آخر.</div></li>
+            <li><div class="theory-question">لماذا ظهر مصطلح "القانون الاجتماعي"؟</div><div class="theory-answer">الإجابة: لحماية العمال وتنظيم العلاقات الاجتماعية في العمل.</div></li>
+            <li><div class="theory-question">ما الهدف الأساسي من قانون العمل؟</div><div class="theory-answer">الإجابة: تنظيم العلاقة بين العامل وصاحب العمل وحماية حقوق الطرفين.</div></li>
+            <li><div class="theory-question">كيف كانت العلاقات العملية في العصور القديمة؟</div><div class="theory-answer">الإجابة: غالبًا كانت شخصية وغير منظمة، تعتمد على التقاليد والسلطة.</div></li>
+            <li><div class="theory-question">ما طبيعة نظام الرق والعبودية وتأثيره على علاقات العمل؟</div><div class="theory-answer">الإجابة: كان العامل ملكًا للسيد بدون حقوق قانونية، مما منع تنظيم العمل.</div></li>
+            <li><div class="theory-question">من هم الإقطاعيون ومن هم الأقنان؟</div><div class="theory-answer">الإجابة: الإقطاعيون هم ملاك الأراضي، والأقنان هم الفلاحون المرتبطون بالأرض.</div></li>
+            <li><div class="theory-question">كيف كان يتم التحكم في الأقنان في المجتمع الزراعي؟</div><div class="theory-answer">الإجابة: بواسطة نظام الطوائف والالتزامات العرفية.</div></li>
+            <li><div class="theory-question">ما هو نظام الطوائف؟</div><div class="theory-answer">الإجابة: تنظيم مهني واجتماعي يعتمد على الحرف والمهن.</div></li>
+            <li><div class="theory-question">ما هي الأسباب التي جعلت نظام الطوائف لا يسمح بوجود قانون عمل؟</div><div class="theory-answer">الإجابة: لأنه يعتمد على الأعراف والتقاليد وليس على قواعد قانونية موحدة.</div></li>
+            <li><div class="theory-question">ما هو أثر الثورة الفرنسية على ظهور قانون العمل الحديث؟</div><div class="theory-answer">الإجابة: تعزيز مبدأ سلطان الإرادة وحقوق الأفراد في التعاقد.</div></li>
+            <li><div class="theory-question">ما العوامل التي أدت لتدهور أوضاع العمال في القرن 19؟</div><div class="theory-answer">الإجابة: الثورة الصناعية، طول ساعات العمل، ضعف حماية العمال.</div></li>
+            <li><div class="theory-question">لماذا ظهرت الحاجة إلى تنظيم قانوني يحمي العمال؟</div><div class="theory-answer">الإجابة: لتقليل الاستغلال وضمان الحقوق الأساسية للعمال.</div></li>
+            <li><div class="theory-question">ما أبرز ملامح المرحلة الأولى من تطور قانون العمل في الجزائر؟</div><div class="theory-answer">الإجابة: تنظيم العمل بعد الاستقلال بين 1962–1971 وتحديد الحقوق والواجبات.</div></li>
+            <li><div class="theory-question">ماذا تضمن قانون التسيير الاشتراكي للمؤسسات سنة 1971؟</div><div class="theory-answer">الإجابة: تنظيم المؤسسات الاقتصادية بطريقة اشتراكية وحماية العمال.</div></li>
+            <li><div class="theory-question">كيف ساهمت سياسات التنمية الاقتصادية في زيادة العمال؟</div><div class="theory-answer">الإجابة: بزيادة المشاريع الاقتصادية وخلق فرص عمل جديدة.</div></li>
+            <li><div class="theory-question">ما أهمية قانون العمل من الناحية الاقتصادية؟</div><div class="theory-answer">الإجابة: تنظيم سوق العمل وتحفيز الإنتاجية وتقليل النزاعات.</div></li>
+            <li><div class="theory-question">ما علاقة قانون العمل بالقانون المدني؟</div><div class="theory-answer">الإجابة: ينظم العلاقات الخاصة بين الأفراد في إطار العمل.</div></li>
+            <li><div class="theory-question">كيف يرتبط قانون العمل بالقانون التجاري؟</div><div class="theory-answer">الإجابة: يتعلق بحقوق العمال في الشركات والمؤسسات التجارية.</div></li>
+            <li><div class="theory-question">ما دور قانون الإجراءات المدنية في منازعات العمل؟</div><div class="theory-answer">الإجابة: يحدد كيفية رفع القضايا وتسوية النزاعات العمالية.</div></li>
+            <li><div class="theory-question">ما هي المصادر الرسمية لقانون العمل؟</div><div class="theory-answer">الإجابة: الدستور والقوانين والأنظمة واللوائح الرسمية.</div></li>
+        </ol>
+    </div>
+
+    <!-- أسئلة QCM -->
+    <div class="card">
+        <h2>أسئلة QCM (20 سؤالًا)</h2>
+        <ol>
+            <li>
+                <div class="qcm-question">ما الهدف الأساسي لقانون العمل؟</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">تحقيق مصالح أصحاب العمل فقط</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">تنظيم العلاقة بين العامل وصاحب العمل</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">فرض العقوبات على العمال</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">التحكم في الأجور عالميًا</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">نظام الرق كان يقوم على:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">علاقة تعاقدية بين العامل ورب العمل</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">اعتبار العامل ملكًا لسيده</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">أجور مرتفعة</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">حماية حقوق العبيد</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">الإقطاعيون كانوا:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">العمال</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">الفلاحين</div>
+                <div class="qcm-option" data-letter="ج" data-correct="true">ملاك الأراضي</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">النقابات</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ج</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">الأقنان هم:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">جنود الجيش</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">فلاحون مرتبطون بالأرض</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">أصحاب المصانع</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">إداريون حكوميون</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">نظام الطوائف كان:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">نظامًا عسكريًا</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">تنظيمًا للحرف والمهن</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">نظامًا تجاريًا دوليًا</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">نظامًا زراعيًا بحتًا</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">الثورة الفرنسية أدت إلى:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">تقوية الإقطاع</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">ظهور مبدأ سلطان الإرادة</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">منع التعاقد تمامًا</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">إلغاء العمل</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">المرحلة الأولى لتطور قانون العمل في الجزائر كانت بين:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">1990–1999</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">1962–1971</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">1950–1960</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">2000–2010</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">قانون التسيير الاشتراكي للمؤسسات صدر سنة:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">1971</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">1985</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">1990</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">1965</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">من مصادر قانون العمل الرسمية:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">العادات فقط</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">الدستور والقوانين</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">الشائعات</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">الأحاديث المهنية</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">من مصادر قانون العمل غير الرسمية:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">الفقه</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">الدستور</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">المراسيم التنفيذية</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">القوانين</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">منظمة العمل الدولية ILO تهدف إلى:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">تطوير كرة القدم</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">وضع معايير العمل الدولية</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">مراقبة الأمن القومي</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">دعم التجارة بين الدول</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">من أهداف قانون العمل:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">تخفيض القدرة الشرائية</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">ضمان الراحة والأمان</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">زيادة النزاعات</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">إلغاء النقابات</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">من الوظائف الاجتماعية لقانون العمل:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">تعزيز الثقة بين أطراف العمل</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">إلغاء الإجازات</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">خفض الأمن الصناعي</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">منع العمل الليلي</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">العلاقة بين قانون العمل والقانون المدني تقوم على:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">مبدأ سلطان الإرادة</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">العقوبات العسكرية</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">القوانين الجمركية</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">قوانين الأسرة</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">من القوانين المؤثرة في العمل التجاري:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">الأولوية في دفع أجور العمال عند الإفلاس</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">قوانين المرور</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">قوانين الإعلام</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">قوانين الرياضة</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">من النصوص التنفيذية في قانون العمل:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">مرسوم التوقيت اليومي للعمل</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">قوانين الطفولة</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">قوانين العقار</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">قوانين الجيش</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">الفقه القانوني يعتبر:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">مصدرًا رسميًا</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">مصدرًا غير رسمي</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">قانونًا جنائيًا</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">قانونًا إداريًا</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">العرف المهني يصبح قاعدة قانونية عندما:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">يستخدمه التجار فقط</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">يعترف به التشريع أو القضاء</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">يكون قديمًا جدًا</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">ينشر في الصحف فقط</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">أهم مبدأ في القانون الاجتماعي:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="false">حرية التعسف</div>
+                <div class="qcm-option" data-letter="ب" data-correct="true">حماية الأضعف</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">إلغاء الحقوق</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">فرض الرقابة</div>
+                <div class="answer">الإجابة الصحيحة: <strong>ب</strong></div>
+            </li>
+            <li>
+                <div class="qcm-question">الهدف من تنظيم ساعات العمل:</div>
+                <div class="qcm-option" data-letter="أ" data-correct="true">حماية صحة العمال</div>
+                <div class="qcm-option" data-letter="ب" data-correct="false">زيادة ساعات العمل</div>
+                <div class="qcm-option" data-letter="ج" data-correct="false">تخفيض الإنتاج</div>
+                <div class="qcm-option" data-letter="د" data-correct="false">تقليل الأجور</div>
+                <div class="answer">الإجابة الصحيحة: <strong>أ</strong></div>
+            </li>
+        </ol>
+    </div>
+
+</div>
+
+<!-- زر العودة للأعلى -->
+<button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+<!-- مؤشر التفعيل -->
+<div class="tap-hint">انقر على السؤال لرؤية الإجابة</div>
+
+<script>
+    // تفعيل ظهور الإجابة للأسئلة النظرية
+    const theoryQuestions = document.querySelectorAll('.theory-question');
+    theoryQuestions.forEach(q => {
+        q.addEventListener('click', () => {
+            const answer = q.nextElementSibling;
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+
+    // تفعيل تلوين الإجابة لأسئلة QCM
+    const qcmOptions = document.querySelectorAll('.qcm-option');
+    qcmOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            if(option.classList.contains('correct') || option.classList.contains('wrong')) return;
+            
+            const isCorrect = option.dataset.correct === 'true';
+            option.classList.add(isCorrect ? 'correct' : 'wrong');
+            
+            const parent = option.parentElement;
+            const answerDiv = parent.querySelector('.answer');
+            answerDiv.style.display = 'block';
+            
+            // تلوين جميع الخيارات الأخرى إذا كانت صحيحة
+            parent.querySelectorAll('.qcm-option').forEach(opt => {
+                if(opt !== option && opt.dataset.correct === 'true') {
+                    opt.classList.add('correct');
+                }
+            });
+            
+            // إظهار مؤشر التفعيل مرة واحدة فقط
+            const tapHint = document.querySelector('.tap-hint');
+            if(tapHint.style.display !== 'none') {
+                tapHint.style.display = 'none';
+            }
+        });
+    });
+
+    // إظهار زر العودة للأعلى عند التمرير
+    const scrollTopBtn = document.querySelector('.scroll-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollTopBtn.style.display = 'flex';
+        } else {
+            scrollTopBtn.style.display = 'none';
+        }
+    });
+
+    // إظهار مؤشر التفعيل عند التمرير لأول مرة
+    window.addEventListener('scroll', () => {
+        const tapHint = document.querySelector('.tap-hint');
+        if (window.scrollY > 200 && tapHint.style.display !== 'none') {
+            tapHint.style.display = 'block';
+            setTimeout(() => {
+                tapHint.style.display = 'none';
+            }, 3000);
+        }
+    });
+
+    // تحسين التجربة على اللمس
+    document.addEventListener('touchstart', () => {}, {passive: true});
+</script>
+</body>
+</html>
