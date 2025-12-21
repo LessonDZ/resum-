@@ -1,0 +1,2135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>المحاضرات والاختبارات - تسيير الموارد البشرية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #3949ab;
+            --accent-color: #2962ff;
+            --success-color: #00c853;
+            --error-color: #ff1744;
+            --warning-color: #ff9100;
+            --light-color: #e8eaf6;
+            --dark-color: #0d1b36;
+            --gray-color: #546e7a;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 100, 0.08);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 0;
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        /* الهيدر */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 18px 16px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--accent-color);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            background-color: var(--white);
+            color: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+        
+        .app-title {
+            color: var(--white);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .app-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+        
+        /* التبويبات */
+        .tabs {
+            display: flex;
+            background-color: var(--white);
+            position: sticky;
+            top: 78px;
+            z-index: 99;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+        
+        .tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+            background-color: rgba(26, 35, 126, 0.05);
+        }
+        
+        /* المحتوى */
+        .content {
+            padding: 16px;
+            padding-bottom: 100px;
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-color);
+        }
+        
+        /* المحاضرات */
+        .lectures-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .lecture-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 0;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #e0e0e0;
+        }
+        
+        .lecture-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 100, 0.12);
+        }
+        
+        .lecture-header {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 20px 16px;
+        }
+        
+        .lecture-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .lecture-title i {
+            margin-left: 10px;
+        }
+        
+        .lecture-number {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .lecture-body {
+            padding: 20px 16px;
+        }
+        
+        .lecture-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        
+        .lecture-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-subtitle i {
+            margin-left: 8px;
+        }
+        
+        .lecture-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--dark-color);
+        }
+        
+        .lecture-text ul, .lecture-text ol {
+            padding-right: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .lecture-text li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .lecture-text li:before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-right: 4px solid var(--accent-color);
+        }
+        
+        .highlight-title {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .highlight-title i {
+            margin-left: 8px;
+        }
+        
+        .key-point {
+            background-color: rgba(41, 98, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin: 8px 0;
+            border-right: 3px solid var(--accent-color);
+        }
+        
+        .definition-box {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #2196f3;
+        }
+        
+        /* الأسئلة النظرية */
+        .question-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .question-card:hover {
+            border-color: var(--light-color);
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .question-number {
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .question-type {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .question-text {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: var(--dark-color);
+        }
+        
+        .answer-btn {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .answer-btn:active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: scale(0.98);
+        }
+        
+        .answer-content {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f5f7ff;
+            border-radius: 8px;
+            border-right: 4px solid var(--primary-color);
+            display: none;
+        }
+        
+        .answer-content.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .answer-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .answer-title i {
+            margin-left: 8px;
+        }
+        
+        .answer-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        /* أسئلة متعددة الخيارات */
+        .qcm-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .qcm-card:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 100, 0.1);
+        }
+        
+        .qcm-question {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 15px 12px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .option:active {
+            background-color: #eef2f7;
+            transform: scale(0.99);
+        }
+        
+        .option.selected {
+            border-color: var(--primary-color);
+            background-color: #e8f0fe;
+        }
+        
+        .option.correct {
+            border-color: var(--success-color);
+            background-color: rgba(0, 200, 83, 0.1);
+        }
+        
+        .option.incorrect {
+            border-color: var(--error-color);
+            background-color: rgba(255, 23, 68, 0.1);
+        }
+        
+        .option-letter {
+            background-color: #ddd;
+            color: #555;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .option.selected .option-letter {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .option.correct .option-letter {
+            background-color: var(--success-color);
+            color: var(--white);
+        }
+        
+        .option.incorrect .option-letter {
+            background-color: var(--error-color);
+            color: var(--white);
+        }
+        
+        .option-text {
+            flex: 1;
+            font-size: 0.95rem;
+        }
+        
+        .feedback {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .feedback.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .feedback.correct {
+            background-color: rgba(0, 200, 83, 0.1);
+            color: var(--success-color);
+            border-right: 3px solid var(--success-color);
+        }
+        
+        .feedback.incorrect {
+            background-color: rgba(255, 23, 68, 0.1);
+            color: var(--error-color);
+            border-right: 3px solid var(--error-color);
+        }
+        
+        /* إحصائيات */
+        .stats {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        
+        .stat-item {
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+        
+        .theoretical .stat-value {
+            color: var(--primary-color);
+        }
+        
+        .qcm .stat-value {
+            color: var(--warning-color);
+        }
+        
+        /* أزرار التحكم */
+        .control-buttons {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            background-color: var(--white);
+            padding: 12px 16px;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            z-index: 90;
+        }
+        
+        .control-btn {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            flex: 1;
+            margin: 0 5px;
+        }
+        
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .btn-reset {
+            background-color: #f8f9fa;
+            color: var(--gray-color);
+            border: 1px solid #ddd;
+        }
+        
+        .btn-show-all {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+        }
+        
+        /* الرسوم المتحركة */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* تحسينات للأجهزة الصغيرة */
+        @media (max-width: 360px) {
+            .app-title {
+                font-size: 1.1rem;
+            }
+            
+            .tab {
+                font-size: 0.85rem;
+                padding: 12px 8px;
+            }
+            
+            .lecture-card, .question-card, .qcm-card {
+                padding: 16px 12px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- الهيدر -->
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>
+                        <div class="app-title">تسيير الموارد البشرية</div>
+                       
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- التبويبات -->
+        <div class="tabs">
+            <div class="tab active" data-tab="lectures">
+                <i class="fas fa-book-open"></i> الملخص المفصل (10 وحدات)
+            </div>
+            <div class="tab" data-tab="theoretical">
+                <i class="fas fa-question-circle"></i> أسئلة نظرية (20)
+            </div>
+            <div class="tab" data-tab="qcm">
+                <i class="fas fa-list-ol"></i> أسئلة متعددة (20)
+            </div>
+        </div>
+        
+        <!-- المحتوى -->
+        <div class="content">
+            <!-- قسم الملخص -->
+            <div class="content-section active" id="lectures-section">
+                <h2 class="section-title">
+                    <i class="fas fa-graduation-cap"></i> ملخص مفصل لتسيير الموارد البشرية
+                </h2>
+                
+                <div class="lectures-container" id="lectures-container">
+                    <!-- سيتم تعبئتها ديناميكياً -->
+                </div>
+            </div>
+            
+            <!-- قسم الأسئلة النظرية -->
+            <div class="content-section" id="theoretical-section">
+                <h2 class="section-title">
+                    <i class="fas fa-pen-alt"></i> الأسئلة النظرية (20 سؤال)
+                </h2>
+                
+                <div class="stats">
+                    <div class="stat-item theoretical">
+                        <div class="stat-value" id="theoretical-answered">0</div>
+                        <div class="stat-label">تمت الإجابة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">20</div>
+                        <div class="stat-label">إجمالي الأسئلة</div>
+                    </div>
+                </div>
+                
+                <div id="theoretical-questions-container">
+                    <!-- سيتم تعبئتها ديناميكياً -->
+                </div>
+            </div>
+            
+            <!-- قسم الأسئلة المتعددة -->
+            <div class="content-section" id="qcm-section">
+                <h2 class="section-title">
+                    <i class="fas fa-check-circle"></i> أسئلة متعددة الخيارات (20 سؤال)
+                </h2>
+                
+                <div class="stats">
+                    <div class="stat-item qcm">
+                        <div class="stat-value" id="qcm-correct">0</div>
+                        <div class="stat-label">إجابات صحيحة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="qcm-answered">0</div>
+                        <div class="stat-label">تمت الإجابة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">20</div>
+                        <div class="stat-label">إجمالي الأسئلة</div>
+                    </div>
+                </div>
+                
+                <div id="qcm-questions-container">
+                    <!-- سيتم تعبئتها ديناميكياً -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- أزرار التحكم -->
+        <div class="control-buttons">
+            <button class="control-btn btn-reset" id="resetTheoreticalBtn">
+                <i class="fas fa-redo"></i> إعادة تعيين
+            </button>
+            <button class="control-btn btn-show-all" id="showAllAnswersBtn">
+                <i class="fas fa-eye"></i> عرض كل الإجابات
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // بيانات الملخص التفصيلي (10 وحدات)
+        const lectures = [
+            {
+                id: 1,
+                title: "نشأة وتطور إدارة الموارد البشرية",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-history"></i> مقدمة تاريخية
+                        </div>
+                        <p class="lecture-text">
+                            بدأ الاهتمام بإدارة الموارد البشرية متأخراً مقارنة بالجوانب المادية في العملية الإنتاجية. ففي القرون الماضية، كان التركيز منصباً على الآلة والمادة دون إعطاء العنصر البشري الاهتمام الكافي.
+                        </p>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-industry"></i> مرحلة ما قبل الثورة الصناعية
+                        </div>
+                        <ul class="lecture-text">
+                            <li>ممارسة الإنسان للأعمال البدوية البسيطة</li>
+                            <li>عدم وجود نظم قائمة للعمالة</li>
+                            <li>نظرة صاحب العمل للعامل كسلعة (يبيع ويشتري حسب حاجة العمل)</li>
+                            <li>ظهور نظام الإقطاع (الملاك) والعمال (الفلاحين)</li>
+                            <li>نظام الطوائف في المدن الذي يحدد أطر الصناعة وشروط العمل والأجور</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-cogs"></i> مرحلة الثورة الصناعية
+                        </div>
+                        <ul class="lecture-text">
+                            <li>البدايات الفكرية والفلسفية لإدارة الأفراد</li>
+                            <li>ظهور الآلات والمصانع الكبيرة</li>
+                            <li>مشاكل العمل: ساعات عمل طويلة، ضوضاء، رطوبة، نقص التهوية</li>
+                            <li>ظهور مطالب تحسين ظروف العمل وتقليص ساعات العمل ورفع الأجور</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-calendar-alt"></i> مرحلة القرن العشرين
+                        </div>
+                        <div class="key-point">
+                            <strong>حركة الإدارة العلمية:</strong> فريدريك تايلور (دراسة الوقت والحركة، تنظيم العلاقة بين الإدارة والعاملين)
+                        </div>
+                        <div class="key-point">
+                            <strong>فلسفة ماكس فيبر:</strong> التخصص في العمل والاتصالات
+                        </div>
+                        <div class="key-point">
+                            <strong>مدرسة التقسيمات الإدارية لهنري فايول:</strong> 14 مبدأ للإدارة
+                        </div>
+                        <div class="key-point">
+                            <strong>مدرسة العلاقات الإنسانية:</strong> إلتون مايو (نهاية القرن العشرين وبداية القرن الحادي والعشرين)
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <div class="highlight-title">
+                            <i class="fas fa-lightbulb"></i> المتغيرات البيئية المعاصرة
+                        </div>
+                        <ul class="lecture-text">
+                            <li>ظهور العولمة</li>
+                            <li>شدة المنافسة</li>
+                            <li>الطلب المتغير على الجودة من قبل العملاء</li>
+                            <li>تطور تكنولوجي بمعدلات متسارعة</li>
+                            <li>تحديات البيئة الاجتماعية والأخلاقية</li>
+                            <li>الاندماجات بين الشركات الكبرى وما يترتب على ذلك من تخفيض الحجم والتكاليف والأسعار</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                id: 2,
+                title: "مفهوم وأهداف إدارة الموارد البشرية",
+                content: `
+                    <div class="lecture-section">
+                        <div class="definition-box">
+                            <strong>التعريف الأول:</strong> وظيفة إدارية تضم جميع سياسات وتطبيقات العناصر البشرية داخل المنظمة والتي تهدف إلى تحقيق أهداف المنظمة وأفرادها والمجتمع.
+                        </div>
+                        
+                        <div class="definition-box">
+                            <strong>التعريف الثاني:</strong> مجموعة الممارسات والسياسات المطلوبة لتنفيذ مختلف الأنشطة المتعلقة بالموارد البشرية التي تحتاج إليها الإدارة لممارسة وظائفها على أكمل وجه.
+                        </div>
+                        
+                        <div class="definition-box">
+                            <strong>التعريف الثالث:</strong> تمثلت في الأنشطة الموارد البشرية في بعض الوظائف التقليدية الخاصة بالعاملين داخل المنظمات، وكانت تسمى بإدارة الموظفين أو إدارة العلاقات الإنسانية، وبعد الاهتمام بالعاملين ومتطلباتهم بدأت تسمى بإدارة الأفراد.
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-bullseye"></i> أهداف إدارة الموارد البشرية (9 أهداف)
+                        </div>
+                        <ol class="lecture-text">
+                            <li><strong>التعرف على المشاكل:</strong> وتحديد مواقعها وطبيعتها</li>
+                            <li><strong>زيادة الإنتاجية:</strong> ورفع كفاءة الأداء في الخدمة الميدانية عن طريق تطوير قدرات ومهارات القوة العاملة وفعالية استخدامها</li>
+                            <li><strong>تنمية روح التعاون:</strong> والتماسك بين مجموعات العمل لتحقيق أهداف وإشباع حاجات العاملين</li>
+                            <li><strong>قدرة الإدارة العليا:</strong> في تحديد الاستجابة والتنسيق بين استراتيجية الموارد البشرية من جهة واستراتيجية المؤسسة من جهة أخرى</li>
+                            <li><strong>معاونة الإدارة العليا:</strong> والإدارة التنفيذية في التقييم والمتابعة على منظومة الموارد البشرية عن طريق نظام معلومات الموارد البشرية</li>
+                            <li><strong>التأكيد المستمر:</strong> لدى أفراد المؤسسة على دورهم كما تتوقع الإدارة العليا منهم</li>
+                            <li><strong>القيام بدراسة:</strong> خاصة بالعوامل التنظيمية بهدف تطوير سلوكيات المؤسسة كوحدة متكاملة</li>
+                            <li><strong>التخطيط المتكامل:</strong> على مستوى المؤسسة بحيث يشمل منظومة إدارة الموارد البشرية بشكل يتضمن ارتباطاً بخطة تطوير العمال</li>
+                            <li><strong>قدرة الإدارة التنفيذية:</strong> في تحقيق السياسات الخاصة بالموارد البشرية</li>
+                        </ol>
+                    </div>
+                `
+            },
+            {
+                id: 3,
+                title: "أهمية إدارة الموارد البشرية",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-user-check"></i> 1. تبوء العنصر البشري
+                        </div>
+                        <p class="lecture-text">
+                            كانت النظرة إلى العنصر البشري باعتباره أحد عوامل الإنتاج مثل الأرض ورأس المال، ولذلك يجب الحصول عليه بأدنى تكلفة ممكنة، أي أن الأفراد مجرد شيء تابع للمؤسسة.
+                        </p>
+                        <div class="key-point">
+                            <strong>في ظل مفهوم إدارة الموارد البشرية:</strong> يتم التعامل مع الأفراد والجماعة ككيان مستقل وليس متغير تابع، ولذلك يتم التعامل مع العنصر البشري ليس كسلعة تشتري ولكن من خلال علاقة تعاقدية تراعي التوفيق بين أهداف المنظمة وآمال وتوقعات الفرد والجماعة.
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-crown"></i> 2. العنصر البشري مؤثر حاكم في الإدارة
+                        </div>
+                        <p class="lecture-text">
+                            يرى الخبراء أن للمورد البشري دور متميز وحاكم مقارنة بالموارد الطبيعية أو المادية. فعلى الرغم من أن هذه الموارد لا تظهر لها قيمة مالية، إلا أن الباحثون يشيرون إلى أن الموارد البشرية باعتبارها الموارد الوحيد الحقيقي لأي منشأة.
+                        </p>
+                        <div class="definition-box">
+                            <strong>بيتر دراكر:</strong> "أي منشأة أو مؤسسة من أي نوع لها مورد حقيقي واحد هو الإنسان."
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-layer-group"></i> 3. العنصر البشري كعنصر مركب
+                        </div>
+                        <p class="lecture-text">
+                            تنوع خصائص الأفراد وقدراتهم واتجاهاتهم تنوعاً كبيراً وتختلف من فترة إلى أخرى، كما تختلف بالنسبة لنفس الفرد من فترة لأخرى ومن موقف لآخر.
+                        </p>
+                        <p class="lecture-text">
+                            وكذلك تنتقل المنظمات من بيئة دائمة التغيير معقدة التكوين متضاربة التأثير، وهذا ما يؤثر بدوره على تعدد وتشعب اختلافات المؤثرة في سلوك الأفراد، مما يتطلب تنوع المثيرات والنماذج والنظم والمداخل المستخدمة لإدارة الموارد البشرية.
+                        </p>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-heart"></i> 4. العنصر البشري كقيمة إنسانية
+                        </div>
+                        <p class="lecture-text">
+                            هي إدارة العنصر البشري توجيهه والعمل على إشباع جميع احتياجاته التي يسعى للحصول عليها بصفة عامة والتي يمكن للمنظمة توفرها بصفة خاصة، وعلى أن يكون أحد الدعائم الأساسية للنظام المستخدم في عملية الإشباع وهو البعد القيمي والإنساني في المقام الأول حسب طبيعة الفرد وظروفه الاجتماعية والاقتصادية وحسب طبيعة المجتمع وإمكانيات وطاقات المنظمة.
+                        </p>
+                    </div>
+                `
+            },
+            {
+                id: 4,
+                title: "وظائف وأبعاد إدارة الموارد البشرية",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-tasks"></i> الوظائف الرئيسية (7 وظائف)
+                        </div>
+                        <ol class="lecture-text">
+                            <li><strong>تخطيط الموارد البشرية</strong></li>
+                            <li><strong>الاختيار والتعيين</strong></li>
+                            <li><strong>تنمية وتوجيه المسار الوظيفي</strong></li>
+                            <li><strong>تقييم الأداء</strong></li>
+                            <li><strong>التدريب والتطوير</strong></li>
+                            <li><strong>الأجور والحوافز</strong></li>
+                            <li><strong>تحسين ظروف العمل</strong></li>
+                        </ol>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-chart-line"></i> تخطيط الموارد البشرية
+                        </div>
+                        
+                        <div class="definition-box">
+                            <strong>مفهوم التخطيط:</strong> هي عملية التقدير والتنبؤ التي تقوم بها المنظمة لتحديد احتياجاتها من الموارد البشرية المختلفة كما ونوعاً في الوقت المناسب والمكان المناسب وذلك من أجل تحقيق الأهداف العامة للمنظمة والأهداف الخاصة للقطاعات العامة بها.
+                        </div>
+                        
+                        <div class="key-point">
+                            <strong>فوائد تخطيط الموارد البشرية:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li>التعرف على الوضع الحالي للموارد البشرية بالمنظمة بشكل تفصيلي</li>
+                            <li>تحديد مصادر الاستقطاب للموارد البشرية ودراستها وتقييمها</li>
+                            <li>الوقوف على المشكلات التي تواجه عمليات تخطيط الموارد البشرية</li>
+                            <li>تقديم المقترحات والحلول العلمية للمشكلات</li>
+                            <li>التنبؤ بإعداد مستويات وهياكل الموارد البشرية</li>
+                            <li>وضع السياسات والبرامج المتعلقة بالاختيار والتعيين وتنمية الموارد البشرية</li>
+                            <li>دراسة العوامل الجغرافية والديمغرافية</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-users"></i> استقطاب الأفراد
+                        </div>
+                        <div class="definition-box">
+                            <strong>مفهوم الاستقطاب:</strong> هو عملية اكتشاف مرشحين محتملين لوظائف شاغرة حالياً أو متوقعة في المنظمة، أي أنه نشاط يقوم على الوصل بين من يبحث عن وظائف ومن يعرضون الوظائف.
+                        </div>
+                        
+                        <div class="key-point">
+                            <strong>العوامل المؤثرة في الاستقطاب:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li><strong>الحجم:</strong> حجم المنظمة من العوامل المؤثرة على مدى احتياجاتها للموارد البشرية بالزيادة أو التقليص</li>
+                            <li><strong>البيئة:</strong> العرض والطلب والمكانة في السوق وعلاقتها بالمؤسسات الأخرى</li>
+                            <li><strong>الخبرة السابقة:</strong> مدى نجاحها في الحصول والحفاظ على الموارد المؤهلة</li>
+                            <li><strong>ظروف العمل والأجور والمزايا:</strong> التي توفرها المنظمة تؤثر على دوران العمل وبالتالي على الحاجة للاستقطاب</li>
+                            <li><strong>اتجاه المنظمة نحو النمو أو الانكماش:</strong> عاملي لهما الأمر البالغ في تقليص أو الزيادة في الاحتياجات</li>
+                            <li><strong>سمعة ومكانة المنظمة:</strong> تتميز المنظمات ذات السمعة الجيدة بقدرة عالية على جلب أفضل يد عاملة</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-sitemap"></i> أبعاد إدارة الموارد البشرية
+                        </div>
+                        
+                        <div class="key-point">
+                            <strong>البيئة الخارجية:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li>القوة الاقتصادية</li>
+                            <li>القوة الثقافية</li>
+                            <li>سوق العمل</li>
+                            <li>المستحدثات التكنولوجية</li>
+                            <li>التشريعات والقيود الحكومية</li>
+                        </ul>
+                        
+                        <div class="key-point">
+                            <strong>البيئة الداخلية:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li>الأهداف والثقافة التنظيمية</li>
+                            <li>الاستراتيجية</li>
+                            <li>الهيكل</li>
+                            <li>التكنولوجيا</li>
+                            <li>الموارد البشرية</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                id: 5,
+                title: "المدارس الفكرية في إدارة الموارد البشرية",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-school"></i> 1. المدرسة الكلاسيكية
+                        </div>
+                        <p class="lecture-text">
+                            <strong>ممثلوها:</strong> فريدريك تايلور (الإدارة العلمية)، ماكس فيبر (البيروقراطية)، هنري فايول (المبادئ الإدارية)
+                        </p>
+                        
+                        <div class="key-point">
+                            <strong>تعتمد على العقلنة المتمثلة في المحاور الثلاث:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li>عقلنة العمل</li>
+                            <li>تصميم المناسب لهذا العمل</li>
+                            <li>عقلنة المؤسسة</li>
+                        </ul>
+                        
+                        <div class="key-point">
+                            <strong>المبادئ التنظيمية لهذه المدرسة:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li>تقسيم العمل (فصل التصميم عن التنفيذ)</li>
+                            <li>التنظيم الإداري ليس إلا وظيفة استشارية تسهل مهمة الوظيفة الإنتاجية</li>
+                            <li>الأفراد في مجملهم يعتبرون وحدة ثابتة مسيرة وفق عوامل بسهل التعرف عليها (السن، الجنس، التكوين)</li>
+                            <li>"أحسن عمل لأحسن أجر"</li>
+                            <li>لا وجود للنقابات الفردية</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-handshake"></i> 2. مدرسة العلاقات الإنسانية
+                        </div>
+                        <p class="lecture-text">
+                            <strong>ممثلوها:</strong> إلتون مايو، روبرت أوين، رنسيس ليكرت
+                        </p>
+                        
+                        <div class="key-point">
+                            <strong>ما توصلت إليه هذه المدرسة:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li>العامل أصبح لا يكتفي بحافز الأجر فقط</li>
+                            <li>أصبح بحاجة إلى معرفة القيم للعمل الذي يؤديه</li>
+                            <li>حاجته العاطفية في المشاركة مع الجماعة أثناء العمل</li>
+                            <li>تنظيم العمل يكون جماعياً لأن الجماعة تساعد الفرد على تحقيق الأهداف</li>
+                            <li>الفرد يكون بالجماعة يتصرف وفق معايير ومقاييس الجماعة</li>
+                        </ul>
+                        
+                        <div class="key-point">
+                            <strong>الخلاصة:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li>اختيار أسلوب الديمقراطي في التحكم</li>
+                            <li>يجب على المسؤول ترك إمكانية للأفراد لمناقشة البرنامج المراد تحقيقه</li>
+                            <li>تشجيع الجماعة على أخذ القرارات</li>
+                            <li>المناقشة يجب أن تدور حول مستقبل المؤسسة</li>
+                            <li>تشارك الجماعة في إعداد المخططات والبرامج</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-laptop"></i> 3. المدرسة العصرية الحديثة
+                        </div>
+                        <div class="key-point">
+                            <strong>قواعد المدرسة العصرية أو الحديثة:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li>التنظيم</li>
+                            <li>التمييز بين الوظائف والأدوار</li>
+                            <li>الإنسان المعقد</li>
+                            <li>العقلنة الجديدة</li>
+                            <li>نظرية الأنظمة</li>
+                        </ul>
+                        
+                        <div class="key-point">
+                            <strong>مبادئ التنظيم:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li><strong>التنظيم المضاد:</strong> طبيعة المهنة وطبيعة الأفراد يشرطان التنظيم الواجب وضعه</li>
+                            <li><strong>المفاوضة:</strong> القرارات تكون غالباً نتيجة مفاوضات بين المسؤولين</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <div class="highlight-title">
+                            <i class="fas fa-lightbulb"></i> الخلاصة
+                        </div>
+                        <p class="lecture-text">
+                            إن هدف الموارد البشرية التقييم والاستخدام الفعال للعلاقات بين الموارد البشرية والمهمة التي يقوم بها والإنتاجية، هذا ما يؤدي بنا إلى النظر إليها كعملية تتكون من أربع وظائف رئيسية: الاستقدام، التنمية، التحفيز، والصيانة.
+                        </p>
+                    </div>
+                `
+            },
+            {
+                id: 6,
+                title: "التحديات المعاصرة لإدارة الموارد البشرية",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-globe"></i> 1. تحديات العولمة والتنافسية
+                        </div>
+                        <p class="lecture-text">
+                            لقد أسهمت العولمة في خلق توسع شامل في الأسواق العالمية بحيث أصبح المجتمع الإنساني قرية صغيرة يستطيع من خلالها أن يتعامل مع مختلف المنظمات ويحصل على مختلف السلع والتعامل مع مختلف الثقافات الإنسانية.
+                        </p>
+                        <div class="key-point">
+                            <strong>إفرازاتها:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li>سبيل الحصول على أقوى البشرية واختيارهم خضعت للعديد من الاعتبارات التي نصت عليها الاتفاقيات والمعايير الدولية</li>
+                            <li>جعلت سبيل التعامل مع العاملين خاضعاً للعديد من تشريعات وقوانين على أعلى الأصعدة المحلية والدولية</li>
+                            <li>التنافسية المستخدمة بين الشركات متعددة الجنسية جعلت من سبيل اختيار العاملين خاضعاً للعديد من الآثار والمتغيرات التشريعية</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-microchip"></i> 2. التحديات التكنولوجية
+                        </div>
+                        <p class="lecture-text">
+                            لقد لعب التطور التكنولوجي وتحديات ثورة المعلومات والاتصالات دوراً بارزاً في إحداث العديد من التطورات الاقتصادية والاجتماعية والحضارية.
+                        </p>
+                        <div class="key-point">
+                            <strong>التأثيرات:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li>تعدد الثقافات والقيم السائدة والمجتمعات</li>
+                            <li>تعدد المهارات والتخصصات التي أفرزتها متطلبات التطور في مختلف مجالات عرض وطلب القوى البشرية</li>
+                            <li>لعب هذا النوع الثقافي للأفراد على تأكيد قيم جديدة أملتها ضرورات تحسين نوعية حياة أفراد العاملين</li>
+                            <li>العديد من الآثار التنظيمية والإدارية</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-award"></i> 3. إدارة الجودة الشاملة
+                        </div>
+                        <p class="lecture-text">
+                            لقد أسهم التحدي النوعي الشامل في مختلف المسارات إدارة الموارد البشرية في المجتمعات المتقدمة كالولايات المتحدة الأمريكية واليابان وغيرها من الأقطار على التركيز على الجوانب التالية:
+                        </p>
+                        <ul class="lecture-text">
+                            <li><strong>مساهمة العاملين:</strong> في عمليات التحسين</li>
+                            <li><strong>تحقيق رضا المستهلكين:</strong> كهدف رئيسي</li>
+                            <li><strong>الوقاية بدل العلاج:</strong> التركيز على منع الأخطاء قبل وقوعها</li>
+                            <li><strong>التحسين المستمر:</strong> السعي الدائم للتطوير</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-leaf"></i> 4. التحديات البيئية
+                        </div>
+                        <p class="lecture-text">
+                            تجسدت معالمها من خلال استجاباتها للتغييرات المتسارعة التي أفرزت في الواقع العلمي بيئة ديناميكية أي بيئة غير مستقرة أو ثابتة.
+                        </p>
+                        <div class="key-point">
+                            <strong>ملاحظات هامة:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li>الإطار العام للتعامل مع البيئة يقوم على اعتبار التغير ظاهرة طبيعية</li>
+                            <li>أما الثبات والاستقرار فهو حالة شاذة</li>
+                            <li>هذه المتغيرات أثرت على سوق العمل ومهارات القوى العاملة</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                id: 7,
+                title: "الوضع التنظيمي لإدارة الموارد البشرية",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-building"></i> أهمية الوضع التنظيمي
+                        </div>
+                        <p class="lecture-text">
+                            نظراً للأهمية البالغة لإدارة الموارد البشرية بسبب الأهداف العامة الموكلة إليها التي لا يمكن تحقيقها إلا من خلال الحضور الوظيفي والبياني في هيكل وبناء المنظمة بشكل عام.
+                        </p>
+                        <div class="key-point">
+                            <strong>شرط أساسي:</strong> لابد من أن تحدد موقع إدارة الموارد البشرية ضمن الهيكل التنظيمي خاصة عندما يراد لها الهيكل أن يتحرك بحرية وأوسع على المستويات التنظيمية المختلفة العامة والأعمال الوظيفية.
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-chart-pie"></i> العوامل المؤثرة في الوضع التنظيمي
+                        </div>
+                        
+                        <div class="key-point">
+                            <strong>1. أدوار إدارة الموارد البشرية:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li><strong>دور الأعمال:</strong> مشاركة إدارة الموارد البشرية للمنظمة في تحديد حاجات الأعمال فيها من خلال معرفة اتجاه تلك الأعمال والمساعدة في دفع المنظمة بالاتجاه الوصول إلى الوضع الذي ترغبه</li>
+                            <li><strong>الدور التشغيلي:</strong> يتمثل دور إدارة الموارد البشرية على هذا المستوى بصياغة قرارات التوظيف ووضع خطط الاستقطاب وتطوير أنظمة الرقابة على الأداء والسلوك بالإضافة إلى نشاطات التدريب والمتابعة والتقييم</li>
+                            <li><strong>الدور الإداري:</strong> يسعى بدور متوسط المدى إذ تشمل نشاطات إدارة الموارد البشرية فيه بالتأكيد من دقة معايير الاختيار وتطوير خطط الاستقطاب واستكشاف أسواق الاستقطاب المنافسة وعلاقات على أنظمة الأجور والمكافأة وخطط التطوير الإداري</li>
+                        </ul>
+                        
+                        <div class="key-point">
+                            <strong>2. حجم المنظمة:</strong> يتحدد المنظمة بحجم النشاط الذي تديره أو حجم المبيعات المحققة أو حجم رأس المال أو عدد العاملين
+                        </div>
+                        
+                        <div class="key-point">
+                            <strong>3. كثافة الموارد البشرية:</strong> تتباين المنظمات في استخدامها لعنصر العمل تبعاً لطبيعة النشاط الذي تمارسه
+                        </div>
+                        
+                        <div class="key-point">
+                            <strong>4. مستوى التقنية:</strong> تلعب التقنية دوراً أساسياً في تحديد أدوار ونشاطات إدارة الموارد البشرية
+                        </div>
+                        
+                        <div class="key-point">
+                            <strong>5. خصائص سوق العمل:</strong> ينعكس تغيرات سوق العمل على هيئة ودور الموارد البشرية في المنظمة
+                        </div>
+                        
+                        <div class="key-point">
+                            <strong>6. توفر الإطارات الإدارية الكفوءة:</strong> تحتاج إدارة الموارد البشرية لكي تمارس عملها بشكل كفء إلى إطارات إدارية متخصصة
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-sitemap"></i> موقع إدارة الموارد البشرية في الهيكل التنظيمي
+                        </div>
+                        
+                        <div class="key-point">
+                            <strong>في المؤسسات الكبيرة:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li>تعد إدارة الموارد البشرية من الإدارات الوظيفية في المؤسسة</li>
+                            <li>تقدم خدماتها الخاصة بالعاملين لعموم المنظمة</li>
+                            <li>يتم استحداث تشكيل تنظيمي خاص بهذه الإدارة</li>
+                            <li>يمارس هذا الشكل كافة النشاطات والوظائف المرتبطة بالموارد من اختيار وتعيين وتدريب وتطوير وتحفيز وغيرها</li>
+                            <li>ترأس هذه الإدارة غالباً مدير يتبع للمدير التنفيذي لإدارة الموارد البشرية</li>
+                            <li>ممثلة في الغالب بمجلس للإدارة العليا لوضع استراتيجيات الموارد البشرية الموافقة مع استراتيجيات المؤسسة</li>
+                        </ul>
+                        
+                        <div class="key-point">
+                            <strong>في المؤسسات الصغيرة:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li>غالباً ما تكون مهمة إدارة الموارد البشرية للمالكين إذا كانت المنظمة ضمن القطاع الخاص</li>
+                            <li>أو للإدارة العليا إذا كانت المنظمة ضمن القطاع العام</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                id: 8,
+                title: "تنظيم إدارة الموارد البشرية",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-project-diagram"></i> أشكال تنظيم إدارة الموارد البشرية
+                        </div>
+                        <p class="lecture-text">
+                            إن أي منظمة وبغض النظر عن حجمها وأشكالها وطبيعة عملها تحتاج تخفيض جزء من جهود إداريها البشرية ذلك الجهد الذي يمكن أن يتخذ أشكالاً شتى اعتماداً على العوامل المشار إليها سابقاً.
+                        </p>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-layer-group"></i> 1. الشكل القائم على الأقسام
+                        </div>
+                        <ul class="lecture-text">
+                            <li>يستخدم هذا الشكل في المنظمات الكبيرة التي تتعدد فيها وحدات الأعمال</li>
+                            <li>علاوة على تمتع إدارة الموارد البشرية بجميع الأدوار الاستراتيجية الإدارية التشغيلية ذات الطبيعة التنفيذية</li>
+                            <li>في هذا النوع من المنظمات ترتبط إدارة الموارد البشرية بالإدارات العليا من خلال نائب رئيس موارد البشرية</li>
+                            <li>يرتبط فيه بالمستوى الأدنى مجموعة من الأقسام هي:
+                                <ul>
+                                    <li>قسم التوظيف</li>
+                                    <li>قسم التدريب والتطوير</li>
+                                    <li>قسم المزايا والمكافآت</li>
+                                    <li>قسم العلاقات</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-network-wired"></i> 2. التنظيم المركزي
+                        </div>
+                        <p class="lecture-text">
+                            يعتمد اتجاه المنظمة المركزية أو اللامركزية على فلسفتها ونظامها وكفاءة النشاطات الوظيفية الاستراتيجية فيها. وفي الشكل القائم على المركزية تكون القرارات الجوهرية وصناعة الاستراتيجية والسياسات محصورة في قمة الهرم التنظيمي.
+                        </p>
+                        <div class="key-point">
+                            <strong>خصائص التنظيم المركزي:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li>وجود إدارة مركزية داخل المنظمة تستمد صلاحياتها من الإدارة العليا</li>
+                            <li>تنفرع منها إدارات متخصصة في كل من الوظائف</li>
+                            <li>كل إدارة متخصصة أو استشارية تمتلك هذه الإدارة المركزية صلاحيات اتخاذ القرارات الخاصة بالموارد البشرية لعموم المنظمة</li>
+                            <li>يكون مديرها عضو في مجلس الإدارة العليا</li>
+                            <li>يقوم بالمساهمة الفاعلة في وضع الخطط بالموارد البشرية بالتوافق مع استراتيجيات المنظمة</li>
+                            <li>هذا الترابط الهيكلي التنظيمي يسعى بالترابط المتكامل</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-share-alt"></i> 3. التنظيم اللامركزي
+                        </div>
+                        <p class="lecture-text">
+                            هو النموذج الثاني التي تعتمد عليه المنظمات المعاصرة في تنظيم إدارة الموارد البشرية هو النموذج اللامركزي أي إزاعة مهام ونشاطات هذه الإدارة إلى جميع الإدارات الأخرى.
+                        </p>
+                        <div class="key-point">
+                            <strong>خصائص التنظيم اللامركزي:</strong>
+                        </div>
+                        <ul class="lecture-text">
+                            <li>وفق هذا النمط من أنماط التنظيم يقوم المديرون باختيار وتعيين وتدريب وتحفيز العاملين لإدارتهم وفق طبيعة نشاط الإدارة</li>
+                            <li>يلاحظ من التنظيم اللامركزي لإدارة الموارد البشرية إن المدير العام لشؤون الأفراد يمتلك صلاحيات استشارية لشؤون الأفراد</li>
+                            <li>يمتلك مدير الأقسام التنفيذية جميع الصلاحيات الخاصة بإدارتهم</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                id: 9,
+                title: "تحليل وتوصيف الوظائف",
+                content: `
+                    <div class="lecture-section">
+                        <div class="definition-box">
+                            <strong>مفهوم تحليل الوظائف:</strong> عملية فنية تقتضي تحليل العمل إلى كافة مكوناته ومهام ومستويات وعلاقات مع الأعمال الأخرى وتحديد مسماها الوظيفة وظروف العمل والمهارات والقدرات اللازم توافرها في من يشغلها.
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-star"></i> أهمية تحليل الوظائف
+                        </div>
+                        <ol class="lecture-text">
+                            <li>تعبر أساساً موضوعياً للاختيار والتعيين والترقية بدل الاحتكام إلى المعايير الشخصية</li>
+                            <li>تعد عملية تحليل الوظائف الأساسي لبناء وتصميم البرامج التدريبية التطويرية</li>
+                            <li>توفر الأساس الموضوعي لتحديد الأجر وبذلك ترجم قاعدة أساسية لإدارة الأفراد وهي الأجر على العمل</li>
+                            <li>يوفر أساساً موضوعياً لتقييم الأداء إذ يتم قياس أداء الموظف حسب الوصف الموجود للموظيفة</li>
+                            <li>تساهم عملية التحليل الوظيفي في تصميم سياسة سليمة للخدمات الصحية والأمن الصناعي من خلال ما توفر من معلومات حول درجة الخطورة في كل وظيفة</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-tools"></i> الطرق الرئيسية لتحليل الوظائف
+                        </div>
+                        
+                        <div class="key-point">
+                            <strong>1. أسلوب المقابلة الشخصية:</strong> يتم بالتحدث مع عينة من القائمين على الوظائف المختلفة للتنظيم، بحيث يتم تسجيل جوانب العمل المختلفة كما يصفونها.
+                        </div>
+                        
+                        <div class="key-point">
+                            <strong>2. الملاحظة المباشرة:</strong> يقوم المحلل بذهاب لمكان العمل وتسجيل ملاحظات مباشرة عن الأعمال والمهام التي يقوم بها العامل في الوظائف المختلفة ويكون العمل ميدانياً.
+                        </div>
+                        
+                        <div class="key-point">
+                            <strong>3. الاستبيانات:</strong> يتم توزيع استمارات على الموظفين يطلب منهم تعبئتها وتتضمن استبيانات أسئلة عن الجوانب المختلفة للعمل ويمكن أن تتضمن أيضاً جانباً خاصاً لرأي المشرفين.
+                        </div>
+                        
+                        <div class="key-point">
+                            <strong>4. تحليل مخزون المهام:</strong> يتم بتحديد المعارف والمهارات المطلوبة لإنجاز الوظيفة بنجاح، ولذلك فإن التحليل يتطلب ثلاث مراحل: المقابلة، المسح، ومن ثم مصفوفة المهام.
+                        </div>
+                        
+                        <div class="key-point">
+                            <strong>5. أسلوب المواقف الحرجة:</strong> يستخدم هذا الأسلوب لتحديد الخصائص السلوكية للوظيفة حيث يحدد المشرف والعامل الأبعاد الرئيسية للوظيفة والمتعلقة في مكونات الأداء.
+                        </div>
+                        
+                        <div class="key-point">
+                            <strong>6. التحليل النشاطي:</strong> يستخدم هذا الأسلوب في المؤسسات القطاع العام نظراً لاعتماده على أسس عامة وشمولية مستقرة نسبياً ويمكن بموجبها تحليل جميع الوظائف.
+                        </div>
+                        
+                        <div class="key-point">
+                            <strong>7. أسلوب تحليل الموقع:</strong> تم تطوير هذا الأسلوب من قبل الباحثين في جامعة بوردو الأمريكية وتتضمن استبياناً يحتوي على معلومات حول متطلبات الوظيفة.
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-file-alt"></i> مفهوم توصيف الوظائف
+                        </div>
+                        <div class="definition-box">
+                            يقصد بتوصيف الوظائف إعداد وصف تحليلي لكل ما تتضمنه الوظيفة من واجبات مسؤوليات سلطات، أساليب العمل، معدلات الأداء، كما يقصد بتوصيف الوظيفة بتحديد القدرات والسمات التي ينبغي أن يتميز بها الفرد حتى يؤدي أدائه على أكمل وجه المطلوب ووضع سياسات التوظيف على أسس سليمة.
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-bullseye"></i> أهداف توصيف الوظائف
+                        </div>
+                        <ol class="lecture-text">
+                            <li>اختيار الفرد الملائم الذي تتوفر فيه الخصائص والسمات المطلوبة</li>
+                            <li>وضع برامج سليمة للتدريب بتحديد المهارات التي ينبغي تدريب الفرد عليها وأسلوب التدريب المناسب</li>
+                            <li>وضع الأسس السليمة للنقل والترقية من وظيفة إلى أخرى داخل المنظمة</li>
+                            <li>رسم سياسة عدالة الأجور إذ تمنح الوظائف المتساوية في القيمة والمسؤولية أجوراً متساوية وزيادة الأجر بزيادة الأهمية بالنسبة للوظيفة وقيمتها</li>
+                            <li>تحسين نظم العمل بإعطاء وصف كامل للموظيفة وخطوات إنجازها، وقت إنجازها وكيفية أداءها</li>
+                        </ol>
+                    </div>
+                `
+            },
+            {
+                id: 10,
+                title: "الملخص النهائي والاستنتاجات",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-chart-bar"></i> تطور مفهوم إدارة الموارد البشرية
+                        </div>
+                        <p class="lecture-text">
+                            تطورت إدارة الموارد البشرية من مفهوم إدارة الأفراد البسيطة إلى نظام متكامل يركز على:
+                        </p>
+                        <ul class="lecture-text">
+                            <li><strong>البعد الإنساني:</strong> اعتبار العامل شريكاً وليس مجرد أداة إنتاج</li>
+                            <li><strong>البعد الاستراتيجي:</strong> ربط سياسات الموارد البشرية باستراتيجية المؤسسة</li>
+                            <li><strong>البعد التنظيمي:</strong> تحديد موقع ووظائف إدارة الموارد البشرية في الهيكل التنظيمي</li>
+                            <li><strong>البعد التطوري:</strong> التكيف مع التحديات المعاصرة (العولمة، التكنولوجيا، الجودة)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-check-circle"></i> أهم الاستنتاجات
+                        </div>
+                        <ol class="lecture-text">
+                            <li>العنصر البشري هو المورد الوحيد الحقيقي لأي منشأة (بيتر دراكر)</li>
+                            <li>إدارة الموارد البشرية تهدف إلى تحقيق التوازن بين أهداف المنظمة وتوقعات الأفراد</li>
+                            <li>التخطيط السليم للموارد البشرية يضمن توفر الكم والنوع المناسب في الوقت والمكان المناسبين</li>
+                            <li>تعدد المدارس الفكرية (الكلاسيكية، العلاقات الإنسانية، العصرية) يعكس تطور النظرة إلى العامل</li>
+                            <li>التحديات المعاصرة (العولمة، التكنولوجيا، الجودة، البيئة) تؤثر بشكل كبير على سياسات الموارد البشرية</li>
+                            <li>موقع إدارة الموارد البشرية في الهيكل التنظيمي يتحدد حسب حجم المنظمة وطبيعة نشاطها</li>
+                            <li>تحليل وتوصيف الوظائف هو الأساس السليم لعمليات الاختيار والتعيين والتدريب والتقييم</li>
+                            <li>التركيز على الجودة الشاملة وتحسين الأداء المستمر من أهم اتجاهات إدارة الموارد البشرية الحديثة</li>
+                            <li>التنظيم المركزي واللامركزي لإدارة الموارد البشرية يعتمدان على فلسفة المنظمة ونظامها</li>
+                            <li>تتمثل أهمية إدارة الموارد البشرية في كونها المحرك الأساسي لتحقيق أهداف المنظمة من خلال الاستخدام الأمثل للطاقات البشرية وتطويرها المستمر</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <div class="highlight-title">
+                            <i class="fas fa-lightbulb"></i> الرسالة الأساسية
+                        </div>
+                        <p class="lecture-text">
+                            إدارة الموارد البشرية ليست مجرد وظيفة إدارية تقليدية، بل هي فلسفة إدارية متكاملة تركز على العنصر البشري كأهم مورد للمنظمة وكعامل حاسم في تحقيق التنمية المستدامة والتميز التنافسي في ظل التحديات المعاصرة.
+                        </p>
+                        <p class="lecture-text">
+                            إن نجاح أي منظمة في القرن الحادي والعشرين يعتمد بشكل أساسي على قدرتها في إدارة مواردها البشرية بكفاءة وفعالية، ودمج أهداف الأفراد مع أهداف المنظمة، والتكيف مع المتغيرات البيئية المتسارعة.
+                        </p>
+                    </div>
+                `
+            }
+        ];
+
+        // بيانات الأسئلة النظرية (20 سؤال)
+        const theoreticalQuestions = [
+            {
+                id: 1,
+                questionAr: "ما هي المراحل التاريخية التي مرت بها إدارة الموارد البشرية؟",
+                answerAr: "مرت إدارة الموارد البشرية بثلاث مراحل تاريخية رئيسية: مرحلة ما قبل الثورة الصناعية (الأعمال البدوية، العامل كسلعة)، مرحلة الثورة الصناعية (ظهور الآلات، مشاكل العمل، مطالب تحسين الظروف)، ومرحلة القرن العشرين (الإدارة العلمية، العلاقات الإنسانية، تأثير العولمة والتكنولوجيا)."
+            },
+            {
+                id: 2,
+                questionAr: "ما هي أهم التعاريف لمفهوم إدارة الموارد البشرية؟",
+                answerAr: "1. وظيفة إدارية تضم جميع سياسات وتطبيقات العناصر البشرية داخل المنظمة. 2. مجموعة الممارسات والسياسات المطلوبة لتنفيذ الأنشطة المتعلقة بالموارد البشرية. 3. الأنشطة الموارد البشرية في الوظائف التقليدية الخاصة بالعاملين داخل المنظمات (كانت تسمى بإدارة الموظفين أو العلاقات الإنسانية ثم إدارة الأفراد)."
+            },
+            {
+                id: 3,
+                questionAr: "اذكر خمسة من أهداف إدارة الموارد البشرية.",
+                answerAr: "1. التعرف على المشاكل وتحديد مواقعها وطبيعتها. 2. زيادة الإنتاجية ورفع كفاءة الأداء. 3. تنمية روح التعاون والتماسك بين مجموعات العمل. 4. التنسيق بين استراتيجية الموارد البشرية واستراتيجية المؤسسة. 5. معاونة الإدارة العليا في التقييم والمتابعة. 6. التأكيد على دور الأفراد في المؤسسة."
+            },
+            {
+                id: 4,
+                questionAr: "ما هو الفرق بين نظرة المدرسة الكلاسيكية والمدرسة الحديثة للعامل؟",
+                answerAr: "المدرسة الكلاسيكية تنظر للعامل كوحدة ثابتة مسيرة وفق عوامل بسيطة (العمر، الجنس، التكوين) وتطبق مبدأ 'أحسن عمل لأحسن أجر'، بينما المدرسة الحديثة تنظر للعامل كإنسان معقد له حاجات نفسية واجتماعية ويحتاج للمشاركة في اتخاذ القرارات والعمل الجماعي."
+            },
+            {
+                id: 5,
+                questionAr: "ما هي أهم التحديات المعاصرة التي تواجه إدارة الموارد البشرية؟",
+                answerAr: "1. تحديات العولمة والتنافسية (توسع الأسواق، المعايير الدولية). 2. التحديات التكنولوجية (ثورة المعلومات، تعدد الثقافات). 3. إدارة الجودة الشاملة (مساهمة العاملين، رضا المستهلكين، التحسين المستمر). 4. التحديات البيئية (بيئة ديناميكية غير مستقرة)."
+            },
+            {
+                id: 6,
+                questionAr: "ما هي وظائف إدارة الموارد البشرية الرئيسية؟",
+                answerAr: "1. تخطيط الموارد البشرية. 2. الاختيار والتعيين. 3. تنمية وتوجيه المسار الوظيفي. 4. تقييم الأداء. 5. التدريب والتطوير. 6. الأجور والحوافز. 7. تحسين ظروف العمل."
+            },
+            {
+                id: 7,
+                questionAr: "ما هي خطوات عملية تخطيط الموارد البشرية؟",
+                answerAr: "تمر عملية تخطيط الموارد البشرية بـ 4 خطوات رئيسية: 1. التحليل (تحليل مخزون المنظمة من المهارات). 2. تقدير الطلب (التنبؤ بحجم الطلب المستقبلي). 3. التنبؤ بالعرض (تقدير القوة العاملة المتوقع دخولها سوق العمل). 4. الموازنة (المقارنة بين المعروض والمطلوب ومعالجة الخلل)."
+            },
+            {
+                id: 8,
+                questionAr: "ما هي العوامل المؤثرة في عملية استقطاب الأفراد؟",
+                answerAr: "1. حجم المنظمة. 2. البيئة (العرض والطلب، المكانة في السوق). 3. الخبرة السابقة. 4. ظروف العمل والأجور والمزايا. 5. اتجاه المنظمة نحو النمو أو الانكماش. 6. سمعة ومكانة المنظمة."
+            },
+            {
+                id: 9,
+                questionAr: "ما الفرق بين التنظيم المركزي واللامركزي لإدارة الموارد البشرية؟",
+                answerAr: "التنظيم المركزي: القرارات الجوهرية محصورة في قمة الهرم التنظيمي، وجود إدارة مركزية تستمد صلاحياتها من الإدارة العليا. التنظيم اللامركزي: توزيع مهام ونشاطات إدارة الموارد البشرية على جميع الإدارات الأخرى، المديرون يختارون ويعينون ويدربون العاملين لإداراتهم."
+            },
+            {
+                id: 10,
+                questionAr: "ما هي أهمية تحليل الوظائف؟",
+                answerAr: "1. أساس موضوعي للاختيار والتعيين والترقية. 2. أساس لبناء وتصميم البرامج التدريبية. 3. أساس لتحديد الأجر. 4. أساس لتقييم الأداء. 5. تصميم سياسة سليمة للخدمات الصحية والأمن الصناعي."
+            },
+            {
+                id: 11,
+                questionAr: "ما هي الطرق الرئيسية لتحليل الوظائف؟",
+                answerAr: "1. أسلوب المقابلة الشخصية. 2. الملاحظة المباشرة. 3. الاستبيانات. 4. تحليل مخزون المهام. 5. أسلوب المواقف الحرجة. 6. التحليل النشاطي. 7. أسلوب تحليل الموقع."
+            },
+            {
+                id: 12,
+                questionAr: "ما هي أهداف توصيف الوظائف؟",
+                answerAr: "1. اختيار الفرد الملائم. 2. وضع برامج سليمة للتدريب. 3. وضع أسس سليمة للنقل والترقية. 4. رسم سياسة عدالة الأجور. 5. تحسين نظم العمل."
+            },
+            {
+                id: 13,
+                questionAr: "كيف أثرت العولمة على إدارة الموارد البشرية؟",
+                answerAr: "أثرت العولمة على إدارة الموارد البشرية من خلال: توسع الأسواق العالمية، خضوع عمليات اختيار العاملين للمعايير الدولية، تأثير القوانين والتشريعات المحلية والدولية، جعل سبيل اختيار العاملين خاضعاً للعديد من الآثار والمتغيرات التشريعية."
+            },
+            {
+                id: 14,
+                questionAr: "ما هو دور التغذية الراجعة في نظام إدارة الموارد البشرية؟",
+                answerAr: "دور التغذية الراجعة هو تصحيح الأخطاء وتحسين الأداء وتعديل العمليات لتحقيق الأهداف المطلوبة. وهي أحد العناصر الأساسية في هيكل النظام حيث تساعد في تعديل المدخلات والعمليات بناءً على نتائج المخرجات."
+            },
+            {
+                id: 15,
+                questionAr: "ما هي العوامل المؤثرة في الوضع التنظيمي لإدارة الموارد البشرية؟",
+                answerAr: "1. أدوار إدارة الموارد البشرية (أعمال، تشغيلي، إداري). 2. حجم المنظمة. 3. كثافة الموارد البشرية. 4. مستوى التقنية. 5. خصائص سوق العمل. 6. توفر الإطارات الإدارية الكفوءة."
+            },
+            {
+                id: 16,
+                questionAr: "ما هي خصائص النظام المفتوح التي تنطبق على المؤسسة؟",
+                answerAr: "خصائص النظام المفتوح التي تنطبق على المؤسسة: استيراد الطاقة (المدخلات)، التحويل (العمليات)، تصدير المنتوج (المخرجات)، الدورية، مقاومة التلاشي، التغذية الراجعة، الثبات النسبي، التخصص، التنسيق والاندماج، تعدد المسارات."
+            },
+            {
+                id: 17,
+                questionAr: "ما هي مبادئ مدرسة العلاقات الإنسانية في إدارة الموارد البشرية؟",
+                answerAr: "مبادئ مدرسة العلاقات الإنسانية: العامل لا يكتفي بحافز الأجر فقط، حاجة العامل للمعرفة والقيم للعمل الذي يؤديه، حاجته العاطفية في المشاركة مع الجماعة، تنظيم العمل يكون جماعياً، اختيار أسلوب الديمقراطي في التحكم، مشاركة الجماعة في اتخاذ القرارات."
+            },
+            {
+                id: 18,
+                questionAr: "ما هو مفهوم 'العنصر البشري كقيمة إنسانية'؟",
+                answerAr: "مفهوم 'العنصر البشري كقيمة إنسانية' يعني إدارة العنصر البشري توجيهه والعمل على إشباع جميع احتياجاته، مع مراعاة البعد القيمي والإنساني في المقام الأول حسب طبيعة الفرد وظروفه الاجتماعية والاقتصادية وحسب طبيعة المجتمع وإمكانيات المنظمة."
+            },
+            {
+                id: 19,
+                questionAr: "ما هو الفرق بين المصادر الداخلية والخارجية لاستقطاب الأفراد؟",
+                answerAr: "المصادر الداخلية: الترقية، النقل من قسم إلى آخر، استخدام العاملين السابقين. مزاياها: تجنب تكاليف التدريب، سرعة الحصول على العاملين، دعم الشعور والولاء. المصادر الخارجية: مكاتب العمل، الجامعات، الإعلانات، وكالات التوظيف. عيوبها: ارتفاع التكاليف، تأثير سلبي على الروح المعنادية، طول فترة التكيف."
+            },
+            {
+                id: 20,
+                questionAr: "ما هي الاستنتاجات الرئيسية لتطور إدارة الموارد البشرية؟",
+                answerAr: "1. تطورت من إدارة الأفراد البسيطة إلى نظام متكامل. 2. التركيز على البعد الإنساني (العامل شريك). 3. الربط بين سياسات الموارد البشرية واستراتيجية المؤسسة. 4. التكيف مع التحديات المعاصرة. 5. العنصر البشري هو المورد الوحيد الحقيقي. 6. أهمية التخطيط السليم للموارد البشرية."
+            }
+        ];
+
+        // بيانات أسئلة متعددة الخيارات (20 سؤال)
+        const qcmQuestions = [
+            {
+                id: 1,
+                questionAr: "في أي مرحلة تاريخية كان ينظر للعامل كسلعة يبيعها صاحب العمل ويشتريها حسب حاجة العمل؟",
+                options: [
+                    { textAr: "مرحلة ما قبل الثورة الصناعية", correct: true },
+                    { textAr: "مرحلة الثورة الصناعية", correct: false },
+                    { textAr: "مرحلة القرن العشرين", correct: false },
+                    { textAr: "مرحلة العولمة", correct: false }
+                ]
+            },
+            {
+                id: 2,
+                questionAr: "من هو مؤسس حركة الإدارة العلمية التي درست الوقت والحركة؟",
+                options: [
+                    { textAr: "فريدريك تايلور", correct: true },
+                    { textAr: "هنري فايول", correct: false },
+                    { textAr: "ماكس فيبر", correct: false },
+                    { textAr: "إلتون مايو", correct: false }
+                ]
+            },
+            {
+                id: 3,
+                questionAr: "أي من التالي ليس من أهداف إدارة الموارد البشرية؟",
+                options: [
+                    { textAr: "تقليل عدد العاملين بأقصى قدر ممكن", correct: true },
+                    { textAr: "زيادة الإنتاجية ورفع كفاءة الأداء", correct: false },
+                    { textAr: "تنمية روح التعاون بين مجموعات العمل", correct: false },
+                    { textAr: "التنسيق بين استراتيجية الموارد البشرية والمؤسسة", correct: false }
+                ]
+            },
+            {
+                id: 4,
+                questionAr: "من قال: 'أي منشأة أو مؤسسة من أي نوع لها مورد حقيقي واحد هو الإنسان'؟",
+                options: [
+                    { textAr: "بيتر دراكر", correct: true },
+                    { textAr: "هنري فايول", correct: false },
+                    { textAr: "إلتون مايو", correct: false },
+                    { textAr: "فريدريك تايلور", correct: false }
+                ]
+            },
+            {
+                id: 5,
+                questionAr: "ما هي الخطوة الأولى في عملية تخطيط الموارد البشرية؟",
+                options: [
+                    { textAr: "التحليل (تحليل مخزون المنظمة من المهارات)", correct: true },
+                    { textAr: "تقدير الطلب على القوى العاملة", correct: false },
+                    { textAr: "التنبؤ بالعرض من الموارد البشرية", correct: false },
+                    { textAr: "الموازنة بين العرض والطلب", correct: false }
+                ]
+            },
+            {
+                id: 6,
+                questionAr: "أي من العوامل التالية يؤثر في عملية استقطاب الأفراد؟",
+                options: [
+                    { textAr: "جميع ما ذكر", correct: true },
+                    { textAr: "حجم المنظمة", correct: false },
+                    { textAr: "ظروف العمل والأجور والمزايا", correct: false },
+                    { textAr: "سمعة ومكانة المنظمة", correct: false }
+                ]
+            },
+            {
+                id: 7,
+                questionAr: "أي مدرسة من المدارس الفكرية ركزت على الحاجات النفسية والاجتماعية للعامل؟",
+                options: [
+                    { textAr: "مدرسة العلاقات الإنسانية", correct: true },
+                    { textAr: "المدرسة الكلاسيكية", correct: false },
+                    { textAr: "المدرسة العصرية الحديثة", correct: false },
+                    { textAr: "المدرسة الماركسية", correct: false }
+                ]
+            },
+            {
+                id: 8,
+                questionAr: "أي من التحديات التالية يعد من 'تحديات العولمة والتنافسية'؟",
+                options: [
+                    { textAr: "توسع الأسواق العالمية وخضوع الاختيار للمعايير الدولية", correct: true },
+                    { textAr: "ثورة المعلومات والاتصالات", correct: false },
+                    { textAr: "ضرورة التحسين المستمر في الجودة", correct: false },
+                    { textAr: "بيئة العمل الديناميكية غير المستقرة", correct: false }
+                ]
+            },
+            {
+                id: 9,
+                questionAr: "في أي نوع من المؤسسات تكون إدارة الموارد البشرية عادةً من مهام المالكين؟",
+                options: [
+                    { textAr: "المؤسسات الصغيرة", correct: true },
+                    { textAr: "المؤسسات الكبيرة متعددة الجنسيات", correct: false },
+                    { textAr: "المؤسسات المتوسطة في القطاع العام", correct: false },
+                    { textAr: "المؤسسات الحكومية الكبيرة", correct: false }
+                ]
+            },
+            {
+                id: 10,
+                questionAr: "ما هو الهدف الرئيسي من عملية 'تحليل الوظائف'؟",
+                options: [
+                    { textAr: "توفير أساس موضوعي للاختيار والتعيين والتقييم", correct: true },
+                    { textAr: "تقليل عدد الوظائف في المنظمة", correct: false },
+                    { textAr: "زيادة أعباء العمل على الموظفين", correct: false },
+                    { textAr: "تحديد أعلى الرواتب فقط", correct: false }
+                ]
+            },
+            {
+                id: 11,
+                questionAr: "أي من الطرق التالية تستخدم لتحليل الوظائف؟",
+                options: [
+                    { textAr: "جميع ما ذكر", correct: true },
+                    { textAr: "المقابلة الشخصية", correct: false },
+                    { textAr: "الملاحظة المباشرة", correct: false },
+                    { textAr: "الاستبيانات", correct: false }
+                ]
+            },
+            {
+                id: 12,
+                questionAr: "ما هو مفهوم 'العنصر البشري كقيمة إنسانية'؟",
+                options: [
+                    { textAr: "إدارة العنصر البشري توجيهه وإشباع احتياجاته مع مراعاة البعد القيمي", correct: true },
+                    { textAr: "العنصر البشري هو مجرد عامل إنتاج مثل الأرض ورأس المال", correct: false },
+                    { textAr: "يجب التعامل مع العنصر البشري كسلعة تشتري وتباع", correct: false },
+                    { textAr: "العنصر البشري وحدة ثابتة يمكن التحكم فيها بسهولة", correct: false }
+                ]
+            },
+            {
+                id: 13,
+                questionAr: "ما هي وظائف إدارة الموارد البشرية الرئيسية؟",
+                options: [
+                    { textAr: "التخطيط، الاختيار، التدريب، التقييم، الأجور", correct: true },
+                    { textAr: "الإنتاج، التسويق، المالية، المشتريات", correct: false },
+                    { textAr: "التصنيع، التخزين، النقل، التوزيع", correct: false },
+                    { textAr: "المحاسبة، المراجعة، الضرائب، الاستثمار", correct: false }
+                ]
+            },
+            {
+                id: 14,
+                questionAr: "ما هو دور التغذية الراجعة في نظام إدارة الموارد البشرية؟",
+                options: [
+                    { textAr: "تصحيح الأخطاء وتحسين الأداء", correct: true },
+                    { textAr: "تعطيل النظام", correct: false },
+                    { textAr: "تقليل الكفاءة", correct: false },
+                    { textAr: "تجاهل النتائج", correct: false }
+                ]
+            },
+            {
+                id: 15,
+                questionAr: "ما هو الفرق بين التنظيم المركزي واللامركزي؟",
+                options: [
+                    { textAr: "المركزي: القرارات في القمة، اللامركزي: توزيع المهام", correct: true },
+                    { textAr: "المركزي: توزيع المهام، اللامركزي: القرارات في القمة", correct: false },
+                    { textAr: "لا فرق بينهما", correct: false },
+                    { textAr: "المركزي للمؤسسات الصغيرة، اللامركزي للكبيرة", correct: false }
+                ]
+            },
+            {
+                id: 16,
+                questionAr: "ما هي أبعاد إدارة الموارد البشرية؟",
+                options: [
+                    { textAr: "البيئة الخارجية والداخلية", correct: true },
+                    { textAr: "الإدارة العليا والوسطى والدنيا", correct: false },
+                    { textAr: "التخطيط والتنظيم والتوجيه والرقابة", correct: false },
+                    { textAr: "المدخلات والعمليات والمخرجات", correct: false }
+                ]
+            },
+            {
+                id: 17,
+                questionAr: "ما هو مفهوم 'استقطاب الأفراد'؟",
+                options: [
+                    { textAr: "عملية اكتشاف مرشحين محتملين للوظائف الشاغرة", correct: true },
+                    { textAr: "طرد الموظفين غير الكفء", correct: false },
+                    { textAr: "تقليل عدد العاملين", correct: false },
+                    { textAr: "توزيع المهام على الموظفين", correct: false }
+                ]
+            },
+            {
+                id: 18,
+                questionAr: "ما هي مصادر الاستقطاب الداخلية؟",
+                options: [
+                    { textAr: "الترقية والنقل والعاملين السابقين", correct: true },
+                    { textAr: "الجامعات والإعلانات ومكاتب العمل", correct: false },
+                    { textAr: "الإنترنت ووسائل التواصل الاجتماعي", correct: false },
+                    { textAr: "المعارض والمؤتمرات", correct: false }
+                ]
+            },
+            {
+                id: 19,
+                questionAr: "ما هي خصائص النظام المفتوح؟",
+                options: [
+                    { textAr: "التفاعل مع البيئة الخارجية والتغذية الراجعة", correct: true },
+                    { textAr: "العزلة التامة عن البيئة", correct: false },
+                    { textAr: "عدم التغيير والثبات الدائم", correct: false },
+                    { textAr: "اعتماد على الذات فقط", correct: false }
+                ]
+            },
+            {
+                id: 20,
+                questionAr: "ما هي الرسالة الأساسية لإدارة الموارد البشرية الحديثة؟",
+                options: [
+                    { textAr: "العنصر البشري هو أهم مورد للمنظمة وعامل حاسم في تحقيق التميز التنافسي", correct: true },
+                    { textAr: "الربح هو الهدف الوحيد لأي منظمة", correct: false },
+                    { textAr: "التكنولوجيا تحل محل العنصر البشري", correct: false },
+                    { textAr: "إدارة الموارد البشرية وظيفة ثانوية في المنظمة", correct: false }
+                ]
+            }
+        ];
+
+        // متغيرات التطبيق
+        let currentTab = 'lectures';
+        let theoreticalAnswersVisible = [];
+        let qcmUserAnswers = Array(qcmQuestions.length).fill(null);
+        let qcmChecked = Array(qcmQuestions.length).fill(false);
+
+        // تهيئة التطبيق
+        document.addEventListener('DOMContentLoaded', function() {
+            // عرض المحاضرات
+            renderLectures();
+            
+            // تهيئة الأسئلة النظرية
+            renderTheoreticalQuestions();
+            
+            // تهيئة أسئلة متعددة الخيارات
+            renderQCMQuestions();
+            
+            // تحديث الإحصائيات
+            updateStats();
+            
+            // إضافة أحداث التبويبات
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    switchTab(this.dataset.tab);
+                });
+            });
+            
+            // إضافة أحداث الأزرار
+            document.getElementById('resetTheoreticalBtn').addEventListener('click', resetTheoretical);
+            document.getElementById('showAllAnswersBtn').addEventListener('click', toggleShowAllAnswers);
+            
+            // تغيير أزرار التحكم حسب التبويب
+            updateControlButtons();
+        });
+
+        // عرض المحاضرات
+        function renderLectures() {
+            const container = document.getElementById('lectures-container');
+            container.innerHTML = '';
+            
+            lectures.forEach((lecture, index) => {
+                const card = document.createElement('div');
+                card.className = 'lecture-card';
+                
+                card.innerHTML = `
+                    <div class="lecture-header">
+                        <div class="lecture-title">
+                            <i class="fas fa-book"></i> الوحدة ${String(lecture.id).padStart(2, '0')}: ${lecture.title}
+                            <div class="lecture-number">${lecture.id}</div>
+                        </div>
+                    </div>
+                    <div class="lecture-body">
+                        ${lecture.content}
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        // عرض الأسئلة النظرية
+        function renderTheoreticalQuestions() {
+            const container = document.getElementById('theoretical-questions-container');
+            container.innerHTML = '';
+            
+            theoreticalQuestions.forEach((question, index) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.id = `theoretical-${index}`;
+                
+                card.innerHTML = `
+                    <div class="question-header">
+                        <div class="question-number">${index + 1}</div>
+                        <div class="question-type">سؤال نظري</div>
+                    </div>
+                    <div class="question-text">${question.questionAr}</div>
+                    <button class="answer-btn" data-index="${index}">
+                        <i class="fas fa-lightbulb"></i> عرض الإجابة
+                    </button>
+                    <div class="answer-content" id="answer-${index}">
+                        <div class="answer-title">
+                            <i class="fas fa-check-circle"></i> الإجابة
+                        </div>
+                        <div class="answer-text">${question.answerAr}</div>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+                
+                // إضافة حدث للزر
+                const answerBtn = card.querySelector('.answer-btn');
+                answerBtn.addEventListener('click', function() {
+                    toggleAnswer(this.dataset.index);
+                });
+            });
+        }
+
+        // عرض أسئلة متعددة الخيارات
+        function renderQCMQuestions() {
+            const container = document.getElementById('qcm-questions-container');
+            container.innerHTML = '';
+            
+            qcmQuestions.forEach((question, questionIndex) => {
+                const card = document.createElement('div');
+                card.className = 'qcm-card';
+                card.id = `qcm-${questionIndex}`;
+                
+                let optionsHTML = '';
+                const letters = ['أ', 'ب', 'ج', 'د'];
+                
+                question.options.forEach((option, optionIndex) => {
+                    optionsHTML += `
+                        <div class="option" data-question="${questionIndex}" data-option="${optionIndex}">
+                            <div class="option-letter">${letters[optionIndex]}</div>
+                            <div class="option-text">${option.textAr}</div>
+                        </div>
+                    `;
+                });
+                
+                card.innerHTML = `
+                    <div class="question-header">
+                        <div class="question-number">${questionIndex + 1}</div>
+                        <div class="question-type">اختيار متعدد</div>
+                    </div>
+                    <div class="qcm-question">${question.questionAr}</div>
+                    <div class="options-container">
+                        ${optionsHTML}
+                    </div>
+                    <div class="feedback" id="feedback-${questionIndex}"></div>
+                `;
+                
+                container.appendChild(card);
+                
+                // إضافة أحداث للخيارات
+                card.querySelectorAll('.option').forEach(option => {
+                    option.addEventListener('click', function() {
+                        selectOption(this.dataset.question, this.dataset.option);
+                    });
+                });
+            });
+        }
+
+        // التبديل بين التبويبات
+        function switchTab(tabName) {
+            currentTab = tabName;
+            
+            // تحديث التبويبات النشطة
+            document.querySelectorAll('.tab').forEach(tab => {
+                if (tab.dataset.tab === tabName) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            
+            // تحديث المحتوى المرئي
+            document.querySelectorAll('.content-section').forEach(section => {
+                if (section.id === `${tabName}-section`) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+            
+            // تحديث أزرار التحكم
+            updateControlButtons();
+            
+            // التمرير لأعلى الصفحة
+            window.scrollTo(0, 0);
+        }
+
+        // تحديث أزرار التحكم حسب التبويب
+        function updateControlButtons() {
+            const resetBtn = document.getElementById('resetTheoreticalBtn');
+            const showAllBtn = document.getElementById('showAllAnswersBtn');
+            
+            if (currentTab === 'theoretical') {
+                resetBtn.innerHTML = '<i class="fas fa-redo"></i> إعادة تعيين';
+                resetBtn.onclick = resetTheoretical;
+                showAllBtn.innerHTML = '<i class="fas fa-eye"></i> عرض كل الإجابات';
+                showAllBtn.onclick = toggleShowAllAnswers;
+                resetBtn.style.display = 'flex';
+                showAllBtn.style.display = 'flex';
+            } else if (currentTab === 'qcm') {
+                resetBtn.innerHTML = '<i class="fas fa-redo"></i> إعادة الاختبار';
+                resetBtn.onclick = resetQCM;
+                showAllBtn.innerHTML = '<i class="fas fa-check-circle"></i> تحقق من الإجابات';
+                showAllBtn.onclick = checkAllAnswers;
+                resetBtn.style.display = 'flex';
+                showAllBtn.style.display = 'flex';
+            } else {
+                resetBtn.style.display = 'none';
+                showAllBtn.style.display = 'none';
+            }
+        }
+
+        // عرض/إخفاء إجابة نظرية
+        function toggleAnswer(index) {
+            const answerElement = document.getElementById(`answer-${index}`);
+            const isVisible = answerElement.classList.toggle('show');
+            
+            // تحديث حالة الإجابة
+            if (isVisible && !theoreticalAnswersVisible.includes(parseInt(index))) {
+                theoreticalAnswersVisible.push(parseInt(index));
+                updateStats();
+            }
+            
+            // تحديث نص الزر
+            const button = document.querySelector(`#theoretical-${index} .answer-btn`);
+            if (isVisible) {
+                button.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء الإجابة';
+            } else {
+                button.innerHTML = '<i class="fas fa-lightbulb"></i> عرض الإجابة';
+            }
+        }
+
+        // اختيار خيار في سؤال متعدد
+        function selectOption(questionIndex, optionIndex) {
+            // إذا كان السؤال قد تم التحقق منه مسبقًا، لا نسمح بتغيير الإجابة
+            if (qcmChecked[questionIndex]) return;
+            
+            const questionCard = document.getElementById(`qcm-${questionIndex}`);
+            
+            // إلغاء تحديد جميع الخيارات في هذا السؤال
+            questionCard.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // تحديد الخيار المختار
+            const selectedOption = questionCard.querySelector(`.option[data-option="${optionIndex}"]`);
+            selectedOption.classList.add('selected');
+            
+            // حفظ إجابة المستخدم
+            qcmUserAnswers[questionIndex] = parseInt(optionIndex);
+            
+            // تحديث الإحصائيات
+            updateStats();
+            
+            // التحقق الفوري من الإجابة
+            setTimeout(() => checkAnswer(questionIndex), 300);
+        }
+
+        // التحقق من إجابة سؤال متعدد
+        function checkAnswer(questionIndex) {
+            if (qcmUserAnswers[questionIndex] === null) return false;
+            
+            const question = qcmQuestions[questionIndex];
+            const userAnswerIndex = qcmUserAnswers[questionIndex];
+            const isCorrect = question.options[userAnswerIndex].correct;
+            
+            const questionCard = document.getElementById(`qcm-${questionIndex}`);
+            const feedbackElement = document.getElementById(`feedback-${questionIndex}`);
+            
+            // تحديث مظهر الخيارات
+            question.options.forEach((option, index) => {
+                const optionElement = questionCard.querySelector(`.option[data-option="${index}"]`);
+                
+                if (option.correct) {
+                    optionElement.classList.add('correct');
+                } else if (index === userAnswerIndex && !option.correct) {
+                    optionElement.classList.add('incorrect');
+                }
+            });
+            
+            // عرض التغذية الراجعة
+            if (isCorrect) {
+                feedbackElement.textContent = 'إجابة صحيحة! أحسنت!';
+                feedbackElement.className = 'feedback correct show';
+            } else {
+                feedbackElement.textContent = 'إجابة غير صحيحة. حاول مرة أخرى!';
+                feedbackElement.className = 'feedback incorrect show';
+            }
+            
+            qcmChecked[questionIndex] = true;
+            
+            return isCorrect;
+        }
+
+        // التحقق من جميع الإجابات
+        function checkAllAnswers() {
+            let allCorrect = true;
+            let answeredCount = 0;
+            let correctCount = 0;
+            
+            qcmQuestions.forEach((_, index) => {
+                if (qcmUserAnswers[index] !== null) {
+                    answeredCount++;
+                    if (checkAnswer(index)) {
+                        correctCount++;
+                    } else {
+                        allCorrect = false;
+                    }
+                }
+            });
+            
+            // عرض نتيجة النهاية
+            if (answeredCount === 0) {
+                alert('لم تقم بالإجابة على أي سؤال بعد. يرجى اختيار الإجابات أولاً.');
+            } else if (answeredCount < qcmQuestions.length) {
+                alert(`لقد أجبت على ${answeredCount} من أصل ${qcmQuestions.length} سؤالاً.\n\nالنتيجة: ${correctCount}/${answeredCount} إجابة صحيحة.\n\nيرجى الإجابة على جميع الأسئلة للحصول على نتيجة كاملة.`);
+            } else {
+                alert(`تهانينا! لقد أكملت الاختبار.\n\nالنتيجة النهائية: ${correctCount}/${qcmQuestions.length} إجابة صحيحة.\n\nالنسبة: ${Math.round((correctCount/qcmQuestions.length)*100)}%`);
+            }
+            
+            updateStats();
+        }
+
+        // إعادة تعيين الأسئلة النظرية
+        function resetTheoretical() {
+            theoreticalAnswersVisible = [];
+            
+            // إخفاء جميع الإجابات
+            document.querySelectorAll('.answer-content').forEach(answer => {
+                answer.classList.remove('show');
+            });
+            
+            // تحديث نصوص الأزرار
+            document.querySelectorAll('.answer-btn').forEach(button => {
+                button.innerHTML = '<i class="fas fa-lightbulb"></i> عرض الإجابة';
+            });
+            
+            updateStats();
+            
+            // عرض رسالة تأكيد
+            alert('تم إعادة تعيين جميع الإجابات النظرية بنجاح.');
+        }
+
+        // إعادة تعيين أسئلة متعددة الخيارات
+        function resetQCM() {
+            qcmUserAnswers = Array(qcmQuestions.length).fill(null);
+            qcmChecked = Array(qcmQuestions.length).fill(false);
+            
+            // إعادة تعيين مظهر جميع الخيارات
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            // إخفاء جميع التغذية الراجعة
+            document.querySelectorAll('.feedback').forEach(feedback => {
+                feedback.classList.remove('show', 'correct', 'incorrect');
+            });
+            
+            updateStats();
+            
+            // عرض رسالة تأكيد
+            alert('تم إعادة تعيين اختبار الأسئلة المتعددة بنجاح. يمكنك البدء من جديد.');
+        }
+
+        // عرض/إخفاء كل الإجابات النظرية
+        function toggleShowAllAnswers() {
+            if (currentTab === 'theoretical') {
+                const allVisible = theoreticalAnswersVisible.length === theoreticalQuestions.length;
+                
+                if (allVisible) {
+                    // إخفاء جميع الإجابات
+                    theoreticalAnswersVisible = [];
+                    document.querySelectorAll('.answer-content').forEach(answer => {
+                        answer.classList.remove('show');
+                    });
+                    document.querySelectorAll('.answer-btn').forEach(button => {
+                        button.innerHTML = '<i class="fas fa-lightbulb"></i> عرض الإجابة';
+                    });
+                } else {
+                    // عرض جميع الإجابات
+                    theoreticalAnswersVisible = [];
+                    theoreticalQuestions.forEach((_, index) => {
+                        theoreticalAnswersVisible.push(index);
+                        const answerElement = document.getElementById(`answer-${index}`);
+                        answerElement.classList.add('show');
+                        const button = document.querySelector(`#theoretical-${index} .answer-btn`);
+                        button.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء الإجابة';
+                    });
+                }
+                
+                updateStats();
+            }
+        }
+
+        // تحديث الإحصائيات
+        function updateStats() {
+            // تحديث إحصائيات الأسئلة النظرية
+            const theoreticalAnswered = document.getElementById('theoretical-answered');
+            theoreticalAnswered.textContent = theoreticalAnswersVisible.length;
+            
+            // تحديث إحصائيات أسئلة متعددة الخيارات
+            const qcmAnswered = document.getElementById('qcm-answered');
+            const qcmCorrect = document.getElementById('qcm-correct');
+            
+            let answeredCount = 0;
+            let correctCount = 0;
+            
+            qcmUserAnswers.forEach((answer, index) => {
+                if (answer !== null) {
+                    answeredCount++;
+                    
+                    if (qcmChecked[index] && qcmQuestions[index].options[answer].correct) {
+                        correctCount++;
+                    }
+                }
+            });
+            
+            qcmAnswered.textContent = answeredCount;
+            qcmCorrect.textContent = correctCount;
+        }
+    </script>
+</body>
+</html>
