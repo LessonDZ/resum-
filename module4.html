@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>منهجية البحث العلمي - المحاضرات والاختبارات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0d47a1;
+            --secondary-color: #1565c0;
+            --accent-color: #1e88e5;
+            --success-color: #00c853;
+            --error-color: #ff1744;
+            --warning-color: #ff9100;
+            --light-color: #e3f2fd;
+            --dark-color: #0d1b36;
+            --gray-color: #546e7a;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 100, 0.08);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 0;
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        /* الهيدر */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 18px 16px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--accent-color);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            background-color: var(--white);
+            color: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+        
+        .app-title {
+            color: var(--white);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .app-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+        
+        /* التبويبات */
+        .tabs {
+            display: flex;
+            background-color: var(--white);
+            position: sticky;
+            top: 78px;
+            z-index: 99;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+        
+        .tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+            background-color: rgba(13, 71, 161, 0.05);
+        }
+        
+        /* المحتوى */
+        .content {
+            padding: 16px;
+            padding-bottom: 100px;
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-color);
+        }
+        
+        /* المحاضرات */
+        .lectures-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .lecture-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 0;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #e0e0e0;
+        }
+        
+        .lecture-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 100, 0.12);
+        }
+        
+        .lecture-header {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 20px 16px;
+        }
+        
+        .lecture-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .lecture-title i {
+            margin-left: 10px;
+        }
+        
+        .lecture-number {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .lecture-body {
+            padding: 20px 16px;
+        }
+        
+        .lecture-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        
+        .lecture-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-subtitle i {
+            margin-left: 8px;
+        }
+        
+        .lecture-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--dark-color);
+        }
+        
+        .lecture-text ul, .lecture-text ol {
+            padding-right: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .lecture-text li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .lecture-text li:before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-right: 4px solid var(--accent-color);
+        }
+        
+        .highlight-title {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .highlight-title i {
+            margin-left: 8px;
+        }
+        
+        .key-point {
+            background-color: rgba(30, 136, 229, 0.1);
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin: 8px 0;
+            border-right: 3px solid var(--accent-color);
+        }
+        
+        .definition-box {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #2196f3;
+        }
+        
+        /* الأسئلة النظرية */
+        .question-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .question-card:hover {
+            border-color: var(--light-color);
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .question-number {
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .question-type {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .question-text {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: var(--dark-color);
+        }
+        
+        .answer-btn {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .answer-btn:active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: scale(0.98);
+        }
+        
+        .answer-content {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f5f7ff;
+            border-radius: 8px;
+            border-right: 4px solid var(--primary-color);
+            display: none;
+        }
+        
+        .answer-content.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .answer-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .answer-title i {
+            margin-left: 8px;
+        }
+        
+        .answer-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        /* أسئلة متعددة الخيارات */
+        .qcm-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .qcm-card:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 100, 0.1);
+        }
+        
+        .qcm-question {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 15px 12px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .option:active {
+            background-color: #eef2f7;
+            transform: scale(0.99);
+        }
+        
+        .option.selected {
+            border-color: var(--primary-color);
+            background-color: #e8f0fe;
+        }
+        
+        .option.correct {
+            border-color: var(--success-color);
+            background-color: rgba(0, 200, 83, 0.1);
+        }
+        
+        .option.incorrect {
+            border-color: var(--error-color);
+            background-color: rgba(255, 23, 68, 0.1);
+        }
+        
+        .option-letter {
+            background-color: #ddd;
+            color: #555;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .option.selected .option-letter {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .option.correct .option-letter {
+            background-color: var(--success-color);
+            color: var(--white);
+        }
+        
+        .option.incorrect .option-letter {
+            background-color: var(--error-color);
+            color: var(--white);
+        }
+        
+        .option-text {
+            flex: 1;
+            font-size: 0.95rem;
+        }
+        
+        .feedback {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .feedback.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .feedback.correct {
+            background-color: rgba(0, 200, 83, 0.1);
+            color: var(--success-color);
+            border-right: 3px solid var(--success-color);
+        }
+        
+        .feedback.incorrect {
+            background-color: rgba(255, 23, 68, 0.1);
+            color: var(--error-color);
+            border-right: 3px solid var(--error-color);
+        }
+        
+        /* إحصائيات */
+        .stats {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        
+        .stat-item {
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+        
+        .theoretical .stat-value {
+            color: var(--primary-color);
+        }
+        
+        .qcm .stat-value {
+            color: var(--warning-color);
+        }
+        
+        /* أزرار التحكم */
+        .control-buttons {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            background-color: var(--white);
+            padding: 12px 16px;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            z-index: 90;
+        }
+        
+        .control-btn {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            flex: 1;
+            margin: 0 5px;
+        }
+        
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .btn-reset {
+            background-color: #f8f9fa;
+            color: var(--gray-color);
+            border: 1px solid #ddd;
+        }
+        
+        .btn-show-all {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+        }
+        
+        /* الرسوم المتحركة */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* تحسينات للأجهزة الصغيرة */
+        @media (max-width: 360px) {
+            .app-title {
+                font-size: 1.1rem;
+            }
+            
+            .tab {
+                font-size: 0.85rem;
+                padding: 12px 8px;
+            }
+            
+            .lecture-card, .question-card, .qcm-card {
+                padding: 16px 12px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- الهيدر -->
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div>
+                        <div class="app-title">منهجية البحث العلمي</div>
+                        <div class="app-subtitle">النسخة المطولة - 9 محاضرات</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- التبويبات -->
+        <div class="tabs">
+            <div class="tab active" data-tab="lectures">
+                <i class="fas fa-book-open"></i> المحاضرات (9)
+            </div>
+            <div class="tab" data-tab="theoretical">
+                <i class="fas fa-question-circle"></i> أسئلة نظرية (15)
+            </div>
+            <div class="tab" data-tab="qcm">
+                <i class="fas fa-list-ol"></i> أسئلة متعددة (15)
+            </div>
+        </div>
+        
+        <!-- المحتوى -->
+        <div class="content">
+            <!-- قسم الملخص -->
+            <div class="content-section active" id="lectures-section">
+                <h2 class="section-title">
+                    <i class="fas fa-graduation-cap"></i> محاضرات منهجية البحث العلمي
+                </h2>
+                
+                <div class="lectures-container" id="lectures-container">
+                    <!-- سيتم تعبئتها ديناميكياً -->
+                </div>
+            </div>
+            
+            <!-- قسم الأسئلة النظرية -->
+            <div class="content-section" id="theoretical-section">
+                <h2 class="section-title">
+                    <i class="fas fa-pen-alt"></i> الأسئلة النظرية (15 سؤال)
+                </h2>
+                
+                <div class="stats">
+                    <div class="stat-item theoretical">
+                        <div class="stat-value" id="theoretical-answered">0</div>
+                        <div class="stat-label">تمت الإجابة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">إجمالي الأسئلة</div>
+                    </div>
+                </div>
+                
+                <div id="theoretical-questions-container">
+                    <!-- سيتم تعبئتها ديناميكياً -->
+                </div>
+            </div>
+            
+            <!-- قسم الأسئلة المتعددة -->
+            <div class="content-section" id="qcm-section">
+                <h2 class="section-title">
+                    <i class="fas fa-check-circle"></i> أسئلة متعددة الخيارات (15 سؤال)
+                </h2>
+                
+                <div class="stats">
+                    <div class="stat-item qcm">
+                        <div class="stat-value" id="qcm-correct">0</div>
+                        <div class="stat-label">إجابات صحيحة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="qcm-answered">0</div>
+                        <div class="stat-label">تمت الإجابة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">إجمالي الأسئلة</div>
+                    </div>
+                </div>
+                
+                <div id="qcm-questions-container">
+                    <!-- سيتم تعبئتها ديناميكياً -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- أزرار التحكم -->
+        <div class="control-buttons">
+            <button class="control-btn btn-reset" id="resetTheoreticalBtn">
+                <i class="fas fa-redo"></i> إعادة تعيين
+            </button>
+            <button class="control-btn btn-show-all" id="showAllAnswersBtn">
+                <i class="fas fa-eye"></i> عرض كل الإجابات
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // بيانات المحاضرات (9 محاضرات)
+        const lectures = [
+            {
+                id: 1,
+                title: "مدخل إلى البحث العلمي",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-search"></i> 1.1 تعريف البحث العلمي
+                        </div>
+                        <div class="definition-box">
+                            <strong>تعريف البحث العلمي:</strong> هو عملية منظمة لجمع المعلومات وتحليلها بهدف حل مشكلة أو الإجابة عن سؤال محدد. يهدف إلى إنتاج معرفة جديدة أو تحسين المعرفة القائمة.
+                        </div>
+                        <div class="key-point">
+                            <strong>مثال:</strong> السؤال: "هل يؤثر استخدام الهاتف قبل النوم على جودة النوم؟" البحث العلمي يسعى لتقديم إجابة دقيقة باستخدام أدوات منهجية.
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-star"></i> 1.2 أهمية البحث العلمي
+                        </div>
+                        <table class="lecture-text" style="width:100%; border-collapse: collapse; margin-top:10px;">
+                            <tr style="background-color: #e3f2fd;">
+                                <th style="padding:10px; text-align:right; border:1px solid #bbdefb;">رقم</th>
+                                <th style="padding:10px; text-align:right; border:1px solid #bbdefb;">أهمية البحث العلمي</th>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #bbdefb;">1</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">تطوير المعرفة البشرية</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding:10px; border:1px solid #bbdefb;">2</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">حل المشكلات العملية والعلمية</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #bbdefb;">3</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">دعم اتخاذ القرارات المبنية على دليل علمي</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding:10px; border:1px solid #bbdefb;">4</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">تدريب العقل على التفكير النقدي والتحليلي</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-list-check"></i> 1.3 خصائص البحث العلمي
+                        </div>
+                        <ul class="lecture-text">
+                            <li><strong>موضوعية:</strong> النتائج مستقلة عن رأي الباحث.</li>
+                            <li><strong>منهجية:</strong> خطوات منظمة ومتسلسلة.</li>
+                            <li><strong>قابلية التحقق:</strong> يمكن تكرار البحث للتحقق من النتائج.</li>
+                            <li><strong>ابتكارية:</strong> تضيف معرفة جديدة أو تحسن المعرفة الحالية.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                id: 2,
+                title: "أنواع البحث العلمي",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-layer-group"></i> أنواع البحث العلمي
+                        </div>
+                        <table class="lecture-text" style="width:100%; border-collapse: collapse; margin-top:10px;">
+                            <tr style="background-color: #e3f2fd;">
+                                <th style="padding:10px; text-align:right; border:1px solid #bbdefb;">النوع</th>
+                                <th style="padding:10px; text-align:right; border:1px solid #bbdefb;">الهدف</th>
+                                <th style="padding:10px; text-align:right; border:1px solid #bbdefb;">مثال</th>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #bbdefb;">وصفي (Descriptive)</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">وصف الظواهر كما هي</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">دراسة عادات النوم لدى طلاب الجامعة</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding:10px; border:1px solid #bbdefb;">تحليلي (Analytical)</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">تحليل الظواهر وفهم أسبابها</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">تحليل العلاقة بين استخدام الهاتف وجودة النوم</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #bbdefb;">تجريبي (Experimental)</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">اختبار فرضية عبر تجربة</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">تأثير القهوة على التركيز</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding:10px; border:1px solid #bbdefb;">تاريخي (Historical)</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">دراسة الأحداث الماضية</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">تطور التعليم الجامعي خلال 50 سنة</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #bbdefb;">نوعي (Qualitative)</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">تفسير الظواهر بالكلمات</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">مقابلات مع الطلاب حول شعورهم أثناء الدراسة</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding:10px; border:1px solid #bbdefb;">كمي (Quantitative)</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">قياس الظواهر بالأرقام</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">حساب عدد ساعات النوم وتأثيرها على التحصيل الدراسي</td>
+                            </tr>
+                        </table>
+                    </div>
+                `
+            },
+            {
+                id: 3,
+                title: "خطوات البحث العلمي",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-footsteps"></i> 3.1 اختيار موضوع البحث
+                        </div>
+                        <div class="key-point">
+                            يجب أن يكون واضحًا، محددًا، مهمًا علميًا أو عمليًا.
+                        </div>
+                        <p class="lecture-text">
+                            <strong>مثال:</strong> "تأثير استخدام الهواتف الذكية قبل النوم على جودة النوم لدى طلاب الجامعة".
+                        </p>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-question"></i> 3.2 تحديد مشكلة البحث
+                        </div>
+                        <div class="definition-box">
+                            <strong>المشكلة:</strong> السؤال الذي يحاول الباحث الإجابة عنه. صياغة دقيقة تساعد على وضع فرضيات واضحة.
+                        </div>
+                        <p class="lecture-text">
+                            <strong>مثال:</strong> "هل يقل نوم الطلاب عند استخدام الهواتف الذكية قبل النوم؟"
+                        </p>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-lightbulb"></i> 3.3 صياغة الفرضيات
+                        </div>
+                        <div class="definition-box">
+                            <strong>الفرضية:</strong> توقع علمي مبدئي عن العلاقة بين المتغيرات.
+                        </div>
+                        <div class="key-point">
+                            <strong>شروط الفرضية الجيدة:</strong>
+                            <ul>
+                                <li>واضحة ومحددة</li>
+                                <li>قابلة للاختبار</li>
+                                <li>مرتبطة مباشرة بالمشكلة</li>
+                            </ul>
+                        </div>
+                        <p class="lecture-text">
+                            <strong>مثال:</strong> "استخدام الهواتف الذكية قبل النوم يقلل مدة النوم لدى طلاب الجامعة".
+                        </p>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-bullseye"></i> 3.4 تحديد أهداف البحث
+                        </div>
+                        <p class="lecture-text">
+                            توضح ما يريد الباحث تحقيقه.
+                        </p>
+                        <div class="key-point">
+                            <strong>أمثلة:</strong>
+                            <ul>
+                                <li>قياس متوسط مدة النوم لدى الطلاب</li>
+                                <li>دراسة تأثير استخدام الهاتف قبل النوم على جودة النوم</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-sliders-h"></i> 3.5 تحديد المتغيرات
+                        </div>
+                        <table class="lecture-text" style="width:100%; border-collapse: collapse; margin-top:10px;">
+                            <tr style="background-color: #e3f2fd;">
+                                <th style="padding:10px; text-align:right; border:1px solid #bbdefb;">نوع المتغير</th>
+                                <th style="padding:10px; text-align:right; border:1px solid #bbdefb;">التعريف</th>
+                                <th style="padding:10px; text-align:right; border:1px solid #bbdefb;">مثال</th>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #bbdefb;">مستقل (Independent)</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">العامل الذي يتحكم فيه الباحث</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">استخدام الهاتف قبل النوم</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding:10px; border:1px solid #bbdefb;">تابع (Dependent)</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">العامل الذي يتم قياسه</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">مدة النوم وجودة النوم</td>
+                            </tr>
+                        </table>
+                    </div>
+                `
+            },
+            {
+                id: 4,
+                title: "أساليب جمع البيانات",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-eye"></i> 4.1 الملاحظة (Observation)
+                        </div>
+                        <p class="lecture-text">
+                            متابعة الظواهر في بيئتها الطبيعية.
+                        </p>
+                        <p class="lecture-text">
+                            <strong>مثال:</strong> مراقبة سلوك الطلاب في المكتبة لمعرفة مدى تركيزهم.
+                        </p>
+                        <div class="key-point">
+                            <strong>مميزات:</strong> بيانات دقيقة وسلوكية.
+                        </div>
+                        <div class="key-point">
+                            <strong>عيوب:</strong> قد يتأثر الأشخاص بوجود الباحث.
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-clipboard-list"></i> 4.2 الاستبيانات (Questionnaires)
+                        </div>
+                        <p class="lecture-text">
+                            أسئلة مكتوبة يجيب عليها المشاركون.
+                        </p>
+                        <p class="lecture-text">
+                            <strong>مثال:</strong> استبيان حول عدد ساعات النوم واستخدام الهاتف قبل النوم.
+                        </p>
+                        <div class="key-point">
+                            <strong>مميزات:</strong> تغطية عدد كبير من الأشخاص بسهولة.
+                        </div>
+                        <div class="key-point">
+                            <strong>عيوب:</strong> احتمال عدم صدق الإجابات أو الانحياز.
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-comments"></i> 4.3 المقابلات (Interviews)
+                        </div>
+                        <p class="lecture-text">
+                            حوار مباشر للحصول على معلومات تفصيلية.
+                        </p>
+                        <p class="lecture-text">
+                            <strong>أنواع:</strong> شخصية، هاتفية، أو عبر الإنترنت.
+                        </p>
+                        <div class="key-point">
+                            <strong>مميزات:</strong> معلومات عميقة وواضحة.
+                        </div>
+                        <div class="key-point">
+                            <strong>عيوب:</strong> تستغرق وقتًا وجهدًا كبيرين.
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-flask"></i> 4.4 الاختبارات والتجارب (Experiments)
+                        </div>
+                        <p class="lecture-text">
+                            إجراء تجربة عملية للتحقق من فرضية معينة.
+                        </p>
+                        <p class="lecture-text">
+                            <strong>مثال:</strong> تجربة تأثير القهوة على التركيز.
+                        </p>
+                        <div class="key-point">
+                            <strong>مميزات:</strong> نتائج دقيقة وعلمية.
+                        </div>
+                        <div class="key-point">
+                            <strong>عيوب:</strong> قد تكون مكلفة أو صعبة التنفيذ.
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-book"></i> 4.5 مراجعة المصادر والمراجع
+                        </div>
+                        <p class="lecture-text">
+                            جمع المعلومات من كتب، مقالات، دراسات سابقة.
+                        </p>
+                        <div class="key-point">
+                            <strong>مميزات:</strong> توفر خلفية علمية قوية.
+                        </div>
+                        <div class="key-point">
+                            <strong>عيوب:</strong> قد لا تضيف معلومات جديدة دائمًا.
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 5,
+                title: "تحليل البيانات",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-chart-bar"></i> تحليل البيانات
+                        </div>
+                        <div class="definition-box">
+                            <strong>تحليل البيانات:</strong> تحويل البيانات الخام إلى نتائج واضحة.
+                        </div>
+                        <p class="lecture-text">
+                            طرق التحليل:
+                        </p>
+                        <div class="key-point">
+                            <strong>إحصاءات وصفية:</strong> المتوسط، الانحراف المعياري، النسب.
+                        </div>
+                        <div class="key-point">
+                            <strong>إحصاءات استنتاجية:</strong> اختبار الفرضيات، تحليل العلاقة بين المتغيرات.
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-table"></i> مثال جدول تحليل بيانات
+                        </div>
+                        <table class="lecture-text" style="width:100%; border-collapse: collapse; margin-top:10px;">
+                            <tr style="background-color: #e3f2fd;">
+                                <th style="padding:10px; text-align:right; border:1px solid #bbdefb;">الطالب</th>
+                                <th style="padding:10px; text-align:right; border:1px solid #bbdefb;">عدد ساعات النوم</th>
+                                <th style="padding:10px; text-align:right; border:1px solid #bbdefb;">استخدام الهاتف</th>
+                                <th style="padding:10px; text-align:right; border:1px solid #bbdefb;">درجة التركيز</th>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #bbdefb;">1</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">6</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">نعم</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">70</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding:10px; border:1px solid #bbdefb;">2</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">8</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">لا</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">85</td>
+                            </tr>
+                        </table>
+                    </div>
+                `
+            },
+            {
+                id: 6,
+                title: "استخلاص النتائج",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-check-double"></i> استخلاص النتائج
+                        </div>
+                        <div class="definition-box">
+                            <strong>استخلاص النتائج:</strong> الإجابة على سؤال البحث الأصلي بناءً على تحليل البيانات.
+                        </div>
+                        <p class="lecture-text">
+                            <strong>مثال:</strong> "ثبت أن استخدام الهاتف قبل النوم يقلل مدة النوم بمعدل ساعة واحدة لدى الطلاب".
+                        </p>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-clipboard-check"></i> شروط النتائج الجيدة
+                        </div>
+                        <ul class="lecture-text">
+                            <li>تستند إلى تحليل البيانات</li>
+                            <li>ترتبط مباشرة بأهداف البحث</li>
+                            <li>تقدم إجابة واضحة لمشكلة البحث</li>
+                            <li>يمكن تعميمها في حالات مشابهة</li>
+                            <li>تتفق أو تختلف مع الدراسات السابقة مع تفسير ذلك</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                id: 7,
+                title: "كتابة البحث العلمي",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-file-alt"></i> هيكل البحث العلمي
+                        </div>
+                        <ol class="lecture-text">
+                            <li><strong>المقدمة:</strong> عرض المشكلة وأهميتها.</li>
+                            <li><strong>مراجعة الأدبيات:</strong> الدراسات السابقة المتعلقة بالموضوع.</li>
+                            <li><strong>منهجية البحث:</strong> طرق جمع البيانات وتحليلها.</li>
+                            <li><strong>النتائج:</strong> عرض النتائج بوضوح وجداول ورسوم بيانية.</li>
+                            <li><strong>المناقشة:</strong> تفسير النتائج وربطها بالدراسات السابقة.</li>
+                            <li><strong>الخاتمة:</strong> تلخيص النتائج والتوصيات.</li>
+                            <li><strong>المراجع:</strong> قائمة المصادر المستخدمة.</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-tips"></i> نصائح للكتابة العلمية
+                        </div>
+                        <div class="key-point">
+                            <strong>استخدم لغة علمية واضحة:</strong> تجنب الغموض والعموميات.
+                        </div>
+                        <div class="key-point">
+                            <strong>كن موضوعياً:</strong> استخدم أدلة وبيانات دقيقة.
+                        </div>
+                        <div class="key-point">
+                            <strong>رتب الأفكار منطقياً:</strong> ابدأ بالمقدمة وانتهي بالخاتمة.
+                        </div>
+                        <div class="key-point">
+                            <strong>استشهد بمصادر موثوقة:</strong> اذكر المراجع بدقة.</div>
+                    </div>
+                `
+            },
+            {
+                id: 8,
+                title: "قواعد وأخلاقيات البحث العلمي",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-handshake"></i> أخلاقيات البحث العلمي
+                        </div>
+                        <div class="key-point">
+                            <strong>الأمانة العلمية:</strong> عدم نقل أعمال الآخرين دون ذكر المصدر.
+                        </div>
+                        <div class="key-point">
+                            <strong>الدقة والموضوعية:</strong> الالتزام بالبيانات الحقيقية.
+                        </div>
+                        <div class="key-point">
+                            <strong>الوضوح والشفافية:</strong> نتائج واضحة وسهلة الفهم.
+                        </div>
+                        <div class="key-point">
+                            <strong>التجرد:</strong> اتباع المنهج العلمي دون تحيز.
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-user-shield"></i> حقوق المشاركين في البحث
+                        </div>
+                        <ul class="lecture-text">
+                            <li>الحق في الموافقة المستنيرة</li>
+                            <li>الحق في الخصوصية والسرية</li>
+                            <li>الحق في الانسحاب من البحث في أي وقت</li>
+                            <li>الحق في معرفة نتائج البحث</li>
+                            <li>الحماية من الأذى الجسدي أو النفسي</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-balance-scale"></i> مسؤوليات الباحث
+                        </div>
+                        <ul class="lecture-text">
+                            <li>الإخلاص للحقيقة العلمية</li>
+                            <li>الالتزام بالمنهجية العلمية</li>
+                            <li>احترام حقوق الملكية الفكرية</li>
+                            <li>الإفصاح عن أي تضارب في المصالح</li>
+                            <li>المساهمة في تطوير المعرفة العلمية</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                id: 9,
+                title: "مثال تطبيقي شامل",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-coffee"></i> مثال تطبيقي: تأثير القهوة على التركيز عند الطلاب
+                        </div>
+                        <table class="lecture-text" style="width:100%; border-collapse: collapse; margin-top:10px;">
+                            <tr style="background-color: #e3f2fd;">
+                                <th style="padding:10px; text-align:right; border:1px solid #bbdefb;">عنصر البحث</th>
+                                <th style="padding:10px; text-align:right; border:1px solid #bbdefb;">المحتوى</th>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #bbdefb;">المشكلة</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">هل القهوة تحسن التركيز أثناء الدراسة؟</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding:10px; border:1px solid #bbdefb;">الفرضية</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">شرب القهوة قبل الدراسة يزيد من التركيز لمدة ساعتين</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #bbdefb;">الطريقة</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">تجربة على مجموعتين (مجموعة تشرب القهوة ومجموعة بدون قهوة)</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding:10px; border:1px solid #bbdefb;">جمع البيانات</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">قياس درجات التركيز قبل وبعد شرب القهوة</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #bbdefb;">التحليل</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">مقارنة المتوسطات والإحصاءات</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding:10px; border:1px solid #bbdefb;">النتائج</td>
+                                <td style="padding:10px; border:1px solid #bbdefb;">إذا كانت مجموعة القهوة أفضل، يتم تأكيد الفرضية</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-lightbulb"></i> الخلاصة النهائية
+                        </div>
+                        <div class="highlight-box">
+                            <p class="lecture-text">
+                                البحث العلمي هو رحلة منظمة للوصول إلى الحقيقة. يبدأ بفكرة وينتهي بمعرفة جديدة. النجاح في هذه الرحلة يتطلب التزامًا بالمنهجية العلمية والأخلاقيات البحثية.
+                            </p>
+                            <p class="lecture-text">
+                                تذكر أن البحث العلمي ليس مجرد إجراءات تقنية، بل هو عقلية تفكير تحترم الأدلة، وتتساءل باستمرار، وتسعى لفهم العالم بشكل أفضل.
+                            </p>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // بيانات الأسئلة النظرية (15 سؤال)
+        const theoreticalQuestions = [
+            {
+                id: 1,
+                questionAr: "عرف البحث العلمي واذكر أهميته.",
+                answerAr: "البحث العلمي هو عملية منظمة لجمع المعلومات وتحليلها بهدف حل مشكلة أو الإجابة عن سؤال محدد. أهميته: 1) تطوير المعرفة البشرية، 2) حل المشكلات العملية والعلمية، 3) دعم اتخاذ القرارات المبنية على دليل علمي، 4) تدريب العقل على التفكير النقدي والتحليلي."
+            },
+            {
+                id: 2,
+                questionAr: "ما هي خصائص البحث العلمي؟",
+                answerAr: "1) موضوعية: النتائج مستقلة عن رأي الباحث. 2) منهجية: خطوات منظمة ومتسلسلة. 3) قابلية التحقق: يمكن تكرار البحث للتحقق من النتائج. 4) ابتكارية: تضيف معرفة جديدة أو تحسن المعرفة الحالية."
+            },
+            {
+                id: 3,
+                questionAr: "ما الفرق بين البحث الوصفي والبحث التحليلي؟",
+                answerAr: "البحث الوصفي يهدف إلى وصف الظواهر كما هي (مثل دراسة عادات النوم لدى طلاب الجامعة)، بينما البحث التحليلي يهدف إلى تحليل الظواهر وفهم أسبابها (مثل تحليل العلاقة بين استخدام الهاتف وجودة النوم)."
+            },
+            {
+                id: 4,
+                questionAr: "ما هي خطوات البحث العلمي الرئيسية؟",
+                answerAr: "1) اختيار موضوع البحث، 2) تحديد مشكلة البحث، 3) صياغة الفرضيات، 4) تحديد أهداف البحث، 5) تحديد المتغيرات، 6) جمع البيانات، 7) تحليل البيانات، 8) استخلاص النتائج، 9) كتابة البحث."
+            },
+            {
+                id: 5,
+                questionAr: "ما هي شروط الفرضية الجيدة؟",
+                answerAr: "1) واضحة ومحددة، 2) قابلة للاختبار، 3) مرتبطة مباشرة بالمشكلة، 4) تعبر عن علاقة بين متغيرين أو أكثر، 5) مبنية على معرفة سابقة."
+            },
+            {
+                id: 6,
+                questionAr: "ما الفرق بين المتغير المستقل والمتغير التابع؟",
+                answerAr: "المتغير المستقل هو العامل الذي يتحكم فيه الباحث أو يغير قيمته لمعرفة تأثيره على المتغير التابع (مثل استخدام الهاتف قبل النوم). المتغير التابع هو العامل الذي يتم قياسه ويتأثر بالمتغير المستقل (مثل مدة النوم وجودة النوم)."
+            },
+            {
+                id: 7,
+                questionAr: "ما هي مميزات وعيوب أسلوب الملاحظة في جمع البيانات؟",
+                answerAr: "المميزات: بيانات دقيقة وسلوكية، تتيح دراسة السلوك في بيئته الطبيعية. العيوب: قد يتأثر الأشخاص بوجود الباحث، تتطلب وقتاً طويلاً، قد لا تكون مناسبة لجميع أنواع الظواهر."
+            },
+            {
+                id: 8,
+                questionAr: "ما الفرق بين البحث الكمي والبحث النوعي؟",
+                answerAr: "البحث الكمي يعتمد على القياس بالأرقام والتحليل الإحصائي (مثل حساب عدد ساعات النوم)، بينما البحث النوعي يعتمد على تفسير الظواهر بالكلمات والوصف التحليلي (مثل مقابلات مع الطلاب حول شعورهم أثناء الدراسة)."
+            },
+            {
+                id: 9,
+                questionAr: "ما هي طرق تحليل البيانات؟",
+                answerAr: "1) الإحصاءات الوصفية: مثل المتوسط، الانحراف المعياري، النسب. 2) الإحصاءات الاستنتاجية: مثل اختبار الفرضيات، تحليل العلاقة بين المتغيرات، تحليل التباين."
+            },
+            {
+                id: 10,
+                questionAr: "ما هو هيكل البحث العلمي؟",
+                answerAr: "1) المقدمة، 2) مراجعة الأدبيات، 3) منهجية البحث، 4) النتائج، 5) المناقشة، 6) الخاتمة، 7) المراجع. وقد يضاف إليها الملخص والملاحق والشكر والتقدير."
+            },
+            {
+                id: 11,
+                questionAr: "ما هي أخلاقيات البحث العلمي؟",
+                answerAr: "1) الأمانة العلمية، 2) الدقة والموضوعية، 3) الوضوح والشفافية، 4) التجرد والحياد، 5) احترام حقوق المشاركين، 6) احترام الملكية الفكرية، 7) الإفصاح عن تضارب المصالح."
+            },
+            {
+                id: 12,
+                questionAr: "ما هي حقوق المشاركين في البحث؟",
+                answerAr: "1) الحق في الموافقة المستنيرة، 2) الحق في الخصوصية والسرية، 3) الحق في الانسحاب من البحث في أي وقت، 4) الحق في معرفة نتائج البحث، 5) الحماية من الأذى الجسدي أو النفسي."
+            },
+            {
+                id: 13,
+                questionAr: "ما هي مسؤوليات الباحث؟",
+                answerAr: "1) الإخلاص للحقيقة العلمية، 2) الالتزام بالمنهجية العلمية، 3) احترام حقوق الملكية الفكرية، 4) الإفصاح عن أي تضارب في المصالح، 5) المساهمة في تطوير المعرفة العلمية، 6) احترام أخلاقيات المهنة."
+            },
+            {
+                id: 14,
+                questionAr: "ما الفرق بين البحث التجريبي والبحث التاريخي؟",
+                answerAr: "البحث التجريبي يعتمد على إجراء تجربة عملية للتحقق من فرضية (مثل تأثير القهوة على التركيز)، بينما البحث التاريخي يدرس الأحداث الماضية (مثل تطور التعليم الجامعي خلال 50 سنة)."
+            },
+            {
+                id: 15,
+                questionAr: "ما هي نصائحك للكتابة العلمية الجيدة؟",
+                answerAr: "1) استخدم لغة علمية واضحة، 2) كن موضوعياً واستخدم أدلة دقيقة، 3) رتب الأفكار منطقياً، 4) استشهد بمصادر موثوقة، 5) اتبع دليل النشر المعتمد، 6) راجع البحث بدقة قبل تقديمه."
+            }
+        ];
+
+        // بيانات أسئلة متعددة الخيارات (15 سؤال)
+        const qcmQuestions = [
+            {
+                id: 1,
+                questionAr: "ما هو تعريف البحث العلمي؟",
+                options: [
+                    { textAr: "جمع المعلومات بشكل عشوائي لفهم الظواهر", correct: false },
+                    { textAr: "عملية منظمة لجمع المعلومات وتحليلها بهدف حل مشكلة", correct: true },
+                    { textAr: "كتابة تقارير عن مواضيع مختلفة", correct: false },
+                    { textAr: "نقل المعلومات من الكتب دون تحليل", correct: false }
+                ]
+            },
+            {
+                id: 2,
+                questionAr: "أي مما يلي ليس من خصائص البحث العلمي؟",
+                options: [
+                    { textAr: "الموضوعية", correct: false },
+                    { textAr: "المنهجية", correct: false },
+                    { textAr: "التحيز الشخصي", correct: true },
+                    { textAr: "قابلية التحقق", correct: false }
+                ]
+            },
+            {
+                id: 3,
+                questionAr: "أي نوع من البحوث يهدف إلى وصف الظواهر كما هي؟",
+                options: [
+                    { textAr: "البحث التجريبي", correct: false },
+                    { textAr: "البحث الوصفي", correct: true },
+                    { textAr: "البحث التحليلي", correct: false },
+                    { textAr: "البحث التاريخي", correct: false }
+                ]
+            },
+            {
+                id: 4,
+                questionAr: "ما هي الخطوة الأولى في البحث العلمي؟",
+                options: [
+                    { textAr: "تحديد مشكلة البحث", correct: false },
+                    { textAr: "اختيار موضوع البحث", correct: true },
+                    { textAr: "صياغة الفرضيات", correct: false },
+                    { textAr: "جمع البيانات", correct: false }
+                ]
+            },
+            {
+                id: 5,
+                questionAr: "أي مما يلي يعتبر شرطاً للفرضية الجيدة؟",
+                options: [
+                    { textAr: "أن تكون غامضة وعامة", correct: false },
+                    { textAr: "أن تكون غير قابلة للاختبار", correct: false },
+                    { textAr: "أن تكون واضحة وقابلة للاختبار", correct: true },
+                    { textAr: "أن تكون غير مرتبطة بالمشكلة", correct: false }
+                ]
+            },
+            {
+                id: 6,
+                questionAr: "ما هو المتغير الذي يتحكم فيه الباحث؟",
+                options: [
+                    { textAr: "المتغير التابع", correct: false },
+                    { textAr: "المتغير المستقل", correct: true },
+                    { textAr: "المتغير الوسيط", correct: false },
+                    { textAr: "المتغير الضابط", correct: false }
+                ]
+            },
+            {
+                id: 7,
+                questionAr: "أي أسلوب من أساليب جمع البيانات يتضمن حواراً مباشراً؟",
+                options: [
+                    { textAr: "الملاحظة", correct: false },
+                    { textAr: "الاستبيان", correct: false },
+                    { textAr: "المقابلة", correct: true },
+                    { textAr: "التجربة", correct: false }
+                ]
+            },
+            {
+                id: 8,
+                questionAr: "ما الفرق الرئيسي بين البحث الكمي والنوعي؟",
+                options: [
+                    { textAr: "الكمي يستخدم الأرقام والنوعي يستخدم الكلمات", correct: true },
+                    { textAr: "الكمي غير دقيق والنوعي دقيق", correct: false },
+                    { textAr: "الكمي أسهل من النوعي", correct: false },
+                    { textAr: "لا فرق بينهما", correct: false }
+                ]
+            },
+            {
+                id: 9,
+                questionAr: "أي مما يلي يعتبر من الإحصاءات الوصفية؟",
+                options: [
+                    { textAr: "المتوسط والانحراف المعياري", correct: true },
+                    { textAr: "اختبار الفرضيات", correct: false },
+                    { textAr: "تحليل التباين", correct: false },
+                    { textAr: "الارتباط والانحدار", correct: false }
+                ]
+            },
+            {
+                id: 10,
+                questionAr: "ما هو القسم الذي يعرض فيه الباحث طرق جمع البيانات؟",
+                options: [
+                    { textAr: "المقدمة", correct: false },
+                    { textAr: "مراجعة الأدبيات", correct: false },
+                    { textAr: "منهجية البحث", correct: true },
+                    { textAr: "النتائج", correct: false }
+                ]
+            },
+            {
+                id: 11,
+                questionAr: "أي مما يلي يعتبر من أخلاقيات البحث العلمي؟",
+                options: [
+                    { textAr: "الأمانة العلمية", correct: true },
+                    { textAr: "التحيز الشخصي", correct: false },
+                    { textAr: "إخفاء المعلومات", correct: false },
+                    { textAr: "نقل أعمال الآخرين دون ذكر المصدر", correct: false }
+                ]
+            },
+            {
+                id: 12,
+                questionAr: "ما هو حق المشارك في الانسحاب من البحث؟",
+                options: [
+                    { textAr: "الانسحاب في أي وقت دون عواقب", correct: true },
+                    { textAr: "الانسحاب فقط في البداية", correct: false },
+                    { textAr: "عدم السماح بالانسحاب مطلقاً", correct: false },
+                    { textAr: "الانسحاب بعد موافقة الباحث", correct: false }
+                ]
+            },
+            {
+                id: 13,
+                questionAr: "أي نوع من البحوث يدرس الأحداث الماضية؟",
+                options: [
+                    { textAr: "البحث التجريبي", correct: false },
+                    { textAr: "البحث التاريخي", correct: true },
+                    { textAr: "البحث الوصفي", correct: false },
+                    { textAr: "البحث التحليلي", correct: false }
+                ]
+            },
+            {
+                id: 14,
+                questionAr: "ما هي النصيحة المهمة للكتابة العلمية؟",
+                options: [
+                    { textAr: "استخدام لغة غامضة", correct: false },
+                    { textAr: "الاعتماد على الرأي الشخصي فقط", correct: false },
+                    { textAr: "استخدام لغة علمية واضحة", correct: true },
+                    { textAr: "عدم ذكر المراجع", correct: false }
+                ]
+            },
+            {
+                id: 15,
+                questionAr: "في المثال التطبيقي، ما الذي تم قياسه في مجموعة القهوة؟",
+                options: [
+                    { textAr: "عدد أكواب القهوة", correct: false },
+                    { textAr: "درجة التركيز قبل وبعد شرب القهوة", correct: true },
+                    { textAr: "وقت شرب القهوة", correct: false },
+                    { textAr: "نوع القهوة المستخدمة", correct: false }
+                ]
+            }
+        ];
+
+        // متغيرات التطبيق
+        let currentTab = 'lectures';
+        let theoreticalAnswersVisible = [];
+        let qcmUserAnswers = Array(qcmQuestions.length).fill(null);
+        let qcmChecked = Array(qcmQuestions.length).fill(false);
+
+        // تهيئة التطبيق
+        document.addEventListener('DOMContentLoaded', function() {
+            // عرض المحاضرات
+            renderLectures();
+            
+            // تهيئة الأسئلة النظرية
+            renderTheoreticalQuestions();
+            
+            // تهيئة أسئلة متعددة الخيارات
+            renderQCMQuestions();
+            
+            // تحديث الإحصائيات
+            updateStats();
+            
+            // إضافة أحداث التبويبات
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    switchTab(this.dataset.tab);
+                });
+            });
+            
+            // إضافة أحداث الأزرار
+            document.getElementById('resetTheoreticalBtn').addEventListener('click', resetTheoretical);
+            document.getElementById('showAllAnswersBtn').addEventListener('click', toggleShowAllAnswers);
+            
+            // تغيير أزرار التحكم حسب التبويب
+            updateControlButtons();
+        });
+
+        // عرض المحاضرات
+        function renderLectures() {
+            const container = document.getElementById('lectures-container');
+            container.innerHTML = '';
+            
+            lectures.forEach((lecture, index) => {
+                const card = document.createElement('div');
+                card.className = 'lecture-card';
+                
+                card.innerHTML = `
+                    <div class="lecture-header">
+                        <div class="lecture-title">
+                            <i class="fas fa-book"></i> المحاضرة ${String(lecture.id).padStart(2, '0')}: ${lecture.title}
+                            <div class="lecture-number">${lecture.id}</div>
+                        </div>
+                    </div>
+                    <div class="lecture-body">
+                        ${lecture.content}
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        // عرض الأسئلة النظرية
+        function renderTheoreticalQuestions() {
+            const container = document.getElementById('theoretical-questions-container');
+            container.innerHTML = '';
+            
+            theoreticalQuestions.forEach((question, index) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.id = `theoretical-${index}`;
+                
+                card.innerHTML = `
+                    <div class="question-header">
+                        <div class="question-number">${index + 1}</div>
+                        <div class="question-type">سؤال نظري</div>
+                    </div>
+                    <div class="question-text">${question.questionAr}</div>
+                    <button class="answer-btn" data-index="${index}">
+                        <i class="fas fa-lightbulb"></i> عرض الإجابة
+                    </button>
+                    <div class="answer-content" id="answer-${index}">
+                        <div class="answer-title">
+                            <i class="fas fa-check-circle"></i> الإجابة
+                        </div>
+                        <div class="answer-text">${question.answerAr}</div>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+                
+                // إضافة حدث للزر
+                const answerBtn = card.querySelector('.answer-btn');
+                answerBtn.addEventListener('click', function() {
+                    toggleAnswer(this.dataset.index);
+                });
+            });
+        }
+
+        // عرض أسئلة متعددة الخيارات
+        function renderQCMQuestions() {
+            const container = document.getElementById('qcm-questions-container');
+            container.innerHTML = '';
+            
+            qcmQuestions.forEach((question, questionIndex) => {
+                const card = document.createElement('div');
+                card.className = 'qcm-card';
+                card.id = `qcm-${questionIndex}`;
+                
+                let optionsHTML = '';
+                const letters = ['أ', 'ب', 'ج', 'د'];
+                
+                question.options.forEach((option, optionIndex) => {
+                    optionsHTML += `
+                        <div class="option" data-question="${questionIndex}" data-option="${optionIndex}">
+                            <div class="option-letter">${letters[optionIndex]}</div>
+                            <div class="option-text">${option.textAr}</div>
+                        </div>
+                    `;
+                });
+                
+                card.innerHTML = `
+                    <div class="question-header">
+                        <div class="question-number">${questionIndex + 1}</div>
+                        <div class="question-type">اختيار متعدد</div>
+                    </div>
+                    <div class="qcm-question">${question.questionAr}</div>
+                    <div class="options-container">
+                        ${optionsHTML}
+                    </div>
+                    <div class="feedback" id="feedback-${questionIndex}"></div>
+                `;
+                
+                container.appendChild(card);
+                
+                // إضافة أحداث للخيارات
+                card.querySelectorAll('.option').forEach(option => {
+                    option.addEventListener('click', function() {
+                        selectOption(this.dataset.question, this.dataset.option);
+                    });
+                });
+            });
+        }
+
+        // التبديل بين التبويبات
+        function switchTab(tabName) {
+            currentTab = tabName;
+            
+            // تحديث التبويبات النشطة
+            document.querySelectorAll('.tab').forEach(tab => {
+                if (tab.dataset.tab === tabName) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            
+            // تحديث المحتوى المرئي
+            document.querySelectorAll('.content-section').forEach(section => {
+                if (section.id === `${tabName}-section`) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+            
+            // تحديث أزرار التحكم
+            updateControlButtons();
+            
+            // التمرير لأعلى الصفحة
+            window.scrollTo(0, 0);
+        }
+
+        // تحديث أزرار التحكم حسب التبويب
+        function updateControlButtons() {
+            const resetBtn = document.getElementById('resetTheoreticalBtn');
+            const showAllBtn = document.getElementById('showAllAnswersBtn');
+            
+            if (currentTab === 'theoretical') {
+                resetBtn.innerHTML = '<i class="fas fa-redo"></i> إعادة تعيين';
+                resetBtn.onclick = resetTheoretical;
+                showAllBtn.innerHTML = '<i class="fas fa-eye"></i> عرض كل الإجابات';
+                showAllBtn.onclick = toggleShowAllAnswers;
+                resetBtn.style.display = 'flex';
+                showAllBtn.style.display = 'flex';
+            } else if (currentTab === 'qcm') {
+                resetBtn.innerHTML = '<i class="fas fa-redo"></i> إعادة الاختبار';
+                resetBtn.onclick = resetQCM;
+                showAllBtn.innerHTML = '<i class="fas fa-check-circle"></i> تحقق من الإجابات';
+                showAllBtn.onclick = checkAllAnswers;
+                resetBtn.style.display = 'flex';
+                showAllBtn.style.display = 'flex';
+            } else {
+                resetBtn.style.display = 'none';
+                showAllBtn.style.display = 'none';
+            }
+        }
+
+        // عرض/إخفاء إجابة نظرية
+        function toggleAnswer(index) {
+            const answerElement = document.getElementById(`answer-${index}`);
+            const isVisible = answerElement.classList.toggle('show');
+            
+            // تحديث حالة الإجابة
+            if (isVisible && !theoreticalAnswersVisible.includes(parseInt(index))) {
+                theoreticalAnswersVisible.push(parseInt(index));
+                updateStats();
+            }
+            
+            // تحديث نص الزر
+            const button = document.querySelector(`#theoretical-${index} .answer-btn`);
+            if (isVisible) {
+                button.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء الإجابة';
+            } else {
+                button.innerHTML = '<i class="fas fa-lightbulb"></i> عرض الإجابة';
+            }
+        }
+
+        // اختيار خيار في سؤال متعدد
+        function selectOption(questionIndex, optionIndex) {
+            // إذا كان السؤال قد تم التحقق منه مسبقًا، لا نسمح بتغيير الإجابة
+            if (qcmChecked[questionIndex]) return;
+            
+            const questionCard = document.getElementById(`qcm-${questionIndex}`);
+            
+            // إلغاء تحديد جميع الخيارات في هذا السؤال
+            questionCard.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // تحديد الخيار المختار
+            const selectedOption = questionCard.querySelector(`.option[data-option="${optionIndex}"]`);
+            selectedOption.classList.add('selected');
+            
+            // حفظ إجابة المستخدم
+            qcmUserAnswers[questionIndex] = parseInt(optionIndex);
+            
+            // تحديث الإحصائيات
+            updateStats();
+            
+            // التحقق الفوري من الإجابة
+            setTimeout(() => checkAnswer(questionIndex), 300);
+        }
+
+        // التحقق من إجابة سؤال متعدد
+        function checkAnswer(questionIndex) {
+            if (qcmUserAnswers[questionIndex] === null) return false;
+            
+            const question = qcmQuestions[questionIndex];
+            const userAnswerIndex = qcmUserAnswers[questionIndex];
+            const isCorrect = question.options[userAnswerIndex].correct;
+            
+            const questionCard = document.getElementById(`qcm-${questionIndex}`);
+            const feedbackElement = document.getElementById(`feedback-${questionIndex}`);
+            
+            // تحديث مظهر الخيارات
+            question.options.forEach((option, index) => {
+                const optionElement = questionCard.querySelector(`.option[data-option="${index}"]`);
+                
+                if (option.correct) {
+                    optionElement.classList.add('correct');
+                } else if (index === userAnswerIndex && !option.correct) {
+                    optionElement.classList.add('incorrect');
+                }
+            });
+            
+            // عرض التغذية الراجعة
+            if (isCorrect) {
+                feedbackElement.textContent = 'إجابة صحيحة! أحسنت!';
+                feedbackElement.className = 'feedback correct show';
+            } else {
+                feedbackElement.textContent = 'إجابة غير صحيحة. حاول مرة أخرى!';
+                feedbackElement.className = 'feedback incorrect show';
+            }
+            
+            qcmChecked[questionIndex] = true;
+            
+            return isCorrect;
+        }
+
+        // التحقق من جميع الإجابات
+        function checkAllAnswers() {
+            let allCorrect = true;
+            let answeredCount = 0;
+            let correctCount = 0;
+            
+            qcmQuestions.forEach((_, index) => {
+                if (qcmUserAnswers[index] !== null) {
+                    answeredCount++;
+                    if (checkAnswer(index)) {
+                        correctCount++;
+                    } else {
+                        allCorrect = false;
+                    }
+                }
+            });
+            
+            // عرض نتيجة النهاية
+            if (answeredCount === 0) {
+                alert('لم تقم بالإجابة على أي سؤال بعد. يرجى اختيار الإجابات أولاً.');
+            } else if (answeredCount < qcmQuestions.length) {
+                alert(`لقد أجبت على ${answeredCount} من أصل ${qcmQuestions.length} سؤالاً.\n\nالنتيجة: ${correctCount}/${answeredCount} إجابة صحيحة.\n\nيرجى الإجابة على جميع الأسئلة للحصول على نتيجة كاملة.`);
+            } else {
+                alert(`تهانينا! لقد أكملت الاختبار.\n\nالنتيجة النهائية: ${correctCount}/${qcmQuestions.length} إجابة صحيحة.\n\nالنسبة: ${Math.round((correctCount/qcmQuestions.length)*100)}%`);
+            }
+            
+            updateStats();
+        }
+
+        // إعادة تعيين الأسئلة النظرية
+        function resetTheoretical() {
+            theoreticalAnswersVisible = [];
+            
+            // إخفاء جميع الإجابات
+            document.querySelectorAll('.answer-content').forEach(answer => {
+                answer.classList.remove('show');
+            });
+            
+            // تحديث نصوص الأزرار
+            document.querySelectorAll('.answer-btn').forEach(button => {
+                button.innerHTML = '<i class="fas fa-lightbulb"></i> عرض الإجابة';
+            });
+            
+            updateStats();
+            
+            // عرض رسالة تأكيد
+            alert('تم إعادة تعيين جميع الإجابات النظرية بنجاح.');
+        }
+
+        // إعادة تعيين أسئلة متعددة الخيارات
+        function resetQCM() {
+            qcmUserAnswers = Array(qcmQuestions.length).fill(null);
+            qcmChecked = Array(qcmQuestions.length).fill(false);
+            
+            // إعادة تعيين مظهر جميع الخيارات
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            // إخفاء جميع التغذية الراجعة
+            document.querySelectorAll('.feedback').forEach(feedback => {
+                feedback.classList.remove('show', 'correct', 'incorrect');
+            });
+            
+            updateStats();
+            
+            // عرض رسالة تأكيد
+            alert('تم إعادة تعيين اختبار الأسئلة المتعددة بنجاح. يمكنك البدء من جديد.');
+        }
+
+        // عرض/إخفاء كل الإجابات النظرية
+        function toggleShowAllAnswers() {
+            if (currentTab === 'theoretical') {
+                const allVisible = theoreticalAnswersVisible.length === theoreticalQuestions.length;
+                
+                if (allVisible) {
+                    // إخفاء جميع الإجابات
+                    theoreticalAnswersVisible = [];
+                    document.querySelectorAll('.answer-content').forEach(answer => {
+                        answer.classList.remove('show');
+                    });
+                    document.querySelectorAll('.answer-btn').forEach(button => {
+                        button.innerHTML = '<i class="fas fa-lightbulb"></i> عرض الإجابة';
+                    });
+                } else {
+                    // عرض جميع الإجابات
+                    theoreticalAnswersVisible = [];
+                    theoreticalQuestions.forEach((_, index) => {
+                        theoreticalAnswersVisible.push(index);
+                        const answerElement = document.getElementById(`answer-${index}`);
+                        answerElement.classList.add('show');
+                        const button = document.querySelector(`#theoretical-${index} .answer-btn`);
+                        button.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء الإجابة';
+                    });
+                }
+                
+                updateStats();
+            }
+        }
+
+        // تحديث الإحصائيات
+        function updateStats() {
+            // تحديث إحصائيات الأسئلة النظرية
+            const theoreticalAnswered = document.getElementById('theoretical-answered');
+            theoreticalAnswered.textContent = theoreticalAnswersVisible.length;
+            
+            // تحديث إحصائيات أسئلة متعددة الخيارات
+            const qcmAnswered = document.getElementById('qcm-answered');
+            const qcmCorrect = document.getElementById('qcm-correct');
+            
+            let answeredCount = 0;
+            let correctCount = 0;
+            
+            qcmUserAnswers.forEach((answer, index) => {
+                if (answer !== null) {
+                    answeredCount++;
+                    
+                    if (qcmChecked[index] && qcmQuestions[index].options[answer].correct) {
+                        correctCount++;
+                    }
+                }
+            });
+            
+            qcmAnswered.textContent = answeredCount;
+            qcmCorrect.textContent = correctCount;
+        }
+    </script>
+</body>
+</html>
