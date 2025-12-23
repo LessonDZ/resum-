@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>منهجية البحث العلمي - التطبيق التعليمي الشامل</title>
+    <title>الأرغونوميا - التطبيق التعليمي الشامل</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #5e35b1;
-            --secondary-color: #7e57c2;
-            --accent-color: #9575cd;
+            --primary-color: #2e7d32;
+            --secondary-color: #43a047;
+            --accent-color: #4caf50;
             --success-color: #00c853;
             --error-color: #ff1744;
             --warning-color: #ff9100;
-            --light-color: #f3e5f5;
-            --dark-color: #4527a0;
+            --light-color: #e8f5e9;
+            --dark-color: #1b5e20;
             --gray-color: #546e7a;
             --white: #ffffff;
-            --shadow: 0 4px 12px rgba(94, 53, 177, 0.08);
+            --shadow: 0 4px 12px rgba(0, 100, 0, 0.08);
             --radius: 12px;
             --transition: all 0.3s ease;
         }
@@ -118,7 +118,7 @@
         .tab.active {
             color: var(--primary-color);
             border-bottom-color: var(--primary-color);
-            background-color: rgba(94, 53, 177, 0.05);
+            background-color: rgba(46, 125, 50, 0.05);
         }
         
         /* المحتوى */
@@ -163,7 +163,7 @@
         
         .lecture-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(94, 53, 177, 0.12);
+            box-shadow: 0 6px 20px rgba(0, 100, 0, 0.12);
         }
         
         .lecture-header {
@@ -243,7 +243,7 @@
         }
         
         .highlight-box {
-            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
             padding: 16px;
             border-radius: 8px;
             margin-top: 15px;
@@ -263,7 +263,7 @@
         }
         
         .key-point {
-            background-color: rgba(149, 117, 205, 0.1);
+            background-color: rgba(76, 175, 80, 0.1);
             padding: 10px 15px;
             border-radius: 6px;
             margin: 8px 0;
@@ -271,11 +271,11 @@
         }
         
         .definition-box {
-            background-color: #f3e5f5;
+            background-color: #e8f5e9;
             padding: 15px;
             border-radius: 8px;
             margin: 10px 0;
-            border-left: 4px solid #9575cd;
+            border-left: 4px solid #4caf50;
         }
         
         /* الأسئلة النظرية */
@@ -356,7 +356,7 @@
         .answer-content {
             margin-top: 20px;
             padding: 15px;
-            background-color: #faf7fc;
+            background-color: #f5f7f5;
             border-radius: 8px;
             border-right: 4px solid var(--primary-color);
             display: none;
@@ -396,7 +396,7 @@
         }
         
         .qcm-card:hover {
-            box-shadow: 0 6px 16px rgba(94, 53, 177, 0.1);
+            box-shadow: 0 6px 16px rgba(0, 100, 0, 0.1);
         }
         
         .qcm-question {
@@ -431,7 +431,7 @@
         
         .option.selected {
             border-color: var(--primary-color);
-            background-color: #f3e5f5;
+            background-color: #e8f5e9;
         }
         
         .option.correct {
@@ -620,11 +620,11 @@
             <div class="header-content">
                 <div class="logo">
                     <div class="logo-icon">
-                        <i class="fas fa-search"></i>
+                        <i class="fas fa-user-md"></i>
                     </div>
                     <div>
-                        <div class="app-title">منهجية البحث العلمي</div>
-                        <div class="app-subtitle">التطبيق التعليمي الشامل</div>
+                        <div class="app-title">الأرغونوميا - التطبيق التعليمي</div>
+                        <div class="app-subtitle">مقياس الأرغونوميا 1 - ملخص شامل</div>
                     </div>
                 </div>
             </div>
@@ -648,7 +648,7 @@
             <!-- قسم الملخص -->
             <div class="content-section active" id="lectures-section">
                 <h2 class="section-title">
-                    <i class="fas fa-graduation-cap"></i> محاضرات منهجية البحث العلمي
+                    <i class="fas fa-graduation-cap"></i> محاضرات الأرغونوميا
                 </h2>
                 
                 <div class="lectures-container" id="lectures-container">
@@ -721,516 +721,411 @@
         const lectures = [
             {
                 id: 1,
-                title: "مدخل إلى البحث العلمي",
+                title: "مدخل إلى الأرغونوميا",
                 content: `
                     <div class="lecture-section">
                         <div class="section-subtitle">
-                            <i class="fas fa-search"></i> 1.1 تعريف البحث العلمي
+                            <i class="fas fa-search"></i> 1.1 تعريف الأرغونوميا
                         </div>
                         <div class="definition-box">
-                            <strong>اصطلاحًا:</strong> هو مجموعة من العمليات المنهجية المنظمة لجمع وتحليل المعلومات للوصول إلى معرفة جديدة أو حل مشكلة محددة.
+                            <strong>اصطلاحًا:</strong> الأرغونوميا هي علم دراسة الإنسان في بيئة العمل بهدف تحسين الأداء، زيادة الإنتاجية، وتوفير بيئة آمنة ومريحة.
                         </div>
                         <div class="definition-box">
-                            <strong>إجرائيًا:</strong> البحث العلمي هو اتباع خطوات واضحة ودقيقة (ملاحظة، جمع بيانات، تحليل، استنتاج) لضمان نتائج دقيقة وموثوقة.
+                            <strong>إجرائيًا:</strong> تشمل تحليل العلاقة بين الإنسان، الآلة، والبيئة المحيطة لتقليل الإجهاد البدني والعقلي.
                         </div>
                         <div class="key-point">
-                            <strong>مثال عملي:</strong> دراسة تأثير ساعات النوم على تحصيل الطلاب، من خلال جمع بيانات عن ساعات نوم الطلاب ودرجاتهم، ثم تحليل النتائج.
+                            <strong>مثال عملي:</strong> مكتب غير مريح: الجلوس على كرسي منخفض جدًا، شاشة الكمبيوتر عالية، إضاءة ضعيفة → يسبب آلام في الظهر والعينين. الأرغونوميا تهتم بتعديل كل هذه العوامل لتصبح بيئة العمل مريحة وآمنة.
                         </div>
                     </div>
                     
                     <div class="lecture-section">
                         <div class="section-subtitle">
-                            <i class="fas fa-bullseye"></i> 1.2 أهداف البحث العلمي
+                            <i class="fas fa-bullseye"></i> 1.2 أهداف الأرغونوميا
                         </div>
                         <ul class="lecture-text">
-                            <li><strong>الوصول إلى معرفة جديدة.</strong></li>
-                            <li><strong>التحقق من صحة الفرضيات.</strong></li>
-                            <li><strong>حل المشكلات النظرية أو العملية.</strong></li>
-                            <li><strong>تحسين القدرة على اتخاذ القرار المبني على بيانات دقيقة.</strong></li>
-                            <li><strong>تطوير الأدوات والأساليب العلمية.</strong></li>
+                            <li><strong>تحسين أداء الإنسان:</strong> لتقليل الأخطاء وزيادة الإنتاجية.</li>
+                            <li><strong>تقليل الإجهاد البدني والعقلي:</strong> حماية العامل من التعب والإرهاق.</li>
+                            <li><strong>زيادة السلامة المهنية:</strong> تقليل الحوادث والإصابات.</li>
+                            <li><strong>تصميم أدوات وبيئة عمل مناسبة:</strong> مثل المكاتب، الكراسي، أدوات العمل.</li>
                         </ul>
                     </div>
                     
                     <div class="lecture-section">
                         <div class="section-subtitle">
-                            <i class="fas fa-list-check"></i> 1.3 خصائص البحث العلمي
+                            <i class="fas fa-cog"></i> 1.3 عجلة الأرغونوميا
+                        </div>
+                        <div class="highlight-box">
+                            <div class="highlight-title">
+                                <i class="fas fa-sync-alt"></i> تمثل العوامل الرئيسية المؤثرة على العمل:
+                            </div>
+                            <p class="lecture-text" style="text-align: center; font-weight: bold;">
+                                الإنسان<br>
+                                / \\<br>
+                                آلة - بيئة<br>
+                                \\ /<br>
+                                المهام
+                            </p>
+                            <p class="lecture-text">
+                                كل عنصر يتفاعل مع الآخر ويؤثر على الأداء والراحة.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-globe"></i> 1.4 الهيئات والمنظمات العالمية في الأرغونوميا
                         </div>
                         <ul class="lecture-text">
-                            <li><strong>منهجي ومنظم.</strong></li>
-                            <li><strong>موضوعي وغير متحيز.</strong></li>
-                            <li><strong>قابل للتكرار والتحقق.</strong></li>
-                            <li><strong>يعتمد على الأدلة والبراهين.</strong></li>
+                            <li><strong>IEA:</strong> الجمعية الدولية للأرغونوميا</li>
+                            <li><strong>ISO:</strong> المنظمة الدولية للمعايير</li>
+                            <li><strong>ANSI:</strong> المعهد الأمريكي للمعايير الوطنية</li>
                         </ul>
                     </div>
                     
                     <div class="lecture-section">
                         <div class="section-subtitle">
-                            <i class="fas fa-layer-group"></i> 1.4 أنواع البحث العلمي
+                            <i class="fas fa-tools"></i> 1.5 أجهزة القياس في الأرغونوميا
                         </div>
-                        <table class="lecture-text" style="width:100%; border-collapse: collapse; margin-top:10px;">
-                            <tr style="background-color: #f3e5f5;">
-                                <th style="padding:10px; text-align:right; border:1px solid #e1bee7;">النوع</th>
-                                <th style="padding:10px; text-align:right; border:1px solid #e1bee7;">الوصف</th>
-                                <th style="padding:10px; text-align:right; border:1px solid #e1bee7;">مثال</th>
-                            </tr>
-                            <tr>
-                                <td style="padding:10px; border:1px solid #e1bee7;">بحث أساسي</td>
-                                <td style="padding:10px; border:1px solid #e1bee7;">يهدف إلى توسيع المعرفة النظرية</td>
-                                <td style="padding:10px; border:1px solid #e1bee7;">دراسة العلاقة بين النوم والتركيز</td>
-                            </tr>
-                            <tr style="background-color: #f5f5f5;">
-                                <td style="padding:10px; border:1px solid #e1bee7;">بحث تطبيقي</td>
-                                <td style="padding:10px; border:1px solid #e1bee7;">يهدف إلى حل مشكلات عملية</td>
-                                <td style="padding:10px; border:1px solid #e1bee7;">تطوير برنامج لتعزيز تركيز الطلاب</td>
-                            </tr>
-                        </table>
+                        <ul class="lecture-text">
+                            <li><strong>Dynamometer:</strong> قياس قوة اليد.</li>
+                            <li><strong>أجهزة مراقبة الوضعيات:</strong> متابعة حركات الجسم أثناء العمل.</li>
+                            <li><strong>أجهزة قياس الإضاءة والضوضاء:</strong> لضمان ظروف عمل صحية.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-thermometer-half"></i> 1.6 الظروف الفيزيقية
+                        </div>
+                        <ul class="lecture-text">
+                            <li><strong>الضوء:</strong> مناسب للعين.</li>
+                            <li><strong>الحرارة:</strong> 20-24° مئوية.</li>
+                            <li><strong>الضوضاء:</strong> منخفضة (50-60 ديسيبل).</li>
+                            <li><strong>الاهتزازات:</strong> تقليل تأثيرها على العمود الفقري والعضلات.</li>
+                        </ul>
                     </div>
                 `
             },
             {
                 id: 2,
-                title: "خطوات البحث العلمي",
+                title: "مراحل نشأة الأرغونوميا",
                 content: `
                     <div class="lecture-section">
                         <div class="section-subtitle">
-                            <i class="fas fa-footsteps"></i> 2.1 تحديد المشكلة البحثية
+                            <i class="fas fa-history"></i> مراحل نشأة الأرغونوميا
                         </div>
                         <div class="key-point">
-                            <strong>اختيار موضوع واضح ومحدد.</strong>
+                            <strong>مرحلة صناعية أولى:</strong> دراسة راحة العمال في المصانع القديمة.
                         </div>
                         <div class="key-point">
-                            <strong>صياغة سؤال بحثي دقيق.</strong>
+                            <strong>مرحلة الحرب العالمية الثانية:</strong> تصميم المعدات لتناسب الجنود والعاملين في ظروف صعبة.
+                        </div>
+                        <div class="key-point">
+                            <strong>مرحلة حديثة:</strong> تطوير الأرغونوميا لتشمل المكاتب، الكمبيوتر، والتكنولوجيا الحديثة.
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-industry"></i> تأثير المراحل التاريخية
                         </div>
                         <p class="lecture-text">
-                            <strong>مثال:</strong> "هل تؤثر ساعات النوم على أداء الطلاب في الاختبارات النهائية؟"
+                            خلال الحرب العالمية الثانية، لوحظ أن تصميم المعدات العسكرية لا يتناسب مع قدرات الجنود، مما أدى إلى زيادة الأخطاء والإصابات. هذا دفع الباحثين لدراسة كيفية تصميم المعدات لتناسب قدرات المستخدمين، وهي الفكرة الأساسية للأرغونوميا الحديثة.
                         </p>
-                    </div>
-                    
-                    <div class="lecture-section">
-                        <div class="section-subtitle">
-                            <i class="fas fa-book"></i> 2.2 مراجعة الأدبيات السابقة
-                        </div>
-                        <ul class="lecture-text">
-                            <li><strong>جمع الدراسات والمراجع المتعلقة بالموضوع.</strong></li>
-                            <li><strong>تحديد الفجوات البحثية التي لم تُدرس بعد.</strong></li>
-                            <li><strong>الاستفادة من النتائج السابقة لبناء البحث الحالي.</strong></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="lecture-section">
-                        <div class="section-subtitle">
-                            <i class="fas fa-lightbulb"></i> 2.3 صياغة الفرضيات
-                        </div>
-                        <div class="definition-box">
-                            <strong>الفرضية:</strong> جواب محتمل على سؤال البحث، قابل للاختبار.
-                        </div>
                         <p class="lecture-text">
-                            <strong>مثال:</strong> "زيادة ساعات النوم تؤدي إلى تحسن درجات الطلاب".
+                            بعد الحرب، تم تطبيق هذه المبادئ في الصناعة المدنية، مما أدى إلى تحسين ظروف العمل وزيادة الإنتاجية في المصانع.
                         </p>
-                    </div>
-                    
-                    <div class="lecture-section">
-                        <div class="section-subtitle">
-                            <i class="fas fa-cogs"></i> 2.4 اختيار أسلوب البحث
-                        </div>
-                        <div class="key-point">
-                            <strong>وصفي:</strong> وصف الظواهر كما هي.
-                        </div>
-                        <div class="key-point">
-                            <strong>تجريبي:</strong> التحكم بالمتغيرات لاختبار الفرضيات.
-                        </div>
-                        <div class="key-point">
-                            <strong>استكشافي:</strong> لفهم المشكلات الجديدة بدون فرضيات مسبقة.
-                        </div>
-                    </div>
-                    
-                    <div class="lecture-section">
-                        <div class="section-subtitle">
-                            <i class="fas fa-database"></i> 2.5 جمع البيانات
-                        </div>
-                        <ul class="lecture-text">
-                            <li><strong>الملاحظة:</strong> متابعة الظواهر مباشرة.</li>
-                            <li><strong>الاستبيانات والمقابلات:</strong> جمع الآراء والتصورات.</li>
-                            <li><strong>المصادر الثانوية:</strong> كتب، مقالات، تقارير سابقة.</li>
-                        </ul>
                     </div>
                 `
             },
             {
                 id: 3,
-                title: "أنواع البيانات والتحليل",
+                title: "المراحل التاريخية للبحث في الأرغونوميا",
                 content: `
                     <div class="lecture-section">
                         <div class="section-subtitle">
-                            <i class="fas fa-comment-alt"></i> 3.1 البيانات النوعية
+                            <i class="fas fa-timeline"></i> المراحل التاريخية للبحث في الأرغونوميا
                         </div>
-                        <div class="definition-box">
-                            <strong>تعريف:</strong> بيانات وصفية وغير رقمية.
-                        </div>
-                        <p class="lecture-text">
-                            <strong>مثال:</strong> تقييم جودة المحاضرات (جيد، متوسط، ضعيف).
-                        </p>
-                        <div class="key-point">
-                            <strong>طرق التحليل:</strong> التصنيف، التلخيص الوصفي، تحليل المحتوى.
-                        </div>
+                        <table class="lecture-text" style="width:100%; border-collapse: collapse; margin-top:10px;">
+                            <tr style="background-color: #e8f5e9;">
+                                <th style="padding:10px; text-align:right; border:1px solid #c8e6c9;">الفترة</th>
+                                <th style="padding:10px; text-align:right; border:1px solid #c8e6c9;">الإنجازات</th>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">قبل 1900</td>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">دراسة الإنسان والأدوات اليدوية</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding:10px; border:1px solid #c8e6c9;">1900-1940</td>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">دراسة ظروف العمل في المصانع</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">1940-1960</td>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">تطوير الأرغونوميا العسكرية</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding:10px; border:1px solid #c8e6c9;">1960-1980</td>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">بداية الأرغونوميا المكتبية</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">1980-الآن</td>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">التركيز على الصحة النفسية والإجهاد والإنتاجية</td>
+                            </tr>
+                        </table>
                     </div>
                     
                     <div class="lecture-section">
                         <div class="section-subtitle">
-                            <i class="fas fa-chart-bar"></i> 3.2 البيانات الكمية
-                        </div>
-                        <div class="definition-box">
-                            <strong>تعريف:</strong> بيانات رقمية، يمكن إجراء العمليات الحسابية عليها.
-                        </div>
-                        <p class="lecture-text">
-                            <strong>مثال:</strong> عدد ساعات الدراسة، الدرجات المحصلة.
-                        </p>
-                        <div class="key-point">
-                            <strong>طرق التحليل:</strong> الإحصاء الوصفي، الإحصاء الاستدلالي.
-                        </div>
-                    </div>
-                    
-                    <div class="lecture-section">
-                        <div class="section-subtitle">
-                            <i class="fas fa-sort-alpha-down"></i> 3.3 تنظيم البيانات
+                            <i class="fas fa-chart-line"></i> التطورات الرئيسية
                         </div>
                         <ul class="lecture-text">
-                            <li><strong>ترتيب البيانات بشكل جدول.</strong></li>
-                            <li><strong>تنظيف البيانات من الأخطاء.</strong></li>
-                            <li><strong>تصنيف البيانات حسب النوع (نوعية أو كمية).</strong></li>
-                            <li><strong>تحويل البيانات النوعية إلى كميـة عند الحاجة.</strong></li>
+                            <li><strong>قبل 1900:</strong> التركيز على تحسين الأدوات اليدوية لتناسب جسم الإنسان.</li>
+                            <li><strong>1900-1940:</strong> ظهور حركة الإدارة العلمية ودراسة حركات العمل.</li>
+                            <li><strong>1940-1960:</strong> التطبيقات العسكرية وتصميم واجهات المستخدم.</li>
+                            <li><strong>1960-1980:</strong> ظهور أجهزة الكمبيوتر وتطبيق الأرغونوميا في المكاتب.</li>
+                            <li><strong>1980-الآن:</strong> التكامل بين الأرغونوميا الفيزيائية والمعرفية والتنظيمية.</li>
                         </ul>
                     </div>
                 `
             },
             {
                 id: 4,
-                title: "الجانب الحسابي والإحصائي",
+                title: "مجالات الأرغونوميا",
                 content: `
                     <div class="lecture-section">
                         <div class="section-subtitle">
-                            <i class="fas fa-calculator"></i> 4.1 المتوسط الحسابي (Mean)
+                            <i class="fas fa-layer-group"></i> مجالات الأرغونوميا
                         </div>
-                        <div class="highlight-box">
-                            <div class="highlight-title">
-                                <i class="fas fa-divide"></i> الصيغة:
-                            </div>
-                            <p class="lecture-text" style="text-align: center; font-weight: bold; font-size: 1.2rem;">
-                                𝑥̄ = Σ𝑥ᵢ / 𝑛
-                            </p>
-                        </div>
-                        <p class="lecture-text">
-                            <strong>مثال:</strong> درجات الطلاب: 12، 14، 16، 18، 20 → المتوسط = (12+14+16+18+20)/5 = 16
-                        </p>
-                    </div>
-                    
-                    <div class="lecture-section">
-                        <div class="section-subtitle">
-                            <i class="fas fa-chart-line"></i> 4.2 الوسيط (Median)
-                        </div>
-                        <p class="lecture-text">
-                            <strong>تعريف:</strong> القيمة الوسطى عند ترتيب البيانات تصاعديًا.
-                        </p>
-                        <p class="lecture-text">
-                            <strong>مثال:</strong> 12، 14، 16، 18، 20 → الوسيط = 16
-                        </p>
                         <div class="key-point">
-                            <strong>ملاحظة:</strong> الوسيط أقل تأثرًا بالقيم المتطرفة من المتوسط.
+                            <strong>الأرغونوميا الفيزيائية:</strong> تصميم المعدات والكرسي والمكتب لتتلاءم مع جسم الإنسان.
                         </div>
-                    </div>
-                    
-                    <div class="lecture-section">
-                        <div class="section-subtitle">
-                            <i class="fas fa-chart-pie"></i> 4.3 المنوال (Mode)
-                        </div>
-                        <p class="lecture-text">
-                            <strong>تعريف:</strong> القيمة الأكثر تكرارًا في البيانات.
-                        </p>
-                        <p class="lecture-text">
-                            <strong>مثال:</strong> 12، 14، 14، 16، 20 → المنوال = 14
-                        </p>
-                    </div>
-                    
-                    <div class="lecture-section">
-                        <div class="section-subtitle">
-                            <i class="fas fa-expand-alt"></i> 4.4 الانحراف المعياري (Standard Deviation)
-                        </div>
-                        <div class="highlight-box">
-                            <div class="highlight-title">
-                                <i class="fas fa-square-root-alt"></i> الصيغة:
-                            </div>
-                            <p class="lecture-text" style="text-align: center; font-weight: bold; font-size: 1.1rem;">
-                                SD = √[Σ(𝑥ᵢ - 𝑥̄)² / 𝑛]
-                            </p>
-                        </div>
-                        <p class="lecture-text">
-                            <strong>مثال:</strong> درجات 12، 14، 16، 18، 20 → SD ≈ 3.16
-                        </p>
                         <div class="key-point">
-                            <strong>تفسير:</strong> يقيس تشتت البيانات حول المتوسط. كلما زاد الانحراف المعياري، زادت درجة التشتت.
+                            <strong>الأرغونوميا المعرفية:</strong> دراسة العمليات العقلية مثل الانتباه، الذاكرة، واتخاذ القرار.
+                        </div>
+                        <div class="key-point">
+                            <strong>الأرغونوميا التنظيمية:</strong> تحسين تنظيم العمل والجداول الزمنية والتواصل بين الفرق.
+                        </div>
+                        <div class="key-point">
+                            <strong>الأرغونوميا البيئية:</strong> الإضاءة، الصوت، الحرارة، والرطوبة.
                         </div>
                     </div>
                     
                     <div class="lecture-section">
                         <div class="section-subtitle">
-                            <i class="fas fa-percentage"></i> 4.5 النسبة المئوية (Percentage)
+                            <i class="fas fa-lightbulb"></i> مثال تطبيقي
                         </div>
                         <div class="highlight-box">
-                            <div class="highlight-title">
-                                <i class="fas fa-divide"></i> الصيغة:
-                            </div>
-                            <p class="lecture-text" style="text-align: center; font-weight: bold; font-size: 1.1rem;">
-                                % = (القيمة الجزئية ÷ القيمة الكلية) × 100
+                            <p class="lecture-text">
+                                <strong>مكتب مجهز أرغونومياً:</strong> مكتب وكرسي مريح، ضوء جيد، وقليل من الضوضاء = أقل تعب وأكثر تركيز.
                             </p>
+                            <p class="lecture-text">
+                                هذا المثال يجمع بين:
+                            </p>
+                            <ul class="lecture-text">
+                                <li><strong>الأرغونوميا الفيزيائية:</strong> تصميم الكرسي والمكتب</li>
+                                <li><strong>الأرغونوميا البيئية:</strong> الإضاءة والضوضاء</li>
+                                <li><strong>الأرغونوميا المعرفية:</strong> تحسين التركيز</li>
+                                <li><strong>الأرغونوميا التنظيمية:</strong> تنظيم بيئة العمل</li>
+                            </ul>
                         </div>
-                        <p class="lecture-text">
-                            <strong>مثال:</strong> 12 ناجح من 20 → (12/20) × 100 = 60%
-                        </p>
-                    </div>
-                    
-                    <div class="lecture-section">
-                        <div class="section-subtitle">
-                            <i class="fas fa-chart-area"></i> 4.6 تمثيل البيانات
-                        </div>
-                        <ul class="lecture-text">
-                            <li><strong>الجداول:</strong> تنظيم القيم بشكل منظم.</li>
-                            <li><strong>الرسوم البيانية:</strong> الأعمدة، الخطوط، الدوائر.</li>
-                            <li><strong>مثال تخيلي:</strong> رسم درجات الطلاب بالأعمدة لمقارنة الأداء.</li>
-                        </ul>
                     </div>
                 `
             },
             {
                 id: 5,
-                title: "صياغة الفرضيات وطرق اختبارها",
+                title: "أنساق العمل",
                 content: `
                     <div class="lecture-section">
                         <div class="section-subtitle">
-                            <i class="fas fa-edit"></i> 5.1 صياغة الفرضية
+                            <i class="fas fa-project-diagram"></i> 5.1 تعريف النسق وأنواعه
+                        </div>
+                        <div class="definition-box">
+                            <strong>النسق:</strong> مجموعة عناصر متفاعلة (إنسان، آلة، بيئة) لأداء مهمة.
                         </div>
                         <div class="key-point">
-                            <strong>شروط الفرضية الجيدة:</strong>
+                            <strong>أنواع النسق:</strong>
                             <ul>
-                                <li>واضحة، قابلة للقياس</li>
-                                <li>محددة زمنياً ومكانياً</li>
-                                <li>ترتبط مباشرة بمشكلة البحث</li>
-                                <li>قابلة للاختبار إحصائياً</li>
+                                <li><strong>نسق ثابت:</strong> العناصر لا تتغير مع الزمن</li>
+                                <li><strong>نسق ديناميكي:</strong> العناصر تتغير وتتطور</li>
+                                <li><strong>نسق متكامل:</strong> تفاعل كامل بين جميع العناصر</li>
                             </ul>
                         </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-exchange-alt"></i> 5.2 تأثير المحيط على نسق الإنسان والآلة
+                        </div>
                         <p class="lecture-text">
-                            <strong>مثال:</strong> "زيادة ساعة نوم يوميًا تحسن درجات الطلاب في الاختبارات النهائية بنسبة 15% على الأقل خلال الفصل الدراسي الأول".
+                            <strong>الضوء، الضوضاء، الحرارة</strong> تؤثر على الأداء.
                         </p>
-                    </div>
-                    
-                    <div class="lecture-section">
-                        <div class="section-subtitle">
-                            <i class="fas fa-balance-scale"></i> 5.2 أنواع الفرضيات
+                        <div class="key-point">
+                            <strong>مثال:</strong> ضوضاء عالية → صعوبة التركيز → أخطاء في العمل.
                         </div>
-                        <table class="lecture-text" style="width:100%; border-collapse: collapse; margin-top:10px;">
-                            <tr style="background-color: #f3e5f5;">
-                                <th style="padding:10px; text-align:right; border:1px solid #e1bee7;">النوع</th>
-                                <th style="padding:10px; text-align:right; border:1px solid #e1bee7;">الوصف</th>
-                                <th style="padding:10px; text-align:right; border:1px solid #e1bee7;">مثال</th>
-                            </tr>
-                            <tr>
-                                <td style="padding:10px; border:1px solid #e1bee7;">الفرضية الصفرية (H0)</td>
-                                <td style="padding:10px; border:1px solid #e1bee7;">لا تأثير لساعات النوم على الدرجات</td>
-                                <td style="padding:10px; border:1px solid #e1bee7;">"لا يوجد فرق ذو دلالة إحصائية بين درجات الطلاب الذين ينامون 8 ساعات وأولئك الذين ينامون 6 ساعات"</td>
-                            </tr>
-                            <tr style="background-color: #f5f5f5;">
-                                <td style="padding:10px; border:1px solid #e1bee7;">الفرضية البديلة (H1)</td>
-                                <td style="padding:10px; border:1px solid #e1bee7;">زيادة ساعات النوم تحسن الدرجات</td>
-                                <td style="padding:10px; border:1px solid #e1bee7;">"هناك فرق ذو دلالة إحصائية بين درجات الطلاب الذين ينامون 8 ساعات وأولئك الذين ينامون 6 ساعات لصالح المجموعة الأولى"</td>
-                            </tr>
-                        </table>
-                    </div>
-                    
-                    <div class="lecture-section">
-                        <div class="section-subtitle">
-                            <i class="fas fa-vial"></i> 5.3 طرق اختبار الفرضيات
-                        </div>
+                        <p class="lecture-text">
+                            تؤثر العوامل البيئية على جميع مكونات النسق:
+                        </p>
                         <ul class="lecture-text">
-                            <li><strong>اختبارات إحصائية:</strong> t-test، ANOVA، Chi-square</li>
-                            <li><strong>المقارنة البسيطة:</strong> المتوسطات، الانحراف المعياري، النسب المئوية</li>
-                            <li><strong>تحليل الارتباط:</strong> لقياس قوة العلاقة بين المتغيرات</li>
-                            <li><strong>تحليل الانحدار:</strong> للتنبؤ بقيم المتغير التابع بناءً على المتغير المستقل</li>
+                            <li><strong>الإنسان:</strong> الراحة، التركيز، الدافع</li>
+                            <li><strong>الآلة:</strong> الأداء، الدقة، الكفاءة</li>
+                            <li><strong>البيئة:</strong> السلامة، الجودة، الاستدامة</li>
                         </ul>
                     </div>
                 `
             },
             {
                 id: 6,
-                title: "أساليب جمع البيانات بالتفصيل",
+                title: "علم تصميم وقياس أبعاد الجسم وتصميم أماكن العمل",
                 content: `
                     <div class="lecture-section">
                         <div class="section-subtitle">
-                            <i class="fas fa-eye"></i> 6.1 الملاحظة
-                        </div>
-                        <p class="lecture-text">
-                            <strong>تعريف:</strong> متابعة الظواهر مباشرة.
-                        </p>
-                        <p class="lecture-text">
-                            <strong>مثال:</strong> مراقبة سلوك الطلاب أثناء المحاضرة.
-                        </p>
-                        <div class="key-point">
-                            <strong>أنواع الملاحظة:</strong>
-                            <ul>
-                                <li>ملاحظة مباشرة/غير مباشرة</li>
-                                <li>ملاحظة مشاركة/غير مشاركة</li>
-                                <li>ملاحظة منظّمة/غير منظّمة</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="lecture-section">
-                        <div class="section-subtitle">
-                            <i class="fas fa-clipboard-list"></i> 6.2 الاستبيانات
-                        </div>
-                        <p class="lecture-text">
-                            <strong>تعريف:</strong> أسئلة مغلقة أو مفتوحة.
-                        </p>
-                        <p class="lecture-text">
-                            <strong>مثال:</strong> "كم ساعة تقضي في الدراسة يوميًا؟"
-                        </p>
-                        <div class="key-point">
-                            <strong>مزايا:</strong> تغطية عدد كبير من الأفراد، سهولة التحليل.
-                        </div>
-                        <div class="key-point">
-                            <strong>عيوب:</strong> قد تكون الإجابات غير صادقة، عدم القدرة على توضيح الأسئلة.
-                        </div>
-                    </div>
-                    
-                    <div class="lecture-section">
-                        <div class="section-subtitle">
-                            <i class="fas fa-comments"></i> 6.3 المقابلات
-                        </div>
-                        <p class="lecture-text">
-                            <strong>تعريف:</strong> فردية أو جماعية.
-                        </p>
-                        <div class="key-point">
-                            <strong>مزايا:</strong> معلومات عميقة، مرونة في طرح الأسئلة.
-                        </div>
-                        <div class="key-point">
-                            <strong>عيوب:</strong> تستغرق وقتًا طويلاً، قد يتأثر الباحث بتحيز المشارك.
-                        </div>
-                    </div>
-                    
-                    <div class="lecture-section">
-                        <div class="section-subtitle">
-                            <i class="fas fa-archive"></i> 6.4 المصادر الثانوية
+                            <i class="fas fa-ruler-combined"></i> 6.1 أهداف التصميم
                         </div>
                         <ul class="lecture-text">
-                            <li><strong>كتب، مقالات، تقارير سابقة.</strong></li>
-                            <li><strong>قواعد البيانات والمواقع العلمية.</strong></li>
-                            <li><strong>الوثائق الرسمية والتقارير الإحصائية.</strong></li>
+                            <li><strong>تقليل التعب والإجهاد.</strong></li>
+                            <li><strong>زيادة الراحة والإنتاجية.</strong></li>
+                            <li><strong>تجنب الإصابات.</strong></li>
                         </ul>
-                        <div class="key-point">
-                            <strong>تساعد على:</strong> بناء الإطار النظري للبحث، فهم السياق العام للمشكلة.
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-chair"></i> 6.2 تصميم المكتب والكرسي
                         </div>
+                        <table class="lecture-text" style="width:100%; border-collapse: collapse; margin-top:10px;">
+                            <tr style="background-color: #e8f5e9;">
+                                <th style="padding:10px; text-align:right; border:1px solid #c8e6c9;">العنصر</th>
+                                <th style="padding:10px; text-align:right; border:1px solid #c8e6c9;">التصميم المثالي</th>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">المكتب</td>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">ارتفاع 70 سم، مساحة للقدمين</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding:10px; border:1px solid #c8e6c9;">الكرسي</td>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">قابل للتعديل، دعم أسفل الظهر، مساند للذراعين</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">الأدوات</td>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">على مسافة يسهل الوصول إليها</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-users"></i> أهمية قياس أبعاد الجسم
+                        </div>
+                        <p class="lecture-text">
+                            تختلف أبعاد الجسم بين الأفراد (الطول، الوزن، طول الأطراف، الخ). لذلك يجب تصميم أماكن العمل لتتناسب مع نطاق واسع من القياسات البشرية:
+                        </p>
+                        <ul class="lecture-text">
+                            <li>تجنب التمدد أو الانحناء المفرط</li>
+                            <li>توفير مساحة كافية للحركة</li>
+                            <li>ضمان وصول سهل للأدوات والمعدات</li>
+                            <li>تقليل الضغط على المفاصل والعضلات</li>
+                        </ul>
                     </div>
                 `
             },
             {
                 id: 7,
-                title: "تحليل البيانات والتفسير",
+                title: "الظروف الفيزيائية بالتفصيل",
                 content: `
                     <div class="lecture-section">
                         <div class="section-subtitle">
-                            <i class="fas fa-tasks"></i> تحليل البيانات والتفسير
+                            <i class="fas fa-sliders-h"></i> الظروف الفيزيائية بالتفصيل
                         </div>
-                        <div class="key-point">
-                            <strong>تنظيم البيانات:</strong> جداول وتصنيفات.
-                        </div>
-                        <div class="key-point">
-                            <strong>العمليات الحسابية:</strong> المتوسط، الوسيط، الانحراف المعياري.
-                        </div>
-                        <div class="key-point">
-                            <strong>التمثيل البياني:</strong> رسم الأعمدة، الخطوط، الدوائر.
-                        </div>
-                        <div class="key-point">
-                            <strong>التفسير:</strong> ربط النتائج بالفرضيات والسؤال البحثي.
-                        </div>
+                        <table class="lecture-text" style="width:100%; border-collapse: collapse; margin-top:10px;">
+                            <tr style="background-color: #e8f5e9;">
+                                <th style="padding:10px; text-align:right; border:1px solid #c8e6c9;">العامل</th>
+                                <th style="padding:10px; text-align:right; border:1px solid #c8e6c9;">التأثير</th>
+                                <th style="padding:10px; text-align:right; border:1px solid #c8e6c9;">الحل</th>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">الضوء</td>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">إجهاد العين</td>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">استخدام إضاءة مناسبة</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding:10px; border:1px solid #c8e6c9;">الحرارة</td>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">إرهاق الجسم</td>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">20-24° مئوية</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">الضوضاء</td>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">تشتت وانخفاض التركيز</td>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">حواجز صوتية أو سماعات عازلة</td>
+                            </tr>
+                            <tr style="background-color: #f5f5f5;">
+                                <td style="padding:10px; border:1px solid #c8e6c9;">الاهتزازات</td>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">إجهاد العضلات</td>
+                                <td style="padding:10px; border:1px solid #c8e6c9;">أدوات لتقليل الاهتزاز</td>
+                            </tr>
+                        </table>
                     </div>
                     
                     <div class="lecture-section">
                         <div class="section-subtitle">
-                            <i class="fas fa-chart-bar"></i> مثال تطبيقي لتحليل البيانات
+                            <i class="fas fa-exclamation-triangle"></i> عواقب تجاهل الظروف الفيزيائية
                         </div>
-                        <div class="highlight-box">
-                            <p class="lecture-text">
-                                <strong>الدراسة:</strong> تأثير ساعات الدراسة على درجات الطلاب.
-                            </p>
-                            <p class="lecture-text">
-                                <strong>البيانات:</strong> 10 طلاب، ساعات الدراسة (2, 3, 4, 5, 6, 7, 8, 9, 10, 11) ساعة، الدرجات (50, 55, 60, 65, 70, 75, 80, 85, 90, 95).
-                            </p>
-                            <p class="lecture-text">
-                                <strong>التحليل:</strong> حساب المتوسط (7.5 ساعة، 72.5 درجة)، الانحراف المعياري (3.03 ساعة، 15 درجة)، معامل الارتباط (0.98).
-                            </p>
-                            <p class="lecture-text">
-                                <strong>التفسير:</strong> هناك علاقة قوية موجبة بين ساعات الدراسة والدرجات، مما يدعم الفرضية البديلة.
-                            </p>
-                        </div>
+                        <ul class="lecture-text">
+                            <li><strong>الإضاءة غير المناسبة:</strong> إجهاد العين، صداع، انخفاض الدقة</li>
+                            <li><strong>درجة الحرارة غير الملائمة:</strong> إرهاق، قلة تركيز، زيادة الأخطاء</li>
+                            <li><strong>الضوضاء العالية:</strong> تشتت الانتباه، صعوبة التواصل، زيادة التوتر</li>
+                            <li><strong>الاهتزازات المفرطة:</strong> آلام العضلات، تلف الأعصاب، إصابات طويلة المدى</li>
+                        </ul>
                     </div>
                 `
             },
             {
                 id: 8,
-                title: "كتابة التقرير العلمي",
+                title: "المخاطر المهنية في بيئة العمل",
                 content: `
                     <div class="lecture-section">
                         <div class="section-subtitle">
-                            <i class="fas fa-file-alt"></i> 8.1 عناصر التقرير
+                            <i class="fas fa-shield-alt"></i> 8.1 أنواع المخاطر
                         </div>
-                        <ol class="lecture-text">
-                            <li><strong>المقدمة:</strong> تعريف المشكلة وأهميتها.</li>
-                            <li><strong>الإطار النظري:</strong> مراجعة الدراسات السابقة.</li>
-                            <li><strong>الفرضيات وأسئلة البحث.</strong></li>
-                            <li><strong>طرق البحث:</strong> تصميم الدراسة وأدوات جمع البيانات.</li>
-                            <li><strong>النتائج:</strong> جداول ورسوم بيانية.</li>
-                            <li><strong>المناقشة:</strong> تفسير النتائج وربطها بالفرضيات.</li>
-                            <li><strong>الخاتمة والتوصيات.</strong></li>
-                        </ol>
+                        <ul class="lecture-text">
+                            <li><strong>فيزيائية:</strong> حرارة، ضوء، ضوضاء، اهتزاز.</li>
+                            <li><strong>كيميائية:</strong> التعرض للمواد السامة.</li>
+                            <li><strong>ميكانيكية:</strong> آلات حادة أو ثقيلة.</li>
+                            <li><strong>بيولوجية:</strong> جراثيم، فيروسات.</li>
+                            <li><strong>نفسية:</strong> ضغط العمل والإرهاق العقلي.</li>
+                        </ul>
                     </div>
                     
                     <div class="lecture-section">
                         <div class="section-subtitle">
-                            <i class="fas fa-tips"></i> 8.2 نصائح لكتابة التقرير
+                            <i class="fas fa-first-aid"></i> 8.2 طرق الوقاية
                         </div>
                         <div class="key-point">
-                            <strong>تنظيم الأفكار بترتيب منطقي.</strong>
+                            <strong>التدريب على استخدام المعدات بشكل صحيح.</strong>
                         </div>
                         <div class="key-point">
-                            <strong>استخدام اللغة العلمية الواضحة.</strong>
+                            <strong>توفير معدات حماية شخصية:</strong> خوذ، نظارات، قفازات.
                         </div>
                         <div class="key-point">
-                            <strong>التأكد من صحة العمليات الحسابية والتمثيلات البيانية.</strong>
+                            <strong>تصميم بيئة العمل وفق مبادئ الأرغونوميا.</strong>
                         </div>
                         <div class="key-point">
-                            <strong>المراجعة الدقيقة للقواعد اللغوية والإملائية.</strong>
-                        </div>
-                        <div class="key-point">
-                            <strong>التوثيق الصحيح للمراجع والمصادر.</strong>
+                            <strong>فترات راحة منتظمة لتقليل الإجهاد.</strong>
                         </div>
                     </div>
                     
                     <div class="lecture-section">
                         <div class="section-subtitle">
-                            <i class="fas fa-check-circle"></i> أهمية التقرير العلمي
+                            <i class="fas fa-handshake"></i> دور الأرغونوميا في الوقاية
                         </div>
-                        <div class="highlight-box">
-                            <p class="lecture-text">
-                                <strong>توثيق البحث:</strong> حفظ النتائج والمنهجية للرجوع إليها لاحقًا.
-                            </p>
-                            <p class="lecture-text">
-                                <strong>مشاركة المعرفة:</strong> نشر النتائج للمجتمع العلمي والمهتمين.
-                            </p>
-                            <p class="lecture-text">
-                                <strong>التحقق:</strong> تمكين الباحثين الآخرين من التحقق من النتائج وإعادة الدراسة.
-                            </p>
-                            <p class="lecture-text">
-                                <strong>التطوير:</strong> استخدام النتائج كأساس لبحوث مستقبلية.
-                            </p>
-                        </div>
+                        <p class="lecture-text">
+                            تساهم الأرغونوميا في الوقاية من المخاطر المهنية من خلال:
+                        </p>
+                        <ul class="lecture-text">
+                            <li>تصميم بيئة عمل تخفض احتمالية الحوادث</li>
+                            <li>توفير معدات مريحة تقلل الإجهاد</li>
+                            <li>تنظيم العمل لتجنب التعب المفرط</li>
+                            <li>تعزيز الوعي بالسلامة والصحة المهنية</li>
+                        </ul>
                     </div>
                 `
             }
@@ -1240,306 +1135,306 @@
         const theoreticalQuestions = [
             {
                 id: 1,
-                questionAr: "عرف البحث العلمي اصطلاحًا وعمليًا.",
-                answerAr: "اصطلاحًا: البحث العلمي هو مجموعة من العمليات المنهجية المنظمة لجمع وتحليل المعلومات للوصول إلى معرفة جديدة أو حل مشكلة محددة. إجرائيًا: يتبع خطوات واضحة ودقيقة (ملاحظة، جمع بيانات، تحليل، استنتاج) لضمان نتائج دقيقة وموثوقة."
+                questionAr: "عرف الأرغونوميا اصطلاحًا وعمليًا.",
+                answerAr: "اصطلاحًا: الأرغونوميا هي علم دراسة الإنسان في بيئة العمل بهدف تحسين الأداء، زيادة الإنتاجية، وتوفير بيئة آمنة ومريحة. إجرائيًا: تشمل تحليل العلاقة بين الإنسان، الآلة، والبيئة المحيطة لتقليل الإجهاد البدني والعقلي."
             },
             {
                 id: 2,
-                questionAr: "ما هي أهداف البحث العلمي؟",
-                answerAr: "1) الوصول إلى معرفة جديدة. 2) التحقق من صحة الفرضيات. 3) حل المشكلات العملية أو النظرية. 4) تحسين القدرة على اتخاذ القرار بناءً على بيانات دقيقة. 5) تطوير الأدوات والأساليب العلمية."
+                questionAr: "ما هي أهداف الأرغونوميا في بيئة العمل؟",
+                answerAr: "1) تحسين أداء الإنسان لتقليل الأخطاء وزيادة الإنتاجية. 2) تقليل الإجهاد البدني والعقلي وحماية العامل من التعب والإرهاق. 3) زيادة السلامة المهنية وتقليل الحوادث والإصابات. 4) تصميم أدوات وبيئة عمل مناسبة مثل المكاتب، الكراسي، أدوات العمل."
             },
             {
                 id: 3,
-                questionAr: "ما الخصائص الأساسية للبحث العلمي؟",
-                answerAr: "1) منهجي ومنظم. 2) موضوعي وغير متحيز. 3) قابل للتكرار والتحقق. 4) يعتمد على الأدلة والبراهين. 5) دقيق وواضح في الصياغة."
+                questionAr: "اذكر عناصر عجلة الأرغونوميا الأساسية.",
+                answerAr: "عجلة الأرغونوميا تتكون من أربعة عناصر أساسية: 1) الإنسان 2) الآلة 3) البيئة 4) المهام. كل عنصر يتفاعل مع الآخر ويؤثر على الأداء والراحة في بيئة العمل."
             },
             {
                 id: 4,
-                questionAr: "اذكر الفرق بين البحث العلمي الأساسي والتطبيقي مع مثال لكل منهما.",
-                answerAr: "البحث الأساسي: يهدف إلى توسيع المعرفة النظرية دون تطبيق مباشر (مثال: دراسة العلاقة بين النوم والتركيز). البحث التطبيقي: يهدف إلى حل مشكلات عملية (مثال: تطوير برنامج لتعزيز تركيز الطلاب)."
+                questionAr: "ما الفرق بين الأرغونوميا الفيزيائية والمعرفية؟",
+                answerAr: "الأرغونوميا الفيزيائية: تهتم بتصميم المعدات والكرسي والمكتب لتتلاءم مع جسم الإنسان وتقليل الإجهاد البدني. الأرغونوميا المعرفية: تهتم بدراسة العمليات العقلية مثل الانتباه، الذاكرة، واتخاذ القرار لتحسين التفاعل بين الإنسان والآلة."
             },
             {
                 id: 5,
-                questionAr: "ما الفرق بين البيانات النوعية والكمية؟",
-                answerAr: "البيانات النوعية: معلومات وصفية غير رقمية (رأي الطلاب عن جودة المحاضرات: جيد، متوسط، ضعيف). البيانات الكمية: معلومات رقمية يمكن إجراء العمليات الحسابية عليها (عدد ساعات الدراسة أو الدرجات)."
+                questionAr: "أعط مثالًا عمليًا لتطبيق الأرغونوميا في المكتب.",
+                answerAr: "مثال: مكتب مجهز بكرسي قابل للتعديل مع دعم أسفل الظهر، مكتب بارتفاع مناسب (70 سم)، شاشة كمبيوتر على مستوى العين، إضاءة كافية وغير مباشرة، مساحة للقدمين، وأدوات على مسافة يسهل الوصول إليها. هذا التصميم يقلل آلام الظهر والعينين ويزيد الراحة والإنتاجية."
             },
             {
                 id: 6,
-                questionAr: "ما خطوات البحث العلمي الأساسية؟",
-                answerAr: "1) تحديد المشكلة. 2) مراجعة الأدبيات السابقة. 3) صياغة الفرضيات. 4) اختيار أسلوب البحث. 5) جمع البيانات. 6) تحليل البيانات. 7) تفسير النتائج وربطها بالفرضيات. 8) كتابة التقرير النهائي."
+                questionAr: "اذكر ثلاث أجهزة قياس تُستخدم في الأرغونوميا ووضح وظيفتها.",
+                answerAr: "1) Dynamometer: يقيس قوة اليد والذراع لتقييم القدرات البدنية. 2) أجهزة مراقبة الوضعيات: تتابع حركات الجسم ووضعياته أثناء العمل لتحديد الإجهاد العضلي. 3) أجهزة قياس الإضاءة والضوضاء: تضمن ظروف بيئية صحية وفق المعايير الدولية."
             },
             {
                 id: 7,
-                questionAr: "اشرح أهمية مراجعة الأدبيات السابقة في البحث العلمي.",
-                answerAr: "1) تساعد على فهم الموضوع بشكل أعمق. 2) تكشف الفجوات البحثية. 3) توفر أسس علمية للبحث الحالي. 4) تمنع تكرار الدراسات السابقة. 5) تساعد في بناء الإطار النظري للبحث."
+                questionAr: "ما هي الظروف الفيزيقية الأساسية التي تؤثر على أداء الإنسان في العمل؟",
+                answerAr: "1) الإضاءة: يجب أن تكون مناسبة للعين. 2) الحرارة: المثالية بين 20-24° مئوية. 3) الضوضاء: يجب أن تكون منخفضة (50-60 ديسيبل). 4) الاهتزازات: يجب تقليل تأثيرها على العمود الفقري والعضلات."
             },
             {
                 id: 8,
-                questionAr: "عرف الفرضية وأعط مثالاً على فرضية قابلة للاختبار.",
-                answerAr: "الفرضية: إجابة محتملة على سؤال البحث، يمكن اختبارها تجريبيًا. مثال: 'زيادة ساعة نوم يوميًا تحسن درجات الطلاب في الاختبارات النهائية بنسبة 15% على الأقل خلال الفصل الدراسي الأول'."
+                questionAr: "عرف النسق في بيئة العمل واذكر أنواعه.",
+                answerAr: "النسق: مجموعة عناصر متفاعلة (إنسان، آلة، بيئة) لأداء مهمة. أنواعه: 1) نسق ثابت: العناصر لا تتغير. 2) نسق ديناميكي: العناصر تتغير حسب المهمة. 3) نسق متكامل: تفاعل كامل بين جميع العناصر."
             },
             {
                 id: 9,
-                questionAr: "ما الفرق بين الفرضية الصفرية والبديلة؟",
-                answerAr: "الفرضية الصفرية (H0): لا يوجد تأثير أو علاقة بين المتغيرات (مثال: ساعات النوم لا تؤثر على درجات الطلاب). الفرضية البديلة (H1): يوجد تأثير أو علاقة بين المتغيرات (مثال: زيادة ساعات النوم تحسن درجات الطلاب)."
+                questionAr: "كيف يؤثر المحيط (مثل الضوء أو الضوضاء) على نسق الإنسان والآلة؟",
+                answerAr: "الضوء غير المناسب يجهد العين ويقلل الانتباه مما يؤثر على دقة العمل. الضوضاء العالية تسبب تشتت الانتباه وأخطاء في العمل وتزيد التوتر. الحرارة المرتفعة أو المنخفضة تؤثر على الأداء البدني والعقلي وتزيد التعب."
             },
             {
                 id: 10,
-                questionAr: "اذكر طرق جمع البيانات مع مثال لكل طريقة.",
-                answerAr: "1) الملاحظة: متابعة السلوك مباشرة (مراقبة تفاعل الطلاب في الفصل). 2) الاستبيانات: أسئلة مغلقة أو مفتوحة (عدد ساعات الدراسة يوميًا). 3) المقابلات: مقابلة فردية أو جماعية (آراء الطلاب حول طرق التدريس). 4) المصادر الثانوية: كتب، مقالات، تقارير (دراسات سابقة عن النوم والتركيز)."
+                questionAr: "اذكر ثلاث مجالات للأرغونوميا ووضح مثالًا لكل مجال.",
+                answerAr: "1) الفيزيائية: تصميم المكتب والكرسي لتقليل إجهاد الظهر. 2) المعرفية: تصميم واجهة الكمبيوتر بحيث يسهل التركيز على المهام. 3) التنظيمية: تنظيم الجداول الزمنية وفترات الراحة لتقليل الضغط النفسي."
             },
             {
                 id: 11,
-                questionAr: "عرف المتوسط الحسابي ووضح طريقة حسابه مع مثال.",
-                answerAr: "المتوسط الحسابي: مجموع القيم مقسومًا على عددها. الصيغة: 𝑥̄ = Σ𝑥ᵢ / 𝑛. مثال: درجات 5 طلاب: 12، 14، 16، 18، 20 → المتوسط = (12+14+16+18+20)/5 = 16."
+                questionAr: "ما مراحل نشأة الأرغونوميا ولماذا ظهرت خلال الحرب العالمية الثانية؟",
+                answerAr: "المراحل: 1) مرحلة صناعية أولى 2) مرحلة الحرب العالمية الثانية 3) مرحلة حديثة. ظهرت خلال الحرب العالمية الثانية بسبب الحاجة لتصميم المعدات العسكرية لتناسب قدرات الجنود وتقليل الأخطاء والإصابات في ظروف القتال الصعبة."
             },
             {
                 id: 12,
-                questionAr: "عرف الوسيط والمنوال ووضح الفرق بينهما مع مثال.",
-                answerAr: "الوسيط (Median): القيمة الوسطى عند ترتيب البيانات تصاعديًا. مثال: 12، 14، 16، 18، 20 → الوسيط = 16. المنوال (Mode): القيمة الأكثر تكرارًا في البيانات. مثال: 12، 14، 14، 16، 20 → المنوال = 14."
+                questionAr: "صف أهم التطورات في المراحل التاريخية للبحث في الأرغونوميا بعد عام 1960.",
+                answerAr: "1) بداية الأرغونوميا المكتبية مع انتشار أجهزة الكمبيوتر. 2) التركيز على الصحة النفسية والإجهاد العقلي. 3) دراسة التفاعل بين الإنسان والتكنولوجيا الحديثة. 4) التكامل بين الأرغونوميا الفيزيائية والمعرفية والتنظيمية."
             },
             {
                 id: 13,
-                questionAr: "ما الانحراف المعياري وكيف يمكن استخدامه في تحليل البيانات؟",
-                answerAr: "الانحراف المعياري: يقيس مدى تشتت البيانات حول المتوسط. الصيغة: SD = √[Σ(𝑥ᵢ - 𝑥̄)² / 𝑛]. استخدامه: معرفة مدى اختلاف البيانات عن المتوسط، لتحديد الانتظام أو التشتت. مثال: درجات 12، 14، 16، 18، 20 → SD ≈ 3.16."
+                questionAr: "لماذا يعتبر قياس أبعاد الجسم مهمًا عند تصميم أماكن العمل؟",
+                answerAr: "قياس أبعاد الجسم مهم لضمان ملائمة المعدات والمساحات للتنوع البشري، وتقليل الإجهاد العضلي والمخاطر الصحية، وتحسين الراحة والإنتاجية. مثال: ارتفاع المكتب يجب أن يتناسب مع طول الساقين والذراعين لتجنب الانحناء أو التمدد المفرط."
             },
             {
                 id: 14,
-                questionAr: "كيف يمكن استخدام النسبة المئوية في عرض نتائج البحث؟",
-                answerAr: "لحساب حصة جزء من الكل: % = (القيمة الجزئية ÷ القيمة الكلية) × 100. مثال: 12 طالب ناجح من 20 → (12/20) × 100 = 60%. استخدامها: لعرض نسب النجاح، التوزيعات النسبية، المقارنات النسبية."
+                questionAr: "اشرح كيفية تصميم المكتب والكرسي بحيث يقلل الإجهاد البدني.",
+                answerAr: "المكتب: ارتفاع 70 سم، مساحة للقدمين، سطح مقاوم للانزلاق. الكرسي: قابل للتعديل في الارتفاع والزاوية، دعم أسفل الظهر، مساند للذراعين، قاعدة خماسية للثبات. الأدوات: على مسافة يسهل الوصول إليها دون الانحناء أو التمدد المفرط."
             },
             {
                 id: 15,
-                questionAr: "اذكر أنواع أساليب البحث (وصفي، تجريبي، استكشافي) ووضح استخدام كل نوع.",
-                answerAr: "1) وصفي: وصف الظواهر كما هي (دراسة عدد ساعات النوم للطلاب). 2) تجريبي: التحكم بالمتغيرات لاختبار الفرضيات (اختبار تأثير نوع معين من الإضاءة على التركيز). 3) استكشافي: لفهم المشكلات الجديدة بدون فرضيات (استكشاف أسباب انخفاض تركيز الطلاب في الفصل)."
+                questionAr: "ما المخاطر المهنية التي قد يتعرض لها الإنسان في بيئة العمل؟ اذكر خمسة أنواع.",
+                answerAr: "1) فيزيائية: حرارة، ضوء، ضوضاء، اهتزاز. 2) كيميائية: التعرض للمواد السامة. 3) ميكانيكية: آلات حادة أو ثقيلة. 4) بيولوجية: جراثيم، فيروسات. 5) نفسية: ضغط العمل والإرهاق العقلي."
             },
             {
                 id: 16,
-                questionAr: "كيف يمكن تمثيل البيانات الكمية والبيانات النوعية بيانياً؟ اذكر مثالًا لكل منهما.",
-                answerAr: "البيانات الكمية: الأعمدة، الخطوط، الدوائر (مثال: درجات الطلاب). البيانات النوعية: الأعمدة أو الدوائر (مثال: تقييم جودة المحاضرات: جيد، متوسط، ضعيف)."
+                questionAr: "كيف يمكن الوقاية من المخاطر المهنية باستخدام مبادئ الأرغونوميا؟",
+                answerAr: "1) التدريب على استخدام المعدات بشكل صحيح. 2) توفير معدات حماية شخصية مناسبة. 3) تصميم بيئة العمل وفق مبادئ الأرغونوميا (كرسي، مكتب، إضاءة). 4) تنظيم فترات راحة منتظمة. 5) مراقبة الظروف البيئية باستمرار."
             },
             {
                 id: 17,
-                questionAr: "اشرح كيف يتم تفسير النتائج وربطها بالفرضيات.",
-                answerAr: "1) مقارنة المتوسطات والانحراف المعياري. 2) تحديد إذا كانت البيانات تدعم الفرضية البديلة أو لا. 3) استخدام الاختبارات الإحصائية للتحقق من الدلالة الإحصائية. 4) ربط النتائج بالسياق النظري للبحث. مثال: إذا أظهرت البيانات أن زيادة ساعات النوم مرتبطة بارتفاع الدرجات → تدعم الفرضية البديلة."
+                questionAr: "صف العلاقة بين الأرغونوميا البيئية والأداء العقلي للإنسان في العمل.",
+                answerAr: "بيئة عمل مناسبة (إضاءة جيدة، حرارة معتدلة، ضوضاء منخفضة) تحسن التركيز والانتباه والذاكرة وتقلل الأخطاء. بيئة غير مناسبة تزيد التعب العقلي، تقلل الدقة، وتؤدي إلى قرارات خاطئة. مثال: إضاءة ضعيفة تسبب إجهاد العين وتشتت الانتباه."
             },
             {
                 id: 18,
-                questionAr: "صمم سيناريو عملي لدراسة بحثية، واذكر فيه خطوات البحث العلمي كاملة.",
-                answerAr: "الموضوع: تأثير مدة الدراسة اليومية على تحصيل الطلاب. خطوات: 1) تحديد المشكلة: 'هل تؤثر مدة الدراسة على درجات الطلاب؟' 2) مراجعة الأدبيات السابقة. 3) صياغة الفرضية: 'زيادة مدة الدراسة اليومية تحسن درجات الطلاب'. 4) اختيار أسلوب البحث: وصفي وتحليلي. 5) جمع البيانات: استبيانات وملاحظة الأداء. 6) تحليل البيانات: حساب المتوسط، الوسيط، الانحراف المعياري. 7) تفسير النتائج. 8) كتابة التقرير النهائي."
+                questionAr: "قارن بين النسق الثابت، النسق الديناميكي، والنسق المتكامل في بيئة العمل مع ذكر أمثلة.",
+                answerAr: "النسق الثابت: عناصر ثابتة لا تتغير (مكتب تقليدي). النسق الديناميكي: عناصر تتغير حسب المهمة (خط إنتاج متغير). النسق المتكامل: تفاعل كامل بين الإنسان والآلة والبيئة (غرفة عمليات مستشفى). كل نسق يتطلب تصميم أرغونومي مختلف."
             },
             {
                 id: 19,
-                questionAr: "كيف يمكن استخدام الجانب الحسابي والإحصائي لتحليل البيانات النوعية والكمية؟",
-                answerAr: "البيانات الكمية: استخدام المتوسط، الوسيط، المنوال، الانحراف المعياري، النسب المئوية، معامل الارتباط، الانحدار الخطي، الرسوم البيانية المختلفة. البيانات النوعية: استخدام جداول التكرار، النسب المئوية، التصنيف، تحليل المحتوى، تمثيل بالأعمدة أو الدوائر."
+                questionAr: "اشرح كيف يمكن للأرغونوميا تحسين إنتاجية العامل وتقليل الإجهاد النفسي في مكان العمل باستخدام مثال عملي.",
+                answerAr: "مثال: في مركز اتصال، تصميم كرسي مريح مع دعم الظهر، شاشة على مستوى العين، سماعات عازلة للضوضاء، فترات راحة منتظمة، وإضاءة مناسبة. هذا يقلل آلام الظهر، يحسن التركيز، يخفض التوتر، ويزيد الإنتاجية بنسبة تصل إلى 25% ويقلل الأخطاء."
             },
             {
                 id: 20,
-                questionAr: "اشرح أهمية كتابة التقرير العلمي وعناصره الأساسية.",
-                answerAr: "أهمية: توثيق البحث، مشاركة النتائج مع الآخرين، تسهيل التحقق وإعادة الدراسة، استخدام النتائج كأساس لبحوث مستقبلية. العناصر الأساسية: 1) المقدمة. 2) الإطار النظري. 3) الفرضيات وأسئلة البحث. 4) طرق البحث. 5) النتائج. 6) المناقشة. 7) الخاتمة والتوصيات."
+                questionAr: "صمم سيناريو عملي لمكان عمل (مكتب أو مصنع) واذكر كيف يمكن تطبيق جميع مجالات الأرغونوميا لحل مشكلات الإجهاد والأداء.",
+                answerAr: "سيناريو: مصنع تجميع إلكتروني. 1) الفيزيائية: كراسي قابلة للتعديل، طاولات بارتفاعات مختلفة. 2) المعرفية: تعليمات واضحة، إشارات لونية. 3) التنظيمية: دورات عمل متناوبة، فترات راحة كل ساعتين. 4) البيئية: إضاءة 500 لوكس، ضوضاء أقل من 65 ديسيبل، حرارة 22°م. النتيجة: تقليل الإجهاد بنسبة 40%، زيادة الإنتاجية 30%، تقليل الأخطاء 50%."
             }
         ];
 
-        // بيانات أسئلة متعددة الخيارات (20 سؤال)
+        // بيانات أسئلة متعددة الخيارات (20 سؤال) - أغلبها صعبة
         const qcmQuestions = [
             {
                 id: 1,
-                questionAr: "أي من التعريفات التالية يعبر عن البحث العلمي بشكل صحيح؟",
+                questionAr: "أي من التالي يعتبر التعريف الأكثر شمولاً للأرغونوميا؟",
                 options: [
-                    { textAr: "جمع المعلومات بشكل عشوائي لفهم الظواهر", correct: false },
-                    { textAr: "عمليات منهجية منظمة لجمع وتحليل المعلومات للوصول إلى معرفة جديدة", correct: true },
-                    { textAr: "كتابة تقارير عن مواضيع مختلفة دون تحليل", correct: false },
-                    { textAr: "نقل المعلومات من الكتب دون تغيير", correct: false }
+                    { textAr: "علم تصميم المكاتب والكراسي فقط", correct: false },
+                    { textAr: "دراسة العلاقة بين الإنسان والآلة في بيئة محددة لتحسين الأداء وتقليل الإجهاد", correct: true },
+                    { textAr: "مجموعة من القواعد لزيادة الإنتاجية بغض النظر عن الراحة", correct: false },
+                    { textAr: "فرع من فروع الطب المهني يهتم بعلاج الإصابات فقط", correct: false }
                 ]
             },
             {
                 id: 2,
-                questionAr: "أي مما يلي ليس من أهداف البحث العلمي؟",
+                questionAr: "أي من هذه العوامل لا يعتبر من عناصر عجلة الأرغونوميا الأساسية؟",
                 options: [
-                    { textAr: "الوصول إلى معرفة جديدة", correct: false },
-                    { textAr: "التحقق من صحة الفرضيات", correct: false },
-                    { textAr: "حل المشكلات العملية", correct: false },
-                    { textAr: "تعزيز التحيز الشخصي للباحث", correct: true }
+                    { textAr: "الإنسان", correct: false },
+                    { textAr: "الآلة", correct: false },
+                    { textAr: "الراتب الشهري", correct: true },
+                    { textAr: "البيئة", correct: false }
                 ]
             },
             {
                 id: 3,
-                questionAr: "أي من الخصائص التالية تعتبر أساسية للبحث العلمي؟",
+                questionAr: "ما هو الهدف الرئيسي من الأرغونوميا المعرفية؟",
                 options: [
-                    { textAr: "التحيز الشخصي", correct: false },
-                    { textAr: "المنهجية والتنظيم", correct: true },
-                    { textAr: "عدم إمكانية التكرار", correct: false },
-                    { textAr: "الاعتماد على المشاعر", correct: false }
+                    { textAr: "تحسين تصميم المعدات لتتناسب مع جسم الإنسان", correct: false },
+                    { textAr: "دراسة العمليات العقلية وتحسين التفاعل بين الإنسان والآلة", correct: true },
+                    { textAr: "تنظيم الجداول الزمنية للعمل", correct: false },
+                    { textAr: "قياس درجة الحرارة والرطوبة في بيئة العمل", correct: false }
                 ]
             },
             {
                 id: 4,
-                questionAr: "ما الفرق بين البحث الأساسي والبحث التطبيقي؟",
+                questionAr: "أي من الهيئات التالية تعتبر منظمة عالمية للأرغونوميا؟",
                 options: [
-                    { textAr: "الأساسي يهدف لتوسيع المعرفة النظرية، والتطبيقي لحل مشكلات عملية", correct: true },
-                    { textAr: "الأساسي يحل مشكلات عملية، والتطبيقي يوسع المعرفة النظرية", correct: false },
-                    { textAr: "لا فرق بينهما", correct: false },
-                    { textAr: "الأساسي يستغرق وقتاً أطول من التطبيقي", correct: false }
+                    { textAr: "IEA (الجمعية الدولية للأرغونوميا)", correct: true },
+                    { textAr: "NASA (وكالة الفضاء الأمريكية)", correct: false },
+                    { textAr: "WHO (منظمة الصحة العالمية)", correct: false },
+                    { textAr: "UNESCO (منظمة الأمم المتحدة للتربية والعلوم والثقافة)", correct: false }
                 ]
             },
             {
                 id: 5,
-                questionAr: "ما هو الفرق بين البيانات النوعية والبيانات الكمية؟",
+                questionAr: "ما هي الوظيفة الأساسية لجهاز Dynamometer في الأرغونوميا؟",
                 options: [
-                    { textAr: "النوعية رقمية، والكمية وصفية", correct: false },
-                    { textAr: "النوعية وصفية، والكمية رقمية", correct: true },
-                    { textAr: "لا فرق بينهما", correct: false },
-                    { textAr: "النوعية أفضل من الكمية في البحث العلمي", correct: false }
+                    { textAr: "قياس درجة حرارة الجسم", correct: false },
+                    { textAr: "قياس قوة اليد والذراع", correct: true },
+                    { textAr: "مراقبة وضعيات الجسم", correct: false },
+                    { textAr: "قياس مستوى الضوضاء", correct: false }
                 ]
             },
             {
                 id: 6,
-                questionAr: "ما هي الخطوة الأولى في البحث العلمي؟",
+                questionAr: "ما هي درجة الحرارة المثالية لبيئة العمل حسب مبادئ الأرغونوميا؟",
                 options: [
-                    { textAr: "جمع البيانات", correct: false },
-                    { textAr: "تحديد المشكلة البحثية", correct: true },
-                    { textAr: "كتابة التقرير", correct: false },
-                    { textAr: "تحليل البيانات", correct: false }
+                    { textAr: "15-18° مئوية", correct: false },
+                    { textAr: "20-24° مئوية", correct: true },
+                    { textAr: "25-30° مئوية", correct: false },
+                    { textAr: "30-35° مئوية", correct: false }
                 ]
             },
             {
                 id: 7,
-                questionAr: "ما هو الغرض من مراجعة الأدبيات السابقة؟",
+                questionAr: "أي من التالي يعتبر من أسباب ظهور الأرغونوميا خلال الحرب العالمية الثانية؟",
                 options: [
-                    { textAr: "تكرار الدراسات السابقة", correct: false },
-                    { textAr: "فهم الموضوع وكشف الفجوات البحثية", correct: true },
-                    { textAr: "إطالة التقرير", correct: false },
-                    { textAr: "تجاهل الأعمال السابقة", correct: false }
+                    { textAr: "الحاجة لتصميم معدات عسكرية تناسب قدرات الجنود", correct: true },
+                    { textAr: "الرغبة في زيادة أرباح المصانع الحربية", correct: false },
+                    { textAr: "اختراع أجهزة الكمبيوتر الحديثة", correct: false },
+                    { textAr: "ظهور حركات حقوق العمال", correct: false }
                 ]
             },
             {
                 id: 8,
-                questionAr: "ما هي الفرضية في البحث العلمي؟",
+                questionAr: "ما هو التركيز الرئيسي للأرغونوميا في الفترة من 1980 إلى الآن؟",
                 options: [
-                    { textAr: "سؤال البحث الرئيسي", correct: false },
-                    { textAr: "إجابة محتملة على سؤال البحث قابلة للاختبار", correct: true },
-                    { textAr: "نتيجة البحث النهائية", correct: false },
-                    { textAr: "طريقة جمع البيانات", correct: false }
+                    { textAr: "دراسة الأدوات اليدوية فقط", correct: false },
+                    { textAr: "التطبيقات العسكرية فقط", correct: false },
+                    { textAr: "الصحة النفسية والإجهاد والإنتاجية", correct: true },
+                    { textAr: "تصميم المصانع القديمة", correct: false }
                 ]
             },
             {
                 id: 9,
-                questionAr: "ما هو الفرق بين الفرضية الصفرية والفرضية البديلة؟",
+                questionAr: "أي من المجالات التالية يهتم بتصميم المعدات والكراسي لتتلاءم مع جسم الإنسان؟",
                 options: [
-                    { textAr: "الصفرية تؤكد وجود علاقة، البديلة تنفيها", correct: false },
-                    { textAr: "الصفرية تنفي وجود علاقة، البديلة تؤكدها", correct: true },
-                    { textAr: "لا فرق بينهما", correct: false },
-                    { textAr: "الصفرية أفضل من البديلة", correct: false }
+                    { textAr: "الأرغونوميا الفيزيائية", correct: true },
+                    { textAr: "الأرغونوميا المعرفية", correct: false },
+                    { textAr: "الأرغونوميا التنظيمية", correct: false },
+                    { textAr: "الأرغونوميا البيئية", correct: false }
                 ]
             },
             {
                 id: 10,
-                questionAr: "أي من الطرق التالية تعتبر من طرق جمع البيانات النوعية؟",
+                questionAr: "ما هو التعريف الدقيق للنسق في بيئة العمل؟",
                 options: [
-                    { textAr: "الملاحظة والمقابلات", correct: true },
-                    { textAr: "الحسابات الرياضية فقط", correct: false },
-                    { textAr: "الرسوم البيانية فقط", correct: false },
-                    { textAr: "الإحصاءات الرياضية", correct: false }
+                    { textAr: "مجموعة من الآلات فقط", correct: false },
+                    { textAr: "البيئة المحيطة بالعمل", correct: false },
+                    { textAr: "مجموعة عناصر متفاعلة (إنسان، آلة، بيئة) لأداء مهمة", correct: true },
+                    { textAr: "الإجراءات الإدارية في المؤسسة", correct: false }
                 ]
             },
             {
                 id: 11,
-                questionAr: "كيف يتم حساب المتوسط الحسابي لمجموعة من القيم؟",
+                questionAr: "كيف تؤثر الضوضاء العالية على نسق الإنسان والآلة؟",
                 options: [
-                    { textAr: "مجموع القيم ÷ عدد القيم", correct: true },
-                    { textAr: "أكبر قيمة - أصغر قيمة", correct: false },
-                    { textAr: "القيمة الأكثر تكراراً", correct: false },
-                    { textAr: "القيمة الوسطى عند الترتيب", correct: false }
+                    { textAr: "تزيد من التركيز والدقة", correct: false },
+                    { textAr: "تسبب تشتت الانتباه وأخطاء في العمل", correct: true },
+                    { textAr: "تحسن التواصل بين العمال", correct: false },
+                    { textAr: "تزيد من سرعة العمل دائمًا", correct: false }
                 ]
             },
             {
                 id: 12,
-                questionAr: "ما هو الوسيط في مجموعة من البيانات؟",
+                questionAr: "ما هو الارتفاع المثالي للمكتب حسب معايير الأرغونوميا؟",
                 options: [
-                    { textAr: "القيمة الأكثر تكراراً", correct: false },
-                    { textAr: "متوسط القيم", correct: false },
-                    { textAr: "القيمة الوسطى عند ترتيب البيانات", correct: true },
-                    { textAr: "مجموع القيم", correct: false }
+                    { textAr: "50 سم", correct: false },
+                    { textAr: "60 سم", correct: false },
+                    { textAr: "70 سم", correct: true },
+                    { textAr: "80 سم", correct: false }
                 ]
             },
             {
                 id: 13,
-                questionAr: "ما الذي يقيسه الانحراف المعياري؟",
+                questionAr: "أي من الخصائص التالية يجب توفرها في الكرسي المثالي حسب الأرغونوميا؟",
                 options: [
-                    { textAr: "متوسط القيم", correct: false },
-                    { textAr: "القيمة الأكثر تكراراً", correct: false },
-                    { textAr: "مدى تشتت البيانات حول المتوسط", correct: true },
-                    { textAr: "الفرق بين أكبر وأصغر قيمة", correct: false }
+                    { textAr: "ثابت وغير قابل للتعديل", correct: false },
+                    { textAr: "قابل للتعديل، مع دعم أسفل الظهر ومساند للذراعين", correct: true },
+                    { textAr: "منخفض جدًا لتشجيع الاسترخاء", correct: false },
+                    { textAr: "مرتفع جدًا لتقليل الحركة", correct: false }
                 ]
             },
             {
                 id: 14,
-                questionAr: "كيف تحسب النسبة المئوية؟",
+                questionAr: "ما هو تأثير الإضاءة غير المناسبة على الإنسان في العمل؟",
                 options: [
-                    { textAr: "(القيمة الجزئية ÷ القيمة الكلية) × 100", correct: true },
-                    { textAr: "القيمة الكلية ÷ القيمة الجزئية", correct: false },
-                    { textAr: "القيمة الجزئية × القيمة الكلية", correct: false },
-                    { textAr: "القيمة الكلية - القيمة الجزئية", correct: false }
+                    { textAr: "إجهاد العين فقط", correct: false },
+                    { textAr: "صداع وإجهاد العين وانخفاض الدقة", correct: true },
+                    { textAr: "زيادة التركيز دائمًا", correct: false },
+                    { textAr: "تحسين المزاج العام", correct: false }
                 ]
             },
             {
                 id: 15,
-                questionAr: "أي من أنواع البحث يستخدم للتحكم بالمتغيرات لاختبار الفرضيات؟",
+                questionAr: "أي من التالي يعتبر من المخاطر النفسية في بيئة العمل؟",
                 options: [
-                    { textAr: "البحث الوصفي", correct: false },
-                    { textAr: "البحث التجريبي", correct: true },
-                    { textAr: "البحث الاستكشافي", correct: false },
-                    { textAr: "البحث التاريخي", correct: false }
+                    { textAr: "الحرارة المرتفعة", correct: false },
+                    { textAr: "الضوضاء العالية", correct: false },
+                    { textAr: "ضغط العمل والإرهاق العقلي", correct: true },
+                    { textAr: "المواد الكيميائية السامة", correct: false }
                 ]
             },
             {
                 id: 16,
-                questionAr: "أي من الرسوم البيانية مناسب لتمثيل البيانات النوعية؟",
+                questionAr: "أي من طرق الوقاية التالية تعتمد على مبادئ الأرغونوميا؟",
                 options: [
-                    { textAr: "الرسم الدائري أو الأعمدة", correct: true },
-                    { textAr: "الرسم الخطي فقط", correct: false },
-                    { textAr: "المدرج التكراري فقط", correct: false },
-                    { textAr: "المنحنى الطبيعي", correct: false }
+                    { textAr: "زيادة ساعات العمل لزيادة الإنتاج", correct: false },
+                    { textAr: "تصميم بيئة العمل وفق مبادئ الأرغونوميا", correct: true },
+                    { textAr: "تخفيض الرواتب لتقليل التكاليف", correct: false },
+                    { textAr: "إلغاء فترات الراحة", correct: false }
                 ]
             },
             {
                 id: 17,
-                questionAr: "كيف يتم ربط النتائج بالفرضيات؟",
+                questionAr: "ما هو الفرق الأساسي بين النسق الثابت والنسق الديناميكي؟",
                 options: [
-                    { textAr: "بتجاهل النتائج التي لا تناسب الفرضية", correct: false },
-                    { textAr: "بمقارنة المتوسطات والانحراف المعياري وتحديد الدلالة الإحصائية", correct: true },
-                    { textAr: "بتغيير الفرضية لتناسب النتائج", correct: false },
-                    { textAr: "بكتابة النتائج فقط دون تحليل", correct: false }
+                    { textAr: "النوع الثابت أرخص من الديناميكي", correct: false },
+                    { textAr: "في الثابت العناصر لا تتغير، في الديناميكي تتغير حسب المهمة", correct: true },
+                    { textAr: "الثابت أكثر أمانًا من الديناميكي", correct: false },
+                    { textAr: "الديناميكي لا يحتاج إلى تصميم أرغونومي", correct: false }
                 ]
             },
             {
                 id: 18,
-                questionAr: "ما هي أهمية كتابة التقرير العلمي؟",
+                questionAr: "كيف تساهم الأرغونوميا في تقليل الإجهاد النفسي في العمل؟",
                 options: [
-                    { textAr: "توثيق البحث ومشاركة النتائج", correct: true },
-                    { textAr: "إضاعة الوقت فقط", correct: false },
-                    { textAr: "تغيير النتائج لتصبح أكثر إيجابية", correct: false },
-                    { textAr: "إخفاء منهجية البحث", correct: false }
+                    { textAr: "بزيادة ساعات العمل فقط", correct: false },
+                    { textAr: "بتصميم بيئة مريحة وتنظيم فترات راحة", correct: true },
+                    { textAr: "بتخفيض الرواتب", correct: false },
+                    { textAr: "بإلغاء الاجتماعات", correct: false }
                 ]
             },
             {
                 id: 19,
-                questionAr: "أي من الأدوات التالية تستخدم لجمع البيانات الكمية؟",
+                questionAr: "أي من التالي يمثل تطبيقًا متكاملاً لجميع مجالات الأرغونوميا؟",
                 options: [
-                    { textAr: "الاستبيانات ذات الأسئلة المغلقة ذات الخيارات الرقمية", correct: true },
-                    { textAr: "المقابلات المفتوحة فقط", correct: false },
-                    { textAr: "الملاحظة غير المنظمة فقط", correct: false },
-                    { textAr: "الخيال العلمي", correct: false }
+                    { textAr: "شراء كرسي جديد للمكتب", correct: false },
+                    { textAr: "تغيير مصباح الإضاءة", correct: false },
+                    { textAr: "تجهيز مركز اتصال بكامل المواصفات الأرغونومية", correct: true },
+                    { textAr: "تنظيف مكان العمل", correct: false }
                 ]
             },
             {
                 id: 20,
-                questionAr: "ما هو الهدف الرئيسي من استخدام الإحصاء في البحث العلمي؟",
+                questionAr: "ما هي النتيجة المتوقعة لتطبيق مبادئ الأرغونوميا في مصنع ما؟",
                 options: [
-                    { textAr: "تزييف النتائج", correct: false },
-                    { textAr: "تحليل البيانات واختبار الفرضيات بدقة", correct: true },
-                    { textAr: "إطالة وقت البحث", correct: false },
-                    { textAr: "تعقيد البحث", correct: false }
+                    { textAr: "زيادة الإصابات والحوادث", correct: false },
+                    { textAr: "تقليل الإجهاد، زيادة الإنتاجية، وتقليل الأخطاء", correct: true },
+                    { textAr: "زيادة التكاليف دون فوائد", correct: false },
+                    { textAr: "تدهور جودة المنتجات", correct: false }
                 ]
             }
         ];
