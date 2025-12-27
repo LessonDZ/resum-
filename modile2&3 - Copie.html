@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>المحاضرات والاختبارات - المؤسسة والمنظمة (9-12)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c5aa0;
+            --secondary-color: #4a8af4;
+            --success-color: #2ecc71;
+            --error-color: #e74c3c;
+            --warning-color: #f39c12;
+            --light-color: #f0f7ff;
+            --dark-color: #333;
+            --gray-color: #666;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 100, 0.08);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 0;
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        /* الهيدر */
+        header {
+            background-color: var(--white);
+            padding: 18px 16px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+        
+        .app-title {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .app-subtitle {
+            color: var(--gray-color);
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+        
+        /* التبويبات */
+        .tabs {
+            display: flex;
+            background-color: var(--white);
+            position: sticky;
+            top: 78px;
+            z-index: 99;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+        
+        .tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+            background-color: rgba(44, 90, 160, 0.05);
+        }
+        
+        /* المحتوى */
+        .content {
+            padding: 16px;
+            padding-bottom: 100px;
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-color);
+        }
+        
+        /* المحاضرات */
+        .lectures-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .lecture-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 0;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .lecture-header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 20px 16px;
+        }
+        
+        .lecture-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .lecture-title i {
+            margin-left: 10px;
+        }
+        
+        .lecture-number {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .lecture-body {
+            padding: 20px 16px;
+        }
+        
+        .lecture-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        
+        .lecture-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-subtitle i {
+            margin-left: 8px;
+        }
+        
+        .lecture-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--dark-color);
+        }
+        
+        .lecture-text ul {
+            padding-right: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .lecture-text li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .lecture-text li:before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .highlight-box {
+            background-color: var(--light-color);
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-right: 4px solid var(--primary-color);
+        }
+        
+        .highlight-title {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .highlight-title i {
+            margin-left: 8px;
+        }
+        
+        /* جدول المؤسسات الصغيرة والمتوسطة */
+        .size-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        
+        .size-table th {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .size-table td {
+            padding: 10px 8px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .size-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        /* الأسئلة النظرية */
+        .question-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .question-number {
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .question-type {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .question-text {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: var(--dark-color);
+        }
+        
+        .answer-btn {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .answer-btn:active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: scale(0.98);
+        }
+        
+        .answer-content {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-right: 4px solid var(--primary-color);
+            display: none;
+        }
+        
+        .answer-content.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .answer-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .answer-title i {
+            margin-left: 8px;
+        }
+        
+        .answer-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        /* أسئلة متعددة الخيارات */
+        .qcm-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .qcm-question {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--dark-color);
+        }
+        
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 15px 12px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .option:active {
+            background-color: #eef2f7;
+            transform: scale(0.99);
+        }
+        
+        .option.selected {
+            border-color: var(--primary-color);
+            background-color: #e8f0fe;
+        }
+        
+        .option.correct {
+            border-color: var(--success-color);
+            background-color: rgba(46, 204, 113, 0.1);
+        }
+        
+        .option.incorrect {
+            border-color: var(--error-color);
+            background-color: rgba(231, 76, 60, 0.1);
+        }
+        
+        .option-letter {
+            background-color: #ddd;
+            color: #555;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .option.selected .option-letter {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .option.correct .option-letter {
+            background-color: var(--success-color);
+            color: var(--white);
+        }
+        
+        .option.incorrect .option-letter {
+            background-color: var(--error-color);
+            color: var(--white);
+        }
+        
+        .option-text {
+            flex: 1;
+            font-size: 0.95rem;
+        }
+        
+        .feedback {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .feedback.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .feedback.correct {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: var(--success-color);
+            border-right: 3px solid var(--success-color);
+        }
+        
+        .feedback.incorrect {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--error-color);
+            border-right: 3px solid var(--error-color);
+        }
+        
+        /* إحصائيات */
+        .stats {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        
+        .stat-item {
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+        
+        .theoretical .stat-value {
+            color: var(--primary-color);
+        }
+        
+        .qcm .stat-value {
+            color: var(--warning-color);
+        }
+        
+        /* أزرار التحكم */
+        .control-buttons {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            background-color: var(--white);
+            padding: 12px 16px;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            z-index: 90;
+        }
+        
+        .control-btn {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            flex: 1;
+            margin: 0 5px;
+        }
+        
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .btn-reset {
+            background-color: #f8f9fa;
+            color: var(--gray-color);
+            border: 1px solid #ddd;
+        }
+        
+        .btn-show-all {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        /* الرسوم المتحركة */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* تحسينات للأجهزة الصغيرة */
+        @media (max-width: 360px) {
+            .app-title {
+                font-size: 1.1rem;
+            }
+            
+            .tab {
+                font-size: 0.85rem;
+                padding: 12px 8px;
+            }
+            
+            .lecture-card, .question-card, .qcm-card {
+                padding: 16px 12px;
+            }
+            
+            .size-table {
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- الهيدر -->
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div>
+                        <div class="app-title">المحاضرات والاختبارات</div>
+                        <div class="app-subtitle">المؤسسة والمنظمة (المحاضرات 9-12)</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- التبويبات -->
+        <div class="tabs">
+            <div class="tab active" data-tab="lectures">
+                <i class="fas fa-book-open"></i> المحاضرات (4)
+            </div>
+            <div class="tab" data-tab="theoretical">
+                <i class="fas fa-question-circle"></i> أسئلة نظرية (15)
+            </div>
+            <div class="tab" data-tab="qcm">
+                <i class="fas fa-list-ol"></i> أسئلة متعددة (15)
+            </div>
+        </div>
+        
+        <!-- المحتوى -->
+        <div class="content">
+            <!-- قسم المحاضرات -->
+            <div class="content-section active" id="lectures-section">
+                <h2 class="section-title">
+                    <i class="fas fa-graduation-cap"></i> محاضرات المؤسسة والمنظمة (9-12)
+                </h2>
+                
+                <div class="lectures-container" id="lectures-container">
+                    <!-- سيتم تعبئتها ديناميكياً -->
+                </div>
+            </div>
+            
+            <!-- قسم الأسئلة النظرية -->
+            <div class="content-section" id="theoretical-section">
+                <h2 class="section-title">
+                    <i class="fas fa-pen-alt"></i> الأسئلة النظرية (15 سؤال)
+                </h2>
+                
+                <div class="stats">
+                    <div class="stat-item theoretical">
+                        <div class="stat-value" id="theoretical-answered">0</div>
+                        <div class="stat-label">تمت الإجابة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">إجمالي الأسئلة</div>
+                    </div>
+                </div>
+                
+                <div id="theoretical-questions-container">
+                    <!-- سيتم تعبئتها ديناميكياً -->
+                </div>
+            </div>
+            
+            <!-- قسم الأسئلة المتعددة -->
+            <div class="content-section" id="qcm-section">
+                <h2 class="section-title">
+                    <i class="fas fa-check-circle"></i> أسئلة متعددة الخيارات (15 سؤال)
+                </h2>
+                
+                <div class="stats">
+                    <div class="stat-item qcm">
+                        <div class="stat-value" id="qcm-correct">0</div>
+                        <div class="stat-label">إجابات صحيحة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="qcm-answered">0</div>
+                        <div class="stat-label">تمت الإجابة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">إجمالي الأسئلة</div>
+                    </div>
+                </div>
+                
+                <div id="qcm-questions-container">
+                    <!-- سيتم تعبئتها ديناميكياً -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- أزرار التحكم -->
+        <div class="control-buttons">
+            <button class="control-btn btn-reset" id="resetTheoreticalBtn">
+                <i class="fas fa-redo"></i> إعادة تعيين
+            </button>
+            <button class="control-btn btn-show-all" id="showAllAnswersBtn">
+                <i class="fas fa-eye"></i> عرض كل الإجابات
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // بيانات المحاضرات (9-12)
+        const lectures = [
+            {
+                id: 9,
+                title: "تصنيف المؤسسات حسب الحجم",
+                subtitle: "المؤسسات الصغيرة والمتوسطة والكبيرة",
+                content: `
+                    <div class="lecture-section">
+                        <p class="lecture-text">
+                            وفقًا لمعيار الحجم، تُصنَّف المؤسسات إلى:
+                        </p>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-chart-line"></i> 1️⃣ المؤسسات الصغيرة والمتوسطة (PME)
+                        </div>
+                        <p class="lecture-text">
+                            حسب التشريع الجزائري، تُعرّف بأنها:
+                            <br>كل مؤسسة لإنتاج السلع أو الخدمات تشغل من 1 إلى 250 عاملًا،
+                            ولا يتجاوز:
+                            <br>- رقم الأعمال: 2 مليار دج
+                            <br>- مجموع الميزانية السنوية: 500 مليون دج
+                        </p>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-list-ol"></i> أصناف المؤسسات الصغيرة والمتوسطة
+                        </div>
+                        
+                        <table class="size-table">
+                            <thead>
+                                <tr>
+                                    <th>النوع</th>
+                                    <th>عدد العمال</th>
+                                    <th>رقم الأعمال</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>المؤسسات المصغّرة</strong><br>(Micro-Entreprise)</td>
+                                    <td>أقل من 10</td>
+                                    <td>أقل من 20 مليون دج</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>المؤسسات الصغيرة</strong><br>(Petite Entreprise)</td>
+                                    <td>من 10 إلى 49</td>
+                                    <td>أقل من 200 مليون دج</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>المؤسسات المتوسطة</strong><br>(Moyenne Entreprise)</td>
+                                    <td>من 50 إلى 250</td>
+                                    <td>من 200 مليون إلى 2 مليار دج</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-building"></i> 2️⃣ المؤسسات الكبيرة
+                        </div>
+                        <ul class="lecture-text">
+                            <li>تشغل أكثر من 250 عاملًا</li>
+                            <li>كثيفة رأس المال</li>
+                            <li>تعتمد على التكنولوجيا العالية</li>
+                            <li>تأخذ غالبًا شكل شركات مساهمة</li>
+                            <li>قادرة على تجميع رؤوس أموال ضخمة</li>
+                            <li>من بينها الشركات متعددة الجنسيات</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                id: 10,
+                title: "الوظائف الأساسية للمؤسسة (1)",
+                subtitle: "وظيفة الإنتاج والتسويق",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-industry"></i> أولًا: وظيفة الإنتاج والعمليات
+                        </div>
+                        <p class="lecture-text">
+                            ترتبط بإنتاج:
+                            <br>- <strong>السلع</strong> (مثل السيارات، الملابس، مواد البناء)
+                            <br>- <strong>الخدمات</strong> (الصحة، الصيانة، الخدمات المصرفية)
+                        </p>
+                        
+                        <div class="highlight-box">
+                            <div class="highlight-title">
+                                <i class="fas fa-tasks"></i> أهم نشاطاتها:
+                            </div>
+                            <ul class="lecture-text">
+                                <li>تخطيط وتطوير السلعة أو الخدمة</li>
+                                <li>تصميم العملية الإنتاجية</li>
+                                <li>تخطيط طاقة العمليات</li>
+                                <li>الترتيب الداخلي للمصنع</li>
+                                <li>التخطيط الإجمالي للإنتاج</li>
+                                <li>جدولة العمليات</li>
+                                <li>ضبط الجودة</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-chart-bar"></i> ثانيًا: وظيفة التسويق
+                        </div>
+                        <p class="lecture-text">
+                            تهدف إلى:
+                            <br>- دراسة السوق
+                            <br>- فهم حاجات المستهلكين
+                            <br>- تحليل المنافسة
+                        </p>
+                        
+                        <div class="highlight-box">
+                            <div class="highlight-title">
+                                <i class="fas fa-bullseye"></i> وتعمل على:
+                            </div>
+                            <ul class="lecture-text">
+                                <li>تحقيق التميز</li>
+                                <li>ضمان تحقيق أهداف المؤسسة</li>
+                                <li>التنسيق مع باقي الوظائف خاصة الإنتاج</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 11,
+                title: "الوظائف الأساسية للمؤسسة (2)",
+                subtitle: "الموارد البشرية، المالية، والعلاقات العامة",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-users"></i> ثالثًا: وظيفة الموارد البشرية
+                        </div>
+                        <p class="lecture-text">
+                            تُعد من أهم وظائف المؤسسة بسبب أهمية العنصر البشري.
+                        </p>
+                        
+                        <div class="highlight-box">
+                            <div class="highlight-title">
+                                <i class="fas fa-star"></i> أسباب أهميتها:
+                            </div>
+                            <ul class="lecture-text">
+                                <li>اتساع حجم المؤسسات</li>
+                                <li>دورها الاجتماعي</li>
+                                <li>تأثيرها المباشر على باقي الموارد</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight-box">
+                            <div class="highlight-title">
+                                <i class="fas fa-list-check"></i> أهم نشاطاتها:
+                            </div>
+                            <ul class="lecture-text">
+                                <li>تحليل العمل</li>
+                                <li>تخطيط الموارد البشرية</li>
+                                <li>الاستقطاب والاختيار والتعيين</li>
+                                <li>التدريب وتنمية الموارد البشرية</li>
+                                <li>تقييم الأداء</li>
+                                <li>صيانة الموارد البشرية وضمان السلامة المهنية</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-money-bill-wave"></i> رابعًا: الوظيفة المالية
+                        </div>
+                        <p class="lecture-text">
+                            تهتم بالجوانب المالية للمؤسسة، وتُعد وظيفة مستقلة.
+                        </p>
+                        
+                        <div class="highlight-box">
+                            <div class="highlight-title">
+                                <i class="fas fa-tasks"></i> نشاطاتها الأساسية:
+                            </div>
+                            <ul class="lecture-text">
+                                <li>التمويل</li>
+                                <li>التخطيط المالي</li>
+                                <li>التحليل المالي</li>
+                                <li>الرقابة المالية</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-handshake"></i> خامسًا: وظيفة العلاقات العامة
+                        </div>
+                        <p class="lecture-text">
+                            تهدف إلى:
+                            <br>- بناء الثقة
+                            <br>- تحقيق التفاهم
+                            <br>- تعزيز التعاون
+                        </p>
+                        
+                        <div class="highlight-box">
+                            <div class="highlight-title">
+                                <i class="fas fa-network-wired"></i> مع:
+                            </div>
+                            <ul class="lecture-text">
+                                <li>العاملين</li>
+                                <li>الإدارات الداخلية</li>
+                                <li>الزبائن والموردين</li>
+                                <li>المنافسين</li>
+                                <li>المجتمع</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 12,
+                title: "مفهوم التسيير والمسير",
+                subtitle: "التسيير، المسير، وظائفه وأدواره",
+                content: `
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-cogs"></i> 1️⃣ تعريف التسيير
+                        </div>
+                        <p class="lecture-text">
+                            التسيير هو:
+                            <br>مجموعة من العمليات المنسقة تشمل التخطيط، التنظيم، التوجيه، والرقابة
+                            <br>وهدفه تحقيق الأهداف من خلال تنسيق جهود الأفراد.
+                        </p>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-user-tie"></i> 2️⃣ من هو المسير؟
+                        </div>
+                        <p class="lecture-text">
+                            المسير هو:
+                            <br>- الشخص الذي ينجز الأعمال من خلال الآخرين
+                            <br>- يتمتع بسلطة اتخاذ القرار
+                            <br>- يؤدي دور المخطط، المنسق، المراقب، والمنشط
+                        </p>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-tasks"></i> 3️⃣ وظائف المسير
+                        </div>
+                        <ul class="lecture-text">
+                            <li><strong>التخطيط:</strong> تحديد الأهداف والخطوات</li>
+                            <li><strong>التنظيم:</strong> تصميم الهيكل وتوزيع الأدوار</li>
+                            <li><strong>التوجيه والقيادة:</strong> التأثير على سلوك الأفراد</li>
+                            <li><strong>الرقابة:</strong> مقارنة الأداء الفعلي بالمخطط وتصحيح الانحرافات</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lecture-section">
+                        <div class="section-subtitle">
+                            <i class="fas fa-chess-queen"></i> 4️⃣ أدوار المسير (حسب منتزبرغ)
+                        </div>
+                        
+                        <div class="highlight-box">
+                            <div class="highlight-title">
+                                <i class="fas fa-users"></i> أ. الأدوار العلاقية:
+                            </div>
+                            <ul class="lecture-text">
+                                <li><strong>الواجهة:</strong> يمثل المؤسسة أمام الخارج</li>
+                                <li><strong>القائد:</strong> يقود ويوجه المرؤوسين</li>
+                                <li><strong>الرابط:</strong> يربط المؤسسة مع المحيط الخارجي</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight-box">
+                            <div class="highlight-title">
+                                <i class="fas fa-bullhorn"></i> ب. الأدوار الإعلامية:
+                            </div>
+                            <ul class="lecture-text">
+                                <li><strong>جامع المعلومات:</strong> يجمع المعلومات الداخلية والخارجية</li>
+                                <li><strong>موزع المعلومات:</strong> ينقل المعلومات للمرؤوسين</li>
+                                <li><strong>المتحدث:</strong> ينقل معلومات المؤسسة للخارج</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="highlight-box">
+                            <div class="highlight-title">
+                                <i class="fas fa-gavel"></i> ج. الأدوار التقريرية:
+                            </div>
+                            <ul class="lecture-text">
+                                <li><strong>متخذ القرار:</strong> يتخذ القرارات الهامة</li>
+                                <li><strong>معالج المشاكل:</strong> يحل المشاكل والصراعات</li>
+                                <li><strong>موزع الموارد:</strong> يوزع الموارد المادية والبشرية</li>
+                                <li><strong>المفاوض:</strong> يجري المفاوضات مع الأطراف المختلفة</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // بيانات الأسئلة النظرية (15 سؤال)
+        const theoreticalQuestions = [
+            {
+                id: 1,
+                questionAr: "كيف تُصنف المؤسسات حسب معيار الحجم؟",
+                answerAr: "تُصنف المؤسسات حسب الحجم إلى: المؤسسات الصغيرة والمتوسطة (PME) والمؤسسات الكبيرة."
+            },
+            {
+                id: 2,
+                questionAr: "ما هو تعريف المؤسسات الصغيرة والمتوسطة حسب التشريع الجزائري؟",
+                answerAr: "هي كل مؤسسة لإنتاج السلع أو الخدمات تشغل من 1 إلى 250 عاملًا، ولا يتجاوز رقم أعمالها 2 مليار دج ولا يتجاوز مجموع ميزانيتها السنوية 500 مليون دج."
+            },
+            {
+                id: 3,
+                questionAr: "ما هي أصناف المؤسسات الصغيرة والمتوسطة؟",
+                answerAr: "1- المؤسسات المصغرة (أقل من 10 عمال، أقل من 20 مليون دج)، 2- المؤسسات الصغيرة (من 10-49 عامل، أقل من 200 مليون دج)، 3- المؤسسات المتوسطة (من 50-250 عامل، من 200 مليون إلى 2 مليار دج)."
+            },
+            {
+                id: 4,
+                questionAr: "ما هي خصائص المؤسسات الكبيرة؟",
+                answerAr: "تشغل أكثر من 250 عاملًا، كثيفة رأس المال، تعتمد على التكنولوجيا العالية، تأخذ شكل شركات مساهمة، قادرة على تجميع رؤوس أموال ضخمة، ومنها الشركات متعددة الجنسيات."
+            },
+            {
+                id: 5,
+                questionAr: "ما هي وظيفة الإنتاج والعمليات؟",
+                answerAr: "هي الوظيفة المرتبطة بإنتاج السلع والخدمات، وتشمل تخطيط وتطوير السلعة، تصميم العملية الإنتاجية، تخطيط الطاقة، الترتيب الداخلي، التخطيط الإجمالي، الجدولة، وضبط الجودة."
+            },
+            {
+                id: 6,
+                questionAr: "ما هو دور وظيفة التسويق؟",
+                answerAr: "تهدف إلى دراسة السوق، فهم حاجات المستهلكين، تحليل المنافسة، وتحقيق التميز وضمان أهداف المؤسسة بالتنسيق مع باقي الوظائف خاصة الإنتاج."
+            },
+            {
+                id: 7,
+                questionAr: "لماذا تُعد وظيفة الموارد البشرية من أهم وظائف المؤسسة؟",
+                answerAr: "بسبب أهمية العنصر البشري، واتساع حجم المؤسسات، ودورها الاجتماعي، وتأثيرها المباشر على باقي الموارد."
+            },
+            {
+                id: 8,
+                questionAr: "ما هي أهم نشاطات وظيفة الموارد البشرية؟",
+                answerAr: "تحليل العمل، تخطيط الموارد البشرية، الاستقطاب والاختيار والتعيين، التدريب وتنمية الموارد البشرية، تقييم الأداء، وصيانة الموارد البشرية وضمان السلامة المهنية."
+            },
+            {
+                id: 9,
+                questionAr: "ما هي الوظيفة المالية؟",
+                answerAr: "هي الوظيفة التي تهتم بالجوانب المالية للمؤسسة، وتشمل التمويل، التخطيط المالي، التحليل المالي، والرقابة المالية."
+            },
+            {
+                id: 10,
+                questionAr: "ما هو هدف وظيفة العلاقات العامة؟",
+                answerAr: "تهدف إلى بناء الثقة، تحقيق التفاهم، وتعزيز التعاون مع العاملين، الإدارات الداخلية، الزبائن، الموردين، المنافسين، والمجتمع."
+            },
+            {
+                id: 11,
+                questionAr: "ما هو تعريف التسيير؟",
+                answerAr: "هو مجموعة من العمليات المنسقة تشمل التخطيط، التنظيم، التوجيه، والرقابة، وهدفه تحقيق الأهداف من خلال تنسيق جهود الأفراد."
+            },
+            {
+                id: 12,
+                questionAr: "من هو المسير؟",
+                answerAr: "هو الشخص الذي ينجز الأعمال من خلال الآخرين، يتمتع بسلطة اتخاذ القرار، ويؤدي دور المخطط، المنسق، المراقب، والمنشط."
+            },
+            {
+                id: 13,
+                questionAr: "ما هي وظائف المسير؟",
+                answerAr: "1- التخطيط (تحديد الأهداف والخطوات)، 2- التنظيم (تصميم الهيكل وتوزيع الأدوار)، 3- التوجيه والقيادة (التأثير على سلوك الأفراد)، 4- الرقابة (مقارنة الأداء الفعلي بالمخطط وتصحيح الانحرافات)."
+            },
+            {
+                id: 14,
+                questionAr: "ما هي الأدوار العلاقية للمسير حسب منتزبرغ؟",
+                answerAr: "الواجهة (يمثل المؤسسة أمام الخارج)، القائد (يقود ويوجه المرؤوسين)، الرابط (يربط المؤسسة مع المحيط الخارجي)."
+            },
+            {
+                id: 15,
+                questionAr: "ما هي الأدوار التقريرية للمسير؟",
+                answerAr: "متخذ القرار (يتخذ القرارات الهامة)، معالج المشاكل (يحل المشاكل والصراعات)، موزع الموارد (يوزع الموارد المادية والبشرية)، المفاوض (يجري المفاوضات مع الأطراف المختلفة)."
+            }
+        ];
+
+        // بيانات أسئلة متعددة الخيارات (15 سؤال)
+        const qcmQuestions = [
+            {
+                id: 1,
+                questionAr: "المؤسسات الصغيرة والمتوسطة تشغل عدد عمال يتراوح بين:",
+                options: [
+                    { textAr: "1 إلى 250 عامل", correct: true },
+                    { textAr: "10 إلى 500 عامل", correct: false },
+                    { textAr: "50 إلى 1000 عامل", correct: false },
+                    { textAr: "100 إلى 5000 عامل", correct: false }
+                ]
+            },
+            {
+                id: 2,
+                questionAr: "حسب التشريع الجزائري، رقم أعمال المؤسسات الصغيرة والمتوسطة لا يتجاوز:",
+                options: [
+                    { textAr: "2 مليار دج", correct: true },
+                    { textAr: "5 مليار دج", correct: false },
+                    { textAr: "10 مليار دج", correct: false },
+                    { textAr: "500 مليون دج", correct: false }
+                ]
+            },
+            {
+                id: 3,
+                questionAr: "المؤسسات المصغرة تشغل عدد عمال أقل من:",
+                options: [
+                    { textAr: "10 عمال", correct: true },
+                    { textAr: "5 عمال", correct: false },
+                    { textAr: "20 عاملاً", correct: false },
+                    { textAr: "50 عاملاً", correct: false }
+                ]
+            },
+            {
+                id: 4,
+                questionAr: "المؤسسات الكبيرة تشغل أكثر من:",
+                options: [
+                    { textAr: "250 عاملاً", correct: true },
+                    { textAr: "100 عاملاً", correct: false },
+                    { textAr: "500 عاملاً", correct: false },
+                    { textAr: "1000 عاملاً", correct: false }
+                ]
+            },
+            {
+                id: 5,
+                questionAr: "من خصائص المؤسسات الكبيرة:",
+                options: [
+                    { textAr: "كثيفة رأس المال", correct: true },
+                    { textAr: "قليلة رأس المال", correct: false },
+                    { textAr: "لا تعتمد على التكنولوجيا", correct: false },
+                    { textAr: "لا تأخذ شكل شركات مساهمة", correct: false }
+                ]
+            },
+            {
+                id: 6,
+                questionAr: "وظيفة الإنتاج والعمليات ترتبط بـ:",
+                options: [
+                    { textAr: "إنتاج السلع والخدمات", correct: true },
+                    { textAr: "الإدارة المالية فقط", correct: false },
+                    { textAr: "التسويق فقط", correct: false },
+                    { textAr: "الموارد البشرية فقط", correct: false }
+                ]
+            },
+            {
+                id: 7,
+                questionAr: "من نشاطات وظيفة الإنتاج:",
+                options: [
+                    { textAr: "ضبط الجودة", correct: true },
+                    { textAr: "التمويل", correct: false },
+                    { textAr: "الاستقطاب", correct: false },
+                    { textAr: "المفاوضات", correct: false }
+                ]
+            },
+            {
+                id: 8,
+                questionAr: "وظيفة التسويق تهدف إلى:",
+                options: [
+                    { textAr: "دراسة السوق", correct: true },
+                    { textAr: "تصنيع المنتجات", correct: false },
+                    { textAr: "إدارة الموارد البشرية", correct: false },
+                    { textAr: "الرقابة المالية", correct: false }
+                ]
+            },
+            {
+                id: 9,
+                questionAr: "من أسباب أهمية وظيفة الموارد البشرية:",
+                options: [
+                    { textAr: "أهمية العنصر البشري", correct: true },
+                    { textAr: "عدم تأثيرها على الموارد الأخرى", correct: false },
+                    { textAr: "صغر حجم المؤسسات", correct: false },
+                    { textAr: "عدم وجود دور اجتماعي", correct: false }
+                ]
+            },
+            {
+                id: 10,
+                questionAr: "من نشاطات الموارد البشرية:",
+                options: [
+                    { textAr: "التدريب وتنمية الموارد البشرية", correct: true },
+                    { textAr: "تصميم المنتجات", correct: false },
+                    { textAr: "تحليل السوق", correct: false },
+                    { textAr: "التمويل", correct: false }
+                ]
+            },
+            {
+                id: 11,
+                questionAr: "الوظيفة المالية تشمل:",
+                options: [
+                    { textAr: "التمويل والتخطيط المالي", correct: true },
+                    { textAr: "الإنتاج والتصنيع", correct: false },
+                    { textAr: "التسويق والبيع", correct: false },
+                    { textAr: "العلاقات العامة فقط", correct: false }
+                ]
+            },
+            {
+                id: 12,
+                questionAr: "وظيفة العلاقات العامة تهدف إلى:",
+                options: [
+                    { textAr: "بناء الثقة والتعاون", correct: true },
+                    { textAr: "الإنتاج فقط", correct: false },
+                    { textAr: "التمويل فقط", correct: false },
+                    { textAr: "التسويق فقط", correct: false }
+                ]
+            },
+            {
+                id: 13,
+                questionAr: "التسيير يشمل عمليات:",
+                options: [
+                    { textAr: "التخطيط والتنظيم والتوجيه والرقابة", correct: true },
+                    { textAr: "الإنتاج فقط", correct: false },
+                    { textAr: "المبيعات فقط", correct: false },
+                    { textAr: "المحاسبة فقط", correct: false }
+                ]
+            },
+            {
+                id: 14,
+                questionAr: "من أدوار المسير العلاقية:",
+                options: [
+                    { textAr: "الواجهة والقائد والرابط", correct: true },
+                    { textAr: "الإنتاجي والتسويقي", correct: false },
+                    { textAr: "المالي والمحاسبي", correct: false },
+                    { textAr: "التقني فقط", correct: false }
+                ]
+            },
+            {
+                id: 15,
+                questionAr: "من الأدوار التقريرية للمسير:",
+                options: [
+                    { textAr: "متخذ القرار والمعالج للمشاكل", correct: true },
+                    { textAr: "المنتج والمصنع", correct: false },
+                    { textAr: "المسوق والبائع", correct: false },
+                    { textAr: "المحاسب فقط", correct: false }
+                ]
+            }
+        ];
+
+        // متغيرات التطبيق
+        let currentTab = 'lectures';
+        let theoreticalAnswersVisible = [];
+        let qcmUserAnswers = Array(qcmQuestions.length).fill(null);
+        let qcmChecked = Array(qcmQuestions.length).fill(false);
+
+        // تهيئة التطبيق
+        document.addEventListener('DOMContentLoaded', function() {
+            // عرض المحاضرات
+            renderLectures();
+            
+            // تهيئة الأسئلة النظرية
+            renderTheoreticalQuestions();
+            
+            // تهيئة أسئلة متعددة الخيارات
+            renderQCMQuestions();
+            
+            // تحديث الإحصائيات
+            updateStats();
+            
+            // إضافة أحداث التبويبات
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    switchTab(this.dataset.tab);
+                });
+            });
+            
+            // إضافة أحداث الأزرار
+            document.getElementById('resetTheoreticalBtn').addEventListener('click', resetTheoretical);
+            document.getElementById('showAllAnswersBtn').addEventListener('click', toggleShowAllAnswers);
+            
+            // تغيير أزرار التحكم حسب التبويب
+            updateControlButtons();
+        });
+
+        // عرض المحاضرات
+        function renderLectures() {
+            const container = document.getElementById('lectures-container');
+            container.innerHTML = '';
+            
+            lectures.forEach((lecture, index) => {
+                const card = document.createElement('div');
+                card.className = 'lecture-card';
+                
+                card.innerHTML = `
+                    <div class="lecture-header">
+                        <div class="lecture-title">
+                            <i class="fas fa-book"></i> المحاضرة ${String(lecture.id).padStart(2, '0')}: ${lecture.title}
+                            <div class="lecture-number">${lecture.id}</div>
+                        </div>
+                        <div class="lecture-subtitle">${lecture.subtitle}</div>
+                    </div>
+                    <div class="lecture-body">
+                        ${lecture.content}
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        // عرض الأسئلة النظرية
+        function renderTheoreticalQuestions() {
+            const container = document.getElementById('theoretical-questions-container');
+            container.innerHTML = '';
+            
+            theoreticalQuestions.forEach((question, index) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.id = `theoretical-${index}`;
+                
+                card.innerHTML = `
+                    <div class="question-header">
+                        <div class="question-number">${index + 1}</div>
+                        <div class="question-type">سؤال نظري</div>
+                    </div>
+                    <div class="question-text">${question.questionAr}</div>
+                    <button class="answer-btn" data-index="${index}">
+                        <i class="fas fa-lightbulb"></i> عرض الإجابة
+                    </button>
+                    <div class="answer-content" id="answer-${index}">
+                        <div class="answer-title">
+                            <i class="fas fa-check-circle"></i> الإجابة
+                        </div>
+                        <div class="answer-text">${question.answerAr}</div>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+                
+                // إضافة حدث للزر
+                const answerBtn = card.querySelector('.answer-btn');
+                answerBtn.addEventListener('click', function() {
+                    toggleAnswer(this.dataset.index);
+                });
+            });
+        }
+
+        // عرض أسئلة متعددة الخيارات
+        function renderQCMQuestions() {
+            const container = document.getElementById('qcm-questions-container');
+            container.innerHTML = '';
+            
+            qcmQuestions.forEach((question, questionIndex) => {
+                const card = document.createElement('div');
+                card.className = 'qcm-card';
+                card.id = `qcm-${questionIndex}`;
+                
+                let optionsHTML = '';
+                const letters = ['أ', 'ب', 'ج', 'د'];
+                
+                question.options.forEach((option, optionIndex) => {
+                    optionsHTML += `
+                        <div class="option" data-question="${questionIndex}" data-option="${optionIndex}">
+                            <div class="option-letter">${letters[optionIndex]}</div>
+                            <div class="option-text">${option.textAr}</div>
+                        </div>
+                    `;
+                });
+                
+                card.innerHTML = `
+                    <div class="question-header">
+                        <div class="question-number">${questionIndex + 1}</div>
+                        <div class="question-type">اختيار متعدد</div>
+                    </div>
+                    <div class="qcm-question">${question.questionAr}</div>
+                    <div class="options-container">
+                        ${optionsHTML}
+                    </div>
+                    <div class="feedback" id="feedback-${questionIndex}"></div>
+                `;
+                
+                container.appendChild(card);
+                
+                // إضافة أحداث للخيارات
+                card.querySelectorAll('.option').forEach(option => {
+                    option.addEventListener('click', function() {
+                        selectOption(this.dataset.question, this.dataset.option);
+                    });
+                });
+            });
+        }
+
+        // التبديل بين التبويبات
+        function switchTab(tabName) {
+            currentTab = tabName;
+            
+            // تحديث التبويبات النشطة
+            document.querySelectorAll('.tab').forEach(tab => {
+                if (tab.dataset.tab === tabName) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            
+            // تحديث المحتوى المرئي
+            document.querySelectorAll('.content-section').forEach(section => {
+                if (section.id === `${tabName}-section`) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+            
+            // تحديث أزرار التحكم
+            updateControlButtons();
+            
+            // التمرير لأعلى الصفحة
+            window.scrollTo(0, 0);
+        }
+
+        // تحديث أزرار التحكم حسب التبويب
+        function updateControlButtons() {
+            const resetBtn = document.getElementById('resetTheoreticalBtn');
+            const showAllBtn = document.getElementById('showAllAnswersBtn');
+            
+            if (currentTab === 'theoretical') {
+                resetBtn.innerHTML = '<i class="fas fa-redo"></i> إعادة تعيين';
+                resetBtn.onclick = resetTheoretical;
+                showAllBtn.innerHTML = '<i class="fas fa-eye"></i> عرض كل الإجابات';
+                showAllBtn.onclick = toggleShowAllAnswers;
+                resetBtn.style.display = 'flex';
+                showAllBtn.style.display = 'flex';
+            } else if (currentTab === 'qcm') {
+                resetBtn.innerHTML = '<i class="fas fa-redo"></i> إعادة الاختبار';
+                resetBtn.onclick = resetQCM;
+                showAllBtn.innerHTML = '<i class="fas fa-check-circle"></i> تحقق من الإجابات';
+                showAllBtn.onclick = checkAllAnswers;
+                resetBtn.style.display = 'flex';
+                showAllBtn.style.display = 'flex';
+            } else {
+                resetBtn.style.display = 'none';
+                showAllBtn.style.display = 'none';
+            }
+        }
+
+        // عرض/إخفاء إجابة نظرية
+        function toggleAnswer(index) {
+            const answerElement = document.getElementById(`answer-${index}`);
+            const isVisible = answerElement.classList.toggle('show');
+            
+            // تحديث حالة الإجابة
+            if (isVisible && !theoreticalAnswersVisible.includes(parseInt(index))) {
+                theoreticalAnswersVisible.push(parseInt(index));
+                updateStats();
+            }
+            
+            // تحديث نص الزر
+            const button = document.querySelector(`#theoretical-${index} .answer-btn`);
+            if (isVisible) {
+                button.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء الإجابة';
+            } else {
+                button.innerHTML = '<i class="fas fa-lightbulb"></i> عرض الإجابة';
+            }
+        }
+
+        // اختيار خيار في سؤال متعدد
+        function selectOption(questionIndex, optionIndex) {
+            // إذا كان السؤال قد تم التحقق منه مسبقًا، لا نسمح بتغيير الإجابة
+            if (qcmChecked[questionIndex]) return;
+            
+            const questionCard = document.getElementById(`qcm-${questionIndex}`);
+            
+            // إلغاء تحديد جميع الخيارات في هذا السؤال
+            questionCard.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // تحديد الخيار المختار
+            const selectedOption = questionCard.querySelector(`.option[data-option="${optionIndex}"]`);
+            selectedOption.classList.add('selected');
+            
+            // حفظ إجابة المستخدم
+            qcmUserAnswers[questionIndex] = parseInt(optionIndex);
+            
+            // تحديث الإحصائيات
+            updateStats();
+            
+            // التحقق الفوري من الإجابة
+            setTimeout(() => checkAnswer(questionIndex), 300);
+        }
+
+        // التحقق من إجابة سؤال متعدد
+        function checkAnswer(questionIndex) {
+            if (qcmUserAnswers[questionIndex] === null) return false;
+            
+            const question = qcmQuestions[questionIndex];
+            const userAnswerIndex = qcmUserAnswers[questionIndex];
+            const isCorrect = question.options[userAnswerIndex].correct;
+            
+            const questionCard = document.getElementById(`qcm-${questionIndex}`);
+            const feedbackElement = document.getElementById(`feedback-${questionIndex}`);
+            
+            // تحديث مظهر الخيارات
+            question.options.forEach((option, index) => {
+                const optionElement = questionCard.querySelector(`.option[data-option="${index}"]`);
+                
+                if (option.correct) {
+                    optionElement.classList.add('correct');
+                } else if (index === userAnswerIndex && !option.correct) {
+                    optionElement.classList.add('incorrect');
+                }
+            });
+            
+            // عرض التغذية الراجعة
+            if (isCorrect) {
+                feedbackElement.textContent = 'إجابة صحيحة! أحسنت!';
+                feedbackElement.className = 'feedback correct show';
+            } else {
+                feedbackElement.textContent = 'إجابة غير صحيحة. حاول مرة أخرى!';
+                feedbackElement.className = 'feedback incorrect show';
+            }
+            
+            qcmChecked[questionIndex] = true;
+            
+            return isCorrect;
+        }
+
+        // التحقق من جميع الإجابات
+        function checkAllAnswers() {
+            let allCorrect = true;
+            let answeredCount = 0;
+            let correctCount = 0;
+            
+            qcmQuestions.forEach((_, index) => {
+                if (qcmUserAnswers[index] !== null) {
+                    answeredCount++;
+                    if (checkAnswer(index)) {
+                        correctCount++;
+                    } else {
+                        allCorrect = false;
+                    }
+                }
+            });
+            
+            // عرض نتيجة النهاية
+            if (answeredCount === 0) {
+                alert('لم تقم بالإجابة على أي سؤال بعد. يرجى اختيار الإجابات أولاً.');
+            } else if (answeredCount < qcmQuestions.length) {
+                alert(`لقد أجبت على ${answeredCount} من أصل ${qcmQuestions.length} سؤالاً.\n\nالنتيجة: ${correctCount}/${answeredCount} إجابة صحيحة.\n\nيرجى الإجابة على جميع الأسئلة للحصول على نتيجة كاملة.`);
+            } else {
+                alert(`تهانينا! لقد أكملت الاختبار.\n\nالنتيجة النهائية: ${correctCount}/${qcmQuestions.length} إجابة صحيحة.\n\nالنسبة: ${Math.round((correctCount/qcmQuestions.length)*100)}%`);
+            }
+            
+            updateStats();
+        }
+
+        // إعادة تعيين الأسئلة النظرية
+        function resetTheoretical() {
+            theoreticalAnswersVisible = [];
+            
+            // إخفاء جميع الإجابات
+            document.querySelectorAll('.answer-content').forEach(answer => {
+                answer.classList.remove('show');
+            });
+            
+            // تحديث نصوص الأزرار
+            document.querySelectorAll('.answer-btn').forEach(button => {
+                button.innerHTML = '<i class="fas fa-lightbulb"></i> عرض الإجابة';
+            });
+            
+            updateStats();
+            
+            // عرض رسالة تأكيد
+            alert('تم إعادة تعيين جميع الإجابات النظرية بنجاح.');
+        }
+
+        // إعادة تعيين أسئلة متعددة الخيارات
+        function resetQCM() {
+            qcmUserAnswers = Array(qcmQuestions.length).fill(null);
+            qcmChecked = Array(qcmQuestions.length).fill(false);
+            
+            // إعادة تعيين مظهر جميع الخيارات
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            // إخفاء جميع التغذية الراجعة
+            document.querySelectorAll('.feedback').forEach(feedback => {
+                feedback.classList.remove('show', 'correct', 'incorrect');
+            });
+            
+            updateStats();
+            
+            // عرض رسالة تأكيد
+            alert('تم إعادة تعيين اختبار الأسئلة المتعددة بنجاح. يمكنك البدء من جديد.');
+        }
+
+        // عرض/إخفاء كل الإجابات النظرية
+        function toggleShowAllAnswers() {
+            if (currentTab === 'theoretical') {
+                const allVisible = theoreticalAnswersVisible.length === theoreticalQuestions.length;
+                
+                if (allVisible) {
+                    // إخفاء جميع الإجابات
+                    theoreticalAnswersVisible = [];
+                    document.querySelectorAll('.answer-content').forEach(answer => {
+                        answer.classList.remove('show');
+                    });
+                    document.querySelectorAll('.answer-btn').forEach(button => {
+                        button.innerHTML = '<i class="fas fa-lightbulb"></i> عرض الإجابة';
+                    });
+                } else {
+                    // عرض جميع الإجابات
+                    theoreticalAnswersVisible = [];
+                    theoreticalQuestions.forEach((_, index) => {
+                        theoreticalAnswersVisible.push(index);
+                        const answerElement = document.getElementById(`answer-${index}`);
+                        answerElement.classList.add('show');
+                        const button = document.querySelector(`#theoretical-${index} .answer-btn`);
+                        button.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء الإجابة';
+                    });
+                }
+                
+                updateStats();
+            }
+        }
+
+        // تحديث الإحصائيات
+        function updateStats() {
+            // تحديث إحصائيات الأسئلة النظرية
+            const theoreticalAnswered = document.getElementById('theoretical-answered');
+            theoreticalAnswered.textContent = theoreticalAnswersVisible.length;
+            
+            // تحديث إحصائيات أسئلة متعددة الخيارات
+            const qcmAnswered = document.getElementById('qcm-answered');
+            const qcmCorrect = document.getElementById('qcm-correct');
+            
+            let answeredCount = 0;
+            let correctCount = 0;
+            
+            qcmUserAnswers.forEach((answer, index) => {
+                if (answer !== null) {
+                    answeredCount++;
+                    
+                    if (qcmChecked[index] && qcmQuestions[index].options[answer].correct) {
+                        correctCount++;
+                    }
+                }
+            });
+            
+            qcmAnswered.textContent = answeredCount;
+            qcmCorrect.textContent = correctCount;
+        }
+    </script>
+</body>
+</html>
