@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التحليل الكامل للصحة والسلامة المهنية</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            font-size: 1.8rem;
+        }
+        
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ecf0f1;
+            font-size: 1.5rem;
+        }
+        
+        h3 {
+            color: #16a085;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        h4 {
+            color: #27ae60;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-right: 25px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-right: 4px solid #3498db;
+        }
+        
+        .theory-box {
+            background-color: #e8f6f3;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-right: 4px solid #16a085;
+        }
+        
+        .highlight {
+            background-color: #fff9e6;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-right: 3px solid #f39c12;
+        }
+        
+        .exercise {
+            background-color: #e8f4fc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #3498db;
+        }
+        
+        .question-section {
+            margin-top: 35px;
+        }
+        
+        .faq-container {
+            margin-top: 25px;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            width: 100%;
+            padding: 16px 20px;
+            background-color: #34495e;
+            color: white;
+            border: none;
+            text-align: right;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question::after {
+            content: "+";
+            font-size: 1.5rem;
+            font-weight: normal;
+        }
+        
+        .faq-question.active::after {
+            content: "-";
+        }
+        
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+            background-color: #f9f9f9;
+        }
+        
+        .faq-answer.show {
+            padding: 20px;
+            max-height: 2000px;
+        }
+        
+        .qcm-container {
+            margin-top: 30px;
+        }
+        
+        .qcm-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .qcm-question {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #2c3e50;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #bdc3c7;
+        }
+        
+        .qcm-option {
+            display: block;
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            background-color: white;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            text-align: right;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .qcm-option:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .qcm-option.correct {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+            font-weight: 600;
+        }
+        
+        .qcm-option.incorrect {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        
+        .qcm-option.disabled {
+            pointer-events: none;
+        }
+        
+        .formula {
+            font-family: 'Courier New', monospace;
+            background-color: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border-right: 3px solid #e74c3c;
+            margin: 12px 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .step {
+            background-color: #e8f4fc;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 12px 0;
+            border-right: 3px solid #3498db;
+        }
+        
+        .step-title {
+            font-weight: bold;
+            color: #2980b9;
+            margin-bottom: 6px;
+        }
+        
+        .correct-mark {
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        /* أزرار التنقل الأفقية */
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0 30px 0;
+            justify-content: center;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .nav-btn {
+            padding: 12px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+        }
+        
+        .nav-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .nav-btn.active {
+            background-color: #2c3e50;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        /* إخفاء المحتويات غير النشطة */
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+            
+            .faq-question {
+                padding: 14px 16px;
+                font-size: 1rem;
+            }
+            
+            .qcm-item {
+                padding: 16px;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                min-width: auto;
+                padding: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-buttons {
+                padding: 10px;
+            }
+            
+            .nav-btn {
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>التحليل الكامل للصحة والسلامة المهنية</h1>
+        
+        <!-- أزرار التنقل الأفقية -->
+        <div class="nav-buttons">
+            <button class="nav-btn active" data-target="introduction">المقدمة والتعريفات</button>
+            <button class="nav-btn" data-target="theory">المحتوى النظري</button>
+            <button class="nav-btn" data-target="theoretical-questions">الأسئلة النظرية</button>
+            <button class="nav-btn" data-target="qcm-questions">أسئلة QCM</button>
+            <button class="nav-btn" data-target="exercises">التمارين والحلول</button>
+            <button class="nav-btn" data-target="summary">الملخص النهائي</button>
+        </div>
+        
+        <!-- قسم المقدمة والتعريفات -->
+        <div id="introduction" class="content-section active">
+            <div class="section">
+                <p>بداية الاهتمام بالأمن والوقاية كانت بعد الثورة الصناعية في القرن 19، حيث صدر أول قانون للصحة والسلامة في إنجلترا سنة 1802 لحماية الأطفال العمال.</p>
+            </div>
+
+            <div class="section">
+                <h2>تعريفات مهمة:</h2>
+                <p><strong>السلامة:</strong> علم إدارة المخاطر الحادة التي تؤدي إلى حوادث عمل.</p>
+                <p><strong>الوقاية المهنية:</strong> علم توقع وتحديد وتقييم المخاطر التي تؤثر على صحة العمال.</p>
+                <p><strong>الصحة:</strong> حالة من السلامة البدنية والعقلية والاجتماعية، وليس فقط غياب المرض.</p>
+                <p><strong>الأمن والوقاية في العمل:</strong> هي كل الإجراءات والتدابير والوسائل التي تتخذها الإدارة لحماية العمال وتوفير بيئة عمل آمنة.</p>
+            </div>
+        </div>
+        
+        <!-- قسم المحتوى النظري -->
+        <div id="theory" class="content-section">
+            <div class="section">
+                <h2>نشأة وتطور مفهوم الأمن والوقاية (الصفحات 5–7)</h2>
+                <p><strong>قبل الثورة الصناعية:</strong> كان التركيز على الوقاية من الأمراض المهنية (كتاب رامازيني حول أمراض العمال 1700).</p>
+                <p><strong>خلال الثورة الصناعية:</strong> بدأ الوعي بضرورة القوانين (قانون الصحة في المصانع 1802، قانون تنظيم العمل 1833).</p>
+                <p><strong>القرن 20:</strong> ظهور مفهوم الأمن الصناعي، تأسيس منظمة العمل الدولية 1919، إعلان حقوق الإنسان 1948، صدور قانون الصحة والسلامة المهنية (OSHA) في أمريكا 1970.</p>
+                <p><strong>القرن 21:</strong> ظهور المعايير الشاملة مثل ISO 45001 لإدارة الصحة والسلامة المهنية.</p>
+            </div>
+
+            <div class="section">
+                <h2>أهداف الأمن والوقاية في العمل (الصفحة 7)</h2>
+                <p>تهدف إلى:</p>
+                <ul>
+                    <li>حماية الأفراد من الحوادث والأمراض.</li>
+                    <li>توفير بيئة عمل آمنة.</li>
+                    <li>حماية المهارات والعمال المهرة.</li>
+                    <li>رفع المستوى الفني والبدني والنفسي للعاملين.</li>
+                    <li>تقليل تكاليف الإنتاج والحوادث.</li>
+                    <li>الحفاظ على سمعة المؤسسة وجذب العمالة.</li>
+                    <li>المساهمة في تنمية الاقتصاد الوطني.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>مسؤولية الصحة والسلامة المهنية (الصفحة 8)</h2>
+                <p><strong>جهات داخلية:</strong> الإدارة العليا، قسم الصيانة، رؤساء الأقسام، لجان السلامة.</p>
+                <p><strong>جهات خارجية (الدولة):</strong> وزارات (العمل، الصناعة، الصحة، التربية)، الجمعيات الوطنية، وزارة الإعلام.</p>
+            </div>
+
+            <div class="section">
+                <h2>المخاطر المهنية (الصفحات 9–24)</h2>
+                <p><strong>مفهوم الخطر (RISQUE):</strong> هو احتمال الإصابة نتيجة تعرض العامل لمصدر الخطر.</p>
+                
+                <div class="theory-box">
+                    <p><strong>عناصر الخطر:</strong></p>
+                    <ul>
+                        <li><strong>الضرر:</strong> الإصابة الجسدية أو المرض.</li>
+                        <li><strong>عامل الخطر:</strong> السبب الذي قد يؤدي إلى الضرر (كهرباء، مواد كيميائية...).</li>
+                        <li><strong>الوضعية الخطرة:</strong> الموقف الذي يكون فيه العامل معرضًا لعامل الخطر.</li>
+                        <li><strong>التعرض:</strong> حالة تعرض العامل لعامل الخطر.</li>
+                    </ul>
+                </div>
+                
+                <div class="formula">R = P × G</div>
+                <p>حيث R = الخطر، P = احتمال الحدوث، G = شدة الضرر.</p>
+                
+                <p><strong>مصادر المخاطر (5M):</strong> الفرد، المحيط، الوسائل، المادة، طريقة العمل.</p>
+                <p><strong>أنواع المخاطر:</strong> كهرباء، طاقة حركية، ضغط، مواد كيميائية، حرارة، ضوضاء، اهتزاز، إشعاع، أرضية زلقة... إلخ.</p>
+            </div>
+
+            <div class="section">
+                <h2>تحليل المخاطر (الصفحات 25–40)</h2>
+                <p><strong>تحليل المخاطر:</strong> عملية تحديد المخاطر وتقدير احتمالها وتأثيراتها لاتخاذ إجراءات وقائية.</p>
+                
+                <p><strong>مراحل التحليل:</strong></p>
+                <ol>
+                    <li>تحديد نطاق العمل.</li>
+                    <li>التعرف على المخاطر (جولات ميدانية، مقابلات، قوائم مراجعة).</li>
+                    <li>تقدير المخاطر (احتمال الحدوث وشدة العواقب).</li>
+                    <li>تقييم المخاطر (مقارنة النتائج بمعايير).</li>
+                    <li>تطبيق التدخلات.</li>
+                    <li>المتابعة.</li>
+                </ol>
+                
+                <p><strong>مصفوفة الخطر (Risk Matrix):</strong> تستخدم لتقييم الخطر بناءً على احتمال التعرض × شدة الخطورة.</p>
+                
+                <p><strong>مستويات الخطر:</strong></p>
+                <ul>
+                    <li>خطر مرتفع جدًا (16–12): يحتاج تدخل فوري.</li>
+                    <li>خطر مرتفع (9–6): تدخل قصير المدى.</li>
+                    <li>خطر متوسط (4–3): تدخل متوسط المدى.</li>
+                    <li>خطر ضعيف (2–1): مراقبة دورية.</li>
+                </ul>
+                
+                <p><strong>طرق تحليل المخاطر:</strong> APR، شجرة الأسباب، MOZAR، HAZOP، MADS، AMDEC، 5M، هرم BIRD، طريقة KINNEY.</p>
+            </div>
+
+            <div class="section">
+                <h2>الظروف الفيزيائية (الصفحات 40–72)</h2>
+                
+                <h3>1. الضوضاء</h3>
+                <p><strong>تعريفها:</strong> صوت مرتفع غير مرغوب فيه يسبب إزعاجًا أو ضررًا.</p>
+                <p><strong>قياسها:</strong> بالديسبل (dB) باستخدام أجهزة مثل السونوميتر والدوزيميتر.</p>
+                <p><strong>تأثيراتها:</strong> فقدان السمع، طنين الأذن، توتر، قلق، حوادث عمل.</p>
+                <p><strong>معايير التعرض:</strong> حسب OSHA وINRS (مثلاً: 90 dB لمدة 8 ساعات).</p>
+                
+                <div class="formula">الجرعة = ∑ (مدة التعرض الفعلي / المدة المسموح بها)</div>
+                <p>إذا كانت النتيجة >1 فإن التعرض خطير.</p>
+                <p><strong>السيطرة على الضوضاء:</strong> طبية (فحوصات)، تنظيمية (عزل، تقليل مدة التعرض)، فردية (سدادات أذن، خوذات).</p>
+                
+                <h3>2. الإضاءة</h3>
+                <p><strong>قياسها:</strong> باللوكس (Lux) باستخدام جهاز الـ Luxmètre.</p>
+                <p><strong>المستويات المطلوبة:</strong> تختلف حسب طبيعة العمل (من 80 لوكس في المخازن إلى 2000 لوكس في غرف العمليات).</p>
+                <p><strong>تأثيرات الإضاءة الضعيفة أو القوية:</strong> إرهاق العين، صداع، حوادث.</p>
+                
+                <h3>3. الحرارة</h3>
+                <p><strong>قياسها:</strong> بجهاز Thermo-Hygrometer (للحرارة والرطوبة) و Anemometer (لسرعة الهواء).</p>
+                <p><strong>تأثيرات الحرارة المرتفعة:</strong> إجهاد حراري، صدمة حرارية، تقلصات.</p>
+                <p><strong>تأثيرات الحرارة المنخفضة:</strong> أمراض تنفسية، صدمة برد.</p>
+                <p><strong>السيطرة:</strong> توفير فترات راحة، شرب السوائل، عزل المصدر، ملابس واقية.</p>
+            </div>
+
+            <div class="section">
+                <h2>حوادث العمل (الصفحات 73–97)</h2>
+                <p><strong>تعريف الحادث:</strong> حدث مفاجئ في بيئة العمل يؤدي إلى إصابة أو ضرر.</p>
+                <p><strong>إحصائيات:</strong> 2.2 مليون حالة وفاة سنويًا بسبب حوادث العمل عالميًا، وفي الجزائر 50 ألف حادث سنويًا.</p>
+                <p><strong>أسباب الحوادث (5M):</strong> العامل، الطريقة، المحيط، المادة، الوسائل.</p>
+                <p><strong>تحليل الحوادث:</strong> كمي (مؤشرات إحصائية) وكيفي (طرق مثل شجرة الأسباب، منحنى إيشيكاوا).</p>
+                <p><strong>الوقاية من الحوادث:</strong> تقنية (تصميم آمن)، جماعية (أنظمة حماية)، فردية (تدريب، معدات وقاية)، طبية (فحوصات).</p>
+            </div>
+
+            <div class="section">
+                <h2>الأمراض المهنية (الصفحات 98–110)</h2>
+                <p><strong>تعريف المرض المهني:</strong> مرض ناتج عن التعرض لعوامل مرتبطة بالعمل (كيميائية، فيزيائية، بيولوجية...).</p>
+                <p><strong>أمثلة:</strong> فقدان السمع المهني، أمراض تنفسية، تسمم بالمعادن، أمراض جلدية.</p>
+                
+                <div class="theory-box">
+                    <p><strong>شروط الاعتراف بالمرض المهني:</strong></p>
+                    <ol>
+                        <li>التعرض الاعتيادي للخطر.</li>
+                        <li>علاقة أكيدة بين الخطر والمرض.</li>
+                        <li>وجود المرض في الجداول الرسمية (في الجزائر 85 جدولاً).</li>
+                    </ol>
+                </div>
+                
+                <p><strong>الوقاية:</strong> نفس مبادئ إدارة المخاطر (تجنب، تقييم، قضاء على المصدر، تكييف العمل).</p>
+            </div>
+
+            <div class="section">
+                <h2>برامج الأمن والوقاية (الصفحات 110–115)</h2>
+                <p><strong>برامج أساسية:</strong> إدارة السلامة، التفتيش الدوري، التبليغ عن الحوادث، الطوارئ، الصحة المهنية، معدات الوقاية.</p>
+                <p><strong>التدريب:</strong> مبدئي، دوري، خاص، طوارئ.</p>
+                
+                <p><strong>الهيئات والتشريعات:</strong></p>
+                <ul>
+                    <li><strong>دولية:</strong> OMS, ILO, ISO 45001.</li>
+                    <li><strong>جزائرية:</strong> INPRP, قوانين 85-05, 83-13, 90-11.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- قسم الأسئلة النظرية -->
+        <div id="theoretical-questions" class="content-section">
+            <div class="section question-section">
+                <h2>❓ الأسئلة النظرية الشاملة (20 سؤالاً)</h2>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question">1. ما هو تاريخ بداية الاهتمام بالأمن والوقاية في العمل؟</button>
+                        <div class="faq-answer">
+                            <p>بداية الاهتمام بالأمن والوقاية كانت بعد الثورة الصناعية في القرن 19، حيث صدر أول قانون للصحة والسلامة في إنجلترا سنة 1802 لحماية الأطفال العمال.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">2. عرّف كلاً من: السلامة، الوقاية المهنية، الصحة حسب منظمة الصحة العالمية.</button>
+                        <div class="faq-answer">
+                            <p><strong>السلامة:</strong> علم إدارة المخاطر الحادة التي تؤدي إلى حوادث عمل.</p>
+                            <p><strong>الوقاية المهنية:</strong> علم توقع وتحديد وتقييم المخاطر التي تؤثر على صحة العمال.</p>
+                            <p><strong>الصحة:</strong> حالة من السلامة البدنية والعقلية والاجتماعية، وليس فقط غياب المرض.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">3. ما هي أهداف الأمن والوقاية في العمل؟ (اذكر 5 على الأقل).</button>
+                        <div class="faq-answer">
+                            <ol>
+                                <li>حماية الأفراد من الحوادث والأمراض.</li>
+                                <li>توفير بيئة عمل آمنة.</li>
+                                <li>حماية المهارات والعمال المهرة.</li>
+                                <li>رفع المستوى الفني والبدني والنفسي للعاملين.</li>
+                                <li>تقليل تكاليف الإنتاج والحوادث.</li>
+                                <li>الحفاظ على سمعة المؤسسة وجذب العمالة.</li>
+                                <li>المساهمة في تنمية الاقتصاد الوطني.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">4. من هي الجهات الداخلية والخارجية المسؤولة عن الصحة والسلامة المهنية؟</button>
+                        <div class="faq-answer">
+                            <p><strong>جهات داخلية:</strong> الإدارة العليا، قسم الصيانة، رؤساء الأقسام، لجان السلامة.</p>
+                            <p><strong>جهات خارجية (الدولة):</strong> وزارات (العمل، الصناعة، الصحة، التربية)، الجمعيات الوطنية، وزارة الإعلام.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">5. ما الفرق بين: الخطر، عامل الخطر، الوضعية الخطرة، التعرض، الضرر؟</button>
+                        <div class="faq-answer">
+                            <p><strong>الخطر (RISQUE):</strong> هو احتمال الإصابة نتيجة تعرض العامل لمصدر الخطر.</p>
+                            <p><strong>عامل الخطر:</strong> السبب الذي قد يؤدي إلى الضرر (كهرباء، مواد كيميائية...).</p>
+                            <p><strong>الوضعية الخطرة:</strong> الموقف الذي يكون فيه العامل معرضًا لعامل الخطر.</p>
+                            <p><strong>التعرض:</strong> حالة تعرض العامل لعامل الخطر.</p>
+                            <p><strong>الضرر:</strong> الإصابة الجسدية أو المرض.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">6. اشرح معادلة حساب الخطر (R = P × G).</button>
+                        <div class="faq-answer">
+                            <div class="formula">R = P × G</div>
+                            <p>حيث R = الخطر، P = احتمال الحدوث، G = شدة الضرر.</p>
+                            <p>هذه المعادلة تستخدم لتقدير مستوى الخطر بناء على احتمال وقوع الضرر وشدته.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">7. ما هي مصادر المخاطر في بيئة العمل حسب نموذج 5M؟</button>
+                        <div class="faq-answer">
+                            <p><strong>مصادر المخاطر (5M):</strong></p>
+                            <ol>
+                                <li>الفرد</li>
+                                <li>المحيط</li>
+                                <li>الوسائل</li>
+                                <li>المادة</li>
+                                <li>طريقة العمل</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">8. اذكر 5 أنواع من المخاطر المهنية مع مثال على كل منها.</button>
+                        <div class="faq-answer">
+                            <ol>
+                                <li>كهرباء - تيار كهربائي مكشوف</li>
+                                <li>طاقة حركية - آلات دوارة بدون وقاية</li>
+                                <li>مواد كيميائية - أبخرة سامة</li>
+                                <li>ضوضاء - آلات تصدر صوتاً مرتفعاً</li>
+                                <li>حرارة - أفران عالية الحرارة</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">9. ما هي مراحل تحليل المخاطر الستة؟</button>
+                        <div class="faq-answer">
+                            <ol>
+                                <li>تحديد نطاق العمل.</li>
+                                <li>التعرف على المخاطر (جولات ميدانية، مقابلات، قوائم مراجعة).</li>
+                                <li>تقدير المخاطر (احتمال الحدوث وشدة العواقب).</li>
+                                <li>تقييم المخاطر (مقارنة النتائج بمعايير).</li>
+                                <li>تطبيق التدخلات.</li>
+                                <li>المتابعة.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">10. كيف تستخدم مصفوفة الخطر (Risk Matrix) في تقييم المخاطر؟</button>
+                        <div class="faq-answer">
+                            <p>مصفوفة الخطر تستخدم لتقييم الخطر بناءً على احتمال التعرض × شدة الخطورة. يتم وضع قيم الاحتمال والشدة في محورين متعامدين، وتحديد مستوى الخطر من تقاطعهما.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">11. ما هي مستويات الخطر الأربعة حسب قيمة (G × P)؟</button>
+                        <div class="faq-answer">
+                            <ul>
+                                <li>خطر مرتفع جدًا (16–12): يحتاج تدخل فوري.</li>
+                                <li>خطر مرتفع (9–6): تدخل قصير المدى.</li>
+                                <li>خطر متوسط (4–3): تدخل متوسط المدى.</li>
+                                <li>خطر ضعيف (2–1): مراقبة دورية.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">12. اذكر 3 طرق لتحليل المخاطر.</button>
+                        <div class="faq-answer">
+                            <ol>
+                                <li>شجرة الأسباب</li>
+                                <li>منحنى إيشيكاوا (5M)</li>
+                                <li>هرم BIRD</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">13. ما هي تأثيرات الضوضاء على العامل؟</button>
+                        <div class="faq-answer">
+                            <ul>
+                                <li>فقدان السمع</li>
+                                <li>طنين الأذن</li>
+                                <li>توتر وقلق</li>
+                                <li>حوادث عمل</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">14. كيف تحسب الجرعة اليومية للتعرض للضوضاء؟</button>
+                        <div class="faq-answer">
+                            <div class="formula">الجرعة = ∑ (مدة التعرض الفعلي / المدة المسموح بها)</div>
+                            <p>إذا كانت النتيجة >1 فإن التعرض خطير.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">15. ما هي مستويات الإضاءة المطلوبة للأعمال الدقيقة جداً؟</button>
+                        <div class="faq-answer">
+                            <p>2000 لوكس في غرف العمليات والأعمال الدقيقة جداً.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">16. ما هي تأثيرات الحرارة المرتفعة على العامل؟</button>
+                        <div class="faq-answer">
+                            <ul>
+                                <li>إجهاد حراري</li>
+                                <li>صدمة حرارية</li>
+                                <li>تقلصات</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">17. ما هي مبادئ السيطرة على الحرارة المرتفعة؟</button>
+                        <div class="faq-answer">
+                            <ul>
+                                <li>توفير فترات راحة</li>
+                                <li>شرب السوائل</li>
+                                <li>عزل المصدر</li>
+                                <li>ملابس واقية</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">18. كيف يُعرّف حادث العمل قانونياً في الجزائر؟</button>
+                        <div class="faq-answer">
+                            <p>حدث مفاجئ في بيئة العمل يؤدي إلى إصابة أو ضرر.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">19. ما هي الشروط الثلاثة للاعتراف بالمرض المهني؟</button>
+                        <div class="faq-answer">
+                            <ol>
+                                <li>التعرض الاعتيادي للخطر.</li>
+                                <li>علاقة أكيدة بين الخطر والمرض.</li>
+                                <li>وجود المرض في الجداول الرسمية (في الجزائر 85 جدولاً).</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">20. اذكر 3 برامج أساسية للأمن والوقاية في المؤسسة.</button>
+                        <div class="faq-answer">
+                            <ol>
+                                <li>إدارة السلامة</li>
+                                <li>التفتيش الدوري</li>
+                                <li>التبليغ عن الحوادث</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- قسم أسئلة QCM -->
+        <div id="qcm-questions" class="content-section">
+            <div class="section">
+                <h2>✅❌ أسئلة الاختيار المتعدد (QCM) - 20 سؤالاً</h2>
+                
+                <div class="qcm-container">
+                    <h3>المستوى السهل:</h3>
+                    
+                    <div class="qcm-item">
+                        <p class="qcm-question">1. متى صدر أول قانون للصحة والسلامة في العمل؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 1700</button>
+                        <button class="qcm-option" data-correct="true">ب) 1802</button>
+                        <button class="qcm-option" data-correct="false">ج) 1900</button>
+                        <button class="qcm-option" data-correct="false">د) 2000</button>
+                    </div>
+                    
+                    <div class="qcm-item">
+                        <p class="qcm-question">2. ما هي الجهة الدولية المسؤولة عن وضع معايير العمل؟</p>
+                        <button class="qcm-option" data-correct="false">أ) OMS</button>
+                        <button class="qcm-option" data-correct="false">ب) UNESCO</button>
+                        <button class="qcm-option" data-correct="true">ج) ILO</button>
+                        <button class="qcm-option" data-correct="false">د) FAO</button>
+                    </div>
+                    
+                    <div class="qcm-item">
+                        <p class="qcm-question">3. ما هو جهاز قياس الضوضاء؟</p>
+                        <button class="qcm-option" data-correct="false">أ) Thermo-hygrometer</button>
+                        <button class="qcm-option" data-correct="false">ب) Luxmètre</button>
+                        <button class="qcm-option" data-correct="true">ج) Sonomètre</button>
+                        <button class="qcm-option" data-correct="false">د) Anemometer</button>
+                    </div>
+                    
+                    <div class="qcm-item">
+                        <p class="qcm-question">4. ما هي وحدة قياس شدة الإضاءة؟</p>
+                        <button class="qcm-option" data-correct="false">أ) ديسيبل</button>
+                        <button class="qcm-option" data-correct="true">ب) لوكس</button>
+                        <button class="qcm-option" data-correct="false">ج) هرتز</button>
+                        <button class="qcm-option" data-correct="false">د) فهرنهايت</button>
+                    </div>
+                    
+                    <h3>المستوى المتوسط:</h3>
+                    
+                    <div class="qcm-item">
+                        <p class="qcm-question">5. إذا كان احتمال التعرض لخطر = 3 وشدة الخطورة = 4، فما هو مستوى الخطر؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 7</button>
+                        <button class="qcm-option" data-correct="true">ب) 12</button>
+                        <button class="qcm-option" data-correct="false">ج) 1</button>
+                        <button class="qcm-option" data-correct="false">د) 0.75</button>
+                    </div>
+                    
+                    <div class="qcm-item">
+                        <p class="qcm-question">6. أي مما يلي يعتبر من وسائل الوقاية الجماعية؟</p>
+                        <button class="qcm-option" data-correct="false">أ) خوذة الرأس</button>
+                        <button class="qcm-option" data-correct="false">ب) نظارات واقية</button>
+                        <button class="qcm-option" data-correct="true">ج) أنظمة عزل للضوضاء</button>
+                        <button class="qcm-option" data-correct="false">د) قفازات</button>
+                    </div>
+                    
+                    <div class="qcm-item">
+                        <p class="qcm-question">7. ما هي المعادلة الصحيحة لحساب جرعة التعرض اليومي للضوضاء؟</p>
+                        <button class="qcm-option" data-correct="false">أ) الجرعة = مجموع النقاط</button>
+                        <button class="qcm-option" data-correct="true">ب) الجرعة = Σ (مدة التعرض الفعلي / المدة المسموح بها)</button>
+                        <button class="qcm-option" data-correct="false">ج) الجرعة = مستوى الضوضاء × المدة</button>
+                        <button class="qcm-option" data-correct="false">د) الجرعة = مستوى الضوضاء / المدة</button>
+                    </div>
+                    
+                    <div class="qcm-item">
+                        <p class="qcm-question">8. أي من الأمراض التالية يعد مرضاً مهنياً؟</p>
+                        <button class="qcm-option" data-correct="false">أ) الإنفلونزا</button>
+                        <button class="qcm-option" data-correct="true">ب) فقدان السمع بسبب الضوضاء</button>
+                        <button class="qcm-option" data-correct="false">ج) صداع عادي</button>
+                        <button class="qcm-option" data-correct="false">د) ألم في الظهر غير مرتبط بالعمل</button>
+                    </div>
+                    
+                    <h3>المستوى الصعب:</h3>
+                    
+                    <div class="qcm-item">
+                        <p class="qcm-question">9. في مصفوفة الخطر، إذا كان الخطر في خانة (الاحتمال = 4، الشدة = 4)، فما هي الأولوية؟</p>
+                        <button class="qcm-option" data-correct="false">أ) خطر مقبول</button>
+                        <button class="qcm-option" data-correct="false">ب) خطر متوسط</button>
+                        <button class="qcm-option" data-correct="false">ج) خطر مرتفع</button>
+                        <button class="qcm-option" data-correct="true">د) خطر مرتفع جداً ويتطلب تدخلاً فورياً</button>
+                    </div>
+                    
+                    <div class="qcm-item">
+                        <p class="qcm-question">10. حسب قانون الجزائر، كم جدولاً للأمراض المهنية معترف به؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 50</button>
+                        <button class="qcm-option" data-correct="true">ب) 85</button>
+                        <button class="qcm-option" data-correct="false">ج) 100</button>
+                        <button class="qcm-option" data-correct="false">د) 120</button>
+                    </div>
+                    
+                    <div class="qcm-item">
+                        <p class="qcm-question">11. ما هي الطريقة الكيفية لتحليل الحوادث التي تبحث عن الأسباب الجذرية باستخدام مخطط يشبه السمكة؟</p>
+                        <button class="qcm-option" data-correct="false">أ) شجرة الأسباب</button>
+                        <button class="qcm-option" data-correct="true">ب) منحنى إيشيكاوا (5M)</button>
+                        <button class="qcm-option" data-correct="false">ج) طريقة APR</button>
+                        <button class="qcm-option" data-correct="false">د) هرم BIRD</button>
+                    </div>
+                    
+                    <div class="qcm-item">
+                        <p class="qcm-question">12. إذا تعرض عامل لضوضاء 95 dB لمدة ساعتين، و 90 dB لمدة 4 ساعات، فما هي جرعة تعرضه اليومية (حسب OSHA: 95 dB مسموح به 4 ساعات، 90 dB مسموح به 8 ساعات)؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 0.5</button>
+                        <button class="qcm-option" data-correct="false">ب) 1.0</button>
+                        <button class="qcm-option" data-correct="true">ج) 1.5</button>
+                        <button class="qcm-option" data-correct="false">د) 2.0</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- قسم التمارين والحلول -->
+        <div id="exercises" class="content-section">
+            <div class="section">
+                <h2>📝 نماذج تمارين امتحانية رسمية مع الحل</h2>
+                
+                <div class="exercise">
+                    <h3>التمرين 1 (نظري):</h3>
+                    <p><strong>س: اشرح بالتفصيل مراحل تحليل المخاطر في بيئة العمل، مع ذكر الأدوات المستخدمة في كل مرحلة.</strong></p>
+                    
+                    <div class="step">
+                        <div class="step-title">الحل:</div>
+                        <p>1. تحديد نطاق العمل: تحديد الحدود الزمانية والمكانية للعملية قيد الدراسة.</p>
+                        <p>2. التعرف على المخاطر: باستخدام:</p>
+                        <ul>
+                            <li>جولات ميدانية.</li>
+                            <li>مقابلات مع العمال.</li>
+                            <li>قوائم المراجعة (Checklists).</li>
+                            <li>مراجعة سجلات الحوادث السابقة.</li>
+                        </ul>
+                        <p>3. تقدير المخاطر: تحديد:</p>
+                        <ul>
+                            <li>احتمال حدوث الخطر (من ضعيف إلى مؤكد).</li>
+                            <li>شدة العواقب (من طفيف إلى كارثي).</li>
+                        </ul>
+                        <p>باستخدام معادلة R = P × G.</p>
+                        <p>4. تقييم المخاطر: مقارنة النتائج بمعايير محددة (مصفوفة الخطر) لتحديد إذا كان الخطر مقبولاً أم يحتاج تدخلاً.</p>
+                        <p>5. تطبيق التدخلات: وضع خطة للسيطرة على المخاطر (إزالة، استبدال، وسائل وقاية...).</p>
+                        <p>6. المتابعة: مراجعة دورية لفعالية الإجراءات وتحديث التحليل عند الحاجة.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h3>التمرين 2 (حسابي):</h3>
+                    <p><strong>س: يعمل عامل في ورشة حيث توجد ثلاثة آلات. مستوى ضوضاء الآلة الأولى = 88 dB، الثانية = 85 dB، الثالثة = 85 dB. احسب المستوى العام للضوضاء في الورشة.</strong></p>
+                    
+                    <div class="step">
+                        <div class="step-title">الحل خطوة بخطوة:</div>
+                        <p><strong>الخطوة 1:</strong> جمع مصادر المستوى المتساوي.</p>
+                        <p>الآلة 2 والآلة 3 لهما نفس المستوى (85 dB).</p>
+                        <p>عدد المصادر المتساوية = 2.</p>
+                        <p>من الجدول (ص54): لإصدارين متساويين، تضاف 3 dB إلى المستوى الأكبر.</p>
+                        <p>إذن: 85 dB + 3 dB = 88 dB (للآلتين معاً).</p>
+                        
+                        <p><strong>الخطوة 2:</strong> جمع المستوى الناتج مع المصدر الثالث المختلف.</p>
+                        <p>الآن لدينا مصدران: الأول بقوة 88 dB (من الآلة 1)، والثاني بقوة 88 dB (من الآلتين 2 و3 معاً).</p>
+                        <p>الفرق بين المستويين = 88 - 88 = 0 dB.</p>
+                        <p>من الجدول (ص53): عندما يكون الفرق 0 dB، تضاف 3 dB.</p>
+                        <p>المستوى العام = 88 dB + 3 dB = 91 dB.</p>
+                        
+                        <p><strong>الجواب النهائي:</strong> المستوى العام للضوضاء في الورشة هو 91 dB.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h3>التمرين 3 (حسابي متقدم):</h3>
+                    <p><strong>س: تعرض عامل للضوضاء خلال يوم عمل كما يلي:</strong></p>
+                    <ul>
+                        <li>فترة 1: 92 dB لمدة 1.5 ساعة.</li>
+                        <li>فترة 2: 85 dB لمدة 4 ساعات.</li>
+                        <li>فترة 3: 88 dB لمدة 2 ساعة.</li>
+                    </ul>
+                    <p><strong>هل تجاوز جرعة التعرض اليومي المسموح بها حسب معيار OSHA؟ (استخدم جدول النقاط أو معادلة الجرعة)</strong></p>
+                    
+                    <div class="step">
+                        <div class="step-title">الحل خطوة بخطوة باستخدام معادلة الجرعة:</div>
+                        <p><strong>الخطوة 1:</strong> كتابة المعادلة.</p>
+                        <div class="formula">الجرعة = ∑ (مدة التعرض الفعلي / المدة المسموح بها لكل مستوى)</div>
+                        
+                        <p><strong>الخطوة 2:</strong> استخراج المدة المسموح بها لكل مستوى من جدول OSHA (ص49).</p>
+                        <p>92 dB → المسموح: 6 ساعات (تقريب من 92 بين 90 و95).</p>
+                        <p>85 dB → المسموح: >8 ساعات (لا خطر تحت 90 dB، نعتبر 8 ساعات كحد أقصى للمقارنة).</p>
+                        <p>88 dB → المسموح: >8 ساعات (نفس المنطق).</p>
+                        
+                        <p><strong>الخطوة 3:</strong> تطبيق المعادلة.</p>
+                        <div class="formula">الجرعة = (1.5 / 6) + (4 / 8) + (2 / 8)</div>
+                        <div class="formula">الجرعة = 0.25 + 0.5 + 0.25 = 1.0</div>
+                        
+                        <p><strong>الخطوة 4:</strong> التفسير.</p>
+                        <p>إذا كانت الجرعة = 1 → التعرض عند الحد الأقصى المسموح به.</p>
+                        <p>إذا كانت الجرعة > 1 → التعرض خطير.</p>
+                        
+                        <p><strong>الجواب النهائي:</strong> جرعة التعرض = 1.0، مما يعني أن العامل تعرض للحد الأقصى المسموح به من الضوضاء لهذا اليوم، ويجب مراقبة المدة واتخاذ إجراءات وقائية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- قسم الملخص النهائي -->
+        <div id="summary" class="content-section">
+            <div class="section highlight">
+                <h2>🎯 ملخص الخلاصة</h2>
+                <p>الأمن والوقاية مسؤولية جماعية تهدف لحماية العنصر البشري والمؤسسة.</p>
+                <p>تحليل المخاطر هو القلب النابض لأي نظام وقاية ناجح.</p>
+                <p>الظروف الفيزيائية (ضوضاء، إضاءة، حرارة) تؤثر مباشرة على الصحة والأداء.</p>
+                <p>الحوادث والأمراض المهنية يمكن منعها بالتحليل والوقاية والتثقيف.</p>
+                <p>التشريعات والتدريب هما الركيزتان الأساسيتان لبناء ثقافة وقائية.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // تفعيل أزرار التنقل
+        document.querySelectorAll('.nav-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // إزالة النشط من جميع الأزرار
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // إضافة النشط للزر المحدد
+                this.classList.add('active');
+                
+                // إخفاء جميع الأقسام
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // إظهار القسم المطلوب
+                const targetId = this.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+                
+                // التمرير إلى أعلى الصفحة
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+        
+        // تفعيل الأسئلة النظرية (FAQ)
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const isActive = button.classList.contains('active');
+                
+                // إغلاق جميع الأسئلة الأخرى
+                document.querySelectorAll('.faq-question').forEach(otherButton => {
+                    if (otherButton !== button) {
+                        otherButton.classList.remove('active');
+                        otherButton.nextElementSibling.classList.remove('show');
+                    }
+                });
+                
+                // فتح/إغلاق السؤال الحالي
+                button.classList.toggle('active');
+                answer.classList.toggle('show');
+            });
+        });
+        
+        // تفعيل أسئلة الاختيار المتعدد (QCM)
+        document.querySelectorAll('.qcm-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const questionItem = this.closest('.qcm-item');
+                const options = questionItem.querySelectorAll('.qcm-option');
+                
+                // تعطيل جميع الخيارات بعد الاختيار
+                options.forEach(opt => {
+                    opt.classList.add('disabled');
+                });
+                
+                // تحديد الإجابة الصحيحة والخاطئة
+                const isCorrect = this.getAttribute('data-correct') === 'true';
+                
+                if (isCorrect) {
+                    this.classList.add('correct');
+                } else {
+                    this.classList.add('incorrect');
+                    
+                    // إظهار الإجابة الصحيحة
+                    options.forEach(opt => {
+                        if (opt.getAttribute('data-correct') === 'true') {
+                            opt.classList.add('correct');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

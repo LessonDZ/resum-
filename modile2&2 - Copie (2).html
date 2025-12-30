@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>تصنيف المؤسسات الاقتصادية - المحاضرات والاختبارات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c5aa0;
+            --secondary-color: #4a8af4;
+            --success-color: #2ecc71;
+            --error-color: #e74c3c;
+            --warning-color: #f39c12;
+            --info-color: #3498db;
+            --light-color: #f0f7ff;
+            --dark-color: #333;
+            --gray-color: #666;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 100, 0.08);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 0;
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        /* الهيدر */
+        header {
+            background-color: var(--white);
+            padding: 18px 16px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+        
+        .app-title {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .app-subtitle {
+            color: var(--gray-color);
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+        
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .menu-toggle:active {
+            background-color: rgba(44, 90, 160, 0.1);
+        }
+        
+        /* التبويبات */
+        .tabs {
+            display: flex;
+            background-color: var(--white);
+            position: sticky;
+            top: 78px;
+            z-index: 99;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+        
+        .tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+            background-color: rgba(44, 90, 160, 0.05);
+        }
+        
+        /* المحتوى */
+        .content {
+            padding: 16px;
+            padding-bottom: 100px;
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-color);
+        }
+        
+        /* المحاضرات */
+        .lectures-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .lecture-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 0;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .lecture-header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 20px 16px;
+        }
+        
+        .lecture-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .lecture-title i {
+            margin-left: 10px;
+        }
+        
+        .lecture-number {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .lecture-body {
+            padding: 20px 16px;
+        }
+        
+        .lecture-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        
+        .lecture-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-subtitle i {
+            margin-left: 8px;
+        }
+        
+        .lecture-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--dark-color);
+        }
+        
+        .lecture-text ul {
+            padding-right: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .lecture-text li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .lecture-text li:before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .highlight-box {
+            background-color: var(--light-color);
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-right: 4px solid var(--primary-color);
+        }
+        
+        .highlight-title {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .highlight-title i {
+            margin-left: 8px;
+        }
+        
+        /* الأسئلة النظرية */
+        .question-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .question-number {
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .question-type {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .question-text {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: var(--dark-color);
+        }
+        
+        .answer-btn {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .answer-btn:active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: scale(0.98);
+        }
+        
+        .answer-content {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-right: 4px solid var(--primary-color);
+            display: none;
+        }
+        
+        .answer-content.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .answer-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .answer-title i {
+            margin-left: 8px;
+        }
+        
+        .answer-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .answer-text.english {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            direction: ltr;
+            text-align: left;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        /* أسئلة متعددة الخيارات */
+        .qcm-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .qcm-question {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--dark-color);
+        }
+        
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 15px 12px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .option:active {
+            background-color: #eef2f7;
+            transform: scale(0.99);
+        }
+        
+        .option.selected {
+            border-color: var(--primary-color);
+            background-color: #e8f0fe;
+        }
+        
+        .option.correct {
+            border-color: var(--success-color);
+            background-color: rgba(46, 204, 113, 0.1);
+        }
+        
+        .option.incorrect {
+            border-color: var(--error-color);
+            background-color: rgba(231, 76, 60, 0.1);
+        }
+        
+        .option-letter {
+            background-color: #ddd;
+            color: #555;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .option.selected .option-letter {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .option.correct .option-letter {
+            background-color: var(--success-color);
+            color: var(--white);
+        }
+        
+        .option.incorrect .option-letter {
+            background-color: var(--error-color);
+            color: var(--white);
+        }
+        
+        .option-text {
+            flex: 1;
+            font-size: 0.95rem;
+        }
+        
+        .feedback {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .feedback.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .feedback.correct {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: var(--success-color);
+            border-right: 3px solid var(--success-color);
+        }
+        
+        .feedback.incorrect {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--error-color);
+            border-right: 3px solid var(--error-color);
+        }
+        
+        /* إحصائيات */
+        .stats {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        
+        .stat-item {
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+        
+        .theoretical .stat-value {
+            color: var(--primary-color);
+        }
+        
+        .qcm .stat-value {
+            color: var(--warning-color);
+        }
+        
+        /* أزرار التحكم */
+        .control-buttons {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            background-color: var(--white);
+            padding: 12px 16px;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            z-index: 90;
+        }
+        
+        .control-btn {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            flex: 1;
+            margin: 0 5px;
+        }
+        
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .btn-reset {
+            background-color: #f8f9fa;
+            color: var(--gray-color);
+            border: 1px solid #ddd;
+        }
+        
+        .btn-show-all {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .btn-reset-qcm {
+            background-color: #f8f9fa;
+            color: var(--gray-color);
+            border: 1px solid #ddd;
+        }
+        
+        .btn-check {
+            background-color: var(--warning-color);
+            color: var(--white);
+        }
+        
+        /* الرسوم المتحركة */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* تحسينات للأجهزة الصغيرة */
+        @media (max-width: 360px) {
+            .app-title {
+                font-size: 1.1rem;
+            }
+            
+            .tab {
+                font-size: 0.85rem;
+                padding: 12px 8px;
+            }
+            
+            .lecture-card, .question-card, .qcm-card {
+                padding: 16px 12px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- الهيدر -->
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div>
+                        <div class="app-title">تصنيف المؤسسات الاقتصادية</div>
+                        <div class="app-subtitle">المحاضرات 6-8 والاختبارات</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- التبويبات -->
+        <div class="tabs">
+            <div class="tab active" data-tab="lectures">
+                <i class="fas fa-book-open"></i> المحاضرات
+            </div>
+            <div class="tab" data-tab="theoretical">
+                <i class="fas fa-question-circle"></i> أسئلة نظرية
+            </div>
+            <div class="tab" data-tab="qcm">
+                <i class="fas fa-list-ol"></i> أسئلة متعددة
+            </div>
+        </div>
+        
+        <!-- المحتوى -->
+        <div class="content">
+            <!-- قسم المحاضرات -->
+            <div class="content-section active" id="lectures-section">
+                <h2 class="section-title">
+                    <i class="fas fa-graduation-cap"></i> محاضرات تصنيف المؤسسات الاقتصادية
+                </h2>
+                
+                <div class="lectures-container">
+                    <!-- المحاضرة 6 -->
+                    <div class="lecture-card">
+                        <div class="lecture-header">
+                            <div class="lecture-title">
+                                <i class="fas fa-book"></i> المحاضرة 06: تصنيف المؤسسات الاقتصادية
+                                <div class="lecture-number">06</div>
+                            </div>
+                        </div>
+                        <div class="lecture-body">
+                            <div class="lecture-section">
+                                <p class="lecture-text">
+                                    تأخذ المؤسسات الاقتصادية أشكالًا متعددة حسب الأنظمة الاقتصادية المختلفة، ولتسهيل دراستها يتم تصنيفها وفق معايير معينة، أهمها:
+                                </p>
+                            </div>
+                            
+                            <div class="lecture-section">
+                                <div class="section-subtitle">
+                                    <i class="fas fa-list"></i> معايير التصنيف
+                                </div>
+                                <ul class="lecture-text">
+                                    <li>الشكل القانوني</li>
+                                    <li>الطابع الاقتصادي</li>
+                                    <li>الحجم</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="lecture-section">
+                                <div class="section-subtitle">
+                                    <i class="fas fa-balance-scale"></i> أولًا: التصنيف حسب الشكل القانوني
+                                </div>
+                                <div class="lecture-text">
+                                    <strong>1️⃣ المؤسسات الخاصة:</strong>
+                                    <ul>
+                                        <li>تعود ملكيتها إلى فرد أو أكثر</li>
+                                        <li>تهدف أساسًا إلى تحقيق الربح</li>
+                                        <li>تتمتع باستقلالية تامة عن تدخل الدولة</li>
+                                    </ul>
+                                    <strong>نوعان:</strong>
+                                    <ul>
+                                        <li><strong>المؤسسات الفردية:</strong> يملكها شخص واحد أو عائلة، غالبًا صغيرة الحجم</li>
+                                        <li><strong>الشركات:</strong> يملكها شخصان أو أكثر، تقوم على تقاسم الأرباح والخسائر وفق القانون التجاري</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- المحاضرة 7 -->
+                    <div class="lecture-card">
+                        <div class="lecture-header">
+                            <div class="lecture-title">
+                                <i class="fas fa-book"></i> المحاضرة 07: تصنيف المؤسسات الاقتصادية (تابع)
+                                <div class="lecture-number">07</div>
+                            </div>
+                        </div>
+                        <div class="lecture-body">
+                            <div class="lecture-section">
+                                <div class="section-subtitle">
+                                    <i class="fas fa-landmark"></i> 2️⃣ المؤسسات العمومية (العامة)
+                                </div>
+                                <div class="lecture-text">
+                                    <ul>
+                                        <li>تعود ملكيتها إلى الدولة</li>
+                                        <li>تهدف إلى تحقيق المصلحة العامة</li>
+                                        <li>لا تعطي أولوية كبيرة للربح</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="lecture-section">
+                                <div class="section-subtitle">
+                                    <i class="fas fa-city"></i> أنواع المؤسسات العمومية
+                                </div>
+                                <div class="lecture-text">
+                                    <strong>مؤسسات عمومية مسيّرة مباشرة:</strong>
+                                    <ul>
+                                        <li>تملكها وتديرها الدولة</li>
+                                        <li>مرتبطة بالموازنة العامة</li>
+                                        <li>تخضع للوزارة الوصية</li>
+                                    </ul>
+                                    
+                                    <strong>مؤسسات عمومية مستقلة:</strong>
+                                    <ul>
+                                        <li>لها شخصية قانونية مستقلة</li>
+                                        <li>تمتلك ميزانية خاصة</li>
+                                        <li>هدفها تحقيق الأرباح</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="lecture-section">
+                                <div class="section-subtitle">
+                                    <i class="fas fa-handshake"></i> المؤسسات المختلطة (نصف عمومية)
+                                </div>
+                                <div class="lecture-text">
+                                    <ul>
+                                        <li>تجمع بين الدولة والقطاع الخاص</li>
+                                        <li>تساهم الدولة فيها بنسبة لا تقل عن 51%</li>
+                                        <li>تنشأ:
+                                            <ul>
+                                                <li>إما من العدم باتفاق الطرفين</li>
+                                                <li>أو عن طريق التأميم الجزئي</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="highlight-box">
+                                <div class="highlight-title">
+                                    <i class="fas fa-info-circle"></i> ملاحظة هامة
+                                </div>
+                                <p class="lecture-text">
+                                    في الجزائر توجد ثلاثة أنواع رئيسية من المؤسسات العمومية:
+                                    <br>1. المؤسسات العمومية ذات الطابع الصناعي والتجاري
+                                    <br>2. المؤسسات العمومية الاقتصادية الوطنية
+                                    <br>3. المؤسسات العمومية الاقتصادية المحلية
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- المحاضرة 8 -->
+                    <div class="lecture-card">
+                        <div class="lecture-header">
+                            <div class="lecture-title">
+                                <i class="fas fa-book"></i> المحاضرة 08: التصنيف حسب الطبيعة الاقتصادية
+                                <div class="lecture-number">08</div>
+                            </div>
+                        </div>
+                        <div class="lecture-body">
+                            <div class="lecture-section">
+                                <p class="lecture-text">
+                                    يعتمد هذا التصنيف على مظهرين أساسيين:
+                                </p>
+                            </div>
+                            
+                            <div class="lecture-section">
+                                <div class="section-subtitle">
+                                    <i class="fas fa-sitemap"></i> أولًا: التصنيف حسب القطاعات
+                                </div>
+                                <div class="lecture-text">
+                                    <strong>1️⃣ القطاع الأولي:</strong>
+                                    <ul>
+                                        <li>يشمل الأنشطة المرتبطة بالطبيعة</li>
+                                        <li>مثل: الزراعة، الصيد</li>
+                                    </ul>
+                                    
+                                    <strong>2️⃣ القطاع الثانوي:</strong>
+                                    <ul>
+                                        <li>يشمل الأنشطة الصناعية</li>
+                                        <li>تحويل المواد الأولية إلى منتجات جاهزة</li>
+                                        <li>مثل: الصناعات الخفيفة والثقيلة</li>
+                                    </ul>
+                                    
+                                    <strong>3️⃣ القطاع الثالث:</strong>
+                                    <ul>
+                                        <li>يشمل الأنشطة الخدمية</li>
+                                        <li>مثل: النقل، التجارة، البنوك، التأمين</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="lecture-section">
+                                <div class="section-subtitle">
+                                    <i class="fas fa-project-diagram"></i> ثانيًا: التصنيف حسب الفروع والشُعب
+                                </div>
+                                <div class="lecture-text">
+                                    <ul>
+                                        <li><strong>القطاع:</strong> مجموعة مؤسسات لها نفس النشاط الأساسي</li>
+                                        <li><strong>الفرع:</strong> جزء من القطاع يضم وحدات إنتاج متشابهة</li>
+                                        <li><strong>الشعبة:</strong> وحدات إنتاج تقدم نفس المنتج أو الخدمة</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="lecture-section">
+                                <div class="section-subtitle">
+                                    <i class="fas fa-industry"></i> التصنيف حسب نوع النشاطات المؤداة
+                                </div>
+                                <div class="lecture-text">
+                                    تشمل:
+                                    <ul>
+                                        <li>المؤسسات الفلاحية</li>
+                                        <li>المؤسسات الصناعية</li>
+                                        <li>المؤسسات التجارية</li>
+                                        <li>المؤسسات الخدمية</li>
+                                        <li>المؤسسات المالية</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="highlight-box">
+                                <div class="highlight-title">
+                                    <i class="fas fa-lightbulb"></i> خلاصة عامة
+                                </div>
+                                <p class="lecture-text">
+                                    يسمح تصنيف المؤسسات الاقتصادية بـ:
+                                    <br>1. فهم طبيعة نشاطها
+                                    <br>2. تسهيل دراستها وتحليلها
+                                    <br>3. تحسين طرق تسييرها واتخاذ القرار داخلها
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- قسم الأسئلة النظرية -->
+            <div class="content-section" id="theoretical-section">
+                <h2 class="section-title">
+                    <i class="fas fa-pen-alt"></i> الأسئلة النظرية (20 سؤال)
+                </h2>
+                
+                <div class="stats">
+                    <div class="stat-item theoretical">
+                        <div class="stat-value" id="theoretical-answered">0</div>
+                        <div class="stat-label">تمت الإجابة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">20</div>
+                        <div class="stat-label">إجمالي الأسئلة</div>
+                    </div>
+                </div>
+                
+                <div id="theoretical-questions-container">
+                    <!-- سيتم تعبئتها ديناميكياً -->
+                </div>
+            </div>
+            
+            <!-- قسم الأسئلة المتعددة -->
+            <div class="content-section" id="qcm-section">
+                <h2 class="section-title">
+                    <i class="fas fa-check-circle"></i> أسئلة متعددة الخيارات (20 سؤال)
+                </h2>
+                
+                <div class="stats">
+                    <div class="stat-item qcm">
+                        <div class="stat-value" id="qcm-correct">0</div>
+                        <div class="stat-label">إجابات صحيحة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="qcm-answered">0</div>
+                        <div class="stat-label">تمت الإجابة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">20</div>
+                        <div class="stat-label">إجمالي الأسئلة</div>
+                    </div>
+                </div>
+                
+                <div id="qcm-questions-container">
+                    <!-- سيتم تعبئتها ديناميكياً -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- أزرار التحكم -->
+        <div class="control-buttons">
+            <button class="control-btn btn-reset" id="resetTheoreticalBtn">
+                <i class="fas fa-redo"></i> إعادة تعيين
+            </button>
+            <button class="control-btn btn-show-all" id="showAllAnswersBtn">
+                <i class="fas fa-eye"></i> عرض كل الإجابات
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // بيانات الأسئلة النظرية (20 سؤال)
+        const theoreticalQuestions = [
+            {
+                id: 1,
+                questionAr: "ما هي المعايير الرئيسية لتصنيف المؤسسات الاقتصادية؟",
+                answerAr: "المعايير الرئيسية لتصنيف المؤسسات الاقتصادية هي: الشكل القانوني، الطابع الاقتصادي، الحجم.",
+                answerEn: "The main criteria for classifying economic institutions are: legal form, economic nature, and size."
+            },
+            {
+                id: 2,
+                questionAr: "ما هي خصائص المؤسسات الخاصة؟",
+                answerAr: "خصائص المؤسسات الخاصة: تعود ملكيتها إلى فرد أو أكثر، تهدف أساسًا إلى تحقيق الربح، تتمتع باستقلالية تامة عن تدخل الدولة.",
+                answerEn: "Characteristics of private institutions: owned by one or more individuals, primarily aim to achieve profit, enjoy complete independence from state intervention."
+            },
+            {
+                id: 3,
+                questionAr: "ما الفرق بين المؤسسات الفردية والشركات؟",
+                answerAr: "المؤسسات الفردية يملكها شخص واحد أو عائلة وغالبًا صغيرة الحجم، بينما الشركات يملكها شخصان أو أكثر وتقوم على تقاسم الأرباح والخسائر وفق القانون التجاري.",
+                answerEn: "Individual institutions are owned by one person or family and are usually small, while companies are owned by two or more people and are based on sharing profits and losses according to commercial law."
+            },
+            {
+                id: 4,
+                questionAr: "ما هي خصائص المؤسسات العمومية؟",
+                answerAr: "خصائص المؤسسات العمومية: تعود ملكيتها إلى الدولة، تهدف إلى تحقيق المصلحة العامة، لا تعطي أولوية كبيرة للربح.",
+                answerEn: "Characteristics of public institutions: owned by the state, aim to achieve public interest, do not give high priority to profit."
+            },
+            {
+                id: 5,
+                questionAr: "ما هي أنواع المؤسسات العمومية؟",
+                answerAr: "أنواع المؤسسات العمومية: مؤسسات عمومية مسيرة مباشرة، مؤسسات عمومية مستقلة.",
+                answerEn: "Types of public institutions: directly managed public institutions, independent public institutions."
+            },
+            {
+                id: 6,
+                questionAr: "ما هي خصائص المؤسسات العمومية المسيرة مباشرة؟",
+                answerAr: "خصائص المؤسسات العمومية المسيرة مباشرة: تملكها وتديرها الدولة، مرتبطة بالموازنة العامة، تخضع للوزارة الوصية.",
+                answerEn: "Characteristics of directly managed public institutions: owned and managed by the state, linked to the general budget, subject to the supervisory ministry."
+            },
+            {
+                id: 7,
+                questionAr: "ما هي خصائص المؤسسات العمومية المستقلة؟",
+                answerAr: "خصائص المؤسسات العمومية المستقلة: لها شخصية قانونية مستقلة، تمتلك ميزانية خاصة، هدفها تحقيق الأرباح.",
+                answerEn: "Characteristics of independent public institutions: have independent legal personality, have a special budget, aim to achieve profits."
+            },
+            {
+                id: 8,
+                questionAr: "ما هي المؤسسات المختلطة؟",
+                answerAr: "المؤسسات المختلطة (نصف عمومية): تجمع بين الدولة والقطاع الخاص، تساهم الدولة فيها بنسبة لا تقل عن 51%، تنشأ إما من العدم باتفاق الطرفين أو عن طريق التأميم الجزئي.",
+                answerEn: "Mixed institutions (semi-public): combine the state and private sector, the state contributes at least 51%, established either from scratch by agreement of both parties or through partial nationalization."
+            },
+            {
+                id: 9,
+                questionAr: "ما هي أنواع المؤسسات العمومية في الجزائر؟",
+                answerAr: "في الجزائر توجد ثلاثة أنواع رئيسية: المؤسسات العمومية ذات الطابع الصناعي والتجاري، المؤسسات العمومية الاقتصادية الوطنية، المؤسسات العمومية الاقتصادية المحلية.",
+                answerEn: "In Algeria, there are three main types: public institutions with an industrial and commercial character, national economic public institutions, local economic public institutions."
+            },
+            {
+                id: 10,
+                questionAr: "ما هو التصنيف حسب القطاعات الاقتصادية؟",
+                answerAr: "التصنيف حسب القطاعات الاقتصادية يشمل: القطاع الأولي (الأنشطة المرتبطة بالطبيعة)، القطاع الثانوي (الأنشطة الصناعية)، القطاع الثالث (الأنشطة الخدمية).",
+                answerEn: "Classification by economic sectors includes: primary sector (nature-related activities), secondary sector (industrial activities), tertiary sector (service activities)."
+            },
+            {
+                id: 11,
+                questionAr: "ما الفرق بين القطاع الأولي والثانوي؟",
+                answerAr: "القطاع الأولي يشمل الأنشطة المرتبطة بالطبيعة مثل الزراعة والصيد، بينما القطاع الثانوي يشمل الأنشطة الصناعية لتحويل المواد الأولية إلى منتجات جاهزة.",
+                answerEn: "The primary sector includes nature-related activities such as agriculture and fishing, while the secondary sector includes industrial activities to transform raw materials into finished products."
+            },
+            {
+                id: 12,
+                questionAr: "ما هو القطاع الثالث؟",
+                answerAr: "القطاع الثالث يشمل الأنشطة الخدمية مثل النقل، التجارة، البنوك، التأمين.",
+                answerEn: "The tertiary sector includes service activities such as transportation, trade, banks, insurance."
+            },
+            {
+                id: 13,
+                questionAr: "ما الفرق بين القطاع والفرع والشعبة؟",
+                answerAr: "القطاع: مجموعة مؤسسات لها نفس النشاط الأساسي. الفرع: جزء من القطاع يضم وحدات إنتاج متشابهة. الشعبة: وحدات إنتاج تقدم نفس المنتج أو الخدمة.",
+                answerEn: "Sector: a group of institutions with the same basic activity. Branch: part of a sector containing similar production units. Division: production units offering the same product or service."
+            },
+            {
+                id: 14,
+                questionAr: "ما هي أنواع المؤسسات حسب النشاطات المؤداة؟",
+                answerAr: "أنواع المؤسسات حسب النشاطات المؤداة تشمل: المؤسسات الفلاحية، المؤسسات الصناعية، المؤسسات التجارية، المؤسسات الخدمية، المؤسسات المالية.",
+                answerEn: "Types of institutions by activities performed include: agricultural institutions, industrial institutions, commercial institutions, service institutions, financial institutions."
+            },
+            {
+                id: 15,
+                questionAr: "ما هو الغرض من تصنيف المؤسسات الاقتصادية؟",
+                answerAr: "الغرض من تصنيف المؤسسات الاقتصادية هو: فهم طبيعة نشاطها، تسهيل دراستها وتحليلها، تحسين طرق تسييرها واتخاذ القرار داخلها.",
+                answerEn: "The purpose of classifying economic institutions is: understanding the nature of their activity, facilitating their study and analysis, improving their management methods and internal decision-making."
+            },
+            {
+                id: 16,
+                questionAr: "ما هي مزايا المؤسسات الخاصة؟",
+                answerAr: "مزايا المؤسسات الخاصة: المرونة في اتخاذ القرارات، الاستقلالية عن التدخل الحكومي، التركيز على الربحية والكفاءة.",
+                answerEn: "Advantages of private institutions: flexibility in decision-making, independence from government intervention, focus on profitability and efficiency."
+            },
+            {
+                id: 17,
+                questionAr: "لماذا تنشئ الدولة مؤسسات عمومية؟",
+                answerAr: "تنشئ الدولة مؤسسات عمومية لتحقيق المصلحة العامة وتقديم خدمات أساسية للمواطنين في مجالات قد لا يجذب فيها الربح القطاع الخاص بشكل كافٍ.",
+                answerEn: "The state establishes public institutions to achieve public interest and provide essential services to citizens in areas where profit may not sufficiently attract the private sector."
+            },
+            {
+                id: 18,
+                questionAr: "ما أهمية المؤسسات المختلطة؟",
+                answerAr: "أهمية المؤسسات المختلطة: تجمع بين كفاءة القطاع الخاص ودعم الدولة، تسمح بمشاركة القطاع الخاص في المشاريع الاستراتيجية، تضمن وجود سيطرة الدولة على القطاعات الحيوية.",
+                answerEn: "Importance of mixed institutions: combine private sector efficiency and state support, allow private sector participation in strategic projects, ensure state control over vital sectors."
+            },
+            {
+                id: 19,
+                questionAr: "كيف يؤثر الحجم على تصنيف المؤسسات؟",
+                answerAr: "يؤثر الحجم على تصنيف المؤسسات من حيث: قدرتها التنافسية، هيكلها التنظيمي، احتياجاتها التمويلية، سوقها المستهدف، وطريقة إدارتها.",
+                answerEn: "Size affects the classification of institutions in terms of: their competitiveness, organizational structure, financing needs, target market, and management method."
+            },
+            {
+                id: 20,
+                questionAr: "ما هو الدور الاقتصادي للمؤسسات التجارية؟",
+                answerAr: "الدور الاقتصادي للمؤسسات التجارية: توزيع السلع والخدمات، خلق فرص العمل، المساهمة في الناتج المحلي الإجمالي، ربط المنتجين بالمستهلكين.",
+                answerEn: "Economic role of commercial institutions: distribution of goods and services, job creation, contribution to GDP, linking producers with consumers."
+            }
+        ];
+
+        // بيانات أسئلة متعددة الخيارات (20 سؤال)
+        const qcmQuestions = [
+            {
+                id: 1,
+                questionAr: "من المعايير الرئيسية لتصنيف المؤسسات الاقتصادية:",
+                options: [
+                    { textAr: "الشكل القانوني", correct: true },
+                    { textAr: "لون المبنى", correct: false },
+                    { textAr: "اسم المؤسسة", correct: false },
+                    { textAr: "موقعها الجغرافي", correct: false }
+                ]
+            },
+            {
+                id: 2,
+                questionAr: "المؤسسات الخاصة تهدف أساسًا إلى:",
+                options: [
+                    { textAr: "تحقيق الربح", correct: true },
+                    { textAr: "خدمة المجتمع فقط", correct: false },
+                    { textAr: "الخسارة المتعمدة", correct: false },
+                    { textAr: "إعانة الدولة", correct: false }
+                ]
+            },
+            {
+                id: 3,
+                questionAr: "المؤسسات الفردية:",
+                options: [
+                    { textAr: "يملكها شخص واحد أو عائلة", correct: true },
+                    { textAr: "يملكها الدولة", correct: false },
+                    { textAr: "يملكها آلاف الأشخاص", correct: false },
+                    { textAr: "لا يملكها أحد", correct: false }
+                ]
+            },
+            {
+                id: 4,
+                questionAr: "المؤسسات العمومية تعود ملكيتها إلى:",
+                options: [
+                    { textAr: "الدولة", correct: true },
+                    { textAr: "الأفراد", correct: false },
+                    { textAr: "البنوك", correct: false },
+                    { textAr: "الشركات الأجنبية", correct: false }
+                ]
+            },
+            {
+                id: 5,
+                questionAr: "من خصائص المؤسسات العمومية المسيرة مباشرة:",
+                options: [
+                    { textAr: "مرتبطة بالموازنة العامة", correct: true },
+                    { textAr: "مستقلة تمامًا", correct: false },
+                    { textAr: "لا تخضع لأي رقابة", correct: false },
+                    { textAr: "تهدف للربح فقط", correct: false }
+                ]
+            },
+            {
+                id: 6,
+                questionAr: "المؤسسات المختلطة تساهم الدولة فيها بنسبة لا تقل عن:",
+                options: [
+                    { textAr: "51%", correct: true },
+                    { textAr: "10%", correct: false },
+                    { textAr: "25%", correct: false },
+                    { textAr: "75%", correct: false }
+                ]
+            },
+            {
+                id: 7,
+                questionAr: "في الجزائر، من أنواع المؤسسات العمومية:",
+                options: [
+                    { textAr: "المؤسسات العمومية ذات الطابع الصناعي والتجاري", correct: true },
+                    { textAr: "المؤسسات الملكية الخاصة", correct: false },
+                    { textAr: "المؤسسات الدينية فقط", correct: false },
+                    { textAr: "المؤسسات الرياضية", correct: false }
+                ]
+            },
+            {
+                id: 8,
+                questionAr: "القطاع الأولي يشمل:",
+                options: [
+                    { textAr: "الزراعة والصيد", correct: true },
+                    { textAr: "الصناعة الثقيلة", correct: false },
+                    { textAr: "الخدمات المصرفية", correct: false },
+                    { textAr: "التجارة الإلكترونية", correct: false }
+                ]
+            },
+            {
+                id: 9,
+                questionAr: "القطاع الثانوي هو:",
+                options: [
+                    { textAr: "القطاع الصناعي", correct: true },
+                    { textAr: "القطاع الزراعي", correct: false },
+                    { textAr: "القطاع الخدمي", correct: false },
+                    { textAr: "القطاع المالي", correct: false }
+                ]
+            },
+            {
+                id: 10,
+                questionAr: "القطاع الثالث يشمل:",
+                options: [
+                    { textAr: "الأنشطة الخدمية", correct: true },
+                    { textAr: "التعدين", correct: false },
+                    { textAr: "البناء", correct: false },
+                    { textAr: "الصناعات الغذائية", correct: false }
+                ]
+            },
+            {
+                id: 11,
+                questionAr: "مجموعة مؤسسات لها نفس النشاط الأساسي تسمى:",
+                options: [
+                    { textAr: "قطاع", correct: true },
+                    { textAr: "فرع", correct: false },
+                    { textAr: "شعبة", correct: false },
+                    { textAr: "مجموعة", correct: false }
+                ]
+            },
+            {
+                id: 12,
+                questionAr: "جزء من القطاع يضم وحدات إنتاج متشابهة يسمى:",
+                options: [
+                    { textAr: "فرع", correct: true },
+                    { textAr: "قطاع", correct: false },
+                    { textAr: "شعبة", correct: false },
+                    { textAr: "مجال", correct: false }
+                ]
+            },
+            {
+                id: 13,
+                questionAr: "من أنواع المؤسسات حسب النشاطات المؤداة:",
+                options: [
+                    { textAr: "المؤسسات الفلاحية", correct: true },
+                    { textAr: "المؤسسات العائلية فقط", correct: false },
+                    { textAr: "المؤسسات الدينية", correct: false },
+                    { textAr: "المؤسسات السياسية", correct: false }
+                ]
+            },
+            {
+                id: 14,
+                questionAr: "الهدف من تصنيف المؤسسات الاقتصادية هو:",
+                options: [
+                    { textAr: "تسهيل دراستها وتحليلها", correct: true },
+                    { textAr: "زيادة الضرائب", correct: false },
+                    { textAr: "تعقيد الأمور", correct: false },
+                    { textAr: "إخفاء المعلومات", correct: false }
+                ]
+            },
+            {
+                id: 15,
+                questionAr: "المؤسسات التجارية تنتمي إلى:",
+                options: [
+                    { textAr: "القطاع الثالث", correct: true },
+                    { textAr: "القطاع الأولي", correct: false },
+                    { textAr: "القطاع الثانوي", correct: false },
+                    { textAr: "لا تنتمي لأي قطاع", correct: false }
+                ]
+            },
+            {
+                id: 16,
+                questionAr: "المؤسسات المالية مثل البنوك تنتمي إلى:",
+                options: [
+                    { textAr: "القطاع الثالث", correct: true },
+                    { textAr: "القطاع الأولي", correct: false },
+                    { textAr: "القطاع الثانوي", correct: false },
+                    { textAr: "القطاع الرابع", correct: false }
+                ]
+            },
+            {
+                id: 17,
+                questionAr: "المؤسسات الصناعية تنتمي إلى:",
+                options: [
+                    { textAr: "القطاع الثانوي", correct: true },
+                    { textAr: "القطاع الأولي", correct: false },
+                    { textAr: "القطاع الثالث", correct: false },
+                    { textAr: "القطاع الرابع", correct: false }
+                ]
+            },
+            {
+                id: 18,
+                questionAr: "مؤسسات التأمين تنتمي إلى:",
+                options: [
+                    { textAr: "القطاع الثالث", correct: true },
+                    { textAr: "القطاع الأولي", correct: false },
+                    { textAr: "القطاع الثانوي", correct: false },
+                    { textAr: "القطاع الرباعي", correct: false }
+                ]
+            },
+            {
+                id: 19,
+                questionAr: "من مزايا المؤسسات الخاصة:",
+                options: [
+                    { textAr: "المرونة في اتخاذ القرارات", correct: true },
+                    { textAr: "البطء في العمل", correct: false },
+                    { textAr: "الاعتماد الكامل على الدولة", correct: false },
+                    { textAr: "عدم الاهتمام بالربح", correct: false }
+                ]
+            },
+            {
+                id: 20,
+                questionAr: "المؤسسات المختلطة تجمع بين:",
+                options: [
+                    { textAr: "الدولة والقطاع الخاص", correct: true },
+                    { textAr: "الأفراد والأجانب فقط", correct: false },
+                    { textAr: "البنوك والشركات", correct: false },
+                    { textAr: "المؤسسات الدينية والعلمية", correct: false }
+                ]
+            }
+        ];
+
+        // متغيرات التطبيق
+        let currentTab = 'lectures';
+        let theoreticalAnswersVisible = [];
+        let qcmUserAnswers = Array(qcmQuestions.length).fill(null);
+        let qcmChecked = Array(qcmQuestions.length).fill(false);
+
+        // تهيئة التطبيق
+        document.addEventListener('DOMContentLoaded', function() {
+            // تهيئة الأسئلة النظرية
+            renderTheoreticalQuestions();
+            
+            // تهيئة أسئلة متعددة الخيارات
+            renderQCMQuestions();
+            
+            // تحديث الإحصائيات
+            updateStats();
+            
+            // إضافة أحداث التبويبات
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    switchTab(this.dataset.tab);
+                });
+            });
+            
+            // إضافة أحداث الأزرار
+            document.getElementById('resetTheoreticalBtn').addEventListener('click', resetTheoretical);
+            document.getElementById('showAllAnswersBtn').addEventListener('click', toggleShowAllAnswers);
+        });
+
+        // عرض الأسئلة النظرية
+        function renderTheoreticalQuestions() {
+            const container = document.getElementById('theoretical-questions-container');
+            container.innerHTML = '';
+            
+            theoreticalQuestions.forEach((question, index) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.id = `theoretical-${index}`;
+                
+                card.innerHTML = `
+                    <div class="question-header">
+                        <div class="question-number">${index + 1}</div>
+                        <div class="question-type">سؤال نظري</div>
+                    </div>
+                    <div class="question-text">${question.questionAr}</div>
+                    <button class="answer-btn" data-index="${index}">
+                        <i class="fas fa-lightbulb"></i> عرض الإجابة
+                    </button>
+                    <div class="answer-content" id="answer-${index}">
+                        <div class="answer-title">
+                            <i class="fas fa-check-circle"></i> الإجابة
+                        </div>
+                        <div class="answer-text">${question.answerAr}</div>
+                        <div class="answer-text english">${question.answerEn}</div>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+                
+                // إضافة حدث للزر
+                const answerBtn = card.querySelector('.answer-btn');
+                answerBtn.addEventListener('click', function() {
+                    toggleAnswer(this.dataset.index);
+                });
+            });
+        }
+
+        // عرض أسئلة متعددة الخيارات
+        function renderQCMQuestions() {
+            const container = document.getElementById('qcm-questions-container');
+            container.innerHTML = '';
+            
+            qcmQuestions.forEach((question, questionIndex) => {
+                const card = document.createElement('div');
+                card.className = 'qcm-card';
+                card.id = `qcm-${questionIndex}`;
+                
+                let optionsHTML = '';
+                const letters = ['أ', 'ب', 'ج', 'د'];
+                
+                question.options.forEach((option, optionIndex) => {
+                    optionsHTML += `
+                        <div class="option" data-question="${questionIndex}" data-option="${optionIndex}">
+                            <div class="option-letter">${letters[optionIndex]}</div>
+                            <div class="option-text">${option.textAr}</div>
+                        </div>
+                    `;
+                });
+                
+                card.innerHTML = `
+                    <div class="question-header">
+                        <div class="question-number">${questionIndex + 1}</div>
+                        <div class="question-type">اختيار متعدد</div>
+                    </div>
+                    <div class="qcm-question">${question.questionAr}</div>
+                    <div class="options-container">
+                        ${optionsHTML}
+                    </div>
+                    <div class="feedback" id="feedback-${questionIndex}"></div>
+                `;
+                
+                container.appendChild(card);
+                
+                // إضافة أحداث للخيارات
+                card.querySelectorAll('.option').forEach(option => {
+                    option.addEventListener('click', function() {
+                        selectOption(this.dataset.question, this.dataset.option);
+                    });
+                });
+            });
+        }
+
+        // التبديل بين التبويبات
+        function switchTab(tabName) {
+            currentTab = tabName;
+            
+            // تحديث التبويبات النشطة
+            document.querySelectorAll('.tab').forEach(tab => {
+                if (tab.dataset.tab === tabName) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            
+            // تحديث المحتوى المرئي
+            document.querySelectorAll('.content-section').forEach(section => {
+                if (section.id === `${tabName}-section`) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+            
+            // تحديث أزرار التحكم
+            updateControlButtons();
+            
+            // التمرير لأعلى الصفحة
+            window.scrollTo(0, 0);
+        }
+
+        // تحديث أزرار التحكم حسب التبويب
+        function updateControlButtons() {
+            const resetBtn = document.getElementById('resetTheoreticalBtn');
+            const showAllBtn = document.getElementById('showAllAnswersBtn');
+            
+            if (currentTab === 'theoretical') {
+                resetBtn.innerHTML = '<i class="fas fa-redo"></i> إعادة تعيين';
+                resetBtn.onclick = resetTheoretical;
+                showAllBtn.innerHTML = '<i class="fas fa-eye"></i> عرض كل الإجابات';
+                showAllBtn.onclick = toggleShowAllAnswers;
+            } else if (currentTab === 'qcm') {
+                resetBtn.innerHTML = '<i class="fas fa-redo"></i> إعادة الاختبار';
+                resetBtn.onclick = resetQCM;
+                showAllBtn.innerHTML = '<i class="fas fa-check-circle"></i> تحقق من الإجابات';
+                showAllBtn.onclick = checkAllAnswers;
+            } else {
+                resetBtn.style.display = 'none';
+                showAllBtn.style.display = 'none';
+            }
+        }
+
+        // عرض/إخفاء إجابة نظرية
+        function toggleAnswer(index) {
+            const answerElement = document.getElementById(`answer-${index}`);
+            const isVisible = answerElement.classList.toggle('show');
+            
+            // تحديث حالة الإجابة
+            if (isVisible && !theoreticalAnswersVisible.includes(parseInt(index))) {
+                theoreticalAnswersVisible.push(parseInt(index));
+                updateStats();
+            }
+            
+            // تحديث نص الزر
+            const button = document.querySelector(`#theoretical-${index} .answer-btn`);
+            if (isVisible) {
+                button.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء الإجابة';
+            } else {
+                button.innerHTML = '<i class="fas fa-lightbulb"></i> عرض الإجابة';
+            }
+        }
+
+        // اختيار خيار في سؤال متعدد
+        function selectOption(questionIndex, optionIndex) {
+            // إذا كان السؤال قد تم التحقق منه مسبقًا، لا نسمح بتغيير الإجابة
+            if (qcmChecked[questionIndex]) return;
+            
+            const questionCard = document.getElementById(`qcm-${questionIndex}`);
+            
+            // إلغاء تحديد جميع الخيارات في هذا السؤال
+            questionCard.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // تحديد الخيار المختار
+            const selectedOption = questionCard.querySelector(`.option[data-option="${optionIndex}"]`);
+            selectedOption.classList.add('selected');
+            
+            // حفظ إجابة المستخدم
+            qcmUserAnswers[questionIndex] = parseInt(optionIndex);
+            
+            // تحديث الإحصائيات
+            updateStats();
+        }
+
+        // التحقق من إجابة سؤال متعدد
+        function checkAnswer(questionIndex) {
+            if (qcmUserAnswers[questionIndex] === null) return false;
+            
+            const question = qcmQuestions[questionIndex];
+            const userAnswerIndex = qcmUserAnswers[questionIndex];
+            const isCorrect = question.options[userAnswerIndex].correct;
+            
+            const questionCard = document.getElementById(`qcm-${questionIndex}`);
+            const feedbackElement = document.getElementById(`feedback-${questionIndex}`);
+            
+            // تحديث مظهر الخيارات
+            question.options.forEach((option, index) => {
+                const optionElement = questionCard.querySelector(`.option[data-option="${index}"]`);
+                
+                if (option.correct) {
+                    optionElement.classList.add('correct');
+                } else if (index === userAnswerIndex && !option.correct) {
+                    optionElement.classList.add('incorrect');
+                }
+            });
+            
+            // عرض التغذية الراجعة
+            if (isCorrect) {
+                feedbackElement.textContent = 'إجابة صحيحة! أحسنت!';
+                feedbackElement.className = 'feedback correct show';
+            } else {
+                feedbackElement.textContent = 'إجابة غير صحيحة. حاول مرة أخرى!';
+                feedbackElement.className = 'feedback incorrect show';
+            }
+            
+            qcmChecked[questionIndex] = true;
+            
+            return isCorrect;
+        }
+
+        // التحقق من جميع الإجابات
+        function checkAllAnswers() {
+            let allCorrect = true;
+            let answeredCount = 0;
+            let correctCount = 0;
+            
+            qcmQuestions.forEach((_, index) => {
+                if (qcmUserAnswers[index] !== null) {
+                    answeredCount++;
+                    if (checkAnswer(index)) {
+                        correctCount++;
+                    } else {
+                        allCorrect = false;
+                    }
+                }
+            });
+            
+            // عرض نتيجة النهاية
+            if (answeredCount === 0) {
+                alert('لم تقم بالإجابة على أي سؤال بعد. يرجى اختيار الإجابات أولاً.');
+            } else if (answeredCount < qcmQuestions.length) {
+                alert(`لقد أجبت على ${answeredCount} من أصل ${qcmQuestions.length} سؤالاً.\n\nالنتيجة: ${correctCount}/${answeredCount} إجابة صحيحة.\n\nيرجى الإجابة على جميع الأسئلة للحصول على نتيجة كاملة.`);
+            } else {
+                alert(`تهانينا! لقد أكملت الاختبار.\n\nالنتيجة النهائية: ${correctCount}/${qcmQuestions.length} إجابة صحيحة.\n\nالنسبة: ${Math.round((correctCount/qcmQuestions.length)*100)}%`);
+            }
+            
+            updateStats();
+        }
+
+        // إعادة تعيين الأسئلة النظرية
+        function resetTheoretical() {
+            theoreticalAnswersVisible = [];
+            
+            // إخفاء جميع الإجابات
+            document.querySelectorAll('.answer-content').forEach(answer => {
+                answer.classList.remove('show');
+            });
+            
+            // تحديث نصوص الأزرار
+            document.querySelectorAll('.answer-btn').forEach(button => {
+                button.innerHTML = '<i class="fas fa-lightbulb"></i> عرض الإجابة';
+            });
+            
+            updateStats();
+            
+            // عرض رسالة تأكيد
+            alert('تم إعادة تعيين جميع الإجابات النظرية بنجاح.');
+        }
+
+        // إعادة تعيين أسئلة متعددة الخيارات
+        function resetQCM() {
+            qcmUserAnswers = Array(qcmQuestions.length).fill(null);
+            qcmChecked = Array(qcmQuestions.length).fill(false);
+            
+            // إعادة تعيين مظهر جميع الخيارات
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            // إخفاء جميع التغذية الراجعة
+            document.querySelectorAll('.feedback').forEach(feedback => {
+                feedback.classList.remove('show', 'correct', 'incorrect');
+            });
+            
+            updateStats();
+            
+            // عرض رسالة تأكيد
+            alert('تم إعادة تعيين اختبار الأسئلة المتعددة بنجاح. يمكنك البدء من جديد.');
+        }
+
+        // عرض/إخفاء كل الإجابات النظرية
+        function toggleShowAllAnswers() {
+            if (currentTab === 'theoretical') {
+                const allVisible = theoreticalAnswersVisible.length === theoreticalQuestions.length;
+                
+                if (allVisible) {
+                    // إخفاء جميع الإجابات
+                    theoreticalAnswersVisible = [];
+                    document.querySelectorAll('.answer-content').forEach(answer => {
+                        answer.classList.remove('show');
+                    });
+                    document.querySelectorAll('.answer-btn').forEach(button => {
+                        button.innerHTML = '<i class="fas fa-lightbulb"></i> عرض الإجابة';
+                    });
+                } else {
+                    // عرض جميع الإجابات
+                    theoreticalAnswersVisible = [];
+                    theoreticalQuestions.forEach((_, index) => {
+                        theoreticalAnswersVisible.push(index);
+                        const answerElement = document.getElementById(`answer-${index}`);
+                        answerElement.classList.add('show');
+                        const button = document.querySelector(`#theoretical-${index} .answer-btn`);
+                        button.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء الإجابة';
+                    });
+                }
+                
+                updateStats();
+            }
+        }
+
+        // تحديث الإحصائيات
+        function updateStats() {
+            // تحديث إحصائيات الأسئلة النظرية
+            const theoreticalAnswered = document.getElementById('theoretical-answered');
+            theoreticalAnswered.textContent = theoreticalAnswersVisible.length;
+            
+            // تحديث إحصائيات أسئلة متعددة الخيارات
+            const qcmAnswered = document.getElementById('qcm-answered');
+            const qcmCorrect = document.getElementById('qcm-correct');
+            
+            let answeredCount = 0;
+            let correctCount = 0;
+            
+            qcmUserAnswers.forEach((answer, index) => {
+                if (answer !== null) {
+                    answeredCount++;
+                    
+                    if (qcmChecked[index] && qcmQuestions[index].options[answer].correct) {
+                        correctCount++;
+                    }
+                }
+            });
+            
+            qcmAnswered.textContent = answeredCount;
+            qcmCorrect.textContent = correctCount;
+        }
+    </script>
+</body>
+</html>
