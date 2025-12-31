@@ -302,6 +302,143 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
+        /* تصميم الجدول للتمارين الجديدة */
+        .calculation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+        
+        .calculation-table th {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .calculation-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .calculation-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .calculation-table tr:hover {
+            background-color: #f1f7fd;
+        }
+        
+        /* تصميم خاص للتمارين الجديدة */
+        .advanced-exercise {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #1565c0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .noise-exercise {
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+            border-left: 5px solid #006064;
+        }
+        
+        .light-exercise {
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border-left: 5px solid #ff8f00;
+        }
+        
+        .heat-exercise {
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+            border-left: 5px solid #d32f2f;
+        }
+        
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #90caf9;
+        }
+        
+        .exercise-number {
+            background-color: #1565c0;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .noise-number {
+            background-color: #006064;
+        }
+        
+        .light-number {
+            background-color: #ff8f00;
+        }
+        
+        .heat-number {
+            background-color: #d32f2f;
+        }
+        
+        .exercise-type {
+            background-color: #ff9800;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .noise-type {
+            background-color: #00796b;
+        }
+        
+        .light-type {
+            background-color: #ff8f00;
+        }
+        
+        .heat-type {
+            background-color: #d32f2f;
+        }
+        
+        /* تصميم خاص لأسئلة QCM الصعبة */
+        .difficult-qcm {
+            border: 2px solid #d32f2f;
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+        }
+        
+        .difficult-qcm .qcm-question {
+            color: #b71c1c;
+            border-bottom-color: #d32f2f;
+        }
+        
+        .difficulty-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background-color: #d32f2f;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .important-note {
+            background-color: #fff3e0;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 12px 0;
+            border-right: 3px solid #ff9800;
+            font-weight: bold;
+        }
+        
         @media (max-width: 768px) {
             body {
                 padding: 15px;
@@ -342,6 +479,15 @@
                 min-width: auto;
                 padding: 14px;
             }
+            
+            .calculation-table {
+                font-size: 0.85rem;
+            }
+            
+            .calculation-table th,
+            .calculation-table td {
+                padding: 8px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -352,6 +498,16 @@
             .nav-btn {
                 padding: 12px;
                 font-size: 0.9rem;
+            }
+            
+            .advanced-exercise {
+                padding: 18px;
+            }
+            
+            .exercise-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
             }
         }
     </style>
@@ -819,38 +975,166 @@
                         <button class="qcm-option" data-correct="false">د) ألم في الظهر غير مرتبط بالعمل</button>
                     </div>
                     
-                    <h3>المستوى الصعب:</h3>
+                    <h3>أسئلة QCM صعبة (20 سؤالاً):</h3>
                     
-                    <div class="qcm-item">
-                        <p class="qcm-question">9. في مصفوفة الخطر، إذا كان الخطر في خانة (الاحتمال = 4، الشدة = 4)، فما هي الأولوية؟</p>
-                        <button class="qcm-option" data-correct="false">أ) خطر مقبول</button>
-                        <button class="qcm-option" data-correct="false">ب) خطر متوسط</button>
-                        <button class="qcm-option" data-correct="false">ج) خطر مرتفع</button>
-                        <button class="qcm-option" data-correct="true">د) خطر مرتفع جداً ويتطلب تدخلاً فورياً</button>
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 1. إذا كان مستوى ضوضاء مصدرين 90 dB و 93 dB، فما هو المستوى الكلي؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 183 dB</button>
+                        <button class="qcm-option" data-correct="false">ب) 94.8 dB</button>
+                        <button class="qcm-option" data-correct="true">ج) 94.1 dB</button>
+                        <button class="qcm-option" data-correct="false">د) 91.5 dB</button>
                     </div>
                     
-                    <div class="qcm-item">
-                        <p class="qcm-question">10. حسب قانون الجزائر، كم جدولاً للأمراض المهنية معترف به؟</p>
-                        <button class="qcm-option" data-correct="false">أ) 50</button>
-                        <button class="qcm-option" data-correct="true">ب) 85</button>
-                        <button class="qcm-option" data-correct="false">ج) 100</button>
-                        <button class="qcm-option" data-correct="false">د) 120</button>
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 2. ما هو الحد الأقصى المسموح به للتعرض لضوضاء 100 dB حسب معيار OSHA؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 1 ساعة</button>
+                        <button class="qcm-option" data-correct="false">ب) 30 دقيقة</button>
+                        <button class="qcm-option" data-correct="true">ج) 2 ساعة</button>
+                        <button class="qcm-option" data-correct="false">د) 4 ساعة</button>
                     </div>
                     
-                    <div class="qcm-item">
-                        <p class="qcm-question">11. ما هي الطريقة الكيفية لتحليل الحوادث التي تبحث عن الأسباب الجذرية باستخدام مخطط يشبه السمكة؟</p>
-                        <button class="qcm-option" data-correct="false">أ) شجرة الأسباب</button>
-                        <button class="qcm-option" data-correct="true">ب) منحنى إيشيكاوا (5M)</button>
-                        <button class="qcm-option" data-correct="false">ج) طريقة APR</button>
-                        <button class="qcm-option" data-correct="false">د) هرم BIRD</button>
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 3. إذا تعرض عامل لـ 88 dB لمدة 4 ساعات، و 94 dB لمدة ساعتين، فما هي الجرعة الكلية؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 0.75</button>
+                        <button class="qcm-option" data-correct="true">ب) 1.25</button>
+                        <button class="qcm-option" data-correct="false">ج) 1.0</button>
+                        <button class="qcm-option" data-correct="false">د) 1.5</button>
                     </div>
                     
-                    <div class="qcm-item">
-                        <p class="qcm-question">12. إذا تعرض عامل لضوضاء 95 dB لمدة ساعتين، و 90 dB لمدة 4 ساعات، فما هي جرعة تعرضه اليومية (حسب OSHA: 95 dB مسموح به 4 ساعات، 90 dB مسموح به 8 ساعات)؟</p>
-                        <button class="qcm-option" data-correct="false">أ) 0.5</button>
-                        <button class="qcm-option" data-correct="false">ب) 1.0</button>
-                        <button class="qcm-option" data-correct="true">ج) 1.5</button>
-                        <button class="qcm-option" data-correct="false">د) 2.0</button>
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 4. ما هو تأثير مضاعفة شدة الصوت (الطاقة الصوتية) على مستوى الديسيبل؟</p>
+                        <button class="qcm-option" data-correct="true">أ) زيادة 3 dB</button>
+                        <button class="qcm-option" data-correct="false">ب) زيادة 6 dB</button>
+                        <button class="qcm-option" data-correct="false">ج) زيادة 10 dB</button>
+                        <button class="qcm-option" data-correct="false">د) زيادة 20 dB</button>
+                    </div>
+                    
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 5. ما هو مستوى الصوت الذي يسبب ألماً فورياً في الأذن البشرية؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 100 dB</button>
+                        <button class="qcm-option" data-correct="false">ب) 110 dB</button>
+                        <button class="qcm-option" data-correct="false">ج) 120 dB</button>
+                        <button class="qcm-option" data-correct="true">د) 130 dB</button>
+                    </div>
+                    
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 6. إذا كان تركيز ضوضاء في مكان العمل 97 dB، ما هي نسبة التقليل المطلوبة للوصول إلى 85 dB?</p>
+                        <button class="qcm-option" data-correct="false">أ) 50%</button>
+                        <button class="qcm-option" data-correct="true">ب) تقليل 12 dB</button>
+                        <button class="qcm-option" data-correct="false">ج) تقليل 20 dB</button>
+                        <button class="qcm-option" data-correct="false">د) تقليل 97%</button>
+                    </div>
+                    
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 7. ما هو معامل الترجيح A المستخدم في قياسات الضوضاء؟</p>
+                        <button class="qcm-option" data-correct="false">أ) يحاكي حساسية الأذن للطيور</button>
+                        <button class="qcm-option" data-correct="true">ب) يحاكي حساسية الأذن البشرية</button>
+                        <button class="qcm-option" data-correct="false">ج) يقيس الضغط الصوتي فقط</button>
+                        <button class="qcm-option" data-correct="false">د) يقيس الترددات العالية فقط</button>
+                    </div>
+                    
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 8. ما هو الحد اليومي المسموح به للتعرض للضوضاء حسب المعهد الوطني الفرنسي للبحث والسلامة (INRS)؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 80 dB لمدة 8 ساعات</button>
+                        <button class="qcm-option" data-correct="false">ب) 85 dB لمدة 8 ساعات</button>
+                        <button class="qcm-option" data-correct="true">ج) 87 dB لمدة 8 ساعات</button>
+                        <button class="qcm-option" data-correct="false">د) 90 dB لمدة 8 ساعات</button>
+                    </div>
+                    
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 9. إذا تعرض عامل لضوضاء 105 dB لمدة 15 دقيقة فقط، فهل يحتاج إلى حماية سمعية؟</p>
+                        <button class="qcm-option" data-correct="false">أ) لا، لأن المدة قصيرة</button>
+                        <button class="qcm-option" data-correct="true">ب) نعم، لأن 105 dB خطير حتى لفترات قصيرة</button>
+                        <button class="qcm-option" data-correct="false">ج) يعتمد على عمر العامل</button>
+                        <button class="qcm-option" data-correct="false">د) لا، إذا كان استخداماً عرضياً</button>
+                    </div>
+                    
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 10. ما هي قيمة L<sub>EX,8h</sub> إذا كان العامل يتعرض لـ 92 dB لمدة 3 ساعات؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 92 dB</button>
+                        <button class="qcm-option" data-correct="true">ب) 88.2 dB</button>
+                        <button class="qcm-option" data-correct="false">ج) 90.5 dB</button>
+                        <button class="qcm-option" data-correct="false">د) 85 dB</button>
+                    </div>
+                    
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 11. ما هو مستوى الضوضاء الذي يتطلبه القانون الجزائري لبدء برنامج للحفاظ على السمع؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 80 dB</button>
+                        <button class="qcm-option" data-correct="true">ب) 85 dB</button>
+                        <button class="qcm-option" data-correct="false">ج) 90 dB</button>
+                        <button class="qcm-option" data-correct="false">د) 95 dB</button>
+                    </div>
+                    
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 12. إذا كان NRR لسدادات الأذن = 25 dB، فما هو المستوى الفعلي للتقليل المتوقع في الميدان؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 25 dB</button>
+                        <button class="qcm-option" data-correct="false">ب) 20 dB</button>
+                        <button class="qcm-option" data-correct="true">ج) حوالي 12-15 dB</button>
+                        <button class="qcm-option" data-correct="false">د) 30 dB</button>
+                    </div>
+                    
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 13. ما هو الحد المسموح للتعرض للصدمات الصوتية (نبضات ضوضاء)؟</p>
+                        <button class="qcm-option" data-correct="true">أ) 140 dB ذروة</button>
+                        <button class="qcm-option" data-correct="false">ب) 120 dB ذروة</button>
+                        <button class="qcm-option" data-correct="false">ج) 100 dB ذروة</button>
+                        <button class="qcm-option" data-correct="false">د) 160 dB ذروة</button>
+                    </div>
+                    
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 14. كم مرة تزيد شدة الصوت عندما يرتفع المستوى من 70 dB إلى 90 dB؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 2 مرات</button>
+                        <button class="qcm-option" data-correct="false">ب) 10 مرات</button>
+                        <button class="qcm-option" data-correct="false">ج) 20 مرات</button>
+                        <button class="qcm-option" data-correct="true">د) 100 مرات</button>
+                    </div>
+                    
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 15. ما هو مستوى L<sub>eq</sub> لضوضاء متقطعة: 95 dB لمدة 30 دقيقة، 80 dB لمدة 4 ساعات، صمت لمدة 3.5 ساعة؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 87.5 dB</button>
+                        <button class="qcm-option" data-correct="true">ب) 85.2 dB</button>
+                        <button class="qcm-option" data-correct="false">ج) 83.0 dB</button>
+                        <button class="qcm-option" data-correct="false">د) 90.1 dB</button>
+                    </div>
+                    
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 16. إذا كان عامل يتعرض لـ 100 dB ويستخدم واقياً سمعياً بـ NRR 30، فما هو المستوى الواصل للأذن؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 70 dB</button>
+                        <button class="qcm-option" data-correct="true">ب) حوالي 82-85 dB</button>
+                        <button class="qcm-option" data-correct="false">ج) 100 dB</button>
+                        <button class="qcm-option" data-correct="false">د) 65 dB</button>
+                    </div>
+                    
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 17. ما هو الفرق بين L<sub>max</sub> و L<sub>eq</sub> في قياسات الضوضاء؟</p>
+                        <button class="qcm-option" data-correct="false">أ) لا فرق بينهما</button>
+                        <button class="qcm-option" data-correct="true">ب) L<sub>max</sub> هو أعلى مستوى، L<sub>eq</sub> هو المتوسط الزمني</button>
+                        <button class="qcm-option" data-correct="false">ج) L<sub>max</sub> للترددات العالية، L<sub>eq</sub> للترددات المنخفضة</button>
+                        <button class="qcm-option" data-correct="false">د) L<sub>max</sub> يقاس بالهاتف، L<sub>eq</sub> يقاس بالسونوميتر</button>
+                    </div>
+                    
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 18. كم ديسيبل تقلل سدادات الأذن المصنوعة من السيليكون؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 5-10 dB</button>
+                        <button class="qcm-option" data-correct="false">ب) 10-15 dB</button>
+                        <button class="qcm-option" data-correct="true">ج) 15-30 dB حسب النوع</button>
+                        <button class="qcm-option" data-correct="false">د) 30-40 dB</button>
+                    </div>
+                    
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 19. ما هو مستوى الصوت في الديسيبل عندما تكون شدة الصوت 10<sup>-2</sup> وات/م²؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 80 dB</button>
+                        <button class="qcm-option" data-correct="false">ب) 90 dB</button>
+                        <button class="qcm-option" data-correct="false">ج) 100 dB</button>
+                        <button class="qcm-option" data-correct="true">د) 110 dB</button>
+                    </div>
+                    
+                    <div class="qcm-item difficult-qcm">
+                        <p class="qcm-question"><span class="difficulty-badge">صعب</span> 20. إذا كان عامل يتعرض لـ 88 dB لمدة 6 ساعات و 82 dB لمدة ساعتين، فما هي جرعة التعرض؟</p>
+                        <button class="qcm-option" data-correct="false">أ) 0.75</button>
+                        <button class="qcm-option" data-correct="false">ب) 0.875</button>
+                        <button class="qcm-option" data-correct="true">ج) 1.0</button>
+                        <button class="qcm-option" data-correct="false">د) 1.125</button>
                     </div>
                 </div>
             </div>
@@ -859,87 +1143,908 @@
         <!-- قسم التمارين والحلول -->
         <div id="exercises" class="content-section">
             <div class="section">
-                <h2>📝 نماذج تمارين امتحانية رسمية مع الحل</h2>
+                <h2>📝 تمارين الضوضاء المتخصصة</h2>
                 
-                <div class="exercise">
-                    <h3>التمرين 1 (نظري):</h3>
-                    <p><strong>س: اشرح بالتفصيل مراحل تحليل المخاطر في بيئة العمل، مع ذكر الأدوات المستخدمة في كل مرحلة.</strong></p>
-                    
-                    <div class="step">
-                        <div class="step-title">الحل:</div>
-                        <p>1. تحديد نطاق العمل: تحديد الحدود الزمانية والمكانية للعملية قيد الدراسة.</p>
-                        <p>2. التعرف على المخاطر: باستخدام:</p>
-                        <ul>
-                            <li>جولات ميدانية.</li>
-                            <li>مقابلات مع العمال.</li>
-                            <li>قوائم المراجعة (Checklists).</li>
-                            <li>مراجعة سجلات الحوادث السابقة.</li>
-                        </ul>
-                        <p>3. تقدير المخاطر: تحديد:</p>
-                        <ul>
-                            <li>احتمال حدوث الخطر (من ضعيف إلى مؤكد).</li>
-                            <li>شدة العواقب (من طفيف إلى كارثي).</li>
-                        </ul>
-                        <p>باستخدام معادلة R = P × G.</p>
-                        <p>4. تقييم المخاطر: مقارنة النتائج بمعايير محددة (مصفوفة الخطر) لتحديد إذا كان الخطر مقبولاً أم يحتاج تدخلاً.</p>
-                        <p>5. تطبيق التدخلات: وضع خطة للسيطرة على المخاطر (إزالة، استبدال، وسائل وقاية...).</p>
-                        <p>6. المتابعة: مراجعة دورية لفعالية الإجراءات وتحديث التحليل عند الحاجة.</p>
+                <!-- التمارين الأصلية -->
+                <div class="advanced-exercise noise-exercise">
+                    <div class="exercise-header">
+                        <div class="exercise-number noise-number">التمرين N1</div>
+                        <div class="exercise-type noise-type">حسابي متقدم - جمع مستويات الضوضاء</div>
                     </div>
-                </div>
-                
-                <div class="exercise">
-                    <h3>التمرين 2 (حسابي):</h3>
-                    <p><strong>س: يعمل عامل في ورشة حيث توجد ثلاثة آلات. مستوى ضوضاء الآلة الأولى = 88 dB، الثانية = 85 dB، الثالثة = 85 dB. احسب المستوى العام للضوضاء في الورشة.</strong></p>
+                    <p><strong>س: في ورشة عمل، تم قياس الضوضاء المنبعثة من 5 مصادر مختلفة:</strong></p>
+                    <ul>
+                        <li>المصدر 1: 82 dB</li>
+                        <li>المصدر 2: 85 dB</li>
+                        <li>المصدر 3: 85 dB</li>
+                        <li>المصدر 4: 88 dB</li>
+                        <li>المصدر 5: 90 dB</li>
+                    </ul>
+                    <p><strong>المطلوب: احسب المستوى الكلي للضوضاء في الورشة.</strong></p>
                     
                     <div class="step">
                         <div class="step-title">الحل خطوة بخطوة:</div>
-                        <p><strong>الخطوة 1:</strong> جمع مصادر المستوى المتساوي.</p>
-                        <p>الآلة 2 والآلة 3 لهما نفس المستوى (85 dB).</p>
-                        <p>عدد المصادر المتساوية = 2.</p>
-                        <p>من الجدول (ص54): لإصدارين متساويين، تضاف 3 dB إلى المستوى الأكبر.</p>
-                        <p>إذن: 85 dB + 3 dB = 88 dB (للآلتين معاً).</p>
+                        <p><strong>الخطوة 1:</strong> جمع المصادر المتساوية أولاً</p>
+                        <p>المصدران 2 و 3 لهما نفس المستوى (85 dB)</p>
+                        <p>عدد المصادر المتساوية = 2</p>
+                        <p>من الجدول: لإصدارين متساويين، تضاف 3 dB</p>
+                        <div class="formula">85 dB + 3 dB = 88 dB (للمصدرين 2 و 3 معاً)</div>
                         
-                        <p><strong>الخطوة 2:</strong> جمع المستوى الناتج مع المصدر الثالث المختلف.</p>
-                        <p>الآن لدينا مصدران: الأول بقوة 88 dB (من الآلة 1)، والثاني بقوة 88 dB (من الآلتين 2 و3 معاً).</p>
-                        <p>الفرق بين المستويين = 88 - 88 = 0 dB.</p>
-                        <p>من الجدول (ص53): عندما يكون الفرق 0 dB، تضاف 3 dB.</p>
-                        <p>المستوى العام = 88 dB + 3 dB = 91 dB.</p>
+                        <p><strong>الخطوة 2:</strong> إعادة ترتيب المستويات المتبقية من الأكبر للأصغر</p>
+                        <ol>
+                            <li>90 dB (المصدر 5)</li>
+                            <li>88 dB (المصدر 4)</li>
+                            <li>88 dB (المصدران 2 و 3)</li>
+                            <li>82 dB (المصدر 1)</li>
+                        </ol>
                         
-                        <p><strong>الجواب النهائي:</strong> المستوى العام للضوضاء في الورشة هو 91 dB.</p>
+                        <p><strong>الخطوة 3:</strong> جمع 90 dB و 88 dB</p>
+                        <p>الفرق = 90 - 88 = 2 dB</p>
+                        <p>من الجدول: للفرق 2 dB، تضاف 2.1 dB إلى المستوى الأكبر</p>
+                        <div class="formula">90 dB + 2.1 dB = 92.1 dB</div>
+                        
+                        <p><strong>الخطوة 4:</strong> جمع 92.1 dB و 88 dB</p>
+                        <p>الفرق = 92.1 - 88 = 4.1 dB ≈ 4 dB</p>
+                        <p>من الجدول: للفرق 4 dB، تضاف 1.5 dB إلى المستوى الأكبر</p>
+                        <div class="formula">92.1 dB + 1.5 dB = 93.6 dB</div>
+                        
+                        <p><strong>الخطوة 5:</strong> جمع 93.6 dB و 82 dB</p>
+                        <p>الفرق = 93.6 - 82 = 11.6 dB ≈ 12 dB</p>
+                        <p>من الجدول: للفرق 12 dB، تضاف 0.3 dB إلى المستوى الأكبر</p>
+                        <div class="formula">93.6 dB + 0.3 dB = 93.9 dB</div>
+                        
+                        <p><strong>الجواب النهائي:</strong> المستوى الكلي للضوضاء = 93.9 dB ≈ 94 dB</p>
                     </div>
                 </div>
                 
-                <div class="exercise">
-                    <h3>التمرين 3 (حسابي متقدم):</h3>
-                    <p><strong>س: تعرض عامل للضوضاء خلال يوم عمل كما يلي:</strong></p>
-                    <ul>
-                        <li>فترة 1: 92 dB لمدة 1.5 ساعة.</li>
-                        <li>فترة 2: 85 dB لمدة 4 ساعات.</li>
-                        <li>فترة 3: 88 dB لمدة 2 ساعة.</li>
-                    </ul>
-                    <p><strong>هل تجاوز جرعة التعرض اليومي المسموح بها حسب معيار OSHA؟ (استخدم جدول النقاط أو معادلة الجرعة)</strong></p>
+                <div class="advanced-exercise noise-exercise">
+                    <div class="exercise-header">
+                        <div class="exercise-number noise-number">التمرين N2</div>
+                        <div class="exercise-type noise-type">تأثير المسافة على شدة الضوضاء</div>
+                    </div>
+                    <p><strong>س: آلة تصدر ضوضاء مستوى 110 dB على مسافة 1 متر. احسب مستوى الضوضاء على مسافات:</strong></p>
+                    <ol>
+                        <li>2 متر</li>
+                        <li>5 متر</li>
+                        <li>10 متر</li>
+                        <li>20 متر</li>
+                    </ol>
+                    <p><strong>ملاحظة: استخدم قانون التربيع العكسي للصوت.</strong></p>
                     
                     <div class="step">
-                        <div class="step-title">الحل خطوة بخطوة باستخدام معادلة الجرعة:</div>
-                        <p><strong>الخطوة 1:</strong> كتابة المعادلة.</p>
-                        <div class="formula">الجرعة = ∑ (مدة التعرض الفعلي / المدة المسموح بها لكل مستوى)</div>
+                        <div class="step-title">الحل:</div>
+                        <p><strong>القاعدة:</strong> عندما تتضاعف المسافة، تقل شدة الصوت 6 dB</p>
+                        <p><strong>القاعدة العامة:</strong> ΔL = 20 × log₁₀(D₂/D₁)</p>
+                        <p>حيث ΔL = التغير في مستوى الصوت (dB)</p>
+                        <p>D₁ = المسافة الأصلية، D₂ = المسافة الجديدة</p>
                         
-                        <p><strong>الخطوة 2:</strong> استخراج المدة المسموح بها لكل مستوى من جدول OSHA (ص49).</p>
-                        <p>92 dB → المسموح: 6 ساعات (تقريب من 92 بين 90 و95).</p>
-                        <p>85 dB → المسموح: >8 ساعات (لا خطر تحت 90 dB، نعتبر 8 ساعات كحد أقصى للمقارنة).</p>
-                        <p>88 dB → المسموح: >8 ساعات (نفس المنطق).</p>
+                        <p><strong>1. على مسافة 2 متر:</strong></p>
+                        <div class="formula">ΔL = 20 × log₁₀(2/1) = 20 × 0.301 = 6.02 dB</div>
+                        <div class="formula">المستوى الجديد = 110 - 6.02 = 103.98 dB ≈ 104 dB</div>
                         
-                        <p><strong>الخطوة 3:</strong> تطبيق المعادلة.</p>
-                        <div class="formula">الجرعة = (1.5 / 6) + (4 / 8) + (2 / 8)</div>
-                        <div class="formula">الجرعة = 0.25 + 0.5 + 0.25 = 1.0</div>
+                        <p><strong>2. على مسافة 5 متر:</strong></p>
+                        <div class="formula">ΔL = 20 × log₁₀(5/1) = 20 × 0.699 = 13.98 dB</div>
+                        <div class="formula">المستوى الجديد = 110 - 13.98 = 96.02 dB ≈ 96 dB</div>
                         
-                        <p><strong>الخطوة 4:</strong> التفسير.</p>
-                        <p>إذا كانت الجرعة = 1 → التعرض عند الحد الأقصى المسموح به.</p>
-                        <p>إذا كانت الجرعة > 1 → التعرض خطير.</p>
+                        <p><strong>3. على مسافة 10 متر:</strong></p>
+                        <div class="formula">ΔL = 20 × log₁₀(10/1) = 20 × 1 = 20 dB</div>
+                        <div class="formula">المستوى الجديد = 110 - 20 = 90 dB</div>
                         
-                        <p><strong>الجواب النهائي:</strong> جرعة التعرض = 1.0، مما يعني أن العامل تعرض للحد الأقصى المسموح به من الضوضاء لهذا اليوم، ويجب مراقبة المدة واتخاذ إجراءات وقائية.</p>
+                        <p><strong>4. على مسافة 20 متر:</strong></p>
+                        <div class="formula">ΔL = 20 × log₁₀(20/1) = 20 × 1.301 = 26.02 dB</div>
+                        <div class="formula">المستوى الجديد = 110 - 26.02 = 83.98 dB ≈ 84 dB</div>
+                        
+                        <p><strong>الاستنتاج:</strong> كلما ابتعدنا عن مصدر الصوت، تقل شدة الضوضاء بشكل كبير.</p>
                     </div>
                 </div>
+                
+                <!-- تمارين جديدة مضافة -->
+                
+                <div class="advanced-exercise noise-exercise">
+                    <div class="exercise-header">
+                        <div class="exercise-number noise-number">التمرين N4</div>
+                        <div class="exercise-type noise-type">حساب الوقت المسموح للتعرض</div>
+                    </div>
+                    <p><strong>س: عامل يعمل في بيئة تبلغ فيها الضوضاء 97 dB. ما هي المدة القصوى المسموح بها للتعرض يومياً حسب معيار OSHA؟</strong></p>
+                    
+                    <div class="step">
+                        <div class="step-title">الحل:</div>
+                        <p><strong>الخطوة 1: استخدام معادلة OSHA للوقت المسموح</strong></p>
+                        <div class="formula">T = 8 / 2<sup>(L - 90)/5</sup></div>
+                        <p>حيث:</p>
+                        <ul>
+                            <li>T = الوقت المسموح به (ساعات)</li>
+                            <li>L = مستوى الضوضاء (dB) = 97 dB</li>
+                            <li>90 = المستوى المرجعي</li>
+                            <li>5 = معامل التبادل (لكل زيادة 5 dB، يقل الوقت المسموح للنصف)</li>
+                        </ul>
+                        
+                        <p><strong>الخطوة 2: حساب الفرق عن المستوى المرجعي</strong></p>
+                        <div class="formula">L - 90 = 97 - 90 = 7 dB</div>
+                        
+                        <p><strong>الخطوة 3: حساب الأس</strong></p>
+                        <div class="formula">(L - 90)/5 = 7/5 = 1.4</div>
+                        
+                        <p><strong>الخطوة 4: حساب 2<sup>1.4</sup></strong></p>
+                        <div class="formula">2<sup>1.4</sup> = 2.639</div>
+                        
+                        <p><strong>الخطوة 5: حساب الوقت المسموح</strong></p>
+                        <div class="formula">T = 8 / 2.639 = 3.03 ساعات</div>
+                        
+                        <p><strong>الخطوة 6: التقريب</strong></p>
+                        <div class="formula">T ≈ 3 ساعات</div>
+                        
+                        <p><strong>الجواب النهائي:</strong> المدة المسموح بها = 3 ساعات</p>
+                        
+                        <div class="important-note">
+                            <p>ملاحظة: من جدول OSHA المباشر:</p>
+                            <ul>
+                                <li>97 dB → المسموح: 3 ساعات (180 دقيقة)</li>
+                                <li>هذا يعني أن العامل يمكنه العمل 3 ساعات فقط في هذا المستوى من الضوضاء يومياً.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="advanced-exercise noise-exercise">
+                    <div class="exercise-header">
+                        <div class="exercise-number noise-number">التمرين N5</div>
+                        <div class="exercise-type noise-type">تقييم عدة مصادر ضوضاء مختلفة</div>
+                    </div>
+                    <p><strong>س: في مصنع للبلاستيك، هناك ثلاثة أقسام متجاورة:</strong></p>
+                    <table class="calculation-table">
+                        <tr>
+                            <th>القسم</th>
+                            <th>مستوى الضوضاء</th>
+                            <th>عدد العمال</th>
+                            <th>مدة العمل (ساعات)</th>
+                        </tr>
+                        <tr>
+                            <td>القسم أ</td>
+                            <td>88 dB</td>
+                            <td>5 عمال</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>القسم ب</td>
+                            <td>92 dB</td>
+                            <td>3 عمال</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>القسم ج</td>
+                            <td>85 dB</td>
+                            <td>4 عمال</td>
+                            <td>8</td>
+                        </tr>
+                    </table>
+                    <p><strong>المطلوب:</strong></p>
+                    <ol>
+                        <li>ما هو مجموع الجرعات اليومية لجميع العمال؟</li>
+                        <li>ما هي نسبة العمال المعرضين للخطر؟</li>
+                        <li>ما هي التوصيات لتحسين الوضع؟</li>
+                    </ol>
+                    
+                    <div class="step">
+                        <div class="step-title">الحل:</div>
+                        
+                        <p><strong>الجزء 1: حساب الجرعات اليومية</strong></p>
+                        
+                        <p><strong>الخطوة 1: تحديد المدة المسموح بها لكل مستوى (من جدول OSHA)</strong></p>
+                        <ul>
+                            <li>88 dB → المسموح: 16 ساعة (لأن 85 dB مسموح 16 ساعة، و88 dB قريب منه)</li>
+                            <li>92 dB → المسموح: 6 ساعات</li>
+                            <li>85 dB → المسموح: 16 ساعة</li>
+                        </ul>
+                        
+                        <p><strong>الخطوة 2: حساب جرعة كل قسم</strong></p>
+                        <p><strong>القسم أ (88 dB):</strong></p>
+                        <div class="formula">جرعة العامل الواحد = 8/16 = 0.5</div>
+                        <div class="formula">جرعة القسم = 5 عمال × 0.5 = 2.5</div>
+                        
+                        <p><strong>القسم ب (92 dB):</strong></p>
+                        <div class="formula">جرعة العامل الواحد = 6/6 = 1</div>
+                        <div class="formula">جرعة القسم = 3 عمال × 1 = 3</div>
+                        
+                        <p><strong>القسم ج (85 dB):</strong></p>
+                        <div class="formula">جرعة العامل الواحد = 8/16 = 0.5</div>
+                        <div class="formula">جرعة القسم = 4 عمال × 0.5 = 2</div>
+                        
+                        <p><strong>الخطوة 3: حساب المجموع الكلي</strong></p>
+                        <div class="formula">المجموع = 2.5 + 3 + 2 = 7.5 جرعة</div>
+                        
+                        <p><strong>الجزء 2: نسبة العمال المعرضين للخطر</strong></p>
+                        
+                        <p><strong>الخطوة 1: حساب إجمالي العمال</strong></p>
+                        <div class="formula">إجمالي العمال = 5 + 3 + 4 = 12 عاملاً</div>
+                        
+                        <p><strong>الخطوة 2: تحديد العمال المعرضين للخطر</strong></p>
+                        <p>العمال المعرضون للخطر هم في القسم ب فقط (لأن جرعتهم = 1)</p>
+                        <div class="formula">عدد العمال المعرضين = 3 عمال</div>
+                        
+                        <p><strong>الخطوة 3: حساب النسبة</strong></p>
+                        <div class="formula">النسبة = (3/12) × 100% = 25%</div>
+                        
+                        <p><strong>الجزء 3: التوصيات لتحسين الوضع</strong></p>
+                        <ol>
+                            <li><strong>توفير معدات وقاية سمعية:</strong> توفير سدادات أذن أو خوذات واقية لعمال القسم ب</li>
+                            <li><strong>عزل القسم ب:</strong> عزل القسم ب عن باقي الأقسام لتقليل انتقال الضوضاء</li>
+                            <li><strong>تقليل مدة العمل:</strong> تقليل مدة العمل في القسم ب إلى 4 ساعات بدلاً من 6</li>
+                            <li><strong>فحوصات سمعية:</strong> إجراء فحوصات سمع دورية للعمال المعرضين</li>
+                            <li><strong>برنامج حماية السمع:</strong> تنفيذ برنامج شامل لحماية السمع في المصنع</li>
+                            <li><strong>تدريب العمال:</strong> تدريب العمال على الاستخدام الصحيح لمعدات الوقاية</li>
+                            <li><strong>صيانة المعدات:</strong> صيانة دورية للمعدات لتقليل الضوضاء المنبعثة</li>
+                        </ol>
+                        
+                        <p><strong>النتيجة النهائية:</strong></p>
+                        <ul>
+                            <li>مجموع الجرعات اليومية = 7.5</li>
+                            <li>نسبة العمال المعرضين للخطر = 25%</li>
+                            <li>يجب اتخاذ إجراءات فورية لحماية عمال القسم ب</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="advanced-exercise noise-exercise">
+                    <div class="exercise-header">
+                        <div class="exercise-number noise-number">التمرين N6</div>
+                        <div class="exercise-type noise-type">حساب L<sub>eq</sub> للضوضاء المتغيرة</div>
+                    </div>
+                    <p><strong>س: تم قياس الضوضاء في ورشة خلال يوم عمل وكانت النتائج:</strong></p>
+                    <table class="calculation-table">
+                        <tr>
+                            <th>الفترة</th>
+                            <th>مستوى الضوضاء (dB)</th>
+                            <th>المدة (دقيقة)</th>
+                        </tr>
+                        <tr><td>الفترة 1</td><td>78</td><td>120</td></tr>
+                        <tr><td>الفترة 2</td><td>85</td><td>180</td></tr>
+                        <tr><td>الفترة 3</td><td>92</td><td>60</td></tr>
+                        <tr><td>الفترة 4</td><td>88</td><td>120</td></tr>
+                        <tr><td>الفترة 5</td><td>95</td><td>60</td></tr>
+                    </table>
+                    <p><strong>المطلوب: احسب L<sub>eq</sub> (المستوى المكافئ) خلال 8 ساعات.</strong></p>
+                    
+                    <div class="step">
+                        <div class="step-title">الحل:</div>
+                        
+                        <p><strong>الخطوة 1: كتابة صيغة حساب L<sub>eq</sub></strong></p>
+                        <div class="formula">L<sub>eq</sub> = 10 × log₁₀[1/T × Σ(tᵢ × 10<sup>Lᵢ/10</sup>)]</div>
+                        <p>حيث:</p>
+                        <ul>
+                            <li>T = إجمالي الوقت (دقيقة)</li>
+                            <li>tᵢ = مدة كل فترة (دقيقة)</li>
+                            <li>Lᵢ = مستوى الضوضاء لكل فترة (dB)</li>
+                        </ul>
+                        
+                        <p><strong>الخطوة 2: حساب إجمالي الوقت</strong></p>
+                        <div class="formula">T = 120 + 180 + 60 + 120 + 60 = 540 دقيقة = 9 ساعات</div>
+                        
+                        <p><strong>الخطوة 3: حساب 10<sup>Lᵢ/10</sup> لكل فترة</strong></p>
+                        <ul>
+                            <li>الفترة 1: 10<sup>78/10</sup> = 10<sup>7.8</sup> = 6.31×10⁷</li>
+                            <li>الفترة 2: 10<sup>85/10</sup> = 10<sup>8.5</sup> = 3.16×10⁸</li>
+                            <li>الفترة 3: 10<sup>92/10</sup> = 10<sup>9.2</sup> = 1.58×10⁹</li>
+                            <li>الفترة 4: 10<sup>88/10</sup> = 10<sup>8.8</sup> = 6.31×10⁸</li>
+                            <li>الفترة 5: 10<sup>95/10</sup> = 10<sup>9.5</sup> = 3.16×10⁹</li>
+                        </ul>
+                        
+                        <p><strong>الخطوة 4: حساب tᵢ × 10<sup>Lᵢ/10</sup> لكل فترة</strong></p>
+                        <ul>
+                            <li>الفترة 1: 120 × 6.31×10⁷ = 7.572×10⁹</li>
+                            <li>الفترة 2: 180 × 3.16×10⁸ = 5.688×10¹⁰</li>
+                            <li>الفترة 3: 60 × 1.58×10⁹ = 9.48×10¹⁰</li>
+                            <li>الفترة 4: 120 × 6.31×10⁸ = 7.572×10¹⁰</li>
+                            <li>الفترة 5: 60 × 3.16×10⁹ = 1.896×10¹¹</li>
+                        </ul>
+                        
+                        <p><strong>الخطوة 5: حساب المجموع Σ(tᵢ × 10<sup>Lᵢ/10</sup>)</strong></p>
+                        <div class="formula">المجموع = 7.572×10⁹ + 5.688×10¹⁰ + 9.48×10¹⁰ + 7.572×10¹⁰ + 1.896×10¹¹</div>
+                        <div class="formula">المجموع = 0.7572×10¹⁰ + 5.688×10¹⁰ + 9.48×10¹⁰ + 7.572×10¹⁰ + 18.96×10¹⁰</div>
+                        <div class="formula">المجموع = (0.7572 + 5.688 + 9.48 + 7.572 + 18.96) × 10¹⁰</div>
+                        <div class="formula">المجموع = 42.4572 × 10¹⁰ = 4.24572 × 10¹¹</div>
+                        
+                        <p><strong>الخطوة 6: حساب 1/T × المجموع</strong></p>
+                        <div class="formula">1/T = 1/540 = 0.00185185</div>
+                        <div class="formula">1/T × المجموع = 0.00185185 × 4.24572 × 10¹¹</div>
+                        <div class="formula">= 7.864 × 10⁸</div>
+                        
+                        <p><strong>الخطوة 7: حساب اللوغاريتم</strong></p>
+                        <div class="formula">log₁₀(7.864 × 10⁸) = log₁₀(7.864) + log₁₀(10⁸)</div>
+                        <div class="formula">= 0.8956 + 8 = 8.8956</div>
+                        
+                        <p><strong>الخطوة 8: حساب L<sub>eq</sub></strong></p>
+                        <div class="formula">L<sub>eq</sub> = 10 × 8.8956 = 88.956 dB</div>
+                        <div class="formula">L<sub>eq</sub> ≈ 89.0 dB</div>
+                        
+                        <p><strong>الخطوة 9: حساب L<sub>EX,8h</sub> (مستوى التعرض اليومي المعادل لـ 8 ساعات)</strong></p>
+                        <div class="formula">L<sub>EX,8h</sub> = L<sub>eq</sub> + 10 × log₁₀(T/8)</div>
+                        <div class="formula">T/8 = 9/8 = 1.125</div>
+                        <div class="formula">log₁₀(1.125) = 0.05115</div>
+                        <div class="formula">L<sub>EX,8h</sub> = 89.0 + 10 × 0.05115 = 89.0 + 0.5115 = 89.5115 dB</div>
+                        <div class="formula">L<sub>EX,8h</sub> ≈ 89.5 dB</div>
+                        
+                        <p><strong>النتيجة النهائية:</strong></p>
+                        <ul>
+                            <li>L<sub>eq</sub> = 89.0 dB</li>
+                            <li>L<sub>EX,8h</sub> = 89.5 dB</li>
+                        </ul>
+                        
+                        <div class="important-note">
+                            <p><strong>تقييم النتيجة:</strong></p>
+                            <p>الحد المسموح حسب INRS = 87 dB</p>
+                            <p>التجاوز = 89.5 - 87 = 2.5 dB</p>
+                            <p>هذا يعني أن التعرض خطير ويحتاج إلى إجراءات وقائية.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="advanced-exercise noise-exercise">
+                    <div class="exercise-header">
+                        <div class="exercise-number noise-number">التمرين N7</div>
+                        <div class="exercise-type noise-type">تأثير معدات الوقاية الشخصية</div>
+                    </div>
+                    <p><strong>س: في مصنع حديد، مستوى الضوضاء 103 dB. يستخدم العمال:</strong></p>
+                    <ul>
+                        <li>سدادات أذن بـ SNR = 29 dB</li>
+                        <li>خوذات واقية بـ SNR = 34 dB</li>
+                    </ul>
+                    <p><strong>المطلوب:</strong></p>
+                    <ol>
+                        <li>احسب المستوى الفعلي الواصل للأذن مع كل نوع من معدات الوقاية</li>
+                        <li>ما هي المدة المسموح بها للعمل مع كل معدات؟</li>
+                        <li>إذا عمل العامل 8 ساعات، أي المعدات يجب استخدامها؟</li>
+                    </ol>
+                    
+                    <div class="step">
+                        <div class="step-title">الحل:</div>
+                        
+                        <p><strong>الجزء 1: حساب المستوى الفعلي الواصل للأذن</strong></p>
+                        
+                        <p><strong>الخطوة 1: كتابة المعادلة</strong></p>
+                        <div class="formula">المستوى الفعلي = مستوى الضوضاء - (SNR - 7)</div>
+                        <p>حيث:</p>
+                        <ul>
+                            <li>مستوى الضوضاء = 103 dB</li>
+                            <li>يتم طرح 7 dB لمراعاة ظروف الاستخدام الفعلية في الميدان</li>
+                        </ul>
+                        
+                        <p><strong>الخطوة 2: حساب المستوى الفعلي لسدادات الأذن (SNR = 29 dB)</strong></p>
+                        <div class="formula">المستوى الفعلي = 103 - (29 - 7) = 103 - 22 = 81 dB</div>
+                        
+                        <p><strong>الخطوة 3: حساب المستوى الفعلي للخوذات الواقية (SNR = 34 dB)</strong></p>
+                        <div class="formula">المستوى الفعلي = 103 - (34 - 7) = 103 - 27 = 76 dB</div>
+                        
+                        <p><strong>الجزء 2: المدة المسموح بها للعمل</strong></p>
+                        
+                        <p><strong>الخطوة 1: استخدام معادلة OSHA للوقت المسموح</strong></p>
+                        <div class="formula">T = 8 / 2<sup>(L - 90)/5</sup></div>
+                        
+                        <p><strong>الخطوة 2: حساب المدة لسدادات الأذن (81 dB)</strong></p>
+                        <div class="formula">L - 90 = 81 - 90 = -9 dB</div>
+                        <div class="formula">(L - 90)/5 = -9/5 = -1.8</div>
+                        <div class="formula">2<sup>-1.8</sup> = 0.287</div>
+                        <div class="formula">T = 8 / 0.287 = 27.87 ساعة</div>
+                        <p>بما أن 27.87 ساعة > 16 ساعة (الحد الأقصى المعتاد)، فإن:</p>
+                        <div class="formula">المدة المسموح بها > 16 ساعة (لا يوجد خطر)</div>
+                        
+                        <p><strong>الخطوة 3: حساب المدة للخوذات الواقية (76 dB)</strong></p>
+                        <div class="formula">L - 90 = 76 - 90 = -14 dB</div>
+                        <div class="formula">(L - 90)/5 = -14/5 = -2.8</div>
+                        <div class="formula">2<sup>-2.8</sup> = 0.144</div>
+                        <div class="formula">T = 8 / 0.144 = 55.56 ساعة</div>
+                        <p>بما أن 55.56 ساعة > 16 ساعة (الحد الأقصى المعتاد)، فإن:</p>
+                        <div class="formula">المدة المسموح بها > 16 ساعة (لا يوجد خطر)</div>
+                        
+                        <p><strong>الجزء 3: التوصية بالمعدات المناسبة للعمل 8 ساعات</strong></p>
+                        
+                        <p><strong>مقارنة بين النوعين:</strong></p>
+                        <table class="calculation-table">
+                            <tr>
+                                <th>المعيار</th>
+                                <th>سدادات الأذن</th>
+                                <th>خوذات واقية</th>
+                            </tr>
+                            <tr>
+                                <td>المستوى الفعلي</td>
+                                <td>81 dB</td>
+                                <td>76 dB</td>
+                            </tr>
+                            <tr>
+                                <td>المدة المسموح بها</td>
+                                <td>> 16 ساعة</td>
+                                <td>> 16 ساعة</td>
+                            </tr>
+                            <tr>
+                                <td>مستوى الحماية</td>
+                                <td>جيد</td>
+                                <td>ممتاز</td>
+                            </tr>
+                            <tr>
+                                <td>الراحة</td>
+                                <td>متوسطة</td>
+                                <td>جيدة</td>
+                            </tr>
+                            <tr>
+                                <td>الحماية الإضافية</td>
+                                <td>لا</td>
+                                <td>نعم (للرأس)</td>
+                            </tr>
+                            <tr>
+                                <td>سهولة الاستخدام</td>
+                                <td>سهلة</td>
+                                <td>سهلة</td>
+                            </tr>
+                        </table>
+                        
+                        <p><strong>التوصية:</strong></p>
+                        <ol>
+                            <li><strong>الخوذات الواقية هي الأفضل</strong> لأنها:
+                                <ul>
+                                    <li>توفر مستوى حماية أعلى (76 dB مقابل 81 dB)</li>
+                                    <li>توفر حماية إضافية للرأس من الاصطدامات</li>
+                                    <li>أسهل في وضعها ونزعها</li>
+                                    <li>أقل عرضة لفقدان الفعالية مع الوقت</li>
+                                </ul>
+                            </li>
+                            <li><strong>سدادات الأذن</strong> يمكن استخدامها كبديل:
+                                <ul>
+                                    <li>إذا كانت الخوذات غير متوفرة</li>
+                                    <li>في الأجواء الحارة حيث تكون الخوذات غير مريحة</li>
+                                    <li>كحماية إضافية مع الخوذات في مستويات ضوضاء عالية جداً</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        
+                        <p><strong>القرار النهائي:</strong> يوصى باستخدام الخوذات الواقية للعمل لمدة 8 ساعات.</p>
+                    </div>
+                </div>
+                
+                <div class="advanced-exercise noise-exercise">
+                    <div class="exercise-header">
+                        <div class="exercise-number noise-number">التمرين N8</div>
+                        <div class="exercise-type noise-type">تقييم برنامج حماية السمع</div>
+                    </div>
+                    <p><strong>س: في مصنع به 50 عاملاً، تم إجراء قياسات ضوضاء وكانت النتائج:</strong></p>
+                    <table class="calculation-table">
+                        <tr>
+                            <th>المستوى (dB)</th>
+                            <th>عدد العمال المعرضين</th>
+                            <th>مدة التعرض (ساعات)</th>
+                        </tr>
+                        <tr><td>≤ 80</td><td>15</td><td>8</td></tr>
+                        <tr><td>81-85</td><td>20</td><td>8</td></tr>
+                        <tr><td>86-90</td><td>10</td><td>8</td></tr>
+                        <tr><td>> 90</td><td>5</td><td>8</td></tr>
+                    </table>
+                    <p><strong>المطلوب:</strong></p>
+                    <ol>
+                        <li>احسب نسبة العمال المعرضين للخطر</li>
+                        <li>ما هي التكلفة التقديرية لبرنامج حماية السمع؟</li>
+                        <li>ضع خطة عمل لبرنامج الحماية</li>
+                    </ol>
+                    
+                    <div class="step">
+                        <div class="step-title">الحل:</div>
+                        
+                        <p><strong>الجزء 1: حساب نسبة العمال المعرضين للخطر</strong></p>
+                        
+                        <p><strong>الخطوة 1: تحديد العمال المعرضين للخطر</strong></p>
+                        <p>حسب المعايير الدولية (OSHA وINRS)، العمال المعرضون للخطر هم الذين يتعرضون لـ 85 dB فأكثر.</p>
+                        <p>من الجدول:</p>
+                        <ul>
+                            <li>المستوى ≤ 80: 15 عاملاً (لا خطر)</li>
+                            <li>المستوى 81-85: 20 عاملاً (حدودي، يحتاج مراقبة)</li>
+                            <li>المستوى 86-90: 10 عمال (معرضون للخطر)</li>
+                            <li>المستوى > 90: 5 عمال (معرضون للخطر بشدة)</li>
+                        </ul>
+                        
+                        <p><strong>الخطوة 2: حساب عدد العمال المعرضين للخطر</strong></p>
+                        <div class="formula">عدد العمال المعرضين = 10 + 5 = 15 عاملاً</div>
+                        
+                        <p><strong>الخطوة 3: حساب النسبة المئوية</strong></p>
+                        <div class="formula">إجمالي العمال = 15 + 20 + 10 + 5 = 50 عاملاً</div>
+                        <div class="formula">النسبة = (15/50) × 100% = 30%</div>
+                        
+                        <p><strong>الخطوة 4: تقييم النتيجة</strong></p>
+                        <ul>
+                            <li>30% من العمال معرضون للخطر</li>
+                            <li>هذه نسبة عالية وتتطلب إجراءات عاجلة</li>
+                            <li>20 عامل إضافي (40%) في المنطقة الحدودية (81-85 dB) يحتاجون مراقبة</li>
+                        </ul>
+                        
+                        <p><strong>الجزء 2: التكلفة التقديرية لبرنامج حماية السمع</strong></p>
+                        
+                        <p><strong>الخطوة 1: تقسيم التكاليف</strong></p>
+                        <table class="calculation-table">
+                            <tr>
+                                <th>البند</th>
+                                <th>التفاصيل</th>
+                                <th>التكلفة (دينار)</th>
+                            </tr>
+                            <tr>
+                                <td>1. معدات الوقاية</td>
+                                <td>
+                                    <ul>
+                                        <li>سدادات أذن: 15 عامل × 4 أزواج/سنة × 20 دينار</li>
+                                        <li>خوذات واقية: 5 عمال × 1 خوذة/سنة × 200 دينار</li>
+                                    </ul>
+                                </td>
+                                <td>1,200 + 1,000 = 2,200</td>
+                            </tr>
+                            <tr>
+                                <td>2. الفحوصات السمعية</td>
+                                <td>15 عامل × 2 فحص/سنة × 150 دينار</td>
+                                <td>4,500</td>
+                            </tr>
+                            <tr>
+                                <td>3. التدريب</td>
+                                <td>50 عامل × 50 دينار (مواد + مدرب)</td>
+                                <td>2,500</td>
+                            </tr>
+                            <tr>
+                                <td>4. القياسات والتقييم</td>
+                                <td>قياس ضوضاء سنوي + تقييم مخاطر</td>
+                                <td>3,000</td>
+                            </tr>
+                            <tr>
+                                <td>5. الصيانة والتسجيل</td>
+                                <td>صيانة المعدات + نظام تسجيل</td>
+                                <td>1,500</td>
+                            </tr>
+                            <tr>
+                                <td><strong>المجموع</strong></td>
+                                <td></td>
+                                <td><strong>13,700 دينار</strong></td>
+                            </tr>
+                        </table>
+                        
+                        <p><strong>الخطوة 2: حساب التكلفة السنوية للعامل الواحد</strong></p>
+                        <div class="formula">التكلفة للعامل = 13,700 ÷ 50 = 274 دينار/عامل/سنة</div>
+                        
+                        <p><strong>الخطوة 3: مقارنة مع تكاليف عدم الحماية</strong></p>
+                        <ul>
+                            <li>تكلفة علاج فقدان السمع: 5,000 - 10,000 دينار للحالة</li>
+                            <li>تعويضات العجز: 20,000 - 50,000 دينار</li>
+                            <li>فقدان أيام العمل: 500 دينار/يوم</li>
+                            <li>غرامات مخالفة القوانين: 10,000 - 50,000 دينار</li>
+                        </ul>
+                        <p>الاستنتاج: الوقاية أرخص بكثير من العلاج.</p>
+                        
+                        <p><strong>الجزء 3: خطة عمل لبرنامج حماية السمع</strong></p>
+                        
+                        <p><strong>المرحلة 1: التقييم الأولي (الشهر الأول)</strong></p>
+                        <ol>
+                            <li>تقييم مخاطر الضوضاء في جميع أقسام المصنع</li>
+                            <li>تحديد العمال المعرضين للخطر</li>
+                            <li>قياس مستويات الضوضاء بدقة</li>
+                            <li>فحص سمع أساسي لجميع العمال المعرضين</li>
+                        </ol>
+                        
+                        <p><strong>المرحلة 2: التنفيذ (الشهر الثاني والثالث)</strong></p>
+                        <ol>
+                            <li>توفير معدات الوقاية المناسبة:
+                                <ul>
+                                    <li>خوذات واقية للعمال في مناطق > 90 dB</li>
+                                    <li>سدادات أذن للعمال في مناطق 86-90 dB</li>
+                                    <li>سدادات أذن اختيارية للعمال في مناطق 81-85 dB</li>
+                                </ul>
+                            </li>
+                            <li>تدريب العمال على:
+                                <ul>
+                                    <li>أخطار الضوضاء</li>
+                                    <li>الاستخدام الصحيح للمعدات الواقية</li>
+                                    <li>صيانة المعدات</li>
+                                    <li>الإبلاغ عن المشاكل</li>
+                                </ul>
+                            </li>
+                            <li>وضع لافتات تحذيرية في مناطق الضوضاء العالية</li>
+                        </ol>
+                        
+                        <p><strong>المرحلة 3: المتابعة والمراقبة (مستمر)</strong></p>
+                        <ol>
+                            <li>فحوصات سمعية سنوية للعمال المعرضين</li>
+                            <li>قياسات ضوضاء دورية كل 6 أشهر</li>
+                            <li>مراقبة استخدام معدات الوقاية</li>
+                            <li>صيانة دورية للمعدات الواقية</li>
+                            <li>تسجيل جميع الحوادث والمخالفات</li>
+                        </ol>
+                        
+                        <p><strong>المرحلة 4: التحسين المستمر (سنوي)</strong></p>
+                        <ol>
+                            <li>مراجعة فعالية البرنامج</li>
+                            <li>تحليل النتائج والإحصائيات</li>
+                            <li>تحديث المعدات والتدريب</li>
+                            <li>تعديل البرنامج حسب النتائج</li>
+                        </ol>
+                        
+                        <p><strong>مؤشرات الأداء الرئيسية (KPIs):</strong></p>
+                        <ul>
+                            <li>نسبة استخدام معدات الوقاية: هدف ≥ 95%</li>
+                            <li>نسبة العمال المعرضين للخطر: هدف ≤ 5%</li>
+                            <li>نسبة الفحوصات المكتملة: هدف 100%</li>
+                            <li>عدد حالات فقدان السمع: هدف 0</li>
+                        </ul>
+                        
+                        <p><strong>النتيجة النهائية:</strong></p>
+                        <ul>
+                            <li>نسبة العمال المعرضين للخطر: 30%</li>
+                            <li>التكلفة التقديرية للبرنامج: 13,700 دينار/سنة</li>
+                            <li>خطة العمل: 4 مراحل (تقييم، تنفيذ، متابعة، تحسين)</li>
+                            <li>الهدف: خفض نسبة العمال المعرضين إلى أقل من 5% خلال سنة</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="advanced-exercise light-exercise">
+                    <div class="exercise-header">
+                        <div class="exercise-number light-number">التمرين N9</div>
+                        <div class="exercise-type light-type">حساب الإضاءة</div>
+                    </div>
+                    <p><strong>س: في مكتب تبلغ مساحته 60 م²، يوجد 10 وحدات إضاءة كل منها بقوة 40 واط. إذا كان معامل الاستفادة 0.6 ومعامل الصيانة 0.8، احسب مستوى الإضاءة.</strong></p>
+                    
+                    <div class="step">
+                        <div class="step-title">الحل:</div>
+                        
+                        <p><strong>الخطوة 1: كتابة صيغة حساب الإضاءة</strong></p>
+                        <div class="formula">E = (N × Φ × UF × MF) / A</div>
+                        <p>حيث:</p>
+                        <ul>
+                            <li>E = مستوى الإضاءة (لوكس)</li>
+                            <li>N = عدد وحدات الإضاءة = 10</li>
+                            <li>Φ = التدفق الضوئي لكل وحدة (لومن)</li>
+                            <li>UF = معامل الاستفادة = 0.6</li>
+                            <li>MF = معامل الصيانة = 0.8</li>
+                            <li>A = المساحة (م²) = 60</li>
+                        </ul>
+                        
+                        <p><strong>الخطوة 2: حساب التدفق الضوئي (Φ)</strong></p>
+                        <p>لمبة فلورسنت 40 واط تنتج حوالي:</p>
+                        <ul>
+                            <li>كفاءة إضاءة نموذجية: 75 لومن/واط</li>
+                            <li>التدفق الضوئي = 40 واط × 75 لومن/واط = 3000 لومن</li>
+                        </ul>
+                        <div class="formula">Φ = 3000 لومن/لمبة</div>
+                        
+                        <p><strong>الخطوة 3: حساب مستوى الإضاءة</strong></p>
+                        <div class="formula">E = (10 × 3000 × 0.6 × 0.8) / 60</div>
+                        <div class="formula">E = (10 × 3000 × 0.48) / 60</div>
+                        <div class="formula">E = (14400) / 60</div>
+                        <div class="formula">E = 240 لوكس</div>
+                        
+                        <p><strong>الخطوة 4: تفسير النتيجة</strong></p>
+                        <p>مستويات الإضاءة الموصى بها للمكاتب:</p>
+                        <ul>
+                            <li>الحد الأدنى: 300 لوكس</li>
+                            <li>المستوى الجيد: 500 لوكس</li>
+                            <li>المستوى الممتاز: 750 لوكس</li>
+                        </ul>
+                        <p>النتيجة المحسوبة: 240 لوكس</p>
+                        
+                        <p><strong>الخطوة 5: تقييم النتيجة</strong></p>
+                        <ul>
+                            <li>240 لوكس < 300 لوكس (الحد الأدنى)</li>
+                            <li>هذا يعني أن الإضاءة غير كافية</li>
+                            <li>النقص: 300 - 240 = 60 لوكس (نقص 20%)</li>
+                        </ul>
+                        
+                        <p><strong>الخطوة 6: الحلول المقترحة</strong></p>
+                        <ol>
+                            <li><strong>زيادة عدد وحدات الإضاءة:</strong>
+                                <div class="formula">عدد الوحدات المطلوب = (300 × 60) / (3000 × 0.6 × 0.8) = 18000 / 1440 = 12.5 ≈ 13 وحدة</div>
+                                <p>يحتاج إلى إضافة 3 وحدات إضاءة</p>
+                            </li>
+                            <li><strong>استخدام وحدات إضاءة أكثر كفاءة:</strong>
+                                <p>استخدام لمبات LED بكفاءة 100 لومن/واط:</p>
+                                <div class="formula">Φ = 40 × 100 = 4000 لومن</div>
+                                <div class="formula">E = (10 × 4000 × 0.48) / 60 = 19200 / 60 = 320 لوكس</div>
+                                <p>هذا يحقق الحد الأدنى (300 لوكس)</p>
+                            </li>
+                            <li><strong>تحسين معامل الاستفادة:</strong>
+                                <p>عن طريق تحسين انعكاس الجدران والأسقف:</p>
+                                <div class="formula">إذا أصبح UF = 0.7: E = (10 × 3000 × 0.7 × 0.8) / 60 = 16800 / 60 = 280 لوكس</div>
+                                <p>لا يزال أقل من الحد الأدنى</p>
+                            </li>
+                        </ol>
+                        
+                        <p><strong>الخطوة 7: التوصية المثلى</strong></p>
+                        <p>الجمع بين الحلين:</p>
+                        <ul>
+                            <li>استبدال اللمبات بلمبات LED (4000 لومن)</li>
+                            <li>إضافة وحدة إضاءة واحدة</li>
+                        </ul>
+                        <div class="formula">E = (11 × 4000 × 0.6 × 0.8) / 60 = 21120 / 60 = 352 لوكس</div>
+                        <p>هذا يحقق مستوى إضاءة جيد (أعلى من 300 لوكس).</p>
+                        
+                        <p><strong>النتيجة النهائية:</strong></p>
+                        <ul>
+                            <li>مستوى الإضاءة الحالي: 240 لوكس</li>
+                            <li>المستوى المطلوب: 300 لوكس على الأقل</li>
+                            <li>التوصية: استبدال اللمبات بلمبات LED وإضافة وحدة إضاءة واحدة</li>
+                            <li>مستوى الإضاءة بعد التحسين: 352 لوكس</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="advanced-exercise heat-exercise">
+                    <div class="exercise-header">
+                        <div class="exercise-number heat-number">التمرين N10</div>
+                        <div class="exercise-type heat-type">حساب مؤشر WBGT</div>
+                    </div>
+                    <p><strong>س: في ورشة عمل، تم قياس:</strong></p>
+                    <ul>
+                        <li>درجة الحرارة الجافة: 32°C</li>
+                        <li>درجة الحرارة الرطبة: 28°C</li>
+                        <li>درجة حرارة الكرة السوداء: 35°C</li>
+                    </ul>
+                    <p><strong>المطلوب: احسب مؤشر WBGT وتقييم مستوى الخطر.</strong></p>
+                    
+                    <div class="step">
+                        <div class="step-title">الحل:</div>
+                        
+                        <p><strong>الخطوة 1: كتابة صيغة حساب WBGT للداخل</strong></p>
+                        <div class="formula">WBGT = 0.7 × T<sub>wb</sub> + 0.3 × T<sub>g</sub></div>
+                        <p>حيث:</p>
+                        <ul>
+                            <li>T<sub>wb</sub> = درجة الحرارة الرطبة = 28°C</li>
+                            <li>T<sub>g</sub> = درجة حرارة الكرة السوداء = 35°C</li>
+                        </ul>
+                        
+                        <p><strong>الخطوة 2: حساب WBGT</strong></p>
+                        <div class="formula">WBGT = 0.7 × 28 + 0.3 × 35</div>
+                        <div class="formula">WBGT = 19.6 + 10.5</div>
+                        <div class="formula">WBGT = 30.1°C</div>
+                        
+                        <p><strong>الخطوة 3: تقييم مستوى الخطر حسب WBGT</strong></p>
+                        <table class="calculation-table">
+                            <tr>
+                                <th>مستوى WBGT (°C)</th>
+                                <th>مستوى الخطر</th>
+                                <th>التوصيات</th>
+                            </tr>
+                            <tr>
+                                <td>أقل من 26</td>
+                                <td>منخفض</td>
+                                <td>لا توجد احتياطات خاصة</td>
+                            </tr>
+                            <tr>
+                                <td>26 - 30</td>
+                                <td>متوسط</td>
+                                <td>مراقبة العمال المعرضين للإجهاد</td>
+                            </tr>
+                            <tr>
+                                <td>30 - 32</td>
+                                <td>مرتفع</td>
+                                <td>فترات راحة إجبارية</td>
+                            </tr>
+                            <tr>
+                                <td>32 - 34</td>
+                                <td>مرتفع جداً</td>
+                                <td>تعديل أوقات العمل</td>
+                            </tr>
+                            <tr>
+                                <td>أكثر من 34</td>
+                                <td>خطر شديد</td>
+                                <td>وقف العمل</td>
+                            </tr>
+                        </table>
+                        
+                        <p><strong>الخطوة 4: تطبيق النتيجة على الجدول</strong></p>
+                        <p>WBGT = 30.1°C يقع في الفئة: 30 - 32°C (خطر مرتفع)</p>
+                        
+                        <p><strong>الخطوة 5: التوصيات حسب مستوى الخطر المرتفع (30-32°C)</strong></p>
+                        <ol>
+                            <li><strong>فترات الراحة:</strong>
+                                <ul>
+                                    <li>15 دقيقة راحة كل ساعة عمل</li>
+                                    <li>مكان الراحة يجب أن تكون درجة حرارته أقل من 28°C</li>
+                                </ul>
+                            </li>
+                            <li><strong>شرب السوائل:</strong>
+                                <ul>
+                                    <li>توفير مياه شرب باردة (10-15°C)</li>
+                                    <li>شرب 250 مل كل 15-20 دقيقة</li>
+                                    <li>مراقبة لون البول (يجب أن يكون فاتحاً)</li>
+                                </ul>
+                            </li>
+                            <li><strong>تعديل العمل:</strong>
+                                <ul>
+                                    <li>تجنب العمل في أوقات الذروة (12:00 - 15:00)</li>
+                                    <li>تناوب العمال في المهام الشاقة</li>
+                                    <li>توفير مساعدات ميكانيكية للأعمال الشاقة</li>
+                                </ul>
+                            </li>
+                            <li><strong>الملابس:</strong>
+                                <ul>
+                                    <li>ملابس خفيفة وفضفاضة</li>
+                                    <li>ألوان فاتحة تعكس الحرارة</li>
+                                    <li>قبعات واسعة الحواف</li>
+                                </ul>
+                            </li>
+                            <li><strong>المراقبة:</strong>
+                                <ul>
+                                    <li>مراقبة العمال للكشف المبكر عن أعراض الإجهاد الحراري</li>
+                                    <li>تدريب العمال على التعرف على الأعراض</li>
+                                    <li>وجود شخص مدرب على الإسعافات الأولية للحرارة</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        
+                        <p><strong>الخطوة 6: حساب وقت العمل المسموح</strong></p>
+                        <p>حسب NIOSH (المعهد الوطني للسلامة والصحة المهنية الأمريكية):</p>
+                        <table class="calculation-table">
+                            <tr>
+                                <th>نسبة العمل</th>
+                                <th>وقت العمل</th>
+                                <th>وقت الراحة</th>
+                                <th>WBGT المسموح</th>
+                            </tr>
+                            <tr>
+                                <td>100% عمل</td>
+                                <td>45 دقيقة</td>
+                                <td>15 دقيقة</td>
+                                <td>28.0°C</td>
+                            </tr>
+                            <tr>
+                                <td>75% عمل</td>
+                                <td>45 دقيقة</td>
+                                <td>15 دقيقة</td>
+                                <td>29.5°C</td>
+                            </tr>
+                            <tr>
+                                <td>50% عمل</td>
+                                <td>30 دقيقة</td>
+                                <td>30 دقيقة</td>
+                                <td>31.0°C</td>
+                            </tr>
+                            <tr>
+                                <td>25% عمل</td>
+                                <td>15 دقيقة</td>
+                                <td>45 دقيقة</td>
+                                <td>32.0°C</td>
+                            </tr>
+                        </table>
+                        
+                        <p>مع WBGT = 30.1°C:</p>
+                        <ul>
+                            <li>يسمح بـ 50% عمل - 50% راحة</li>
+                            <li>أي: 30 دقيقة عمل ثم 30 دقيقة راحة</li>
+                        </ul>
+                        
+                        <p><strong>الخطوة 7: توصيات إضافية للتحسين</strong></p>
+                        <ol>
+                            <li><strong>تحسين التهوية:</strong>
+                                <ul>
+                                    <li>تركيب مراوح لتحريك الهواء</li>
+                                    <li>تحسين التهوية الطبيعية</li>
+                                    <li>استخدام أجهزة تبريد محمولة</li>
+                                </ul>
+                            </li>
+                            <li><strong>عزل المصادر الحرارية:</strong>
+                                <ul>
+                                    <li>عزل الأفران والمعدات الساخنة</li>
+                                    <li>توجيه الحرارة بعيداً عن مناطق العمل</li>
+                                </ul>
+                            </li>
+                            <li><strong>تعديل أوقات العمل:</strong>
+                                <ul>
+                                    <li>بدء العمل مبكراً (6:00 صباحاً)</li>
+                                    <li>تجنب العمل بين 12:00 - 15:00</li>
+                                    <li>العمل ليلاً إذا أمكن</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        
+                        <p><strong>النتيجة النهائية:</strong></p>
+                        <ul>
+                            <li>مؤشر WBGT = 30.1°C</li>
+                            <li>مستوى الخطر: مرتفع</li>
+                            <li>نظام العمل الموصى: 30 دقيقة عمل / 30 دقيقة راحة</li>
+                            <li>التوصيات: فترات راحة، شرب سوائل، تعديل أوقات العمل، تحسين التهوية</li>
+                            <li>المراقبة: ضرورية للكشف المبكر عن الإجهاد الحراري</li>
+                        </ul>
+                    </div>
+                </div>
+                
             </div>
         </div>
         
@@ -952,6 +2057,26 @@
                 <p>الظروف الفيزيائية (ضوضاء، إضاءة، حرارة) تؤثر مباشرة على الصحة والأداء.</p>
                 <p>الحوادث والأمراض المهنية يمكن منعها بالتحليل والوقاية والتثقيف.</p>
                 <p>التشريعات والتدريب هما الركيزتان الأساسيتان لبناء ثقافة وقائية.</p>
+                
+                <div class="important-note">
+                    <h3>📊 أهم معادلات الضوضاء:</h3>
+                    <ol>
+                        <li>الجرعة = Σ (مدة التعرض الفعلي / المدة المسموح بها)</li>
+                        <li>L<sub>EX,8h</sub> = 10 × log₁₀[(1/8) × Σ(tᵢ × 10<sup>Lᵢ/10</sup>)]</li>
+                        <li>المدة المسموح بها = 8 / 2<sup>(L - 90)/5</sup> (لـ OSHA)</li>
+                        <li>المستوى الفعلي مع الوقاية = مستوى الضوضاء - (SNR - 7)</li>
+                        <li>L<sub>total</sub> = 10 × log₁₀(Σ 10<sup>Lᵢ/10</sup>)</li>
+                    </ol>
+                </div>
+                
+                <div class="important-note">
+                    <h3>📈 مستويات الخطر:</h3>
+                    <ul>
+                        <li><strong>الضوضاء:</strong> ≥ 85 dB يحتاج وقاية، ≥ 90 dB خطر عالي</li>
+                        <li><strong>الإضاءة:</strong> المكاتب ≥ 300 لوكس، الأعمال الدقيقة ≥ 2000 لوكس</li>
+                        <li><strong>الحرارة (WBGT):</strong> ≥ 30°C خطر مرتفع، ≥ 34°C خطر شديد</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
