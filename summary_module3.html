@@ -503,6 +503,167 @@
             border-right: 3px solid var(--error-color);
         }
         
+        /* تمارين حسابية */
+        .exercise-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .exercise-card:hover {
+            border-color: var(--light-color);
+        }
+        
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .exercise-number {
+            background-color: var(--warning-color);
+            color: var(--white);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .exercise-type {
+            background-color: #fff3e0;
+            color: var(--warning-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .exercise-text {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border-right: 4px solid #ff9800;
+        }
+        
+        .exercise-formula {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            border-left: 4px solid #2196f3;
+            font-weight: 500;
+        }
+        
+        .exercise-steps {
+            background-color: #f1f8e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-right: 4px solid #7cb342;
+        }
+        
+        .step-title {
+            color: #33691e;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .step-title i {
+            margin-left: 8px;
+        }
+        
+        .step-list {
+            padding-right: 20px;
+        }
+        
+        .step-list li {
+            margin-bottom: 8px;
+            color: #33691e;
+        }
+        
+        .solution-btn {
+            background-color: #fff3e0;
+            color: var(--warning-color);
+            border: 2px solid var(--warning-color);
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .solution-btn:active {
+            background-color: var(--warning-color);
+            color: var(--white);
+            transform: scale(0.98);
+        }
+        
+        .solution-content {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff8e1;
+            border-radius: 8px;
+            border-right: 4px solid var(--warning-color);
+            display: none;
+        }
+        
+        .solution-content.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .solution-title {
+            color: var(--warning-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .solution-title i {
+            margin-left: 8px;
+        }
+        
+        .solution-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .final-result {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 2px solid #4caf50;
+            font-weight: bold;
+            text-align: center;
+            color: #1b5e20;
+        }
+        
         /* إحصائيات */
         .stats {
             background-color: var(--white);
@@ -536,6 +697,10 @@
         
         .qcm .stat-value {
             color: var(--warning-color);
+        }
+        
+        .exercises .stat-value {
+            color: #ff5722;
         }
         
         /* أزرار التحكم */
@@ -600,7 +765,7 @@
                 padding: 12px 8px;
             }
             
-            .lecture-card, .question-card, .qcm-card {
+            .lecture-card, .question-card, .qcm-card, .exercise-card {
                 padding: 16px 12px;
             }
         }
@@ -624,7 +789,7 @@
                     </div>
                     <div>
                         <div class="app-title">تسيير الموارد البشرية</div>
-                       
+                        <div class="app-subtitle">محاضرات - اختبارات - تمارين حسابية</div>
                     </div>
                 </div>
             </div>
@@ -640,6 +805,9 @@
             </div>
             <div class="tab" data-tab="qcm">
                 <i class="fas fa-list-ol"></i> أسئلة متعددة (20)
+            </div>
+            <div class="tab" data-tab="exercises">
+                <i class="fas fa-calculator"></i> تمارين حسابية (10)
             </div>
         </div>
         
@@ -700,6 +868,28 @@
                 </div>
                 
                 <div id="qcm-questions-container">
+                    <!-- سيتم تعبئتها ديناميكياً -->
+                </div>
+            </div>
+            
+            <!-- قسم التمارين الحسابية -->
+            <div class="content-section" id="exercises-section">
+                <h2 class="section-title">
+                    <i class="fas fa-calculator"></i> تمارين حسابية للمراجعة (10 تمرين)
+                </h2>
+                
+                <div class="stats">
+                    <div class="stat-item exercises">
+                        <div class="stat-value" id="exercises-solved">0</div>
+                        <div class="stat-label">تم الحل</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">10</div>
+                        <div class="stat-label">إجمالي التمارين</div>
+                    </div>
+                </div>
+                
+                <div id="exercises-container">
                     <!-- سيتم تعبئتها ديناميكياً -->
                 </div>
             </div>
@@ -790,6 +980,8 @@
                     </div>
                 `
             },
+            // المحاضرات 2-10 (نفس المحتوى الأصلي)
+            // ... المحتوى الأصلي للمحاضرات 2-10 ...
             {
                 id: 2,
                 title: "مفهوم وأهداف إدارة الموارد البشرية",
@@ -1304,7 +1496,7 @@
                             <li>تعبر أساساً موضوعياً للاختيار والتعيين والترقية بدل الاحتكام إلى المعايير الشخصية</li>
                             <li>تعد عملية تحليل الوظائف الأساسي لبناء وتصميم البرامج التدريبية التطويرية</li>
                             <li>توفر الأساس الموضوعي لتحديد الأجر وبذلك ترجم قاعدة أساسية لإدارة الأفراد وهي الأجر على العمل</li>
-                            <li>يوفر أساساً موضوعياً لتقييم الأداء إذ يتم قياس أداء الموظف حسب الوصف الموجود للموظيفة</li>
+                            <li>يوفر أساساً موضوعياً لتقييم الأداء إذ يتم قياس أداء الموظف حسب الوصف الموجود للموظفة</li>
                             <li>تساهم عملية التحليل الوظيفي في تصميم سياسة سليمة للخدمات الصحية والأمن الصناعي من خلال ما توفر من معلومات حول درجة الخطورة في كل وظيفة</li>
                         </ol>
                     </div>
@@ -1361,7 +1553,7 @@
                             <li>وضع برامج سليمة للتدريب بتحديد المهارات التي ينبغي تدريب الفرد عليها وأسلوب التدريب المناسب</li>
                             <li>وضع الأسس السليمة للنقل والترقية من وظيفة إلى أخرى داخل المنظمة</li>
                             <li>رسم سياسة عدالة الأجور إذ تمنح الوظائف المتساوية في القيمة والمسؤولية أجوراً متساوية وزيادة الأجر بزيادة الأهمية بالنسبة للوظيفة وقيمتها</li>
-                            <li>تحسين نظم العمل بإعطاء وصف كامل للموظيفة وخطوات إنجازها، وقت إنجازها وكيفية أداءها</li>
+                            <li>تحسين نظم العمل بإعطاء وصف كامل للموظفة وخطوات إنجازها، وقت إنجازها وكيفية أداءها</li>
                         </ol>
                     </div>
                 `
@@ -1726,11 +1918,225 @@
             }
         ];
 
+        // بيانات التمارين الحسابية (10 تمارين)
+        const exercises = [
+            {
+                id: 1,
+                questionAr: "احسب الراتب الإجمالي لموظف راتبه الأساسي 25000 دج، مع العلم أن نسبة الضمان الاجتماعي 9% ونسبة التأمين 1% ونسبة الضريبة على الدخل 5%؟",
+                formula: "الراتب الإجمالي = الراتب الأساسي - (الراتب الأساسي × 9%) - (الراتب الأساسي × 1%) - (الراتب الأساسي × 5%)",
+                solution: `
+                    <div class="exercise-steps">
+                        <div class="step-title">
+                            <i class="fas fa-calculator"></i> خطوات الحل:
+                        </div>
+                        <ol class="step-list">
+                            <li>حساب خصم الضمان الاجتماعي: 25000 × 9% = 2250 دج</li>
+                            <li>حساب خصم التأمين: 25000 × 1% = 250 دج</li>
+                            <li>حساب خصم الضريبة على الدخل: 25000 × 5% = 1250 دج</li>
+                            <li>مجموع الخصومات: 2250 + 250 + 1250 = 3750 دج</li>
+                            <li>الراتب الإجمالي: 25000 - 3750 = 21250 دج</li>
+                        </ol>
+                    </div>
+                    <div class="final-result">
+                        الراتب الإجمالي = 21250 دج
+                    </div>
+                `
+            },
+            {
+                id: 2,
+                questionAr: "إذا كان متوسط رواتب الموظفين في قسم ما 32000 دج، وعدد الموظفين 15 موظفاً، ثم تم توظيف 5 موظفين جدد برواتب 28000 دج لكل منهم، فما هو المتوسط الجديد للرواتب في القسم؟",
+                formula: "المتوسط الجديد = (مجموع الرواتب القديمة + مجموع رواتب الموظفين الجدد) ÷ (عدد الموظفين القديم + عدد الموظفين الجدد)",
+                solution: `
+                    <div class="exercise-steps">
+                        <div class="step-title">
+                            <i class="fas fa-calculator"></i> خطوات الحل:
+                        </div>
+                        <ol class="step-list">
+                            <li>حساب مجموع الرواتب القديمة: 32000 × 15 = 480000 دج</li>
+                            <li>حساب مجموع رواتب الموظفين الجدد: 28000 × 5 = 140000 دج</li>
+                            <li>المجموع الكلي للرواتب: 480000 + 140000 = 620000 دج</li>
+                            <li>العدد الكلي للموظفين: 15 + 5 = 20 موظفاً</li>
+                            <li>المتوسط الجديد: 620000 ÷ 20 = 31000 دج</li>
+                        </ol>
+                    </div>
+                    <div class="final-result">
+                        المتوسط الجديد للرواتب = 31000 دج
+                    </div>
+                `
+            },
+            {
+                id: 3,
+                questionAr: "موظف يعمل ساعات إضافية بمعدل 150% من الأجر العادي. إذا كان أجر الساعة العادية 400 دج، وعمل 12 ساعة إضافية، فاحسب قيمة الساعات الإضافية؟",
+                formula: "قيمة الساعة الإضافية = أجر الساعة العادية × 150%<br>قيمة الساعات الإضافية = قيمة الساعة الإضافية × عدد الساعات الإضافية",
+                solution: `
+                    <div class="exercise-steps">
+                        <div class="step-title">
+                            <i class="fas fa-calculator"></i> خطوات الحل:
+                        </div>
+                        <ol class="step-list">
+                            <li>حساب قيمة الساعة الإضافية: 400 × 150% = 400 × 1.5 = 600 دج</li>
+                            <li>حساب قيمة الساعات الإضافية: 600 × 12 = 7200 دج</li>
+                        </ol>
+                    </div>
+                    <div class="final-result">
+                        قيمة الساعات الإضافية = 7200 دج
+                    </div>
+                `
+            },
+            {
+                id: 4,
+                questionAr: "شركة تخطط لزيادة عدد موظفيها بنسبة 20% خلال العام القادم. إذا كان عدد الموظفين الحالي 250 موظفاً، فكم عدد الموظفين الإضافي الذي تحتاج إليه الشركة؟ وما هو العدد الإجمالي المتوقع؟",
+                formula: "عدد الموظفين الإضافي = عدد الموظفين الحالي × 20%<br>العدد الإجمالي المتوقع = عدد الموظفين الحالي + عدد الموظفين الإضافي",
+                solution: `
+                    <div class="exercise-steps">
+                        <div class="step-title">
+                            <i class="fas fa-calculator"></i> خطوات الحل:
+                        </div>
+                        <ol class="step-list">
+                            <li>حساب عدد الموظفين الإضافي: 250 × 20% = 250 × 0.20 = 50 موظفاً</li>
+                            <li>حساب العدد الإجمالي المتوقع: 250 + 50 = 300 موظف</li>
+                        </ol>
+                    </div>
+                    <div class="final-result">
+                        عدد الموظفين الإضافي = 50 موظف<br>العدد الإجمالي المتوقع = 300 موظف
+                    </div>
+                `
+            },
+            {
+                id: 5,
+                questionAr: "إذا كانت ميزانية التدريب للشركة 1500000 دج، وقررت تخصيص 40% منها لدورات المهارات القيادية، و30% لدورات التكنولوجيا، والباقي لدورات اللغة. فكم تبلغ ميزانية كل نوع من الدورات؟",
+                formula: "ميزانية المهارات القيادية = الميزانية الكلية × 40%<br>ميزانية التكنولوجيا = الميزانية الكلية × 30%<br>ميزانية اللغة = الميزانية الكلية - (ميزانية المهارات القيادية + ميزانية التكنولوجيا)",
+                solution: `
+                    <div class="exercise-steps">
+                        <div class="step-title">
+                            <i class="fas fa-calculator"></i> خطوات الحل:
+                        </div>
+                        <ol class="step-list">
+                            <li>حساب ميزانية المهارات القيادية: 1500000 × 40% = 1500000 × 0.40 = 600000 دج</li>
+                            <li>حساب ميزانية التكنولوجيا: 1500000 × 30% = 1500000 × 0.30 = 450000 دج</li>
+                            <li>حساب مجموع الميزانيتين: 600000 + 450000 = 1050000 دج</li>
+                            <li>حساب ميزانية اللغة: 1500000 - 1050000 = 450000 دج</li>
+                        </ol>
+                    </div>
+                    <div class="final-result">
+                        ميزانية المهارات القيادية = 600000 دج<br>
+                        ميزانية التكنولوجيا = 450000 دج<br>
+                        ميزانية اللغة = 450000 دج
+                    </div>
+                `
+            },
+            {
+                id: 6,
+                questionAr: "احسب صافي راتب موظف بعد الخصومات إذا كان:<br>• الراتب الأساسي: 35000 دج<br>• بدل النقل: 5000 دج<br>• بدل الغذاء: 3000 دج<br>• نسبة الضمان الاجتماعي: 9% من الراتب الأساسي<br>• نسبة الضريبة: 7% من (الراتب الأساسي + البدلات)",
+                formula: "صافي الراتب = (الراتب الأساسي + البدلات) - (الضمان الاجتماعي + الضريبة)",
+                solution: `
+                    <div class="exercise-steps">
+                        <div class="step-title">
+                            <i class="fas fa-calculator"></i> خطوات الحل:
+                        </div>
+                        <ol class="step-list">
+                            <li>حساب إجمالي الراتب قبل الخصومات: 35000 + 5000 + 3000 = 43000 دج</li>
+                            <li>حساب الضمان الاجتماعي: 35000 × 9% = 35000 × 0.09 = 3150 دج</li>
+                            <li>حساب الضريبة: 43000 × 7% = 43000 × 0.07 = 3010 دج</li>
+                            <li>مجموع الخصومات: 3150 + 3010 = 6160 دج</li>
+                            <li>صافي الراتب: 43000 - 6160 = 36840 دج</li>
+                        </ol>
+                    </div>
+                    <div class="final-result">
+                        صافي الراتب = 36840 دج
+                    </div>
+                `
+            },
+            {
+                id: 7,
+                questionAr: "إذا كان معدل دوران العمل في الشركة 15% سنوياً، وعدد الموظفين 200 موظف، فكم عدد الموظفين الذين يغادرون الشركة سنوياً في المتوسط؟ وكم تبلغ تكلفة تعويض كل موظف إذا كانت تكلفة التعويض لكل موظف 50000 دج؟",
+                formula: "عدد المغادرين = عدد الموظفين × معدل الدوران<br>التكلفة الإجمالية = عدد المغادرين × تكلفة التعويض لكل موظف",
+                solution: `
+                    <div class="exercise-steps">
+                        <div class="step-title">
+                            <i class="fas fa-calculator"></i> خطوات الحل:
+                        </div>
+                        <ol class="step-list">
+                            <li>حساب عدد المغادرين: 200 × 15% = 200 × 0.15 = 30 موظفاً</li>
+                            <li>حساب التكلفة الإجمالية: 30 × 50000 = 1500000 دج</li>
+                        </ol>
+                    </div>
+                    <div class="final-result">
+                        عدد المغادرين سنوياً = 30 موظف<br>
+                        التكلفة الإجمالية للتعويض = 1500000 دج
+                    </div>
+                `
+            },
+            {
+                id: 8,
+                questionAr: "شركة تريد زيادة إنتاجيتها بنسبة 25%. إذا كان متوسط إنتاجية الموظف الحالي 100 وحدة شهرياً، فكم يجب أن تكون الإنتاجية الجديدة للموظف؟ وإذا كان عدد الموظفين 50 موظفاً، فكم ستكون الزيادة في الإنتاجية الشهرية الكلية؟",
+                formula: "الإنتاجية الجديدة = الإنتاجية الحالية × (1 + نسبة الزيادة)<br>الزيادة في الإنتاجية الكلية = (الإنتاجية الجديدة - الإنتاجية الحالية) × عدد الموظفين",
+                solution: `
+                    <div class="exercise-steps">
+                        <div class="step-title">
+                            <i class="fas fa-calculator"></i> خطوات الحل:
+                        </div>
+                        <ol class="step-list">
+                            <li>حساب الإنتاجية الجديدة للموظف: 100 × (1 + 25%) = 100 × 1.25 = 125 وحدة</li>
+                            <li>حساب الزيادة في إنتاجية الموظف الواحد: 125 - 100 = 25 وحدة</li>
+                            <li>حساب الزيادة في الإنتاجية الكلية: 25 × 50 = 1250 وحدة</li>
+                        </ol>
+                    </div>
+                    <div class="final-result">
+                        الإنتاجية الجديدة للموظف = 125 وحدة<br>
+                        الزيادة في الإنتاجية الشهرية الكلية = 1250 وحدة
+                    </div>
+                `
+            },
+            {
+                id: 9,
+                questionAr: "احسب تكلفة ساعة العمل لموظف إذا كان:<br>• الراتب الشهري: 40000 دج<br>• عدد ساعات العمل الشهرية: 160 ساعة<br>• نسبة التكاليف غير المباشرة (تأمين، معدات، إدارة): 35% من تكلفة الراتب",
+                formula: "تكلفة ساعة العمل = (الراتب الشهري + التكاليف غير المباشرة) ÷ عدد ساعات العمل الشهرية",
+                solution: `
+                    <div class="exercise-steps">
+                        <div class="step-title">
+                            <i class="fas fa-calculator"></i> خطوات الحل:
+                        </div>
+                        <ol class="step-list">
+                            <li>حساب التكاليف غير المباشرة: 40000 × 35% = 40000 × 0.35 = 14000 دج</li>
+                            <li>حساب التكلفة الإجمالية الشهرية: 40000 + 14000 = 54000 دج</li>
+                            <li>حساب تكلفة ساعة العمل: 54000 ÷ 160 = 337.5 دج</li>
+                        </ol>
+                    </div>
+                    <div class="final-result">
+                        تكلفة ساعة العمل = 337.5 دج
+                    </div>
+                `
+            },
+            {
+                id: 10,
+                questionAr: "إذا كانت ميزانية الرواتب في الشركة 8000000 دج، وتمت زيادتها بنسبة 12% للعام الجديد، ثم خصم 5% من الزيادة بسبب التعديلات المالية، فكم ستكون ميزانية الرواتب النهائية؟",
+                formula: "الزيادة الأولية = الميزانية الأصلية × 12%<br>الزيادة بعد الخصم = الزيادة الأولية × (1 - 5%)<br>الميزانية النهائية = الميزانية الأصلية + الزيادة بعد الخصم",
+                solution: `
+                    <div class="exercise-steps">
+                        <div class="step-title">
+                            <i class="fas fa-calculator"></i> خطوات الحل:
+                        </div>
+                        <ol class="step-list">
+                            <li>حساب الزيادة الأولية: 8000000 × 12% = 8000000 × 0.12 = 960000 دج</li>
+                            <li>حساب الخصم من الزيادة: 960000 × 5% = 960000 × 0.05 = 48000 دج</li>
+                            <li>حساب الزيادة النهائية: 960000 - 48000 = 912000 دج</li>
+                            <li>حساب الميزانية النهائية: 8000000 + 912000 = 8912000 دج</li>
+                        </ol>
+                    </div>
+                    <div class="final-result">
+                        ميزانية الرواتب النهائية = 8912000 دج
+                    </div>
+                `
+            }
+        ];
+
         // متغيرات التطبيق
         let currentTab = 'lectures';
         let theoreticalAnswersVisible = [];
         let qcmUserAnswers = Array(qcmQuestions.length).fill(null);
         let qcmChecked = Array(qcmQuestions.length).fill(false);
+        let exercisesSolved = Array(exercises.length).fill(false);
 
         // تهيئة التطبيق
         document.addEventListener('DOMContentLoaded', function() {
@@ -1742,6 +2148,9 @@
             
             // تهيئة أسئلة متعددة الخيارات
             renderQCMQuestions();
+            
+            // تهيئة التمارين الحسابية
+            renderExercises();
             
             // تحديث الإحصائيات
             updateStats();
@@ -1868,6 +2277,44 @@
             });
         }
 
+        // عرض التمارين الحسابية
+        function renderExercises() {
+            const container = document.getElementById('exercises-container');
+            container.innerHTML = '';
+            
+            exercises.forEach((exercise, index) => {
+                const card = document.createElement('div');
+                card.className = 'exercise-card';
+                card.id = `exercise-${index}`;
+                
+                card.innerHTML = `
+                    <div class="exercise-header">
+                        <div class="exercise-number">${index + 1}</div>
+                        <div class="exercise-type">تمرين حسابي</div>
+                    </div>
+                    <div class="exercise-text">${exercise.questionAr}</div>
+                    <div class="exercise-formula">${exercise.formula}</div>
+                    <button class="solution-btn" data-index="${index}">
+                        <i class="fas fa-eye"></i> عرض الحل
+                    </button>
+                    <div class="solution-content" id="solution-${index}">
+                        <div class="solution-title">
+                            <i class="fas fa-check-circle"></i> الحل الكامل
+                        </div>
+                        ${exercise.solution}
+                    </div>
+                `;
+                
+                container.appendChild(card);
+                
+                // إضافة حدث للزر
+                const solutionBtn = card.querySelector('.solution-btn');
+                solutionBtn.addEventListener('click', function() {
+                    toggleSolution(this.dataset.index);
+                });
+            });
+        }
+
         // التبديل بين التبويبات
         function switchTab(tabName) {
             currentTab = tabName;
@@ -1916,6 +2363,13 @@
                 showAllBtn.onclick = checkAllAnswers;
                 resetBtn.style.display = 'flex';
                 showAllBtn.style.display = 'flex';
+            } else if (currentTab === 'exercises') {
+                resetBtn.innerHTML = '<i class="fas fa-redo"></i> إخفاء كل الحلول';
+                resetBtn.onclick = resetExercises;
+                showAllBtn.innerHTML = '<i class="fas fa-eye"></i> عرض كل الحلول';
+                showAllBtn.onclick = showAllSolutions;
+                resetBtn.style.display = 'flex';
+                showAllBtn.style.display = 'flex';
             } else {
                 resetBtn.style.display = 'none';
                 showAllBtn.style.display = 'none';
@@ -1939,6 +2393,26 @@
                 button.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء الإجابة';
             } else {
                 button.innerHTML = '<i class="fas fa-lightbulb"></i> عرض الإجابة';
+            }
+        }
+
+        // عرض/إخفاء حل تمرين
+        function toggleSolution(index) {
+            const solutionElement = document.getElementById(`solution-${index}`);
+            const isVisible = solutionElement.classList.toggle('show');
+            
+            // تحديث حالة الحل
+            if (isVisible && !exercisesSolved[index]) {
+                exercisesSolved[index] = true;
+                updateStats();
+            }
+            
+            // تحديث نص الزر
+            const button = document.querySelector(`#exercise-${index} .solution-btn`);
+            if (isVisible) {
+                button.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء الحل';
+            } else {
+                button.innerHTML = '<i class="fas fa-eye"></i> عرض الحل';
             }
         }
 
@@ -2074,6 +2548,45 @@
             alert('تم إعادة تعيين اختبار الأسئلة المتعددة بنجاح. يمكنك البدء من جديد.');
         }
 
+        // إعادة تعيين التمارين
+        function resetExercises() {
+            exercisesSolved = Array(exercises.length).fill(false);
+            
+            // إخفاء جميع الحلول
+            document.querySelectorAll('.solution-content').forEach(solution => {
+                solution.classList.remove('show');
+            });
+            
+            // تحديث نصوص الأزرار
+            document.querySelectorAll('.solution-btn').forEach(button => {
+                button.innerHTML = '<i class="fas fa-eye"></i> عرض الحل';
+            });
+            
+            updateStats();
+            
+            // عرض رسالة تأكيد
+            alert('تم إخفاء جميع حلول التمارين بنجاح.');
+        }
+
+        // عرض جميع الحلول
+        function showAllSolutions() {
+            exercisesSolved = Array(exercises.length).fill(true);
+            
+            // عرض جميع الحلول
+            exercises.forEach((_, index) => {
+                const solutionElement = document.getElementById(`solution-${index}`);
+                solutionElement.classList.add('show');
+                
+                const button = document.querySelector(`#exercise-${index} .solution-btn`);
+                button.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء الحل';
+            });
+            
+            updateStats();
+            
+            // عرض رسالة تأكيد
+            alert('تم عرض جميع حلول التمارين بنجاح.');
+        }
+
         // عرض/إخفاء كل الإجابات النظرية
         function toggleShowAllAnswers() {
             if (currentTab === 'theoretical') {
@@ -2101,6 +2614,8 @@
                 }
                 
                 updateStats();
+            } else if (currentTab === 'exercises') {
+                showAllSolutions();
             }
         }
 
@@ -2129,6 +2644,11 @@
             
             qcmAnswered.textContent = answeredCount;
             qcmCorrect.textContent = correctCount;
+            
+            // تحديث إحصائيات التمارين
+            const exercisesSolvedCount = document.getElementById('exercises-solved');
+            const solvedCount = exercisesSolved.filter(solved => solved).length;
+            exercisesSolvedCount.textContent = solvedCount;
         }
     </script>
 </body>
